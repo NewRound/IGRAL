@@ -72,3 +72,13 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 Assets/External/
+
+Library/
+Logs/
+obj/
+Temp/
+UserSettings/
+.vs/
+*.vsconfig
+*.csproj
+*.sln
