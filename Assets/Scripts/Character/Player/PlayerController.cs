@@ -5,7 +5,13 @@ using UnityEngine;
 
 public class PlayerController : InputController
 {
-    public CharacterStatHandler StatHandler { get; private set; }
+    [SerializeField] private PlayerSO stat;
 
+    public PlayerStatHandler StatHandler { get; private set; }
+
+    private void Awake()
+    {
+        StatHandler = new PlayerStatHandler(stat);
+    }
 
 }
