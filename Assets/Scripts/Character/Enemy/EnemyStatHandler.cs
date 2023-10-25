@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyStatHandler : CharacterStatHandler
 {
-    public EnemyData Data { get; private set; }
+    public EnemySO Data { get; private set; }
 
-    public EnemyStatHandler(EnemyData data)
+    public EnemyStatHandler(EnemySO data)
     {
         Data = data;
     }

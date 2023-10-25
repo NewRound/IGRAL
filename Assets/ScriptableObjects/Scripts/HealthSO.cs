@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public abstract class HealthData : ScriptableObject
+public abstract class HealthSO : ScriptableObject
 {
     [field: SerializeField] public float Health { get; private set; }
     [field: SerializeField] public float HealthRegen { get; private set; }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerStatHandler : CharacterStatHandler
 {
-    public PlayerData Data { get; private set; }
+    public PlayerSO Data { get; private set; }
 
-    public PlayerStatHandler(PlayerData data)
+    public PlayerStatHandler(PlayerSO data)
     {
         Data = data;
     }

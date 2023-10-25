@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class CharacterStatHandler : IEntity
 {
-    public void Attack(EntityData attacker, HealthData target)
+    public void Attack(EntitySO attacker, HealthSO target)
     {
         
     }
