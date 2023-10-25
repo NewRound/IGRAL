@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "PlayerData", menuName = "CreateData/PlayerData")]
 public class PlayerData : EntityData
 {
     [field: SerializeField] public float JumpForce { get; private set; }
