@@ -22,7 +22,6 @@ public class SpeedCalculator
         _movingElapsedTime += Time.deltaTime;
         float movingRatio = _movingElapsedTime / _acceleratingTime;
         movingRatio = movingRatio > 1f ? 1f : movingRatio;
-        Debug.Log(movingRatio);
         return Mathf.Lerp(speedMin, speedMax, movingRatio);
     }
 }
