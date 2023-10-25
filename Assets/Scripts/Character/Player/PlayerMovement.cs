@@ -11,7 +11,9 @@ public class PlayerMovement : MonoBehaviour
     private float _speed;
 
     [Header("Rotation")]
-    [SerializeField] private float turningSpeed = 10f;
+    [SerializeField] private float rotationSpeed = 10f;
+    [SerializeField] private float minAbsAngle = 90f;
+    [SerializeField] private float maxAbsAngle = 270f;
     private Vector3 _preDirection;
 
     private Vector2 _direction;
@@ -75,32 +77,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void Look()
     {
-        // TODO : 주석 부분은 회전을 통일시키기 위해 테스트 해본 것 (아직 미완성)
 
         if (_direction == Vector2.zero)
         {
-            //transform.rotation = Quaternion.LookRotation(_preDirection);
+            transform.rotation = Quaternion.LookRotation(_preDirection);
             return;
         }
 
-        _preDirection = (Vector3.right * _direction.x).normalized;
+        // LookRotation로는 제한을 두기 어렵다고 생각하여 오일러 각도로 변환하여 계산하는 것이 나아보임
 
-        Quaternion rotation = Quaternion.Slerp(
-            transform.rotation, 
-            Quaternion.LookRotation(_preDirection), 
-            turningSpeed * Time.deltaTime);
-        
-        Debug.Log($"rotation : {rotation.eulerAngles}");
+        float currentAngle = transform.rotation.eulerAngles.y;
+        float targetAngle = Vector3.SignedAngle(Vector3.forward, _preDirection, Vector3.up);
 
-        //if (rotation.eulerAngles.y >= -90 && rotation.eulerAngles.y < 0)
-        //{
-        //    rotation = Quaternion.LookRotation(Vector3.left);
-        //}
-        //else if (rotation.eulerAngles.y > 0 && rotation.eulerAngles.y <= 90)
-        //{
-        //    rotation = Quaternion.LookRotation(Vector3.right);
-        //}
+        float newAngle = Mathf.LerpAngle(currentAngle, targetAngle, rotationSpeed * Time.deltaTime);
 
-        transform.rotation = rotation;
+        newAngle = newAngle >= 0 ? 
+            Mathf.Clamp(Mathf.Abs(newAngle), minAbsAngle, maxAbsAngle) : 
+            -Mathf.Clamp(Mathf.Abs(newAngle), minAbsAngle, maxAbsAngle);
+
+        transform.rotation = Quaternion.Euler(0f, newAngle, 0f);
     }
 }
