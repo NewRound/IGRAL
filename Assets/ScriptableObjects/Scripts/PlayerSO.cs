@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerData : EntityData
+[CreateAssetMenu(fileName = "PlayerData", menuName = "SO/CharacterData/PlayerData")]
+public class PlayerSO : EntitySO
 {
     [field: SerializeField] public float JumpForce { get; private set; }
     [field: SerializeField] public float JumpDuration { get; private set; }

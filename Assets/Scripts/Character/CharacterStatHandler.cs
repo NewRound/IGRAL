@@ -1,13 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : InputController, IEntity
+public abstract class CharacterStatHandler : IEntity
 {
-
-
-    public void Attack(EntityData attacker, HealthData target)
+    public void Attack(EntitySO attacker, HealthSO target)
     {
         
     }
