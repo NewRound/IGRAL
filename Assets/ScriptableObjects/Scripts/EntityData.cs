@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityData : ScriptableObject
+public class EntityData : HealthData
 {
     [field: SerializeField] public float Attack { get; private set; }
     [field: SerializeField] public float AttackDelay { get; private set; }
