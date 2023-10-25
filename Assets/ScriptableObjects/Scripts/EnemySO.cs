@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EnemyData", menuName = "CreateData/EnemyData")]
-public class EnemyData : EntityData
+[CreateAssetMenu(fileName = "EnemyData", menuName = "SO/CharacterData/EnemyData")]
+public class EnemySO : EntitySO
 {
     [field: SerializeField] public float PreAttackDelay { get; private set; }
     [field: SerializeField] public float TraceRange { get; private set; }
