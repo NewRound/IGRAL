@@ -11,5 +11,5 @@ public class Item : MonoBehaviour
     [field: SerializeField] public int buyPrice { get; private set;}
     [field: SerializeField] public int sellPrice { get; private set;}
 
-    [SerializeField] private PlayerData data;        
+    [SerializeField] private PlayerSO itemData;        
 }
