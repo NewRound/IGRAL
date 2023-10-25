@@ -17,7 +17,7 @@ public class InputController : MonoBehaviour
         }
 
         Vector2 inputVec = context.ReadValue<Vector2>();
-        // РќДо
+        
         CallMoveAction(inputVec);
     }
 
