@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityData : HealthData
+public abstract class EntityData : HealthData
 {
     [field: SerializeField] public float Attack { get; private set; }
     [field: SerializeField] public float AttackDelay { get; private set; }
@@ -13,7 +13,6 @@ public class EntityData : HealthData
     [field: SerializeField] public float SpeedMax { get; private set; }
     [field: SerializeField] public float KnockbackPower { get; private set; }
     [field: SerializeField] public float KnockbackTime { get; private set; }
-    [field: SerializeField] public bool IsFlying { get; private set; }
     [field: SerializeField] public bool IsRanged { get; private set; }
 
 }
