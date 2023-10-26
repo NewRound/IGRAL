@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -36,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         _controller.MoveAction += SetDirection;
+        //_controller.JumpAction +=
     }
 
     private void Start()
@@ -90,5 +88,10 @@ public class PlayerMovement : MonoBehaviour
         float newAngle = _rotationCalculator.CalculateRotation(transform.rotation.eulerAngles.y, _preDirection);
         
         transform.rotation = Quaternion.Euler(0f, newAngle, 0f);
+    }
+
+    private void Jump()
+    {
+
     }
 }
