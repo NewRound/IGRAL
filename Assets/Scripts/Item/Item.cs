@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ItemBaseSO : ScriptableObject
+public class Item : MonoBehaviour
 {
     [field: Header("# Base Info")]
     [field: SerializeField] public string ItemName { get; private set;}
@@ -9,11 +9,7 @@ public class ItemBaseSO : ScriptableObject
     [field: SerializeField] public GameObject ItemObject { get; private set; }
     [field :TextArea][field: SerializeField] public string ItemInfo { get; private set;}
     [field: SerializeField] public int buyPrice { get; private set;}
-    [field: SerializeField] public int sellPrice { get; private set;} 
+    [field: SerializeField] public int sellPrice { get; private set;}
 
-
-
-
-
-
+    [SerializeField] private PlayerSO itemData;        
 }
