@@ -10,6 +10,10 @@ public class Item : MonoBehaviour
     [field :TextArea][field: SerializeField] public string ItemInfo { get; private set;}
     [field: SerializeField] public int buyPrice { get; private set;}
     [field: SerializeField] public int sellPrice { get; private set;}
-
-    [SerializeField] private PlayerSO itemData;        
+    [field: SerializeField] public bool isStackable { get; private set;}
+    [field: SerializeField] public int maxStack { get; private set;}
+    [field: SerializeField] public bool isEquipment { get; private set; }
+    [field: SerializeField] public bool isConsumable { get; private set; }
+    [field: SerializeField] public PlayerSO itemData { get; private set; }
+       
 }
