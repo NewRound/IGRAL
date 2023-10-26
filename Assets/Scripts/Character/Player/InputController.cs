@@ -2,12 +2,35 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputController : MonoBehaviour
+public abstract class InputController : MonoBehaviour
 {
     public event Action<Vector2> MoveAction;
     public event Action JumpAction;
     public event Action SlideAction;
     public event Action AttackAction;
+
+    public PlayerInput Input { get; private set; }
+    public PlayerInputAction InputActions { get; private set; }
+    public PlayerInputAction.PlayerActions PlayerActions { get; private set; }
+
+
+    protected virtual void Awake()
+    {
+        Input = GetComponent<PlayerInput>();
+
+        InputActions = new PlayerInputAction();
+        PlayerActions = InputActions.Player;
+    }
+
+    private void OnEnable()
+    {
+        InputActions.Enable();
+    }
+
+    private void OnDisable()
+    {
+        InputActions.Disable();
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -47,22 +70,22 @@ public class InputController : MonoBehaviour
         }
     }
 
-    private void CallMoveAction(Vector2 inputVec)
+    public void CallMoveAction(Vector2 inputVec)
     {
         MoveAction?.Invoke(inputVec);
     }
 
-    private void CallJumpAction()
+    public void CallJumpAction()
     {
         JumpAction?.Invoke();
     }
 
-    private void CallSlideAction()
+    public void CallSlideAction()
     {
         SlideAction?.Invoke();
     }
 
-    private void CallAttackAction()
+    public void CallAttackAction()
     {
         AttackAction?.Invoke();
     }

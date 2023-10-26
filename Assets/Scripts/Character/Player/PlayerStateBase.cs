@@ -1,65 +1,41 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody))]
-public class PlayerStateBase : MonoBehaviour
+public class PlayerStateBase : IState
 {
-    [Header("Accelerate")]
-    [SerializeField] private float acceleratingTime = 10f;
     private SpeedCalculator _speedCalculator;
     private float _speed;
 
-    [Header("Rotation")]
-    [SerializeField] private float rotationSpeed = 10f;
-    [SerializeField] private float minAbsAngle = 90f;
-    [SerializeField] private float maxAbsAngle = 270f;
-    private Vector3 _preDirection;
     private RotationCalculator _rotationCalculator;
+    private Vector3 _preDirection;
 
     private Vector2 _direction;
+
+    private Movement _movement;
     private PlayerController _controller;
-
-
+    private Transform _playerTrans;
     private Rigidbody _rigid;
 
-
-    private void Awake()
+    public PlayerStateBase(PlayerController playerController, Movement movement)
     {
-        _controller = GetComponent<PlayerController>();
-        _rigid = GetComponent<Rigidbody>();
-        _speedCalculator = new SpeedCalculator(acceleratingTime);
-        _rotationCalculator = new RotationCalculator(rotationSpeed, minAbsAngle, maxAbsAngle);
+        _controller = playerController;
+
+        _movement = movement;
+        _rigid = _controller.Rigidbody;
+        _playerTrans = _controller.transform;
+        _preDirection = _playerTrans.forward;
+
+        PlayerInputAction actions = _controller.InputActions;
+        actions.Player.Move.started += SetDirection;
+        actions.Player.Move.canceled += SetDirection;
+
+        _speedCalculator = new SpeedCalculator(_movement.acceleratingTime);
+        _rotationCalculator = new RotationCalculator(_movement.rotationSpeed, _movement.minAbsAngle, _movement.maxAbsAngle);
     }
 
-    private void OnEnable()
+    public void SetDirection(InputAction.CallbackContext context)
     {
-        _controller.MoveAction += SetDirection;
-        //_controller.JumpAction +=
-    }
-
-    private void Start()
-    {
-        _preDirection = transform.forward;
-    }
-
-    private void OnDisable()
-    {
-        _controller.MoveAction -= SetDirection;
-    }
-
-    private void Update()
-    {
-        UpdateSpeed();
-        Look();
-    }
-
-    private void FixedUpdate()
-    {
-        Move();
-    }
-
-    public void SetDirection(Vector2 direction)
-    {
-        _direction = direction;
+        _direction = context.ReadValue<Vector2>();
     }
 
     private void UpdateSpeed()
@@ -68,6 +44,7 @@ public class PlayerStateBase : MonoBehaviour
             _controller.StatHandler.Data.SpeedMin,
             _controller.StatHandler.Data.SpeedMax,
             _direction == Vector2.zero);
+        Debug.Log(_speed);
     }
 
     private void Move()
@@ -79,19 +56,49 @@ public class PlayerStateBase : MonoBehaviour
     {
         if (_direction == Vector2.zero)
         {
-            transform.rotation = Quaternion.LookRotation(_preDirection);
+            _playerTrans.rotation = Quaternion.LookRotation(_preDirection);
             return;
         }
 
         _preDirection = _direction.x * Vector3.right;
 
-        float newAngle = _rotationCalculator.CalculateRotation(transform.rotation.eulerAngles.y, _preDirection);
-        
-        transform.rotation = Quaternion.Euler(0f, newAngle, 0f);
+        float newAngle = _rotationCalculator.CalculateRotation(_playerTrans.rotation.eulerAngles.y, _preDirection);
+
+        _playerTrans.rotation = Quaternion.Euler(0f, newAngle, 0f);
     }
 
     private void Jump()
     {
 
+    }
+
+    public void ChangeState()
+    {
+    }
+
+    public void Enter()
+    {
+    }
+
+    public void Exit()
+    {
+    }
+
+    public void UpdateState()
+    {
+        UpdateSpeed();
+        Look();
+    }
+
+    public void PhysicsUpdateState()
+    {
+        Move();
+    }
+
+    public void OnDead()
+    {
+        PlayerInputAction actions = _controller.InputActions;
+        actions.Player.Move.started -= SetDirection;
+        actions.Player.Move.canceled += SetDirection;
     }
 }
