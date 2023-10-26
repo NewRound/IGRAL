@@ -74,16 +74,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: "\uC54C\uC57D"
-  <ItemType>k__BackingField: 2
+  <ItemID>k__BackingField: 301
+  <ItemType>k__BackingField: 3
+  <ItemRarity>k__BackingField: 1
+  <DropProbability>k__BackingField: 0
   <ItemIcon>k__BackingField: {fileID: 21300000, guid: dedac241ce0e17d48b2ff161809ab841,
     type: 3}
   <ItemObject>k__BackingField: {fileID: 434839425580445809}
-  <ItemInfo>k__BackingField: "\uCCB4\uB825\uC744 5% \uD68C\uBCF5\uD55C\uB2E4."
-  <DropProbability>k__BackingField: 0
-  <buyPrice>k__BackingField: 50
-  <sellPrice>k__BackingField: 40
-  <isStackable>k__BackingField: 1
-  <maxStack>k__BackingField: 10
+  <ItemInfo>k__BackingField: "\uCCB4\uB825\uC744 5% \uD68C\uBCF5\uD569\uB2C8\uB2E4."
+  <Price>k__BackingField: 50
+  <IsStackable>k__BackingField: 1
+  <MaxStack>k__BackingField: 5
   <itemData>k__BackingField: {fileID: 11400000, guid: b2c59a516f61b604db1212669dc65c22,
     type: 2}
 --- !u!1001 &7218661056508500811

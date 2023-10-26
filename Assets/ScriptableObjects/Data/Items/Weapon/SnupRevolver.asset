@@ -22,14 +22,13 @@ MonoBehaviour:
   <AttackDelay>k__BackingField: 0.8
   <AttackRange>k__BackingField: 5
   <CriticalProbability>k__BackingField: 15
-  <CriticalMod>k__BackingField: 2
+  <CriticalMod>k__BackingField: 1.5
   <SpeedMin>k__BackingField: 0
   <SpeedMax>k__BackingField: 0
   <KnockbackPower>k__BackingField: 0.1
   <KnockbackTime>k__BackingField: 0.1
   <IsRanged>k__BackingField: 1
   <JumpForce>k__BackingField: 0
-  <JumpDuration>k__BackingField: 0
   <Combo>k__BackingField: 0
   <MaxJumpCount>k__BackingField: 0
   <KcalPerAttack>k__BackingField: 0

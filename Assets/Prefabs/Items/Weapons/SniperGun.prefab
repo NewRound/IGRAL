@@ -74,17 +74,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: SniperGun
-  <ItemID>k__BackingField: 2
+  <ItemID>k__BackingField: 103
+  <ItemType>k__BackingField: 1
+  <ItemRarity>k__BackingField: 1
+  <DropProbability>k__BackingField: 0
   <ItemIcon>k__BackingField: {fileID: 21300000, guid: a7db52180c1bd3f4d8129fcd273ede81,
     type: 3}
   <ItemObject>k__BackingField: {fileID: 8476228221721659304}
   <ItemInfo>k__BackingField: "\uC7A5\uAC70\uB9AC\uC6A9 \uC800\uACA9\uCD1D\uC785\uB2C8\uB2E4."
-  <buyPrice>k__BackingField: 150
-  <sellPrice>k__BackingField: 120
-  <isStackable>k__BackingField: 0
-  <maxStack>k__BackingField: 0
-  <isEquipment>k__BackingField: 1
-  <isConsumable>k__BackingField: 0
+  <Price>k__BackingField: 200
+  <IsStackable>k__BackingField: 0
+  <MaxStack>k__BackingField: 0
   <itemData>k__BackingField: {fileID: 11400000, guid: 5e5ae9024cfdb8048af0129697e9940e,
     type: 2}
 --- !u!1001 &1021048470883833134

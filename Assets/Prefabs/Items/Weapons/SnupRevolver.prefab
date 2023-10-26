@@ -74,17 +74,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: SnupRevolver
-  <ItemID>k__BackingField: 0
+  <ItemID>k__BackingField: 101
+  <ItemType>k__BackingField: 1
+  <ItemRarity>k__BackingField: 1
+  <DropProbability>k__BackingField: 0
   <ItemIcon>k__BackingField: {fileID: 21300000, guid: 0f3f5cb196a64da4ba716a0710a64809,
     type: 3}
   <ItemObject>k__BackingField: {fileID: 1046054275128977727}
   <ItemInfo>k__BackingField: "\uAE30\uBCF8\uC801\uC778 \uAD8C\uCD1D\uC785\uB2C8\uB2E4."
-  <buyPrice>k__BackingField: 100
-  <sellPrice>k__BackingField: 80
-  <isStackable>k__BackingField: 0
-  <maxStack>k__BackingField: 0
-  <isEquipment>k__BackingField: 1
-  <isConsumable>k__BackingField: 0
+  <Price>k__BackingField: 100
+  <IsStackable>k__BackingField: 0
+  <MaxStack>k__BackingField: 0
   <itemData>k__BackingField: {fileID: 11400000, guid: 3ad60c80c79c8444293fecedee337aa2,
     type: 2}
 --- !u!1001 &4363923500607186415
