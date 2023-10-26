@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7849701137457136672}
-  - component: {fileID: 1624534865335664268}
+  - component: {fileID: 7721817166151003040}
   m_Layer: 0
   m_Name: Map2-2
   m_TagString: Untagged
@@ -48,7 +48,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1624534865335664268
+--- !u!114 &7721817166151003040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
