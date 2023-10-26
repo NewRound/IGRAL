@@ -1,18 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UIController : MonoBehaviour
+public class UIController : InputController
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private VariableJoystick variableJoystick;
+    [SerializeField] private Button _healing;
+    [SerializeField] private Button _jump;
+    [SerializeField] private Button _dash;
+    [SerializeField] private Button _skill;
+    [SerializeField] private Button _attack;
+    [SerializeField] private Button _interaction;
+    [SerializeField] private Button _pickup;
+    [SerializeField] private Button _item;
+
+    protected override void Awake()
     {
-        
+        base.Awake();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+        Vector2 direction = Vector2.up * variableJoystick.Vertical + Vector2.right * variableJoystick.Horizontal;
+        Debug.Log(direction);
+        CallMoveAction(direction);
     }
+
+
 }
