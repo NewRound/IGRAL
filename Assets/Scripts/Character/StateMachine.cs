@@ -17,7 +17,6 @@ public class StateMachine
     public void Init()
     {
         ChangeState(MovementState);
-        ChangeState(JumpState);
     }
 
 

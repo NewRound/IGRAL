@@ -63,19 +63,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6273517360552624083}
-        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
-        m_MethodName: OnMove
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 5c22e13f-2cb4-4b1c-b504-053991645e7c
     m_ActionName: New action map/Move[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -113,11 +101,14 @@ MonoBehaviour:
     rotationSpeed: 10
     minAbsAngle: 90
     maxAbsAngle: 270
-  animationData:
-    moveParameter: Move
+  <AnimationData>k__BackingField:
+    moveParameter: '@Move'
+    airParameter: '@Air'
+    attackParameter: '@Attack'
     jumpParameter: Jump
+    fallParameter: Fall
     slideParameter: Slide
-    attackParameter: Attack
+    speedRatioParameter: SpeedRatio
 --- !u!54 &6515203177115831943
 Rigidbody:
   m_ObjectHideFlags: 0
