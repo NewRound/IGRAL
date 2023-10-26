@@ -6,6 +6,8 @@ public class UIManager : CustomSingleton<UIManager>
 {
     private Dictionary<string, GameObject> _uiList = new Dictionary<string, GameObject>();
 
+    private PlayerSO ItemSO;
+
     public string[] uiType = { "UIMain", "UIController", "UIPlayerConditions", "UIBossCondition", "UIPopup" };
     public string[] closeUi = { "UIPopUp", "UIItem"};
 
