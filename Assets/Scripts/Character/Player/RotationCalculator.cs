@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class RotationCalculator
 {
