@@ -552,11 +552,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6273517360552624083, guid: 74d295b72c3d8df49b76dc54ee6588c0,
-        type: 3}
-      propertyPath: <Movement>k__BackingField.acceleratingTime
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

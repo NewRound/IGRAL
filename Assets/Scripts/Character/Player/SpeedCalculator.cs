@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpeedCalculator
 {
@@ -11,17 +10,18 @@ public class SpeedCalculator
         _acceleratingTime = acceleratingTime;
     }
 
-    public float CalculateSpeed(float speedMin, float speedMax, bool isStoped)
+    public float CalculateSpeed(float speedMin, float speedMax, out float speedRatio, bool isStoped)
     {
         if (isStoped)
         {
             _movingElapsedTime = 0f;
+            speedRatio = 0f;
             return 1f;
         }
 
         _movingElapsedTime += Time.deltaTime;
-        float movingRatio = _movingElapsedTime / _acceleratingTime;
-        movingRatio = movingRatio > 1f ? 1f : movingRatio;
-        return Mathf.Lerp(speedMin, speedMax, movingRatio);
+        speedRatio = _movingElapsedTime / _acceleratingTime;
+        speedRatio = speedRatio > 1f ? 1f : speedRatio;
+        return Mathf.Lerp(speedMin, speedMax, speedRatio);
     }
 }
