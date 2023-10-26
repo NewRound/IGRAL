@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerMovement : MonoBehaviour
+public class PlayerStateBase : MonoBehaviour
 {
     [Header("Accelerate")]
     [SerializeField] private float acceleratingTime = 10f;
