@@ -552,20 +552,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5524086908211070737, guid: 74d295b72c3d8df49b76dc54ee6588c0,
+    - target: {fileID: 6273517360552624083, guid: 74d295b72c3d8df49b76dc54ee6588c0,
         type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: e77a8bc00d5c22a4cbbbc23772bc8d1c, type: 2}
-    - target: {fileID: 5524086908211070737, guid: 74d295b72c3d8df49b76dc54ee6588c0,
-        type: 3}
-      propertyPath: m_WarningMessage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5524086908211070737, guid: 74d295b72c3d8df49b76dc54ee6588c0,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
+      propertyPath: <Movement>k__BackingField.acceleratingTime
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

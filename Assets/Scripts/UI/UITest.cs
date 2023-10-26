@@ -7,7 +7,7 @@ public class UITest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Debug.Log(UIManager.Instance);
+        Debug.Log(UIManager.Instance);
 
         Invoke("TestAddItem", 1f);
     }
@@ -17,9 +17,4 @@ public class UITest : MonoBehaviour
         UIInventory.Instance.AddItem(test);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

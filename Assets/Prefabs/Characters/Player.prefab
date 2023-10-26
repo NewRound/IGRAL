@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3756644618318297898}
   - component: {fileID: 6279680537438127429}
   - component: {fileID: 6273517360552624083}
-  - component: {fileID: 6040736158324106102}
   - component: {fileID: 6515203177115831943}
   - component: {fileID: 7073742005176302465}
   m_Layer: 0
@@ -93,7 +92,7 @@ MonoBehaviour:
     m_ActionName: PlayerAction/Slide[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: PlayerAction
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &6273517360552624083
@@ -109,22 +108,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 11400000, guid: d091809a4c15d6f42a232fd9332d1a46, type: 2}
---- !u!114 &6040736158324106102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2295781759866904828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 171da54e927a00c46ab6089d4a31edb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  acceleratingTime: 1
-  rotationSpeed: 10
-  minAbsAngle: 90
-  maxAbsAngle: 270
+  <Movement>k__BackingField:
+    acceleratingTime: 10
+    rotationSpeed: 10
+    minAbsAngle: 90
+    maxAbsAngle: 270
 --- !u!54 &6515203177115831943
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -229,6 +217,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4675232436007860, guid: 325c2a72f558d4e419ec4f9ea74e54f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95880590792931522, guid: 325c2a72f558d4e419ec4f9ea74e54f5,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e77a8bc00d5c22a4cbbbc23772bc8d1c, type: 2}
+    - target: {fileID: 95880590792931522, guid: 325c2a72f558d4e419ec4f9ea74e54f5,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
