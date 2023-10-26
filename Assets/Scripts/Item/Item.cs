@@ -10,6 +10,19 @@ public class Item : MonoBehaviour
     [field :TextArea][field: SerializeField] public string ItemInfo { get; private set;}
     [field: SerializeField] public int buyPrice { get; private set;}
     [field: SerializeField] public int sellPrice { get; private set;}
+    [field: SerializeField] public bool isStackable { get; private set;}
+    [field: SerializeField] public int maxStack { get; private set;}
+    [field: SerializeField] public bool isEquipment { get; private set; }
+    [field: SerializeField] public bool isConsumable { get; private set; }
+    [field: SerializeField] public PlayerSO itemData { get; private set; }
 
-    [SerializeField] private PlayerSO itemData;        
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            // 인벤토리에 넣고 삭제하기
+            Inventory.Instance.AddItem(this);
+            Destroy(gameObject);            
+        }
+    }
 }
