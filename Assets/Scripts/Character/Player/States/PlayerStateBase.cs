@@ -1,31 +1,43 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerStateBase : IState
+public abstract class PlayerStateBase : IState
 {
+    [Header("Speed")]
+    protected float speedRatio;
     private SpeedCalculator _speedCalculator;
     private float _speed;
 
+    [Header("Rotation")]
     private RotationCalculator _rotationCalculator;
-    private Vector3 _preDirection;
 
-    private Vector2 _direction;
-
+    [Header("Movement")]
     private Movement _movement;
-    private PlayerController _controller;
     private Transform _playerTrans;
     private Rigidbody _rigid;
+    private Vector2 _direction;
+    private Vector3 _preDirection;
 
-    public PlayerStateBase(PlayerController playerController, Movement movement)
+
+    [Header("Player")]
+    protected StateMachine stateMachine;
+    protected PlayerController playerController;
+    protected PlayerAnimationsData animationsData;
+
+    public PlayerStateBase(StateMachine stateMachine)
     {
-        _controller = playerController;
+        this.stateMachine = stateMachine;
 
-        _movement = movement;
-        _rigid = _controller.Rigidbody;
-        _playerTrans = _controller.transform;
+        playerController = stateMachine.PlayerController;
+
+        _movement = playerController.Movement;
+        _rigid = playerController.Rigidbody;
+        _playerTrans = playerController.transform;
         _preDirection = _playerTrans.forward;
+        animationsData = playerController.AnimationData;
 
-        PlayerInputAction actions = _controller.InputActions;
+        PlayerInputAction actions = playerController.InputActions;
         actions.Player.Move.started += SetDirection;
         actions.Player.Move.canceled += SetDirection;
 
@@ -41,10 +53,10 @@ public class PlayerStateBase : IState
     private void UpdateSpeed()
     {
         _speed = _speedCalculator.CalculateSpeed(
-            _controller.StatHandler.Data.SpeedMin,
-            _controller.StatHandler.Data.SpeedMax,
+            playerController.StatHandler.Data.SpeedMin,
+            playerController.StatHandler.Data.SpeedMax,
+            out speedRatio,
             _direction == Vector2.zero);
-        Debug.Log(_speed);
     }
 
     private void Move()
@@ -72,33 +84,25 @@ public class PlayerStateBase : IState
 
     }
 
-    public void ChangeState()
-    {
-    }
+    public abstract void Enter();
 
-    public void Enter()
-    {
-    }
+    public abstract void Exit();
 
-    public void Exit()
-    {
-    }
-
-    public void UpdateState()
+    public virtual void UpdateState()
     {
         UpdateSpeed();
         Look();
     }
 
-    public void PhysicsUpdateState()
+    public virtual void PhysicsUpdateState()
     {
         Move();
     }
 
-    public void OnDead()
+    public virtual void OnDead()
     {
-        PlayerInputAction actions = _controller.InputActions;
+        PlayerInputAction actions = playerController.InputActions;
         actions.Player.Move.started -= SetDirection;
-        actions.Player.Move.canceled += SetDirection;
+        actions.Player.Move.canceled -= SetDirection;
     }
 }

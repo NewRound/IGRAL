@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,46 +10,41 @@ public class PlayerController : InputController
 
     public Rigidbody Rigidbody { get; private set; }
     public Transform Transform { get; private set; }
+    public Animator Animator { get; private set; }
 
     // TODO : StateMachine 들어갈 자리
-    public PlayerStateBase PlayerStateBase { get; private set; }
+    private StateMachine _stateMachine;
 
     [field: SerializeField] public Movement Movement { get; private set; }
+    [field: SerializeField] public PlayerAnimationsData AnimationData { get; private set; }
 
     protected override void Awake()
     {
         base.Awake();
-
-        StatHandler = new PlayerStatHandler(stat);
         Rigidbody = GetComponent<Rigidbody>();
-        Transform = transform;
-        PlayerStateBase = new PlayerStateBase(this, Movement);
+        Animator = GetComponentInChildren<Animator>();
+
+
+        _stateMachine = new StateMachine(this);
+        StatHandler = new PlayerStatHandler(stat);
     }
 
     private void Start()
     {
+        AnimationData.Init();
+        _stateMachine.Init();
+
+        Transform = transform;
     }
 
     private void Update()
     {
-        PlayerStateBase.UpdateState();
+        _stateMachine.Update();
     }
 
     private void FixedUpdate()
     {
-        PlayerStateBase.PhysicsUpdateState();
+        _stateMachine.PhysicsUpdate();
     }
 
-}
-
-[Serializable]
-public class Movement
-{
-    [Header("Acceleration")]
-    public float acceleratingTime = 1f;
-
-    [Header("Rotation")]
-    public float rotationSpeed = 10f;
-    public float minAbsAngle = 90f;
-    public float maxAbsAngle = 270f;
 }

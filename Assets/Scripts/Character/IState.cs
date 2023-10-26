@@ -1,6 +1,5 @@
 ﻿public interface IState
 {
-    void ChangeState();
     void Enter();
     void Exit();
     void UpdateState();
