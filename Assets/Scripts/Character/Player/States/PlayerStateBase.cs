@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -37,17 +36,23 @@ public abstract class PlayerStateBase : IState
         _preDirection = _playerTrans.forward;
         animationsData = playerController.AnimationData;
 
-        PlayerInputAction actions = playerController.InputActions;
-        actions.Player.Move.started += SetDirection;
-        actions.Player.Move.canceled += SetDirection;
+        InitInputActions();
 
         _speedCalculator = new SpeedCalculator(_movement.acceleratingTime);
         _rotationCalculator = new RotationCalculator(_movement.rotationSpeed, _movement.minAbsAngle, _movement.maxAbsAngle);
     }
 
-    public void SetDirection(InputAction.CallbackContext context)
+    private void InitInputActions()
     {
-        _direction = context.ReadValue<Vector2>();
+        PlayerInputAction actions = playerController.InputActions;
+        actions.Player.Move.started += playerController.OnMove;
+        actions.Player.Move.canceled += playerController.OnMove;
+        playerController.MoveAction += SetDirection;
+    }
+
+    public void SetDirection(Vector2 direction)
+    {
+        _direction = direction;
     }
 
     private void UpdateSpeed()
@@ -102,7 +107,8 @@ public abstract class PlayerStateBase : IState
     public virtual void OnDead()
     {
         PlayerInputAction actions = playerController.InputActions;
-        actions.Player.Move.started -= SetDirection;
-        actions.Player.Move.canceled -= SetDirection;
+        actions.Player.Move.started -= playerController.OnMove;
+        actions.Player.Move.canceled -= playerController.OnMove;
+        playerController.MoveAction -= SetDirection;
     }
 }
