@@ -11,9 +11,13 @@ public class InputController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         if (context.canceled)
+        {
+            CallMoveAction(Vector2.zero);
             return;
+        }
+
         Vector2 inputVec = context.ReadValue<Vector2>();
-        // РќДо
+        
         CallMoveAction(inputVec);
     }
 
