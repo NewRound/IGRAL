@@ -1,7 +1,6 @@
 using System;
 using System.ComponentModel;
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,10 +33,14 @@ public class ItemSlot
 }
 
 
-public class UIInventory : MonoBehaviour
+public class UIInventory : CustomSingleton<UIInventory>
 {
     // 테스트용 플레이어 데이터
     [SerializeField] private PlayerSO _palyerDate;
+
+    [Header("main")]
+    [SerializeField] private GameObject _uiInventory;
+    [SerializeField] private Button _close;
 
     [Header("stats")]
     [SerializeField] private Transform _statsContent;
@@ -72,11 +75,9 @@ public class UIInventory : MonoBehaviour
 
     private UIStatSlot[] _statsSlotList = new UIStatSlot[(int)StatsCategory.Max];
 
-    public static UIInventory Instance;
-
     private void Awake()
-    { 
-        Instance = this;
+    {
+        _close.onClick.AddListener(CloseInventory);
         _equipSlot = new UIEquipSlot[6];
         for (int n = 0; n < 6; n++)
         {
@@ -108,10 +109,7 @@ public class UIInventory : MonoBehaviour
             _statsSlotList[i] = uIStatSlot;
             i++;
         }
-
-        
     }
-
 
     private void Start()
     {
@@ -146,6 +144,18 @@ public class UIInventory : MonoBehaviour
         _equipButton.gameObject.SetActive(false);
         _unEquipButton.gameObject.SetActive(false);
         _dropEquipButton.gameObject.SetActive(false);
+    }
+
+    public void OpenInventory()
+    {
+        _uiInventory.SetActive(true);
+        //Time.timeScale = 0f;
+    }
+
+    public void CloseInventory()
+    {
+        _uiInventory.SetActive(false);
+        //Time.timeScale = 1f;
     }
 
     #region 스텟 관련
@@ -519,6 +529,8 @@ public class UIInventory : MonoBehaviour
     }
 
     #endregion 아이템 슬롯 업데이트
+
+    #region 버튼 
     private void OnEquipButton()
     {
         AddEquipItem(selectedItem.item);
@@ -551,6 +563,7 @@ public class UIInventory : MonoBehaviour
         ClearInfo();
         UpdateUI();
     }
+    #endregion 버튼
 
     #region 아이템 슬롯 부족
     private void ReturnItem(Item item)

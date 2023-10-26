@@ -4,6 +4,9 @@ using TMPro;
 
 public class UIOption : MonoBehaviour
 {
+
+    [SerializeField] private Button _close;
+
     private int _currentidx;
     [SerializeField] private Button[] _optionBtns;
     [SerializeField] private TextMeshProUGUI[] _texts;
@@ -16,6 +19,13 @@ public class UIOption : MonoBehaviour
             int index = i;
             _optionBtns[i].onClick.AddListener(() => OpenPanel(index));
         }
+
+        _close.onClick.AddListener(CloseOption);
+    }
+
+    private void CloseOption()
+    {
+        UIManager.Instance.CloseUI<UIOption>();
     }
 
     private void OnEnable()

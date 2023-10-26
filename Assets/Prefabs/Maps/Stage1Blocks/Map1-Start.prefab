@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 7017805171258268555}
   - component: {fileID: 6883600198855008460}
   m_Layer: 0
-  m_Name: Map1-Start_42
+  m_Name: Map1-Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b462cf97fa9bf48a51af1bb3f2230f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalOfTiles: 7
+  horizontalOfTiles: 5
   verticalOfTiles: 0
 --- !u!1 &7838605647310058286
 GameObject:
