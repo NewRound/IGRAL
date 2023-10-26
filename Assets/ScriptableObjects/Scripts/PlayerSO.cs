@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerSO : EntitySO
 {
     [field: SerializeField] public float JumpForce { get; private set; }
-    [field: SerializeField] public float JumpDuration { get; private set; }
     [field: SerializeField] public float Combo { get; private set; }
     [field: SerializeField] public float MaxJumpCount { get; private set; }
     [field: SerializeField] public float KcalPerAttack { get; private set; }
