@@ -78,7 +78,8 @@ MonoBehaviour:
   <ItemIcon>k__BackingField: {fileID: 21300000, guid: dedac241ce0e17d48b2ff161809ab841,
     type: 3}
   <ItemObject>k__BackingField: {fileID: 434839425580445809}
-  <ItemInfo>k__BackingField: "\uCCB4\uB825\uC744 10% \uD68C\uBCF5\uD55C\uB2E4."
+  <ItemInfo>k__BackingField: "\uCCB4\uB825\uC744 5% \uD68C\uBCF5\uD55C\uB2E4."
+  <DropProbability>k__BackingField: 0
   <buyPrice>k__BackingField: 50
   <sellPrice>k__BackingField: 40
   <isStackable>k__BackingField: 1

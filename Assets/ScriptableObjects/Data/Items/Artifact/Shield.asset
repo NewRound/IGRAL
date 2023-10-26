@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
   <HealthRegen>k__BackingField: 0
-  <Defense>k__BackingField: 0.2
+  <Defense>k__BackingField: 0.05
   <EvasionProbability>k__BackingField: 0
   <IsInvincible>k__BackingField: 0
   <InvincibleTime>k__BackingField: 0
@@ -29,7 +29,6 @@ MonoBehaviour:
   <KnockbackTime>k__BackingField: 0
   <IsRanged>k__BackingField: 0
   <JumpForce>k__BackingField: 0
-  <JumpDuration>k__BackingField: 0
   <Combo>k__BackingField: 0
   <MaxJumpCount>k__BackingField: 0
   <KcalPerAttack>k__BackingField: 0
