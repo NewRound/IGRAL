@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: "\uB9AC\uBCFC\uBC84"
   <ItemID>k__BackingField: 1
-  <ItemIcon>k__BackingField: {fileID: 21300000, guid: e7d5f6e8b25eca042a8ede8b9d639edf,
+  <ItemIcon>k__BackingField: {fileID: 21300000, guid: 0f3f5cb196a64da4ba716a0710a64809,
     type: 3}
   <ItemObject>k__BackingField: {fileID: 8399886325267491271}
   <ItemInfo>k__BackingField: "\uAE30\uBCF8\uC801\uC778 \uAD8C\uCD1D\uC785\uB2C8\uB2E4."
@@ -106,8 +106,9 @@ MonoBehaviour:
   <isStackable>k__BackingField: 0
   <maxStack>k__BackingField: 0
   <isEquipment>k__BackingField: 1
-  <isConsumablek>k__BackingField: 0
-  itemData: {fileID: 11400000, guid: 3ad60c80c79c8444293fecedee337aa2, type: 2}
+  <isConsumable>k__BackingField: 0
+  <itemData>k__BackingField: {fileID: 11400000, guid: 3ad60c80c79c8444293fecedee337aa2,
+    type: 2}
 --- !u!1001 &4429901652719250494
 PrefabInstance:
   m_ObjectHideFlags: 0

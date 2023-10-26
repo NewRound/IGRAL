@@ -15,14 +15,5 @@ public class Item : MonoBehaviour
     [field: SerializeField] public bool isEquipment { get; private set; }
     [field: SerializeField] public bool isConsumable { get; private set; }
     [field: SerializeField] public PlayerSO itemData { get; private set; }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            // 인벤토리에 넣고 삭제하기
-            Inventory.Instance.AddItem(this);
-            Destroy(gameObject);            
-        }
-    }
+       
 }
