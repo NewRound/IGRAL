@@ -12,17 +12,18 @@ public class MapGenerator : MonoBehaviour
 
     [SerializeField] public int numberOfBlock;
 
-    private List<int> RandomBlockIndex = new List<int>();
+    [SerializeField] public int tileSize;
 
-    private Vector3 enterPosition;
-    private Vector3 exitPosition;
+    private GameObject frontBlock = null;
+
+    private List<int> RandomBlockIndex = new List<int>();
 
     // 맵정보 받아오기.
     // 맵생성 시작.
     // 1. 맵 시작부분 
     private void Awake()
     {
-        exitPosition = Vector3.zero;
+
     }
 
     private void Start()
@@ -30,9 +31,29 @@ public class MapGenerator : MonoBehaviour
         foreach(GameObject block in Stage1_Blocks)
         {
             GameObject Block = Instantiate(block);
-            Block.transform.position = exitPosition - enterPosition;
-            exitPosition = CalculatePosition(Block, false);
-            enterPosition = CalculatePosition(Block, true);
+
+            if(frontBlock != null)
+            {
+                Vector3 _position = Block.transform.position;
+                Vector3 _frontPosition = frontBlock.transform.position;
+                MapData _mapData = frontBlock.GetComponent<MapData>();
+
+                _position.x = _frontPosition.x + (_mapData.horizontalOfTiles * tileSize);
+                _position.y = _frontPosition.y + (_mapData.verticalOfTiles * tileSize);
+                Block.transform.position = _position;
+            }
+            else
+            {
+                Vector3 _position = Block.transform.position;
+                _position.x = 0;
+                _position.y = 0;
+                Block.transform.position = _position;
+            }
+
+            frontBlock = Block;
+            //Block.transform.position = exitPosition - enterPosition;
+            //exitPosition = CalculatePosition(Block, false);
+            //enterPosition = CalculatePosition(Block, true);
             //Debug.Log(enterPosition);
             //Debug.Log(exitPosition);
         }

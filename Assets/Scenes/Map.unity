@@ -295,6 +295,7 @@ MonoBehaviour:
   Stage2_Blocks: []
   Stage3_Blocks: []
   numberOfBlock: 2
+  tileSize: 6
 --- !u!4 &532016896
 Transform:
   m_ObjectHideFlags: 0
