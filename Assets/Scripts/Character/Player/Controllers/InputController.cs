@@ -43,14 +43,8 @@ public abstract class InputController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (context.canceled)
-        {
-            CallMoveAction(Vector2.zero);
-            return;
-        }
-
         Vector2 inputVec = context.ReadValue<Vector2>();
-        
+
         CallMoveAction(inputVec);
     }
 
@@ -72,6 +66,9 @@ public abstract class InputController : MonoBehaviour
 
     public void CallMoveAction(Vector2 inputVec)
     {
+        if (stateMachine.RollDataHandler.IsRolling)
+            return;
+
         MoveAction?.Invoke(inputVec);
     }
 
@@ -83,7 +80,7 @@ public abstract class InputController : MonoBehaviour
 
     public void CallRollAction()
     {
-        if (!stateMachine.RollCoolTimeCalculator.CanRoll)
+        if (!stateMachine.RollDataHandler.CanRoll)
             return;
 
         stateMachine.ChangeState(stateMachine.RollState);

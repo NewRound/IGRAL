@@ -20,14 +20,14 @@ public class StateMachine
     public bool IsGrounded { get; private set; }
 
     [field: Header("Roll")]
-    public RollCoolTimeCalculator RollCoolTimeCalculator { get; private set; } 
+    public RollDataHandler RollDataHandler { get; private set; }
 
     public StateMachine(PlayerController playerController)
     {
         PlayerController = playerController;
         
         JumpCountSetter = new JumpCountHandler(PlayerController.StatHandler.Data.JumpCountMax);
-        RollCoolTimeCalculator = new RollCoolTimeCalculator(
+        RollDataHandler = new RollDataHandler(
             PlayerController.StatHandler.Data.RollingCoolTime, 
             playerController.StatHandler.Data.InvincibleTime);
 
@@ -53,7 +53,7 @@ public class StateMachine
 
     public void Update()
     {
-        RollCoolTimeCalculator.CalculateCoolTime();
+        RollDataHandler.CalculateCoolTime();
         _currentState.UpdateState();
     }
 

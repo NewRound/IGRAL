@@ -100,6 +100,10 @@ public abstract class PlayerStateBase : IState
 
     private void Look()
     {
+        Debug.Log(stateMachine.RollDataHandler.IsRolling);
+        if (stateMachine.RollDataHandler.IsRolling)
+            return;
+
         if (_direction == Vector2.zero)
         {
             playerTrans.rotation = Quaternion.LookRotation(_preDirection);

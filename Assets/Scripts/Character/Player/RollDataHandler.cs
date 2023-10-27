@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 
-public class RollCoolTimeCalculator
+public class RollDataHandler
 {
     public bool CanRoll { get; private set; }
     public bool IsInvincible { get; private set; }
+    public bool IsRolling { get; private set; }
     private float _rollingCoolTime;
     private float _currentRollingElapsedTime;
     private float _invincibleTime;
 
-    public RollCoolTimeCalculator(float rollingCoolTime, float invincibleTime)
+    public RollDataHandler(float rollingCoolTime, float invincibleTime)
     {
         SetRollingCoolTime(rollingCoolTime);
         _currentRollingElapsedTime = rollingCoolTime;
@@ -30,7 +31,6 @@ public class RollCoolTimeCalculator
 
     public void CalculateCoolTime()
     {
-        Debug.Log(IsInvincible);
         if (_currentRollingElapsedTime >= _rollingCoolTime)
         {
             CanRoll = true;
@@ -38,9 +38,16 @@ public class RollCoolTimeCalculator
         }
 
         _currentRollingElapsedTime += Time.deltaTime;
-        _currentRollingElapsedTime = _currentRollingElapsedTime > _rollingCoolTime ? _rollingCoolTime : _currentRollingElapsedTime;
+        _currentRollingElapsedTime = 
+            _currentRollingElapsedTime > _rollingCoolTime ? 
+            _rollingCoolTime : _currentRollingElapsedTime;
 
         CalculateInvincible();
+    }
+
+    public void SetIsRolling(bool isRolling)
+    {
+        IsRolling = isRolling;
     }
 
     private void CalculateInvincible()
