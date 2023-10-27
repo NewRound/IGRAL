@@ -7,7 +7,7 @@ public class PlayerFallState : PlayerAirState
     public override void Enter()
     {
         base.Enter();
-        PlayAnimation(animationsData.FallParameterHash, true);
+        animationController.PlayAnimation(animationsData.FallParameterHash, true);
     }
 
     public override void UpdateState()
@@ -21,6 +21,6 @@ public class PlayerFallState : PlayerAirState
     public override void Exit()
     {
         base.Exit();
-        PlayAnimation(animationsData.FallParameterHash, false);
+        animationController.PlayAnimation(animationsData.FallParameterHash, false);
     }
 }

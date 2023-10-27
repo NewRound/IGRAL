@@ -20,6 +20,9 @@ public abstract class PlayerStateBase : IState
     [Header("Player")]
     protected StateMachine stateMachine;
     protected PlayerController playerController;
+
+    [Header("Animation")]
+    protected AnimationController animationController;
     protected PlayerAnimationsData animationsData;
 
     [Header("Input")]
@@ -35,7 +38,9 @@ public abstract class PlayerStateBase : IState
         rigid = playerController.Rigidbody;
         playerTrans = playerController.transform;
         _preDirection = playerTrans.forward;
-        animationsData = playerController.AnimationData;
+
+        animationController = playerController.AnimationController;
+        animationsData = playerController.AnimationController.AnimationData;
 
         InitInputActions();
 
@@ -68,20 +73,7 @@ public abstract class PlayerStateBase : IState
         playerController.MoveAction -= SetDirection;
     }
 
-    protected void PlayAnimation(int animationParameterHash, bool isPlaying)
-    {
-        playerController.Animator.SetBool(animationParameterHash, isPlaying);
-    }
-
-    protected void PlayAnimation(int animationParameterHash, int integerValue)
-    {
-        playerController.Animator.SetInteger(animationParameterHash, integerValue);
-    }
-
-    protected void PlayAnimation(int animationParameterHash, float floatValue)
-    {
-        playerController.Animator.SetFloat(animationParameterHash, floatValue);
-    }
+    
 
     private void UpdateSpeed()
     {

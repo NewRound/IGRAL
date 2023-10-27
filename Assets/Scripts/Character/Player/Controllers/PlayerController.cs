@@ -6,13 +6,13 @@ public class PlayerController : InputController
     [SerializeField] private PlayerSO stat;
 
     public PlayerStatHandler StatHandler { get; private set; }
+    public AnimationController AnimationController { get; private set; }
+
 
     public Rigidbody Rigidbody { get; private set; }
     public Transform Transform { get; private set; }
-    public Animator Animator { get; private set; }
 
     [field: SerializeField] public Movement Movement { get; private set; }
-    [field: SerializeField] public PlayerAnimationsData AnimationData { get; private set; }
     [field: SerializeField] public GroundCheck GroundCheck { get; private set; }
 
 
@@ -20,7 +20,8 @@ public class PlayerController : InputController
     {
         base.Awake();
         Rigidbody = GetComponent<Rigidbody>();
-        Animator = GetComponentInChildren<Animator>();
+        AnimationController = GetComponentInChildren<AnimationController>();
+        AnimationController.Init();
 
         StatHandler = new PlayerStatHandler(stat);
         stateMachine = new StateMachine(this);
@@ -29,7 +30,6 @@ public class PlayerController : InputController
     private void Start()
     {
         GroundCheck.Init(transform);
-        AnimationData.Init();
         stateMachine.Init();
 
         Transform = transform;
