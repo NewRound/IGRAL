@@ -8,7 +8,7 @@ public class AnimationController : MonoBehaviour
     [field: SerializeField] public PlayerAnimationsData AnimationData { get; private set; }
     private Animator _animator;
 
-    [SerializeField] private float animationEndedTime = 0.9f;
+    [field: SerializeField] public float animationNormalizeEndedTime = 0.9f;
 
     public void Init()
     {
@@ -21,6 +21,11 @@ public class AnimationController : MonoBehaviour
         _animator.SetBool(animationParameterHash, isPlaying);
     }
 
+    public void PlayAnimation(int animationParameterHash)
+    {
+        _animator.SetTrigger(animationParameterHash);
+    }
+
     public void PlayAnimation(int animationParameterHash, int integerValue)
     {
         _animator.SetInteger(animationParameterHash, integerValue);
@@ -31,10 +36,25 @@ public class AnimationController : MonoBehaviour
         _animator.SetFloat(animationParameterHash, floatValue);
     }
 
+
     public void ReStartIfAnimationIsPlaying(int animationParameterHash, int layerIndex = 0)
     {
         if (_animator.GetCurrentAnimatorStateInfo(layerIndex).shortNameHash.Equals(animationParameterHash))
             _animator.Play(animationParameterHash);
+    }
+
+    public bool CheckAnimationEnded(int animationParameterHash, int layerIndex = 0)
+    {
+        var stateInfo = _animator.GetCurrentAnimatorStateInfo(layerIndex);
+        if (stateInfo.shortNameHash.Equals(animationParameterHash))
+        {
+            if (stateInfo.normalizedTime >= animationNormalizeEndedTime)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     

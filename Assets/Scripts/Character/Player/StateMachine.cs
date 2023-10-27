@@ -6,27 +6,37 @@ public class StateMachine
 
     public PlayerController PlayerController { get; private set; }
 
+    [field: Header("States")]
     public PlayerMoveState MovementState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
     public PlayerFallState FallState { get; private set; }
+    public PlayerRollState RollState { get; private set; }
 
+    [field: Header("Jump")]
     public JumpCountHandler JumpCountSetter { get; private set; }
 
     [Header("Ground")]
     private GroundCheck _groundCheck;
     public bool IsGrounded { get; private set; }
 
+    [field: Header("Roll")]
+    public RollCoolTimeCalculator RollCoolTimeCalculator { get; private set; } 
+
     public StateMachine(PlayerController playerController)
     {
         PlayerController = playerController;
         
-        JumpCountSetter = new JumpCountHandler(PlayerController.StatHandler.Data.MaxJumpCount);
+        JumpCountSetter = new JumpCountHandler(PlayerController.StatHandler.Data.JumpCountMax);
+        RollCoolTimeCalculator = new RollCoolTimeCalculator(
+            PlayerController.StatHandler.Data.RollingCoolTime, 
+            playerController.StatHandler.Data.InvincibleTime);
 
         _groundCheck = playerController.GroundCheck;
 
         MovementState = new PlayerMoveState(this);
         JumpState = new PlayerJumpState(this);
         FallState = new PlayerFallState(this);
+        RollState = new PlayerRollState(this);
     }
 
     public void Init()
@@ -43,6 +53,7 @@ public class StateMachine
 
     public void Update()
     {
+        RollCoolTimeCalculator.CalculateCoolTime();
         _currentState.UpdateState();
     }
 
@@ -59,10 +70,7 @@ public class StateMachine
             IsGrounded = _groundCheck.CheckIsGrounded();
 
             if (IsGrounded)
-                JumpCountSetter.SetJumpCount(PlayerController.StatHandler.Data.MaxJumpCount);
+                JumpCountSetter.SetJumpCount(PlayerController.StatHandler.Data.JumpCountMax);
         }
-
-
-        Debug.Log(IsGrounded);
     }
 }

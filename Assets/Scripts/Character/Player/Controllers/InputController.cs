@@ -6,7 +6,7 @@ public abstract class InputController : MonoBehaviour
 {
     public event Action<Vector2> MoveAction;
     public event Action JumpAction;
-    public event Action SlideAction;
+    public event Action RollAction;
     public event Action AttackAction;
 
     public PlayerInput Input { get; private set; }
@@ -29,14 +29,16 @@ public abstract class InputController : MonoBehaviour
         InputActions.Player.Move.started += OnMove;
         InputActions.Player.Move.canceled += OnMove;
         InputActions.Player.Jump.started += OnJump;
+        InputActions.Player.Roll.started += OnRoll;
     }
 
     private void OnDisable()
     {
-        InputActions.Disable();
         InputActions.Player.Move.started -= OnMove;
         InputActions.Player.Move.canceled -= OnMove;
         InputActions.Player.Jump.started -= OnJump;
+        InputActions.Player.Roll.started -= OnRoll;
+        InputActions.Disable();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -58,20 +60,14 @@ public abstract class InputController : MonoBehaviour
         CallJumpAction();
     }
 
-    public void OnSlide(InputAction.CallbackContext context)
+    public void OnRoll(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            CallSlideAction();
-        }
+        CallRollAction();
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            CallAttackAction();
-        }
+        CallAttackAction();
     }
 
     public void CallMoveAction(Vector2 inputVec)
@@ -85,9 +81,13 @@ public abstract class InputController : MonoBehaviour
         JumpAction?.Invoke();
     }
 
-    public void CallSlideAction()
+    public void CallRollAction()
     {
-        SlideAction?.Invoke();
+        if (!stateMachine.RollCoolTimeCalculator.CanRoll)
+            return;
+
+        stateMachine.ChangeState(stateMachine.RollState);
+        RollAction?.Invoke();
     }
 
     public void CallAttackAction()

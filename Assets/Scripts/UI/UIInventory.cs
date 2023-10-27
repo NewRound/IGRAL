@@ -212,7 +212,7 @@ public class UIInventory : CustomSingleton<UIInventory>
                 _statsSlotList[(int)StatsCategory.JumpForce].UpdateValue(_palyerDate.JumpForce);
                 break;
             case StatsCategory.MaxJumpCount:
-                _statsSlotList[(int)StatsCategory.MaxJumpCount].UpdateValue(_palyerDate.MaxJumpCount);
+                _statsSlotList[(int)StatsCategory.MaxJumpCount].UpdateValue(_palyerDate.JumpCountMax);
                 break;
             case StatsCategory.KcalPerAttack:
                 _statsSlotList[(int)StatsCategory.KcalPerAttack].UpdateValue(_palyerDate.KcalPerAttack);
@@ -336,12 +336,12 @@ public class UIInventory : CustomSingleton<UIInventory>
                 re[1] = itemData.JumpForce.ToString();
                 break;
             case StatsCategory.MaxJumpCount:
-                if (itemData.MaxJumpCount == 0)
+                if (itemData.JumpCountMax == 0)
                     return null;
 
                 re = new string[2];
                 re[0] = GetDescription.EnumToString(statsCategory);
-                re[1] = itemData.MaxJumpCount.ToString();
+                re[1] = itemData.JumpCountMax.ToString();
                 break;
             case StatsCategory.KcalPerAttack:
                 if (itemData.KcalPerAttack == 0)

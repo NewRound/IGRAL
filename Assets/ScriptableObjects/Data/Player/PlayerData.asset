@@ -29,8 +29,8 @@ MonoBehaviour:
   <KnockbackTime>k__BackingField: 0
   <IsRanged>k__BackingField: 0
   <JumpForce>k__BackingField: 5
-  <Combo>k__BackingField: 0
-  <MaxJumpCount>k__BackingField: 2
+  <JumpCountMax>k__BackingField: 2
+  <RollingCoolTime>k__BackingField: 2
   <KcalPerAttack>k__BackingField: 0
   <MaxKcal>k__BackingField: 0
   <WallSlidingTime>k__BackingField: 0

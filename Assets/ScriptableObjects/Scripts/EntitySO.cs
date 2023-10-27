@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EntityData", menuName = "SO/EntityData")]
 public class EntitySO : HealthSO
 {
+    [field: Header("Entity")]
     [field: SerializeField] public float Attack { get; private set; }
     [field: SerializeField] public float AttackDelay { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }
