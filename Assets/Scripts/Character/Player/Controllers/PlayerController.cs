@@ -6,44 +6,54 @@ public class PlayerController : InputController
     [SerializeField] private PlayerSO stat;
 
     public PlayerStatHandler StatHandler { get; private set; }
+    public AnimationController AnimationController { get; private set; }
+
 
     public Rigidbody Rigidbody { get; private set; }
     public Transform Transform { get; private set; }
-    public Animator Animator { get; private set; }
-
-    // TODO : StateMachine 들어갈 자리
-    private StateMachine _stateMachine;
 
     [field: SerializeField] public Movement Movement { get; private set; }
-    [field: SerializeField] public PlayerAnimationsData AnimationData { get; private set; }
+    [field: SerializeField] public GroundCheck GroundCheck { get; private set; }
+
 
     protected override void Awake()
     {
         base.Awake();
         Rigidbody = GetComponent<Rigidbody>();
-        Animator = GetComponentInChildren<Animator>();
+        AnimationController = GetComponentInChildren<AnimationController>();
+        AnimationController.Init();
 
-
-        _stateMachine = new StateMachine(this);
         StatHandler = new PlayerStatHandler(stat);
+        stateMachine = new StateMachine(this);
     }
 
     private void Start()
     {
-        AnimationData.Init();
-        _stateMachine.Init();
+        GroundCheck.Init(transform);
+        stateMachine.Init();
 
         Transform = transform;
     }
 
     private void Update()
     {
-        _stateMachine.Update();
+        stateMachine.Update();
     }
 
     private void FixedUpdate()
     {
-        _stateMachine.PhysicsUpdate();
+        stateMachine.PhysicsUpdate();
     }
+
+#if UNITY_EDITOR
+
+    private void OnDrawGizmos()
+    {
+        Vector3 offsetPos = new Vector3(transform.position.x, transform.position.y + GroundCheck.GroundYOffset, transform.position.z); ;
+
+        Gizmos.DrawSphere(offsetPos, GroundCheck.GroundYOffset * GroundCheck.GroundRadiusMod);
+    }
+
+#endif
 
 }

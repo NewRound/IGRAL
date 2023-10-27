@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5113831975904258708}
   - component: {fileID: 794692719259377259}
   m_Layer: 5
-  m_Name: Dash
+  m_Name: Slide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -382,12 +382,15 @@ MonoBehaviour:
   variableJoystick: {fileID: 5299802497901425266}
   _healing: {fileID: 5204892985817723646}
   _jump: {fileID: 967946539942759180}
-  _dash: {fileID: 3466193432510394159}
+  _slide: {fileID: 3466193432510394159}
   _skill: {fileID: 1260137350692936045}
   _attack: {fileID: 9037081105897695312}
   _interaction: {fileID: 7775877039716172785}
   _pickup: {fileID: 6477225818755269681}
   _item: {fileID: 605243387250621379}
+  _attackObj: {fileID: 4666885127103604407}
+  _interactionObj: {fileID: 8971622038643539357}
+  _pickupObj: {fileID: 7099001797824906649}
 --- !u!1 &2544898988090692053
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,7 +678,7 @@ GameObject:
   - component: {fileID: 6782449133110093469}
   - component: {fileID: 3466193432510394159}
   m_Layer: 5
-  m_Name: Dash
+  m_Name: Slide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -729,7 +732,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0a58be2a26f3690478312fb2bd8bc1dc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bccee8310d7548043afc4aac5a85f7ab, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1868,7 +1871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &188657326843471898
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2341,7 +2344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8718248755400747141
 RectTransform:
   m_ObjectHideFlags: 0
