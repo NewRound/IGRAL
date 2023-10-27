@@ -28,7 +28,6 @@ public class MapGenerator : MonoBehaviour
         {
             Instance = this;
         }
-        Destroy(gameObject);
     }
 
     private void Start()
