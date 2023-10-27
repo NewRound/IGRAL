@@ -48,6 +48,10 @@ public abstract class InputController : MonoBehaviour
         CallMoveAction(inputVec);
     }
 
+    public void OnMove(InputInteractionContext context)
+    {
+        
+    }
 
     public void OnJump(InputAction.CallbackContext context)
     {
