@@ -82,3 +82,4 @@ UserSettings/
 *.vsconfig
 *.csproj
 *.sln
+ProjectSettings/Packages/com.unity.probuilder/Settings.json
