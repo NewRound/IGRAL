@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 2007032781}
   - component: {fileID: 2007032780}
   - component: {fileID: 2007032779}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,6 +484,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2071959555 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5618448762845716307, guid: 74d295b72c3d8df49b76dc54ee6588c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4217876483007382280}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2071959558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071959555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08846d926da5b684ead7df64c8c79e23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <AnimationData>k__BackingField:
+    moveParameter: '@Move'
+    airParameter: '@Air'
+    attackParameter: '@Attack'
+    jumpParameter: Jump
+    fallParameter: Fall
+    slideParameter: Slide
+    speedRatioParameter: SpeedRatio
+  animationEndedTime: 0.9
 --- !u!1001 &4217876483007382280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -555,5 +582,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5618448762845716307, guid: 74d295b72c3d8df49b76dc54ee6588c0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2071959558}
   m_SourcePrefab: {fileID: 100100000, guid: 74d295b72c3d8df49b76dc54ee6588c0, type: 3}
