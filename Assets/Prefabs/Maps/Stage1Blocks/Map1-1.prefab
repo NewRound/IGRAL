@@ -874,6 +874,7 @@ MonoBehaviour:
   moveSpeed: 1
   movedTime: 1
   movedRateTime: 1
+  StartImmediately: 1
 --- !u!4 &1960456997031183883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6631931863588529527, guid: 512b6a03a3535e143a66fedf8103ef40,

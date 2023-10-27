@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PatrolObject : MonoBehaviour
+public class PatrolObject : MonoBehaviour, IMovingObject
 {
     [Header("Movement")]
     [SerializeField] public List<Transform> destinations; // 목적지
     [SerializeField] public float moveSpeed; // 이동 속도
     [SerializeField] public float movedTime; // 편도 시간.
     [SerializeField] public float movedRateTime = 0; // 대기 시간.
+    [SerializeField] public bool StartImmediately; // 즉시시작?
 
     private List<Vector3> Positions = new List<Vector3>();  // 목적지의 위치를 저장
     private float elapsedTime;                              // 이동이후 걸리는 시간(필요한가?)
@@ -23,7 +24,8 @@ public class PatrolObject : MonoBehaviour
     private void Start()
     {
         InitializedPositions();
-        Use();
+        if(StartImmediately)
+            Use();
     }
 
     public void Use()
