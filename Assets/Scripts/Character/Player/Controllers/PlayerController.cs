@@ -11,11 +11,13 @@ public class PlayerController : InputController
     public Transform Transform { get; private set; }
     public Animator Animator { get; private set; }
 
-    // TODO : StateMachine 들어갈 자리
     private StateMachine _stateMachine;
+
 
     [field: SerializeField] public Movement Movement { get; private set; }
     [field: SerializeField] public PlayerAnimationsData AnimationData { get; private set; }
+    [field: SerializeField] public GroundCheck GroundCheck { get; private set; }
+
 
     protected override void Awake()
     {
@@ -30,6 +32,7 @@ public class PlayerController : InputController
 
     private void Start()
     {
+        GroundCheck.Init(transform);
         AnimationData.Init();
         _stateMachine.Init();
 
@@ -45,5 +48,16 @@ public class PlayerController : InputController
     {
         _stateMachine.PhysicsUpdate();
     }
+
+#if UNITY_EDITOR
+
+    private void OnDrawGizmos()
+    {
+        Vector3 offsetPos = new Vector3(transform.position.x, transform.position.y + GroundCheck.GroundYOffset, transform.position.z); ;
+
+        Gizmos.DrawSphere(offsetPos, GroundCheck.GroundYOffset * GroundCheck.GroundRadiusMod);
+    }
+
+#endif
 
 }

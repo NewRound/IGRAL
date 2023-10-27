@@ -25,11 +25,17 @@ public abstract class InputController : MonoBehaviour
     private void OnEnable()
     {
         InputActions.Enable();
+        InputActions.Player.Move.started += OnMove;
+        InputActions.Player.Move.canceled += OnMove;
+        InputActions.Player.Jump.started += OnJump;
     }
 
     private void OnDisable()
     {
         InputActions.Disable();
+        InputActions.Player.Move.started -= OnMove;
+        InputActions.Player.Move.canceled -= OnMove;
+        InputActions.Player.Jump.started -= OnJump;
     }
 
     public void OnMove(InputAction.CallbackContext context)

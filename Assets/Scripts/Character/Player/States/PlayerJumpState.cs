@@ -6,6 +6,7 @@ public class PlayerJumpState : PlayerAirState
 {
     public PlayerJumpState(StateMachine stateMachine) : base(stateMachine)
     {
+        playerController.JumpAction += Jump;
     }
 
     public override void Enter()
@@ -18,5 +19,16 @@ public class PlayerJumpState : PlayerAirState
     {
         base.Exit();
         playerController.Animator.SetBool(animationsData.JumpParameterHash, false);
+    }
+
+    public override void OnDead()
+    {
+        base.OnDead();
+        playerController.JumpAction -= Jump;
+    }
+
+    private void Jump()
+    {
+        
     }
 }

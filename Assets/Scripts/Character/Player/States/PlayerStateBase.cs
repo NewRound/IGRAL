@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,11 +19,17 @@ public abstract class PlayerStateBase : IState
     private Vector2 _direction;
     private Vector3 _preDirection;
 
+    [Header("GroundCheck")]
+    private GroundCheck _groundCheck;
+    public bool IsGrounded { get; private set; }
 
     [Header("Player")]
     protected StateMachine stateMachine;
     protected PlayerController playerController;
     protected PlayerAnimationsData animationsData;
+
+    [Header("Input")]
+    protected PlayerInputAction inputActions;
 
     public PlayerStateBase(StateMachine stateMachine)
     {
@@ -36,23 +43,40 @@ public abstract class PlayerStateBase : IState
         _preDirection = _playerTrans.forward;
         animationsData = playerController.AnimationData;
 
+        _groundCheck = playerController.GroundCheck;
+
         InitInputActions();
 
-        _speedCalculator = new SpeedCalculator(_movement.acceleratingTime);
-        _rotationCalculator = new RotationCalculator(_movement.rotationSpeed, _movement.minAbsAngle, _movement.maxAbsAngle);
-    }
-
-    private void InitInputActions()
-    {
-        PlayerInputAction actions = playerController.InputActions;
-        actions.Player.Move.started += playerController.OnMove;
-        actions.Player.Move.canceled += playerController.OnMove;
-        playerController.MoveAction += SetDirection;
+        _speedCalculator = new SpeedCalculator(_movement.AcceleratingTime);
+        _rotationCalculator = new RotationCalculator(_movement.RotationSpeed, _movement.MinAbsAngle, _movement.MaxAbsAngle);
     }
 
     public void SetDirection(Vector2 direction)
     {
         _direction = direction;
+    }
+
+    public abstract void Enter();
+
+    public abstract void Exit();
+
+    public virtual void UpdateState()
+    {
+        UpdateSpeed();
+        Look();
+    }
+
+    public virtual void PhysicsUpdateState()
+    {
+        Move();
+        IsGrounded = _groundCheck.CheckGround();
+    }
+
+    public virtual void OnDead()
+    {
+        inputActions.Player.Move.started -= playerController.OnMove;
+        inputActions.Player.Move.canceled -= playerController.OnMove;
+        playerController.MoveAction -= SetDirection;
     }
 
     private void UpdateSpeed()
@@ -62,6 +86,13 @@ public abstract class PlayerStateBase : IState
             playerController.StatHandler.Data.SpeedMax,
             out speedRatio,
             _direction == Vector2.zero);
+    }
+
+    private void InitInputActions()
+    {
+        inputActions = playerController.InputActions;
+        
+        playerController.MoveAction += SetDirection;
     }
 
     private void Move()
@@ -82,33 +113,5 @@ public abstract class PlayerStateBase : IState
         float newAngle = _rotationCalculator.CalculateRotation(_playerTrans.rotation.eulerAngles.y, _preDirection);
 
         _playerTrans.rotation = Quaternion.Euler(0f, newAngle, 0f);
-    }
-
-    private void Jump()
-    {
-
-    }
-
-    public abstract void Enter();
-
-    public abstract void Exit();
-
-    public virtual void UpdateState()
-    {
-        UpdateSpeed();
-        Look();
-    }
-
-    public virtual void PhysicsUpdateState()
-    {
-        Move();
-    }
-
-    public virtual void OnDead()
-    {
-        PlayerInputAction actions = playerController.InputActions;
-        actions.Player.Move.started -= playerController.OnMove;
-        actions.Player.Move.canceled -= playerController.OnMove;
-        playerController.MoveAction -= SetDirection;
     }
 }
