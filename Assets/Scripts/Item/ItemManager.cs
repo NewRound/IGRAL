@@ -20,7 +20,7 @@ public class ItemManager : CustomSingleton<ItemManager>
         // 등급을 키값으로 하여 등급별로 아이템 리스트 생성
     }
 
-    public void RandomDropItem(Transform dropPos)
+    public void RandomDropItem(Vector3 dropPos)
     {
         // 랜덤 아이템 선택
         Item dropItem = RandomSelectItem();
@@ -30,7 +30,7 @@ public class ItemManager : CustomSingleton<ItemManager>
         Debug.Log(chance);
         if (dropItem.DropProbability > chance)
         {
-            Instantiate(dropItem.ItemObject, dropPos);
+            Instantiate(dropItem.ItemObject, dropPos, Quaternion.identity, transform);
         }
         else return;
     }
