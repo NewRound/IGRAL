@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 
 public class MapGenerator : MonoBehaviour
 {
+    public static MapGenerator Instance;
+
     [SerializeField] public List<GameObject> Stage1_Blocks;
     [SerializeField] public List<GameObject> Stage2_Blocks;
     [SerializeField] public List<GameObject> Stage3_Blocks;
@@ -18,43 +20,25 @@ public class MapGenerator : MonoBehaviour
 
     private List<int> RandomBlockIndex = new List<int>();
 
-    private int currentStage;
+    private int currentStage = 0;
 
     private void Awake()
     {
-
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        Destroy(gameObject);
     }
 
     private void Start()
     {
-        //foreach(GameObject block in Stage1_Blocks)
-        //{
-        //    GameObject Block = Instantiate(block);
-
-        //    if(frontBlock != null)
-        //    {
-        //        Vector3 _position = Block.transform.position;
-        //        Vector3 _frontPosition = frontBlock.transform.position;
-        //        MapData _mapData = frontBlock.GetComponent<MapData>();
-
-        //        _position.x = _frontPosition.x + (_mapData.horizontalOfTiles * tileSize);
-        //        _position.y = _frontPosition.y + (_mapData.verticalOfTiles * tileSize);
-        //        Block.transform.position = _position;
-        //    }
-        //    else
-        //    {
-        //        Vector3 _position = Block.transform.position;
-        //        _position.x = 0;
-        //        _position.y = 0;
-        //        Block.transform.position = _position;
-        //    }
-
-        //    frontBlock = Block;
-        //}
-        //currentStage = 1;
+        // 개임메니저로 옮기기.
         InstantiateStage();
     }
 
+
+    // 맵을 넘어가기 위한 상호작용 오브젝트에서 호출 할 것.
     public void InstantiateStage()
     {
         if (currentStage >= lastStage)
@@ -78,6 +62,7 @@ public class MapGenerator : MonoBehaviour
                 break;
         }
         
+        // 랜덤 생성 TODO
 
         foreach (GameObject block in createStage)
         {
