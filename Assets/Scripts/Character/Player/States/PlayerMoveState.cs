@@ -7,18 +7,18 @@
 
     public override void Enter()
     {
-        playerController.Animator.SetBool(animationsData.MoveParameterHash, true);
+        PlayAnimation(animationsData.MoveParameterHash, true);
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
-        playerController.Animator.SetFloat(animationsData.SpeedRatioParameterHash, speedRatio);
+        PlayAnimation(animationsData.SpeedRatioParameterHash, speedRatio);
     }
 
     public override void Exit()
     {
-        playerController.Animator.SetBool(animationsData.MoveParameterHash, false);
+        PlayAnimation(animationsData.MoveParameterHash, false);
     }
 
     public override void OnDead()

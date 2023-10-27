@@ -1,6 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public abstract class PlayerStateBase : IState
 {
@@ -13,15 +11,11 @@ public abstract class PlayerStateBase : IState
     private RotationCalculator _rotationCalculator;
 
     [Header("Movement")]
+    protected Rigidbody rigid;
+    protected Transform playerTrans;
     private Movement _movement;
-    private Transform _playerTrans;
-    private Rigidbody _rigid;
     private Vector2 _direction;
     private Vector3 _preDirection;
-
-    [Header("GroundCheck")]
-    private GroundCheck _groundCheck;
-    public bool IsGrounded { get; private set; }
 
     [Header("Player")]
     protected StateMachine stateMachine;
@@ -38,12 +32,10 @@ public abstract class PlayerStateBase : IState
         playerController = stateMachine.PlayerController;
 
         _movement = playerController.Movement;
-        _rigid = playerController.Rigidbody;
-        _playerTrans = playerController.transform;
-        _preDirection = _playerTrans.forward;
+        rigid = playerController.Rigidbody;
+        playerTrans = playerController.transform;
+        _preDirection = playerTrans.forward;
         animationsData = playerController.AnimationData;
-
-        _groundCheck = playerController.GroundCheck;
 
         InitInputActions();
 
@@ -69,14 +61,26 @@ public abstract class PlayerStateBase : IState
     public virtual void PhysicsUpdateState()
     {
         Move();
-        IsGrounded = _groundCheck.CheckGround();
     }
 
     public virtual void OnDead()
     {
-        inputActions.Player.Move.started -= playerController.OnMove;
-        inputActions.Player.Move.canceled -= playerController.OnMove;
         playerController.MoveAction -= SetDirection;
+    }
+
+    protected void PlayAnimation(int animationParameterHash, bool isPlaying)
+    {
+        playerController.Animator.SetBool(animationParameterHash, isPlaying);
+    }
+
+    protected void PlayAnimation(int animationParameterHash, int integerValue)
+    {
+        playerController.Animator.SetInteger(animationParameterHash, integerValue);
+    }
+
+    protected void PlayAnimation(int animationParameterHash, float floatValue)
+    {
+        playerController.Animator.SetFloat(animationParameterHash, floatValue);
     }
 
     private void UpdateSpeed()
@@ -97,21 +101,25 @@ public abstract class PlayerStateBase : IState
 
     private void Move()
     {
-        _rigid.velocity = new Vector3(_direction.x, _rigid.velocity.y, 0f) * _speed;
+        Vector3 velocity = new Vector3(_direction.x, 0f, 0f) * _speed;
+        velocity.y = rigid.velocity.y;
+        rigid.velocity = velocity;
     }
 
     private void Look()
     {
         if (_direction == Vector2.zero)
         {
-            _playerTrans.rotation = Quaternion.LookRotation(_preDirection);
+            playerTrans.rotation = Quaternion.LookRotation(_preDirection);
             return;
         }
 
         _preDirection = _direction.x * Vector3.right;
 
-        float newAngle = _rotationCalculator.CalculateRotation(_playerTrans.rotation.eulerAngles.y, _preDirection);
+        float newAngle = _rotationCalculator.CalculateRotation(playerTrans.rotation.eulerAngles.y, _preDirection);
 
-        _playerTrans.rotation = Quaternion.Euler(0f, newAngle, 0f);
+        playerTrans.rotation = Quaternion.Euler(0f, newAngle, 0f);
     }
+
+    
 }

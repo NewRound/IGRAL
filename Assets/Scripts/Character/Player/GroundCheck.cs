@@ -17,7 +17,7 @@ public class GroundCheck
         _playerTrans = playerTrans;
     }
 
-    public bool CheckGround()
+    public bool CheckIsGrounded()
     {
         Vector3 checkOffsetPos = _playerTrans.position;
         checkOffsetPos.y += GroundYOffset;

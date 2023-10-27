@@ -13,6 +13,7 @@ public abstract class InputController : MonoBehaviour
     public PlayerInputAction InputActions { get; private set; }
     public PlayerInputAction.PlayerActions PlayerActions { get; private set; }
 
+    protected StateMachine stateMachine;
 
     protected virtual void Awake()
     {
@@ -54,10 +55,7 @@ public abstract class InputController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            CallJumpAction();
-        }
+        CallJumpAction();
     }
 
     public void OnSlide(InputAction.CallbackContext context)
@@ -83,6 +81,7 @@ public abstract class InputController : MonoBehaviour
 
     public void CallJumpAction()
     {
+        stateMachine.ChangeState(stateMachine.JumpState);
         JumpAction?.Invoke();
     }
 

@@ -12,13 +12,21 @@ public class PlayerJumpState : PlayerAirState
     public override void Enter()
     {
         base.Enter();
-        playerController.Animator.SetBool(animationsData.JumpParameterHash, true);
+        PlayAnimation(animationsData.JumpParameterHash, true);
     }
 
     public override void Exit()
     {
         base.Exit();
-        playerController.Animator.SetBool(animationsData.JumpParameterHash, false);
+        PlayAnimation(animationsData.JumpParameterHash, false);
+    }
+
+    public override void PhysicsUpdateState()
+    {
+        base.PhysicsUpdateState();
+
+        if (rigid.velocity.y < 0)
+            stateMachine.ChangeState(stateMachine.FallState);
     }
 
     public override void OnDead()
@@ -29,6 +37,14 @@ public class PlayerJumpState : PlayerAirState
 
     private void Jump()
     {
-        
+        if (jumpCountSetter.JumpCount > 0)
+        {
+            jumpCountSetter.DecreaseJumpCount();
+            Vector3 velocity = rigid.velocity;
+            velocity.y = playerController.StatHandler.Data.JumpForce;
+            rigid.velocity = velocity;
+        }
+
+        Debug.Log(jumpCountSetter.JumpCount);
     }
 }

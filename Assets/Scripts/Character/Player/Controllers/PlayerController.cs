@@ -11,9 +11,6 @@ public class PlayerController : InputController
     public Transform Transform { get; private set; }
     public Animator Animator { get; private set; }
 
-    private StateMachine _stateMachine;
-
-
     [field: SerializeField] public Movement Movement { get; private set; }
     [field: SerializeField] public PlayerAnimationsData AnimationData { get; private set; }
     [field: SerializeField] public GroundCheck GroundCheck { get; private set; }
@@ -25,28 +22,27 @@ public class PlayerController : InputController
         Rigidbody = GetComponent<Rigidbody>();
         Animator = GetComponentInChildren<Animator>();
 
-
-        _stateMachine = new StateMachine(this);
         StatHandler = new PlayerStatHandler(stat);
+        stateMachine = new StateMachine(this);
     }
 
     private void Start()
     {
         GroundCheck.Init(transform);
         AnimationData.Init();
-        _stateMachine.Init();
+        stateMachine.Init();
 
         Transform = transform;
     }
 
     private void Update()
     {
-        _stateMachine.Update();
+        stateMachine.Update();
     }
 
     private void FixedUpdate()
     {
-        _stateMachine.PhysicsUpdate();
+        stateMachine.PhysicsUpdate();
     }
 
 #if UNITY_EDITOR
