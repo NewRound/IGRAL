@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7543324682551295455}
   - component: {fileID: 317934448076109833}
   m_Layer: 0
-  m_Name: Hp_Pills
+  m_Name: Test_Epic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,9 +74,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: "\uC54C\uC57D"
-  <ItemID>k__BackingField: 301
+  <ItemID>k__BackingField: 304
   <ItemType>k__BackingField: 3
-  <ItemRarity>k__BackingField: 1
+  <ItemRarity>k__BackingField: 4
   <DropProbability>k__BackingField: 0.5
   <ItemIcon>k__BackingField: {fileID: 21300000, guid: dedac241ce0e17d48b2ff161809ab841,
     type: 3}
