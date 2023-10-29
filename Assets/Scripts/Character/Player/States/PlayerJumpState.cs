@@ -44,7 +44,5 @@ public class PlayerJumpState : PlayerAirState
             velocity.y = playerController.StatHandler.Data.JumpForce;
             rigid.velocity = velocity;
         }
-
-        Debug.Log(jumpCountSetter.JumpCount);
     }
 }

@@ -9,6 +9,8 @@ public abstract class InputController : MonoBehaviour
     public event Action RollAction;
     public event Action AttackAction;
 
+    private bool _isMovePressed;
+
     public PlayerInput Input { get; private set; }
     public PlayerInputAction InputActions { get; private set; }
     public PlayerInputAction.PlayerActions PlayerActions { get; private set; }
@@ -41,16 +43,14 @@ public abstract class InputController : MonoBehaviour
         InputActions.Disable();
     }
 
-    public void OnMove(InputAction.CallbackContext context)
+    protected virtual void Update()
     {
-        Vector2 inputVec = context.ReadValue<Vector2>();
-
-        CallMoveAction(inputVec);
+        ReadMoveInput();
     }
 
-    public void OnMove(InputInteractionContext context)
+    public void OnMove(InputAction.CallbackContext context)
     {
-        
+        _isMovePressed = context.started;
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -70,8 +70,8 @@ public abstract class InputController : MonoBehaviour
 
     public void CallMoveAction(Vector2 inputVec)
     {
-        if (stateMachine.RollDataHandler.IsRolling)
-            return;
+        //if (stateMachine.RollDataHandler.IsRolling)
+        //    return;
 
         MoveAction?.Invoke(inputVec);
     }
@@ -94,5 +94,19 @@ public abstract class InputController : MonoBehaviour
     public void CallAttackAction()
     {
         AttackAction?.Invoke();
+    }
+
+    private void ReadMoveInput()
+    {
+        if (stateMachine.RollDataHandler.IsRolling)
+            return;
+
+        if (!_isMovePressed)
+        {
+            CallMoveAction(Vector2.zero);
+            return;
+        }
+
+        CallMoveAction(InputActions.Player.Move.ReadValue<Vector2>());
     }
 }

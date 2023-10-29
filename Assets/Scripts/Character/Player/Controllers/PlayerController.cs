@@ -35,8 +35,9 @@ public class PlayerController : InputController
         Transform = transform;
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         stateMachine.Update();
     }
 
