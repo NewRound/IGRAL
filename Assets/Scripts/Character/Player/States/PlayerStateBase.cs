@@ -2,24 +2,10 @@ using UnityEngine;
 
 public abstract class PlayerStateBase : IState
 {
-    [Header("Speed")]
-    protected float speedRatio;
-    private SpeedCalculator _speedCalculator;
-    private float _speed;
-
-    [Header("Rotation")]
-    private RotationCalculator _rotationCalculator;
-
-    [Header("Movement")]
-    protected Rigidbody rigid;
-    protected Transform playerTrans;
-    private Movement _movement;
-    private Vector2 _direction;
-    private Vector3 _preDirection;
-
     [Header("Player")]
     protected StateMachine stateMachine;
     protected PlayerController playerController;
+    protected MovementDataHandler movementDataHandler;
 
     [Header("Animation")]
     protected AnimationController animationController;
@@ -34,23 +20,17 @@ public abstract class PlayerStateBase : IState
 
         playerController = stateMachine.PlayerController;
 
-        _movement = playerController.Movement;
-        rigid = playerController.Rigidbody;
-        playerTrans = playerController.transform;
-        _preDirection = playerTrans.forward;
+        movementDataHandler = stateMachine.MovementDataHandler;
 
         animationController = playerController.AnimationController;
         animationsData = playerController.AnimationController.AnimationData;
 
         InitInputActions();
-
-        _speedCalculator = new SpeedCalculator(_movement.AcceleratingTime);
-        _rotationCalculator = new RotationCalculator(_movement.RotationSpeed, _movement.MinAbsAngle, _movement.MaxAbsAngle);
     }
 
-    public void SetDirection(Vector2 direction)
+    public void OnMoveInput(Vector2 direction)
     {
-        _direction = direction;
+        stateMachine.MovementDataHandler.SetDirection(direction);
     }
 
     public abstract void Enter();
@@ -59,62 +39,28 @@ public abstract class PlayerStateBase : IState
 
     public virtual void UpdateState()
     {
-        UpdateSpeed();
-        Look();
+        stateMachine.MovementDataHandler.UpdateSpeed();
+        stateMachine.MovementDataHandler.Look();
     }
 
     public virtual void PhysicsUpdateState()
     {
-        Move();
+        stateMachine.MovementDataHandler.Move();
     }
 
     public virtual void OnDead()
     {
-        playerController.MoveAction -= SetDirection;
-    }
-
-    
-
-    private void UpdateSpeed()
-    {
-        _speed = _speedCalculator.CalculateSpeed(
-            playerController.StatHandler.Data.SpeedMin,
-            playerController.StatHandler.Data.SpeedMax,
-            out speedRatio,
-            _direction == Vector2.zero);
+        playerController.MoveAction -= OnMoveInput;
     }
 
     private void InitInputActions()
     {
         inputActions = playerController.InputActions;
         
-        playerController.MoveAction += SetDirection;
+        playerController.MoveAction += OnMoveInput;
     }
 
-    private void Move()
-    {
-        Vector3 velocity = new Vector3(_direction.x, 0f, 0f) * _speed;
-        velocity.y = rigid.velocity.y;
-        rigid.velocity = velocity;
-    }
-
-    private void Look()
-    {
-        //if (stateMachine.RollDataHandler.IsRolling)
-        //    return;
-
-        if (_direction == Vector2.zero)
-        {
-            playerTrans.rotation = Quaternion.LookRotation(_preDirection);
-            return;
-        }
-
-        _preDirection = _direction.x * Vector3.right;
-
-        float newAngle = _rotationCalculator.CalculateRotation(playerTrans.rotation.eulerAngles.y, _preDirection);
-
-        playerTrans.rotation = Quaternion.Euler(0f, newAngle, 0f);
-    }
+    
 
     
 }

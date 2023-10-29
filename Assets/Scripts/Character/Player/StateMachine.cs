@@ -22,14 +22,25 @@ public class StateMachine
     [field: Header("Roll")]
     public RollDataHandler RollDataHandler { get; private set; }
 
+    [field: Header("Move")]
+    public MovementDataHandler MovementDataHandler { get; private set; }
+
     public StateMachine(PlayerController playerController)
     {
         PlayerController = playerController;
         
-        JumpCountSetter = new JumpCountHandler(PlayerController.StatHandler.Data.JumpCountMax);
+        JumpCountSetter = new JumpCountHandler(PlayerController.StatHandler.Data.JumpingCountMax);
+
         RollDataHandler = new RollDataHandler(
             PlayerController.StatHandler.Data.RollingCoolTime, 
             playerController.StatHandler.Data.InvincibleTime);
+
+        MovementDataHandler = new MovementDataHandler(
+            PlayerController.MovementData, 
+            PlayerController.StatHandler, 
+            RollDataHandler, 
+            playerController.Rigidbody, 
+            playerController.transform);
 
         _groundCheck = playerController.GroundCheck;
 
@@ -70,7 +81,7 @@ public class StateMachine
             IsGrounded = _groundCheck.CheckIsGrounded();
 
             if (IsGrounded)
-                JumpCountSetter.SetJumpCount(PlayerController.StatHandler.Data.JumpCountMax);
+                JumpCountSetter.SetJumpCount(PlayerController.StatHandler.Data.JumpingCountMax);
         }
     }
 }

@@ -4,8 +4,9 @@ using UnityEngine;
 public class PlayerSO : EntitySO
 {
     [field : Header("Player")]
-    [field: SerializeField] public float JumpForce { get; private set; }
-    [field: SerializeField] public int JumpCountMax { get; private set; }
+    [field: SerializeField] public float JumpingForce { get; private set; }
+    [field: SerializeField] public int JumpingCountMax { get; private set; }
+    [field: SerializeField] public float RollingForce { get; private set; }
     [field: SerializeField] public float RollingCoolTime { get; private set; }
     [field: SerializeField] public float KcalPerAttack { get; private set; }
     [field: SerializeField] public float MaxKcal { get; private set; }

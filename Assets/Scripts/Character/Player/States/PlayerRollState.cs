@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlayerRollState : PlayerStateBase
 {
     public PlayerRollState(StateMachine stateMachine) : base(stateMachine)
@@ -33,7 +35,8 @@ public class PlayerRollState : PlayerStateBase
     public override void PhysicsUpdateState()
     {
         base.PhysicsUpdateState();
-
+        if (stateMachine.RollDataHandler.IsRolling)
+            Roll();
     }
 
     public override void Exit()
@@ -44,6 +47,13 @@ public class PlayerRollState : PlayerStateBase
     {
         base.OnDead();
         playerController.RollAction -= stateMachine.RollDataHandler.ResetCurrentRollingElapsedTime;
+    }
+
+    private void Roll()
+    {
+        Vector3 velocity = movementDataHandler.Rigid.velocity;
+        velocity.x = movementDataHandler.PreDirection.x >= 0 ? playerController.StatHandler.Data.RollingForce : -playerController.StatHandler.Data.RollingForce;
+        movementDataHandler.Rigid.velocity = velocity;
     }
 
 }

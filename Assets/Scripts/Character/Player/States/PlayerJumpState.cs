@@ -23,7 +23,7 @@ public class PlayerJumpState : PlayerAirState
     {
         base.PhysicsUpdateState();
 
-        if (rigid.velocity.y < 0)
+        if (movementDataHandler.Rigid.velocity.y < 0)
             stateMachine.ChangeState(stateMachine.FallState);
     }
 
@@ -40,9 +40,9 @@ public class PlayerJumpState : PlayerAirState
             animationController.ReStartIfAnimationIsPlaying(animationsData.JumpParameterHash);
 
             jumpCountSetter.DecreaseJumpCount();
-            Vector3 velocity = rigid.velocity;
-            velocity.y = playerController.StatHandler.Data.JumpForce;
-            rigid.velocity = velocity;
+            Vector3 velocity = movementDataHandler.Rigid.velocity;
+            velocity.y = playerController.StatHandler.Data.JumpingForce;
+            movementDataHandler.Rigid.velocity = velocity;
         }
     }
 }

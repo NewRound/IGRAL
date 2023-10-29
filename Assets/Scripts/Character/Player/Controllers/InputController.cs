@@ -4,18 +4,20 @@ using UnityEngine.InputSystem;
 
 public abstract class InputController : MonoBehaviour
 {
+    [field: Header("Actions")]
     public event Action<Vector2> MoveAction;
     public event Action JumpAction;
     public event Action RollAction;
     public event Action AttackAction;
 
-    private bool _isMovePressed;
-
+    [field: Header("Inputs")]
     public PlayerInput Input { get; private set; }
     public PlayerInputAction InputActions { get; private set; }
     public PlayerInputAction.PlayerActions PlayerActions { get; private set; }
 
     protected StateMachine stateMachine;
+
+    private bool _isMovePressed;
 
     protected virtual void Awake()
     {
@@ -70,9 +72,6 @@ public abstract class InputController : MonoBehaviour
 
     public void CallMoveAction(Vector2 inputVec)
     {
-        //if (stateMachine.RollDataHandler.IsRolling)
-        //    return;
-
         MoveAction?.Invoke(inputVec);
     }
 
