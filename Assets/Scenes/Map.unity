@@ -307,7 +307,7 @@ MonoBehaviour:
   - {fileID: 266464823987583687, guid: 86a5d44149e357a43bcb7ceb78cba852, type: 3}
   - {fileID: 266464823987583687, guid: 43554d3f851fff94d914ade9f318400c, type: 3}
   - {fileID: 2629458215611954142, guid: e9e40e4e098eda148b2b13a8edf326c0, type: 3}
-  numberOfBlock: 2
+  numberOfBlock: 3
   lastStage: 3
   tileSize: 6
 --- !u!4 &532016896

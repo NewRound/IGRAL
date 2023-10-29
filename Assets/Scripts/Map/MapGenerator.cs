@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static Unity.Collections.AllocatorManager;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -60,36 +59,80 @@ public class MapGenerator : MonoBehaviour
                 createStage = null;
                 break;
         }
-        
+
+        if(createStage == null || createStage.Count == 0)
+            return;
+
+        Debug.Log($"{numberOfBlock}, {createStage.Count - 2} ");
+
         // 랜덤 생성 TODO
-
-        foreach (GameObject block in createStage)
+        if (createStage.Count - 2 < numberOfBlock)
         {
-            GameObject Block = Instantiate(block);
+            int randomValue;
+            Debug.Log($"{RandomBlockIndex.Count}, {createStage.Count - 2} ");
 
-            if (frontBlock != null)
+            while (RandomBlockIndex.Count != createStage.Count - 2)
             {
-                Vector3 _position = Block.transform.position;
-                Vector3 _frontPosition = frontBlock.transform.position;
-                MapData _mapData = frontBlock.GetComponent<MapData>();
+                randomValue = Random.Range(1, createStage.Count - 1);
 
-                _position.x = _frontPosition.x + (_mapData.horizontalOfTiles * tileSize);
-                _position.y = _frontPosition.y + (_mapData.verticalOfTiles * tileSize);
-                Block.transform.position = _position;
+                if (!RandomBlockIndex.Contains(randomValue))
+                {
+                    RandomBlockIndex.Add(randomValue);
+                    Debug.Log(randomValue);
+                }
             }
-            else
-            {
-                Vector3 _position = Block.transform.position;
-                _position.x = 0;
-                _position.y = 0;
-                Block.transform.position = _position;
-            }
-
-            frontBlock = Block;
         }
+        else
+        {
+            int randomValue;
+            
+
+            while (RandomBlockIndex.Count != numberOfBlock)
+            {
+                randomValue = Random.Range(1, createStage.Count - 1);
+
+                if (!RandomBlockIndex.Contains(randomValue))
+                {
+                    RandomBlockIndex.Add(randomValue);
+                }
+            }
+        }
+
+
+        // 첫맵 생성
+        CreateBlock(createStage, 0);
+
+        for (int i = 0; i < RandomBlockIndex.Count; i++)
+        {
+            CreateBlock(createStage, RandomBlockIndex[i]);
+        }
+
+        // 마지막 맵 생성
+        CreateBlock(createStage, createStage.Count - 1);
+
         currentStage++;
     }
     
+
+    private void CreateBlock(List<GameObject> _createStage, int createIndex)
+    {
+        GameObject Block = Instantiate(_createStage[createIndex]);
+        Vector3 _position = Block.transform.position;
+        if (frontBlock != null)
+        {
+            Vector3 _frontPosition = frontBlock.transform.position;
+            MapData _mapData = frontBlock.GetComponent<MapData>();
+            _position.x = _frontPosition.x + (_mapData.horizontalOfTiles * tileSize);
+            _position.y = _frontPosition.y + (_mapData.verticalOfTiles * tileSize);
+        }
+        else
+        {
+            _position.x = 0;
+            _position.y = 0;
+        }
+        Block.transform.position = _position;
+        frontBlock = Block;
+    }
 
 
     // 포지션 계산 함수.
