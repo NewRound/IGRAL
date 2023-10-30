@@ -64,9 +64,7 @@ public class MovementDataHandler
 
         PreDirection = _direction.x * Vector3.right;
 
-        float newAngle = _rotationCalculator.CalculateRotation(_modelTrans.rotation.eulerAngles.y, PreDirection);
-
-        _modelTrans.rotation = Quaternion.Euler(0f, newAngle, 0f);
+        _modelTrans.rotation = _rotationCalculator.CalculateRotation(_modelTrans.rotation, PreDirection);
     }
 
     public float GetSpeedRatio()

@@ -5,6 +5,7 @@ public class RotationCalculator
     private float _rotationSpeed;
     private float _minAbsAngle;
     private float _maxAbsAngle;
+    private const int CIRCLE_ANGLE = 360;
 
     public RotationCalculator(float rotationSpeed, float minAbsAngle, float maxAbsAngle)
     {
@@ -13,20 +14,22 @@ public class RotationCalculator
         _maxAbsAngle = maxAbsAngle;
     }
 
-    public float CalculateRotation(float rotationY, Vector3 _preDirection)
+    public Quaternion CalculateRotation(Quaternion rotation, Vector3 _preDirection)
     {
-        float currentAngle = rotationY;
         float targetAngle = Vector3.SignedAngle(Vector3.forward, _preDirection, Vector3.up);
-        Debug.Log($"currentAngle : {currentAngle}\n targetAngle : {targetAngle}");
 
+        float rotationY = rotation.eulerAngles.y;
 
-        float newAngle = Mathf.LerpAngle(currentAngle, targetAngle, _rotationSpeed * Time.deltaTime);
+        rotationY = targetAngle < 0 ? rotationY++ : rotationY--;
 
+        if (targetAngle < 0)
+            targetAngle += CIRCLE_ANGLE;
 
-        newAngle = newAngle >= 0 ?
-            Mathf.Clamp(Mathf.Abs(newAngle), _minAbsAngle, _maxAbsAngle) :
-            -Mathf.Clamp(Mathf.Abs(newAngle), _minAbsAngle, _maxAbsAngle);
+        Quaternion startRotation = Quaternion.Euler(new Vector3(rotation.x, rotationY, rotation.z));
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(rotation.x, targetAngle, rotation.z));
 
-        return newAngle;
+        Quaternion newRotation = Quaternion.RotateTowards(startRotation, targetRotation, _rotationSpeed);
+
+        return newRotation;
     }
 }
