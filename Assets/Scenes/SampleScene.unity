@@ -378,6 +378,71 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &591285960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 591285962}
+  - component: {fileID: 591285961}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &591285961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591285960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc8429f8f8780634d9cbd4e67e5702fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stage1_mapBlocks:
+  - {fileID: 4824331087629307386, guid: 6aa78e00e2a94f946b563b6310fd3158, type: 3}
+  - {fileID: 956369038203279772, guid: 8bd4e3368014c904daff82ee7f5cf833, type: 3}
+  - {fileID: 2518162360672717026, guid: 35e3e5a605d235c4882b2aa034f3eb59, type: 3}
+  - {fileID: 2432211495697727503, guid: bb88c791a356e7c4bb741ebc101ff07c, type: 3}
+  - {fileID: 2629458215611954142, guid: 6ec2126d7349b2b448315cdeb744e981, type: 3}
+  Stage2_mapBlocks:
+  - {fileID: 266464823987583687, guid: f7601eabb86f7284794049e42801acf1, type: 3}
+  - {fileID: 266464823987583687, guid: 533a3682bc1f8f045975c25619d90459, type: 3}
+  - {fileID: 266464823987583687, guid: b81e57399473f4b4fb796c871a278afa, type: 3}
+  - {fileID: 266464823987583687, guid: 7b700aacb5a9b944e8882c1183e6321c, type: 3}
+  - {fileID: 2629458215611954142, guid: 3e20a6435e3233e4594e93ca7622d463, type: 3}
+  Stage3_mapBlocks:
+  - {fileID: 266464823987583687, guid: cbd8a5f4ba76eba498dbed1d2c8884fd, type: 3}
+  - {fileID: 266464823987583687, guid: 330b5e6a0fefc3d48ac4662715582427, type: 3}
+  - {fileID: 266464823987583687, guid: 86a5d44149e357a43bcb7ceb78cba852, type: 3}
+  - {fileID: 266464823987583687, guid: 43554d3f851fff94d914ade9f318400c, type: 3}
+  - {fileID: 2629458215611954142, guid: e9e40e4e098eda148b2b13a8edf326c0, type: 3}
+  numberOfmapBlock: 2
+  lastStage: 3
+  tileSize: 6
+--- !u!4 &591285962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591285960}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.1758103, y: -711.1056, z: 1519.8925}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
