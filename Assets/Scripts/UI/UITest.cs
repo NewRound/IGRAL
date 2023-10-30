@@ -8,7 +8,7 @@ public class UITest : MonoBehaviour
     void Start()
     {
         Debug.Log(UIManager.Instance);
-
+        Debug.Log(AudioManager.Instance);
         Invoke("TestAddItem", 1f);
     }
 

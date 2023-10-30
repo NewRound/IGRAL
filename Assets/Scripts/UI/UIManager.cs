@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum UiType
+public enum UIType
 {
     UITopButton
     , UIPlayerConditions
@@ -21,7 +21,7 @@ public class UIManager : CustomSingleton<UIManager>
 
     private void Awake()
     {
-        foreach (UiType enumItem in Enum.GetValues(typeof(UiType)))
+        foreach (UIType enumItem in Enum.GetValues(typeof(UIType)))
         {
             GameObject ui = Resources.Load<GameObject>($"UI/{GetDescription.EnumToString(enumItem)}");
             GameObject instantiate = Instantiate(ui, Vector3.zero, Quaternion.identity);
@@ -35,7 +35,7 @@ public class UIManager : CustomSingleton<UIManager>
     private void InitUIList()
     {
         int i = 0;
-        foreach (UiType enumItem in Enum.GetValues(typeof(UiType)))
+        foreach (UIType enumItem in Enum.GetValues(typeof(UIType)))
         {
             var tr = transform.GetChild(i++);
             _uiList.Add(GetDescription.EnumToString(enumItem), tr.gameObject);
@@ -45,7 +45,7 @@ public class UIManager : CustomSingleton<UIManager>
     private void Start()
     {
         int i = 0;
-        foreach (UiType enumItem in Enum.GetValues(typeof(UiType)))
+        foreach (UIType enumItem in Enum.GetValues(typeof(UIType)))
         {
             if ((int)enumItem > 3)
             { 
