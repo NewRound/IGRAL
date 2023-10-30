@@ -9,7 +9,7 @@ public class PlayerAnimationsData
     [SerializeField] private string attackParameter = "@Attack";
     [SerializeField] private string jumpParameter = "Jump";
     [SerializeField] private string fallParameter = "Fall";
-    [SerializeField] private string slideParameter = "Slide";
+    [SerializeField] private string RollParameter = "Roll";
     [SerializeField] private string speedRatioParameter = "SpeedRatio";
 
     public int MoveParameterHash { get; private set; }
@@ -17,7 +17,7 @@ public class PlayerAnimationsData
     public int AttackParameterHash { get; private set; }
     public int JumpParameterHash { get; private set; }
     public int FallParameterHash { get; private set; }
-    public int SlideParameterHash { get; private set; }
+    public int RollParameterHash { get; private set; }
     public int SpeedRatioParameterHash { get; private set; }
 
     public void Init()
@@ -27,7 +27,7 @@ public class PlayerAnimationsData
         AttackParameterHash = Animator.StringToHash(attackParameter);
         JumpParameterHash = Animator.StringToHash(jumpParameter);
         FallParameterHash = Animator.StringToHash(fallParameter);
-        SlideParameterHash = Animator.StringToHash(slideParameter);
+        RollParameterHash = Animator.StringToHash(RollParameter);
         SpeedRatioParameterHash = Animator.StringToHash(speedRatioParameter);
     }
 }

@@ -478,39 +478,12 @@ Transform:
   m_GameObject: {fileID: 2007032778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2071959555 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5618448762845716307, guid: 74d295b72c3d8df49b76dc54ee6588c0,
-    type: 3}
-  m_PrefabInstance: {fileID: 4217876483007382280}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2071959558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2071959555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08846d926da5b684ead7df64c8c79e23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <AnimationData>k__BackingField:
-    moveParameter: '@Move'
-    airParameter: '@Air'
-    attackParameter: '@Attack'
-    jumpParameter: Jump
-    fallParameter: Fall
-    slideParameter: Slide
-    speedRatioParameter: SpeedRatio
-  animationEndedTime: 0.9
 --- !u!1001 &4217876483007382280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -579,12 +552,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5524086908211070737, guid: 74d295b72c3d8df49b76dc54ee6588c0,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524086908211070737, guid: 74d295b72c3d8df49b76dc54ee6588c0,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5618448762845716307, guid: 74d295b72c3d8df49b76dc54ee6588c0,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2071959558}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74d295b72c3d8df49b76dc54ee6588c0, type: 3}
