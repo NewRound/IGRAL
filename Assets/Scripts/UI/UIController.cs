@@ -26,7 +26,7 @@ public class UIController : MonoBehaviour
 
     private void Awake()
     {
-        _playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        _playerController = GameManager.Instance.player.GetComponent<PlayerController>();
 
         _healing.onClick.AddListener(OnHealingButton);
         _jump.onClick.AddListener(OnJumpButton);
