@@ -28,7 +28,6 @@ public class AudioManager : CustomSingleton<AudioManager>
 
     public void SetBgmVolume(float bgmVolume)
     {
-        Debug.Log(bgmVolume);
         _bgmVolume = bgmVolume;
     }
 
