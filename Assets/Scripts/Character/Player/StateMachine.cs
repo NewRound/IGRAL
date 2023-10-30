@@ -25,19 +25,23 @@ public class StateMachine
     [field: Header("Move")]
     public MovementDataHandler MovementDataHandler { get; private set; }
 
+    private PlayerStatHandler _playerStatHandler;
+
     public StateMachine(PlayerController playerController)
     {
         PlayerController = playerController;
-        
-        JumpCountSetter = new JumpCountHandler(PlayerController.StatHandler.Data.JumpingCountMax);
+
+        _playerStatHandler = PlayerController.StatHandler;
+
+        JumpCountSetter = new JumpCountHandler(_playerStatHandler.Data.JumpingCountMax);
 
         RollDataHandler = new RollDataHandler(
-            PlayerController.StatHandler.Data.RollingCoolTime, 
-            playerController.StatHandler.Data.InvincibleTime);
+            _playerStatHandler.Data.RollingCoolTime,
+            _playerStatHandler.Data.InvincibleTime);
 
         MovementDataHandler = new MovementDataHandler(
-            PlayerController.MovementData, 
-            PlayerController.StatHandler, 
+            PlayerController.MovementData,
+            _playerStatHandler, 
             RollDataHandler, 
             playerController.Rigidbody);
 
@@ -80,7 +84,14 @@ public class StateMachine
             IsGrounded = _groundCheck.CheckIsGrounded();
 
             if (IsGrounded)
-                JumpCountSetter.SetJumpCount(PlayerController.StatHandler.Data.JumpingCountMax);
+            {
+                JumpCountSetter.SetJumpCount(_playerStatHandler.Data.JumpingCountMax);
+            }
+            else
+            {
+                if (JumpCountSetter.JumpCount == _playerStatHandler.Data.JumpingCountMax)
+                    JumpCountSetter.DecreaseJumpCount();
+            }
         }
     }
 }
