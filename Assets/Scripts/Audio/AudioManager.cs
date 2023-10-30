@@ -26,6 +26,16 @@ public class AudioManager : CustomSingleton<AudioManager>
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    public void SetBgmVolume(float bgmVolume)
+    {
+        Debug.Log(bgmVolume);
+        _bgmVolume = bgmVolume;
+    }
+
+    public void SetSfxVolume(float sfxVolume)
+    {
+        _sfxVolume = sfxVolume;
+    }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
