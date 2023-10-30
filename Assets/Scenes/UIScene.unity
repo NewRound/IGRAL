@@ -574,10 +574,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 871797912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceddecbdd19b2f14a97ebf101e44cc80, type: 3}
+  m_Script: {fileID: 11500000, guid: 596fe3e0e88e85140906ecc0820acffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: {fileID: -5295956255358241109, guid: 208c47a1540a4064790863a3a267b52d, type: 3}
+  player: {fileID: 1904216079}
 --- !u!1 &1377267808
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,64 +752,12 @@ MonoBehaviour:
     attackParameter: '@Attack'
     jumpParameter: Jump
     fallParameter: Fall
-    slideParameter: Slide
+    RollParameter: Roll
     speedRatioParameter: SpeedRatio
-  animationEndedTime: 0.9
---- !u!1 &2111024185
+  animationNormalizeEndedTime: 0.9
+--- !u!1 &1904216079 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2295781759866904828, guid: 74d295b72c3d8df49b76dc54ee6588c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1661750097}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2111024187}
-  - component: {fileID: 2111024186}
-  m_Layer: 0
-  m_Name: BGMAudio
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2111024186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2111024185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 458efae9e2ed2ab42919e31ba3af0c89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stageBGM:
-  - {fileID: 0}
-  - {fileID: 8300000, guid: e76663dfc4ce3ae439a1642d27ccefe3, type: 3}
-  - {fileID: 8300000, guid: 5cecf4565a9f4df449b0f3021d5c00f3, type: 3}
-  - {fileID: 8300000, guid: c24fff81e3e63c3499716b64cdaf6032, type: 3}
-  - {fileID: 8300000, guid: 860fec7f2eed32f4397171d7aecb4d02, type: 3}
-  - {fileID: 8300000, guid: 45400638a56be7a4ea9c7e920d8410b6, type: 3}
-  _bossBGM:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
---- !u!4 &2111024187
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2111024185}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
