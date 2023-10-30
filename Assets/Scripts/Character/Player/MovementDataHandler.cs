@@ -7,7 +7,6 @@ public class MovementDataHandler
     public Vector3 PreDirection { get; private set; }
 
     public Rigidbody Rigid;
-    private Transform _playerTrans;
 
     [Header("Speed")]
     private SpeedCalculator _speedCalculator;
@@ -16,21 +15,23 @@ public class MovementDataHandler
 
     [Header("Rotation")]
     private RotationCalculator _rotationCalculator;
+    private Transform _modelTrans;
 
     [Header("Datas")]
     private PlayerStatHandler _playerStatHandler;
     private RollDataHandler _rollDataHandler;
 
-    public MovementDataHandler(MovementData movementData, PlayerStatHandler playerStatHandler, RollDataHandler rollDataHandler, Rigidbody rigidbody, Transform playerTrans)
+    public MovementDataHandler(MovementData movementData, PlayerStatHandler playerStatHandler, RollDataHandler rollDataHandler, Rigidbody rigidbody)
     {
         _speedCalculator = new SpeedCalculator(movementData.AcceleratingTime);
         _rotationCalculator = new RotationCalculator(movementData.RotationSpeed, movementData.MinAbsAngle, movementData.MaxAbsAngle);
         _playerStatHandler = playerStatHandler;
         _rollDataHandler = rollDataHandler;
         Rigid = rigidbody;
-        _playerTrans = playerTrans;
+        _modelTrans = movementData.ModelTrans;
 
-        PreDirection = _playerTrans.forward;
+        _modelTrans.forward = Vector3.right;
+        PreDirection = _modelTrans.forward;
     }
 
     public void UpdateSpeed()
@@ -54,18 +55,18 @@ public class MovementDataHandler
         if (_rollDataHandler.IsRolling)
             return;
 
+
         if (_direction.x == 0)
         {
-            _playerTrans.rotation = Quaternion.LookRotation(PreDirection);
+            _modelTrans.rotation = Quaternion.LookRotation(PreDirection);
             return;
         }
 
         PreDirection = _direction.x * Vector3.right;
 
+        float newAngle = _rotationCalculator.CalculateRotation(_modelTrans.rotation.eulerAngles.y, PreDirection);
 
-        float newAngle = _rotationCalculator.CalculateRotation(_playerTrans.rotation.eulerAngles.y, PreDirection);
-
-        _playerTrans.rotation = Quaternion.Euler(0f, newAngle, 0f);
+        _modelTrans.rotation = Quaternion.Euler(0f, newAngle, 0f);
     }
 
     public float GetSpeedRatio()
@@ -73,7 +74,7 @@ public class MovementDataHandler
         return _speedRatio;
     }
 
-    internal void SetDirection(Vector2 direction)
+    public void SetDirection(Vector2 direction)
     {
         _direction = direction;
     }

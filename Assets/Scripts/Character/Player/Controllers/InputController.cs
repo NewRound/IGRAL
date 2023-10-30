@@ -17,7 +17,10 @@ public abstract class InputController : MonoBehaviour
 
     protected StateMachine stateMachine;
 
+#if UNITY_EDITOR
+    [field: SerializeField] public bool IsDebug { get; private set; }
     private bool _isMovePressed;
+#endif
 
     protected virtual void Awake()
     {
@@ -47,7 +50,10 @@ public abstract class InputController : MonoBehaviour
 
     protected virtual void Update()
     {
-        ReadMoveInput();
+#if UNITY_EDITOR
+        if (IsDebug)
+            ReadMoveInput();
+#endif
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -95,6 +101,7 @@ public abstract class InputController : MonoBehaviour
         AttackAction?.Invoke();
     }
 
+#if UNITY_EDITOR
     private void ReadMoveInput()
     {
         if (stateMachine.RollDataHandler.IsRolling)
@@ -108,4 +115,6 @@ public abstract class InputController : MonoBehaviour
 
         CallMoveAction(InputActions.Player.Move.ReadValue<Vector2>());
     }
+#endif
+
 }
