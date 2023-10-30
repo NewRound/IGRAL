@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7073742005176302465}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,8 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8101d397b0fd044bd2aecb49de8fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IsDebug>k__BackingField: 0
   stat: {fileID: 11400000, guid: d091809a4c15d6f42a232fd9332d1a46, type: 2}
-  <Movement>k__BackingField:
+  <MovementData>k__BackingField:
+    <ModelTrans>k__BackingField: {fileID: 5615216039505202279}
     <AcceleratingTime>k__BackingField: 1
     <RotationSpeed>k__BackingField: 10
     <MinAbsAngle>k__BackingField: 90
@@ -132,7 +134,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &7073742005176302465
 CapsuleCollider:
@@ -262,5 +264,6 @@ MonoBehaviour:
     attackParameter: '@Attack'
     jumpParameter: Jump
     fallParameter: Fall
-    slideParameter: Slide
+    RollParameter: Roll
     speedRatioParameter: SpeedRatio
+  animationNormalizeEndedTime: 0.9

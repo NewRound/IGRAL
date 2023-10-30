@@ -27,8 +27,6 @@ public class PlayerController : InputController
 
     private void Start()
     {
-        transform.forward = Vector3.right;
-
         GroundCheck.Init(transform);
         stateMachine.Init();
     }
