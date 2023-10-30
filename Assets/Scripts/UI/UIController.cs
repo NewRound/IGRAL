@@ -48,11 +48,9 @@ public class UIController : MonoBehaviour
     {
         _temp = Vector2.right * variableJoystick.Horizontal;
         
-        if(_direction != _temp)
-        {
-            _direction = _temp;
-            _playerController.CallMoveAction(_direction);
-        }
+
+            _playerController.CallMoveAction(_temp);
+
     }
 
     #region 버튼 클릭 이벤트
