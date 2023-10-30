@@ -39,8 +39,7 @@ public class StateMachine
             PlayerController.MovementData, 
             PlayerController.StatHandler, 
             RollDataHandler, 
-            playerController.Rigidbody, 
-            playerController.transform);
+            playerController.Rigidbody);
 
         _groundCheck = playerController.GroundCheck;
 

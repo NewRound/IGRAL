@@ -17,8 +17,11 @@ public class RotationCalculator
     {
         float currentAngle = rotationY;
         float targetAngle = Vector3.SignedAngle(Vector3.forward, _preDirection, Vector3.up);
+        Debug.Log($"currentAngle : {currentAngle}\n targetAngle : {targetAngle}");
+
 
         float newAngle = Mathf.LerpAngle(currentAngle, targetAngle, _rotationSpeed * Time.deltaTime);
+
 
         newAngle = newAngle >= 0 ?
             Mathf.Clamp(Mathf.Abs(newAngle), _minAbsAngle, _maxAbsAngle) :
