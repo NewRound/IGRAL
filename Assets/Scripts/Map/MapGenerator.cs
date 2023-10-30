@@ -1,60 +1,40 @@
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class MapGenerator : MonoBehaviour
 {
-    [SerializeField] public List<GameObject> Stage1_Blocks;
-    [SerializeField] public List<GameObject> Stage2_Blocks;
-    [SerializeField] public List<GameObject> Stage3_Blocks;
+    public static MapGenerator Instance;
 
-    [SerializeField] public int numberOfBlock;
+    [SerializeField] public List<GameObject> Stage1_mapBlocks;
+    [SerializeField] public List<GameObject> Stage2_mapBlocks;
+    [SerializeField] public List<GameObject> Stage3_mapBlocks;
+
+    [SerializeField] public int numberOfmapBlock;
     [SerializeField] public int lastStage = 3;
     [SerializeField] public int tileSize;
 
-    private GameObject frontBlock = null;
+    private GameObject frontmapBlock = null;
 
-    private List<int> RandomBlockIndex = new List<int>();
+    private List<int> RandommapBlockIndex = new List<int>();
 
-    private int currentStage;
+    private int currentStage = 0;
 
     private void Awake()
     {
-
+        if(Instance == null)
+        {
+            Instance = this;
+        }
     }
 
     private void Start()
     {
-        //foreach(GameObject block in Stage1_Blocks)
-        //{
-        //    GameObject Block = Instantiate(block);
-
-        //    if(frontBlock != null)
-        //    {
-        //        Vector3 _position = Block.transform.position;
-        //        Vector3 _frontPosition = frontBlock.transform.position;
-        //        MapData _mapData = frontBlock.GetComponent<MapData>();
-
-        //        _position.x = _frontPosition.x + (_mapData.horizontalOfTiles * tileSize);
-        //        _position.y = _frontPosition.y + (_mapData.verticalOfTiles * tileSize);
-        //        Block.transform.position = _position;
-        //    }
-        //    else
-        //    {
-        //        Vector3 _position = Block.transform.position;
-        //        _position.x = 0;
-        //        _position.y = 0;
-        //        Block.transform.position = _position;
-        //    }
-
-        //    frontBlock = Block;
-        //}
-        //currentStage = 1;
+        // 개임메니저로 옮기기.
         InstantiateStage();
     }
 
+
+    // 맵을 넘어가기 위한 상호작용 오브젝트에서 호출 할 것.
     public void InstantiateStage()
     {
         if (currentStage >= lastStage)
@@ -65,71 +45,116 @@ public class MapGenerator : MonoBehaviour
         switch(currentStage)
         {
             case 0:
-                createStage = Stage1_Blocks;
+                createStage = Stage1_mapBlocks;
                 break;
             case 1:
-                createStage = Stage2_Blocks;
+                createStage = Stage2_mapBlocks;
                 break;
             case 2:
-                createStage = Stage3_Blocks;
+                createStage = Stage3_mapBlocks;
                 break;
             default:
                 createStage = null;
                 break;
         }
-        
 
-        foreach (GameObject block in createStage)
+        if(createStage == null || createStage.Count == 0)
+            return;
+
+        Debug.Log($"{numberOfmapBlock}, {createStage.Count - 2} ");
+
+        // 랜덤 생성 TODO
+        if (createStage.Count - 2 < numberOfmapBlock)
         {
-            GameObject Block = Instantiate(block);
+            int randomValue;
+            Debug.Log($"{RandommapBlockIndex.Count}, {createStage.Count - 2} ");
 
-            if (frontBlock != null)
+            while (RandommapBlockIndex.Count != createStage.Count - 2)
             {
-                Vector3 _position = Block.transform.position;
-                Vector3 _frontPosition = frontBlock.transform.position;
-                MapData _mapData = frontBlock.GetComponent<MapData>();
+                randomValue = Random.Range(1, createStage.Count - 1);
 
-                _position.x = _frontPosition.x + (_mapData.horizontalOfTiles * tileSize);
-                _position.y = _frontPosition.y + (_mapData.verticalOfTiles * tileSize);
-                Block.transform.position = _position;
+                if (!RandommapBlockIndex.Contains(randomValue))
+                {
+                    RandommapBlockIndex.Add(randomValue);
+                    Debug.Log(randomValue);
+                }
             }
-            else
-            {
-                Vector3 _position = Block.transform.position;
-                _position.x = 0;
-                _position.y = 0;
-                Block.transform.position = _position;
-            }
-
-            frontBlock = Block;
         }
+        else
+        {
+            int randomValue;
+            
+
+            while (RandommapBlockIndex.Count != numberOfmapBlock)
+            {
+                randomValue = Random.Range(1, createStage.Count - 1);
+
+                if (!RandommapBlockIndex.Contains(randomValue))
+                {
+                    RandommapBlockIndex.Add(randomValue);
+                }
+            }
+        }
+
+
+        // 첫맵 생성
+        CreateBlock(createStage, 0);
+
+        for (int i = 0; i < RandommapBlockIndex.Count; i++)
+        {
+            CreateBlock(createStage, RandommapBlockIndex[i]);
+        }
+
+        // 마지막 맵 생성
+        CreateBlock(createStage, createStage.Count - 1);
+
         currentStage++;
     }
     
 
+    private void CreateBlock(List<GameObject> _createStage, int createIndex)
+    {
+        GameObject newBlock = Instantiate(_createStage[createIndex]);
+        Vector3 _position = newBlock.transform.position;
+        if (frontmapBlock != null)
+        {
+            Vector3 _frontPosition = frontmapBlock.transform.position;
+            MapData _mapData = frontmapBlock.GetComponent<MapData>();
+            _position.x = _frontPosition.x + (_mapData.horizontalOfTiles * tileSize);
+            _position.y = _frontPosition.y + (_mapData.verticalOfTiles * tileSize);
+        }
+        else
+        {
+            _position.x = 0;
+            _position.y = 0;
+        }
+        newBlock.transform.position = _position;
+        frontmapBlock = newBlock;
+    }
+
 
     // 포지션 계산 함수.
     /*
-    private Vector3 CalculatePosition(GameObject blockPrefab, bool isEnterPosition)
+    private Vector3 CalculatePosition(GameObject mapBlockPrefab, bool isEnterPosition)
     {
         if(isEnterPosition)
         {
-            Transform value = blockPrefab.transform.Find("EnterPosition");
+            Transform value = mapBlockPrefab.transform.Find("EnterPosition");
 
             if (value != null)
             {
-                Vector3 answer = blockPrefab.transform.position + value.position;
+                Vector3 answer = mapBlockPrefab.transform.position + value.position;
 
                 return answer;
             }
         }
         else
         {
-            Transform value = blockPrefab.transform.Find("ExitPosition");
+            Transform value = mapBlockPrefab.transform.Find("ExitPosition");
 
             if (value != null)
             {
-                Vector3 answer = blockPrefab.transform.position + value.position;
+                Vector3 answer = mapBlockPrefab.transform.position + value.position;
 
                 return answer;
             }
