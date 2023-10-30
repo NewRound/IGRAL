@@ -27,12 +27,12 @@ Transform:
   m_GameObject: {fileID: 1046054275128977727}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4359879420470346309}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &4785965180624877519
 Rigidbody:
@@ -78,14 +78,14 @@ MonoBehaviour:
   <ItemType>k__BackingField: 1
   <ItemRarity>k__BackingField: 1
   <DropProbability>k__BackingField: 0
-  <ItemIcon>k__BackingField: {fileID: 21300000, guid: 0f3f5cb196a64da4ba716a0710a64809,
+  <ItemIcon>k__BackingField: {fileID: 21300000, guid: 0af7eb30401287d498b732d7a6cb9500,
     type: 3}
   <ItemObject>k__BackingField: {fileID: 1046054275128977727}
   <ItemInfo>k__BackingField: "\uAE30\uBCF8\uC801\uC778 \uAD8C\uCD1D\uC785\uB2C8\uB2E4."
   <Price>k__BackingField: 100
   <IsStackable>k__BackingField: 0
   <MaxStack>k__BackingField: 0
-  <itemData>k__BackingField: {fileID: 11400000, guid: 3ad60c80c79c8444293fecedee337aa2,
+  <itemData>k__BackingField: {fileID: 11400000, guid: 4744489a3f7315447ad8c902a32eeb8c,
     type: 2}
 --- !u!1001 &4363923500607186415
 PrefabInstance:
