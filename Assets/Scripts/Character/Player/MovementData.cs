@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public class Movement
+public class MovementData
 {
     [field: SerializeField] public float AcceleratingTime { get; private set; } = 1f;
     [field: SerializeField] public float RotationSpeed { get; private set; } = 10f;

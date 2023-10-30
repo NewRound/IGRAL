@@ -4,16 +4,20 @@ using UnityEngine.InputSystem;
 
 public abstract class InputController : MonoBehaviour
 {
+    [field: Header("Actions")]
     public event Action<Vector2> MoveAction;
     public event Action JumpAction;
-    public event Action SlideAction;
+    public event Action RollAction;
     public event Action AttackAction;
 
+    [field: Header("Inputs")]
     public PlayerInput Input { get; private set; }
     public PlayerInputAction InputActions { get; private set; }
     public PlayerInputAction.PlayerActions PlayerActions { get; private set; }
 
     protected StateMachine stateMachine;
+
+    private bool _isMovePressed;
 
     protected virtual void Awake()
     {
@@ -29,49 +33,41 @@ public abstract class InputController : MonoBehaviour
         InputActions.Player.Move.started += OnMove;
         InputActions.Player.Move.canceled += OnMove;
         InputActions.Player.Jump.started += OnJump;
+        InputActions.Player.Roll.started += OnRoll;
     }
 
     private void OnDisable()
     {
-        InputActions.Disable();
         InputActions.Player.Move.started -= OnMove;
         InputActions.Player.Move.canceled -= OnMove;
         InputActions.Player.Jump.started -= OnJump;
+        InputActions.Player.Roll.started -= OnRoll;
+        InputActions.Disable();
+    }
+
+    protected virtual void Update()
+    {
+        ReadMoveInput();
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (context.canceled)
-        {
-            CallMoveAction(Vector2.zero);
-            return;
-        }
-
-        Vector2 inputVec = context.ReadValue<Vector2>();
-        
-        CallMoveAction(inputVec);
+        _isMovePressed = context.started;
     }
-
 
     public void OnJump(InputAction.CallbackContext context)
     {
         CallJumpAction();
     }
 
-    public void OnSlide(InputAction.CallbackContext context)
+    public void OnRoll(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            CallSlideAction();
-        }
+        CallRollAction();
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            CallAttackAction();
-        }
+        CallAttackAction();
     }
 
     public void CallMoveAction(Vector2 inputVec)
@@ -85,13 +81,31 @@ public abstract class InputController : MonoBehaviour
         JumpAction?.Invoke();
     }
 
-    public void CallSlideAction()
+    public void CallRollAction()
     {
-        SlideAction?.Invoke();
+        if (!stateMachine.RollDataHandler.CanRoll)
+            return;
+
+        stateMachine.ChangeState(stateMachine.RollState);
+        RollAction?.Invoke();
     }
 
     public void CallAttackAction()
     {
         AttackAction?.Invoke();
+    }
+
+    private void ReadMoveInput()
+    {
+        if (stateMachine.RollDataHandler.IsRolling)
+            return;
+
+        if (!_isMovePressed)
+        {
+            CallMoveAction(Vector2.zero);
+            return;
+        }
+
+        CallMoveAction(InputActions.Player.Move.ReadValue<Vector2>());
     }
 }

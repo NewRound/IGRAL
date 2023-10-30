@@ -8,11 +8,9 @@ public class PlayerController : InputController
     public PlayerStatHandler StatHandler { get; private set; }
     public AnimationController AnimationController { get; private set; }
 
-
     public Rigidbody Rigidbody { get; private set; }
-    public Transform Transform { get; private set; }
 
-    [field: SerializeField] public Movement Movement { get; private set; }
+    [field: SerializeField] public MovementData MovementData { get; private set; }
     [field: SerializeField] public GroundCheck GroundCheck { get; private set; }
 
 
@@ -29,14 +27,15 @@ public class PlayerController : InputController
 
     private void Start()
     {
+        transform.forward = Vector3.right;
+
         GroundCheck.Init(transform);
         stateMachine.Init();
-
-        Transform = transform;
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         stateMachine.Update();
     }
 

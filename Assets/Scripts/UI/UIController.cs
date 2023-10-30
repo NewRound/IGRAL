@@ -68,7 +68,7 @@ public class UIController : MonoBehaviour
 
     private void OnSlideButton()
     {
-        _playerController.CallSlideAction();
+        _playerController.CallRollAction();
     }
 
     private void OnSkillButton()
