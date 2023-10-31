@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class PlayerJumpState : PlayerAirState
 {
-    public PlayerJumpState(StateMachine stateMachine) : base(stateMachine)
+    public PlayerJumpState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
-        playerController.JumpAction += Jump;
+        InputController.JumpAction += Jump;
     }
 
     public override void Enter()
@@ -30,18 +30,18 @@ public class PlayerJumpState : PlayerAirState
     public override void OnDead()
     {
         base.OnDead();
-        playerController.JumpAction -= Jump;
+        InputController.JumpAction -= Jump;
     }
 
     private void Jump()
     {
-        if (jumpCountSetter.JumpCount > 0)
+        if (stateMachine.JumpCountHandler.JumpCount > 0)
         {
             animationController.ReStartIfAnimationIsPlaying(animationsData.JumpParameterHash);
 
-            jumpCountSetter.DecreaseJumpCount();
+            stateMachine.JumpCountHandler.DecreaseJumpCount();
             Vector3 velocity = movementDataHandler.Rigid.velocity;
-            velocity.y = playerController.StatHandler.Data.JumpingForce;
+            velocity.y = InputController.StatHandler.Data.JumpingForce;
             movementDataHandler.Rigid.velocity = velocity;
         }
     }

@@ -1,6 +1,6 @@
 public class PlayerFallState : PlayerAirState
 {
-    public PlayerFallState(StateMachine stateMachine) : base(stateMachine)
+    public PlayerFallState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
 
@@ -14,8 +14,8 @@ public class PlayerFallState : PlayerAirState
     {
         base.UpdateState();
 
-        if (stateMachine.IsGrounded)
-            stateMachine.ChangeState(stateMachine.MovementState);
+        if (stateMachine.GroundDataHandler.IsGrounded)
+            stateMachine.ChangeState(stateMachine.MoveState);
     }
 
     public override void Exit()
