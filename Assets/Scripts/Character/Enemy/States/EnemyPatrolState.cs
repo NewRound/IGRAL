@@ -6,7 +6,6 @@ public class EnemyPatrolState : EnemyStateBase
 {
     public EnemyPatrolState(EnemyStateMachine stateMachine) : base(stateMachine)
     {
-        
     }
 
     public override void Enter()

@@ -10,6 +10,8 @@ public class EnemyStateMachine : StateMachine
 
     public MovementDataHandler MovementDataHandler { get; private set; }
 
+    public Transform PlayerTransform { get; private set; }
+
     public EnemyStateMachine(EnemyController controller)
     {
         EnemyController = controller;
@@ -21,6 +23,8 @@ public class EnemyStateMachine : StateMachine
             EnemyController.Rigidbody);
 
         PatrolState = new EnemyPatrolState(this);
+
+        PlayerTransform = GameManager.Instance.player.transform;
     }
 
     public override void Init()
