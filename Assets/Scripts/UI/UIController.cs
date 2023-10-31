@@ -23,6 +23,7 @@ public class UIController : CustomSingleton<UIController>
     private Vector2 _temp = Vector2.zero;
 
     private InputController _inputController;
+    private GameObject _interactiveObject;
 
     private void Awake()
     {
@@ -55,6 +56,18 @@ public class UIController : CustomSingleton<UIController>
         }
     }
 
+    #region 상호작용 게임오브젝트 관리
+    public void SetInteractiveObject(GameObject go)
+    {
+        _interactiveObject = go;
+    }
+
+    public void DelInteractiveObject()
+    {
+        _interactiveObject = null;
+    }
+    #endregion
+
     #region 버튼 클릭 이벤트
     private void OnHealingButton()
     {
@@ -83,12 +96,12 @@ public class UIController : CustomSingleton<UIController>
 
     private void OnInteractionButton()
     {
-        GameManager.Instance.interactiveObject.GetComponent<InteractiveObject>().Use();
+        _interactiveObject.GetComponent<InteractiveObject>().Use();
     }
 
     private void OnPickupButton()
     {
-
+        ItemManager.Instance.pickupItem.GetComponent<PickupObject>().Pickup();
     }
 
     private void OnItemButton()
