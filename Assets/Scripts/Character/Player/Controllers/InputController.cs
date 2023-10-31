@@ -83,6 +83,9 @@ public abstract class InputController : MonoBehaviour
 
     public void CallJumpAction()
     {
+        if (stateMachine.RollDataHandler.IsRolling)
+            return;
+
         stateMachine.ChangeState(stateMachine.JumpState);
         JumpAction?.Invoke();
     }
@@ -98,6 +101,9 @@ public abstract class InputController : MonoBehaviour
 
     public void CallAttackAction()
     {
+        if (stateMachine.RollDataHandler.IsRolling)
+            return;
+
         AttackAction?.Invoke();
     }
 
