@@ -1,14 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwitchObject : MonoBehaviour
+public class SwitchObject : InteractiveObject
 {
     [SerializeField] List<GameObject> ConnectedObject;
 
     IObject connectedObject;
 
-    public virtual void Use()
+    public override void Use()
     {
+        Debug.Log("½ÇÇà");
         if (CheckCondition())
         {
             foreach (GameObject obj in ConnectedObject)

@@ -3,6 +3,7 @@ using UnityEngine;
 public class GameManager : CustomSingleton<GameManager>
 {
     public GameObject player;
+    public GameObject interactiveObject;
 
     private void Awake()
     {
@@ -17,6 +18,16 @@ public class GameManager : CustomSingleton<GameManager>
             PlayerPrefs.SetFloat("bgmVolume", 1.0f);
             PlayerPrefs.SetFloat("sfxVolume", 1.0f);
         }
+    }
+
+    public void SetInteractiveObject(GameObject go)
+    {
+        interactiveObject = go;
+    }
+
+    public void DelInteractiveObject()
+    {
+        interactiveObject = null;
     }
 
 }

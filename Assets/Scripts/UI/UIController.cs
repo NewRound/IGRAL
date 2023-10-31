@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIController : MonoBehaviour
+public class UIController : CustomSingleton<UIController>
 {
     [Header("Button")]
     [SerializeField] private VariableJoystick variableJoystick;
@@ -83,7 +83,7 @@ public class UIController : MonoBehaviour
 
     private void OnInteractionButton()
     {
-
+        GameManager.Instance.interactiveObject.GetComponent<InteractiveObject>().Use();
     }
 
     private void OnPickupButton()
