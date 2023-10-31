@@ -6,6 +6,8 @@ public class ItemManager : CustomSingleton<ItemManager>
     [SerializeField] private List<Item> items;
     private Dictionary<Rarity, List<Item>> ItemsByRarity = new Dictionary<Rarity, List<Item>>();
 
+    public GameObject pickupItem { get; private set; }
+
     private void Start()
     {
         // 등급을 키값으로 하여 등급별로 아이템 리스트 생성
@@ -17,6 +19,16 @@ public class ItemManager : CustomSingleton<ItemManager>
             }
             ItemsByRarity[item.ItemRarity].Add(item);
         }        
+    }
+
+    public void SetPickupItem(GameObject go)
+    {
+        pickupItem = go;
+    }
+
+    public void DelSetPickupItem()
+    {
+        pickupItem = null;
     }
 
     public void RandomDropItem(Vector3 dropPos)

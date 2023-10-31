@@ -144,6 +144,8 @@ public class UIInventory : CustomSingleton<UIInventory>
         _equipButton.gameObject.SetActive(false);
         _unEquipButton.gameObject.SetActive(false);
         _dropEquipButton.gameObject.SetActive(false);
+
+        _uiInventory.SetActive(false);
     }
 
     public void OpenInventory()
@@ -438,6 +440,8 @@ public class UIInventory : CustomSingleton<UIInventory>
     #region 아이템 슬롯 업데이트
     public void AddItem(Item item)
     {
+
+
         ItemSlot emptySlot = GetEmptySlot();
 
         if (emptySlot != null)
@@ -446,6 +450,8 @@ public class UIInventory : CustomSingleton<UIInventory>
             UpdateUI();
             return;
         }
+
+
 
         ThrowItem(item);
     }
