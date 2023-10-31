@@ -2,8 +2,13 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public abstract class InputController : MonoBehaviour
+public class InputController : PlayerController
 {
+#if UNITY_EDITOR
+    [field: SerializeField] public bool IsDebug { get; private set; }
+    private bool _isMovePressed;
+#endif
+
     [field: Header("Actions")]
     public event Action<Vector2> MoveAction;
     public event Action JumpAction;
@@ -15,18 +20,14 @@ public abstract class InputController : MonoBehaviour
     public PlayerInputAction InputActions { get; private set; }
     public PlayerInputAction.PlayerActions PlayerActions { get; private set; }
 
-    protected StateMachine stateMachine;
 
-#if UNITY_EDITOR
-    [field: SerializeField] public bool IsDebug { get; private set; }
-    private bool _isMovePressed;
-#endif
-
-    protected virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         Input = GetComponent<PlayerInput>();
 
         InputActions = new PlayerInputAction();
+        StateMachine = new PlayerStateMachine(this);
         PlayerActions = InputActions.Player;
     }
 
@@ -48,8 +49,10 @@ public abstract class InputController : MonoBehaviour
         InputActions.Disable();
     }
 
-    protected virtual void Update()
+    protected override void Update()
     {
+        base.Update();
+
 #if UNITY_EDITOR
         if (IsDebug)
             ReadMoveInput();
@@ -83,25 +86,25 @@ public abstract class InputController : MonoBehaviour
 
     public void CallJumpAction()
     {
-        if (stateMachine.RollDataHandler.IsRolling)
+        if (StateMachine.RollDataHandler.IsRolling)
             return;
 
-        stateMachine.ChangeState(stateMachine.JumpState);
+        StateMachine.ChangeState(StateMachine.JumpState);
         JumpAction?.Invoke();
     }
 
     public void CallRollAction()
     {
-        if (!stateMachine.RollDataHandler.CanRoll)
+        if (!StateMachine.RollDataHandler.CanRoll)
             return;
 
-        stateMachine.ChangeState(stateMachine.RollState);
+        StateMachine.ChangeState(StateMachine.RollState);
         RollAction?.Invoke();
     }
 
     public void CallAttackAction()
     {
-        if (stateMachine.RollDataHandler.IsRolling)
+        if (StateMachine.RollDataHandler.IsRolling)
             return;
 
         AttackAction?.Invoke();
@@ -110,7 +113,7 @@ public abstract class InputController : MonoBehaviour
 #if UNITY_EDITOR
     private void ReadMoveInput()
     {
-        if (stateMachine.RollDataHandler.IsRolling)
+        if (StateMachine.RollDataHandler.IsRolling)
             return;
 
         if (!_isMovePressed)
