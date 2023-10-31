@@ -3,12 +3,13 @@ using UnityEngine;
 public class GameManager : CustomSingleton<GameManager>
 {
     public GameObject player;
-    public GameObject interactiveObject;
+
 
     private void Awake()
     {
         Debug.Log(UIManager.Instance);
         Debug.Log(AudioManager.Instance);
+        Debug.Log(ItemManager.Instance);
     }
 
     private void Start()
@@ -19,15 +20,4 @@ public class GameManager : CustomSingleton<GameManager>
             PlayerPrefs.SetFloat("sfxVolume", 1.0f);
         }
     }
-
-    public void SetInteractiveObject(GameObject go)
-    {
-        interactiveObject = go;
-    }
-
-    public void DelInteractiveObject()
-    {
-        interactiveObject = null;
-    }
-
 }

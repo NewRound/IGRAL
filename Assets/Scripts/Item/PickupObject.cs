@@ -1,20 +1,22 @@
 using UnityEngine;
 
-public class InteractiveObject : MonoBehaviour
+public class PickupObject : MonoBehaviour
 {
     [SerializeField] private LayerMask canBePickupBy;
 
-    public virtual void Use()
+    public virtual void Pickup()
     {
-
+        UIInventory.Instance.AddItem(ItemManager.Instance.pickupItem.GetComponent<Item>());
+        UIController.Instance.SwitchingAttack();
+        ItemManager.Instance.DelSetPickupItem();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (canBePickupBy.value == (canBePickupBy.value | (1 << other.gameObject.layer)))
         {
-            UIController.Instance.SetInteractiveObject(this.gameObject);
-            UIController.Instance.SwitchingInteraction();
+            ItemManager.Instance.SetPickupItem(this.gameObject);
+            UIController.Instance.SwitchingPickup();
         }
     }
 
@@ -22,7 +24,7 @@ public class InteractiveObject : MonoBehaviour
     {
         if (canBePickupBy.value == (canBePickupBy.value | (1 << other.gameObject.layer)))
         {
-            UIController.Instance.DelInteractiveObject();
+            ItemManager.Instance.DelSetPickupItem();
             UIController.Instance.SwitchingAttack();
         }
     }

@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public enum ItemType { Weapon = 1, Artifact, Consumable, ingredient }
+public enum ItemType { Weapon = 1, Artifact, Consumable, Ingredient }
 public enum Rarity { Normal = 1, Rare, Unique, Epic }
 
-public class Item : MonoBehaviour
+public class Item : PickupObject
 {
     [field: Header("# Base Info")]    
     [field: SerializeField] public string ItemName { get; private set;}
@@ -18,11 +18,11 @@ public class Item : MonoBehaviour
     [field: SerializeField] public bool IsStackable { get; private set;}
     [field: SerializeField] public int MaxStack { get; private set;}
     [field: SerializeField] public PlayerSO itemData { get; private set; }
-    
-    public void OnPickUp()
+
+    public override void Pickup()
     {
-        // 인벤토리에 넣기
-        Destroy(gameObject);
+        base.Pickup();
+        gameObject.SetActive(false);
     }
 
     public void OnUseItem()
