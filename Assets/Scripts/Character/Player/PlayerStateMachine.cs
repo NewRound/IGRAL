@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
@@ -10,12 +11,21 @@ public class PlayerStateMachine : StateMachine
     public PlayerFallState FallState { get; private set; }
     public PlayerRollState RollState { get; private set; }
 
+
     [field: Header("Roll")]
     public RollDataHandler RollDataHandler { get; private set; }
 
-    private PlayerStatHandler _playerStatHandler;
+    [field: Header("Move")]
+    public PlayerMovementDataHandler MovementDataHandler { get; private set; }
 
-    public PlayerMovementDataHandler MovementDataHandler;
+    [field: Header("Jump")]
+    public JumpCountHandler JumpCountHandler { get; private set; }
+
+    [field: Header("Ground")]
+    public GroundDataHandler GroundDataHandler { get; private set; }
+
+    [Header("Stat")]
+    private PlayerStatHandler _playerStatHandler;
 
     public PlayerStateMachine(InputController inputController)
     {
@@ -61,7 +71,7 @@ public class PlayerStateMachine : StateMachine
         CheckGround();
     }
 
-    protected override void CheckGround()
+    private void CheckGround()
     {
         if (InputController.Rigidbody.velocity.y < 0)
         {
