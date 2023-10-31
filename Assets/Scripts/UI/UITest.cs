@@ -2,19 +2,39 @@ using UnityEngine;
 
 public class UITest : MonoBehaviour
 {
-    public Item test;
-
-    // Start is called before the first frame update
-    void Start()
+    public void OnButton(int stage)
     {
-        Debug.Log(UIManager.Instance);
-        Debug.Log(AudioManager.Instance);
-        Invoke("TestAddItem", 1f);
+        AudioManager.Instance.SetStage(stage);
     }
 
-    void TestAddItem()
+    public void OnButton2()
     {
-        UIInventory.Instance.AddItem(test);
+        AudioManager.Instance.EnterBossRoom();
+    }
+
+    public void OnFootsteps()
+    {
+        AudioManager.Instance.PlaySFX(SFXType.Footsteps);
+    }
+
+    public void OnSwing()
+    {
+        AudioManager.Instance.PlaySFX(SFXType.Swing);
+    }
+
+    public void OnShooting()
+    {
+        AudioManager.Instance.PlaySFX(SFXType.Shooting);
+    }
+
+    public void OnDrop()
+    {
+        AudioManager.Instance.PlaySFX(SFXType.Drop);
+    }
+
+    public void OnPickup()
+    {
+        AudioManager.Instance.PlaySFX(SFXType.Pickup);
     }
 
 }

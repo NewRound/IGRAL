@@ -23,9 +23,6 @@ public class CommonOption : MonoBehaviour
     {
         _bgmVolume.value = PlayerPrefs.GetFloat("bgmVolume");
         _sfxVolume.value = PlayerPrefs.GetFloat("sfxVolume");
-
-        AudioManager.Instance.SetBgmVolume(_bgmVolume.value);
-        AudioManager.Instance.SetSfxVolume(_sfxVolume.value);
     }
 
     private void UpdateBgmVolume(float volume)
