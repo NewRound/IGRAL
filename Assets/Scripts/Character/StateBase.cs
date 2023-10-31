@@ -12,15 +12,9 @@ public abstract class StateBase : IState
 
     public abstract void Exit();
 
-    public virtual void UpdateState()
-    {
-    }
+    public abstract void UpdateState();
 
-    public virtual void PhysicsUpdateState()
-    {
-    }
+    public abstract void PhysicsUpdateState();
 
-    public virtual void OnDead()
-    {
-    }
+    public abstract void OnDead();
 }

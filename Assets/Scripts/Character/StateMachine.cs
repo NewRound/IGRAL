@@ -4,11 +4,6 @@ public abstract class StateMachine
 {
     protected IState currentState;
 
-    [field: Header("Jump")]
-    public JumpCountHandler JumpCountHandler { get; protected set; }
-
-    [field: Header("Ground")]
-    public GroundDataHandler GroundDataHandler { get; protected set; }
 
     public abstract void Init();
 
@@ -26,9 +21,6 @@ public abstract class StateMachine
 
     public virtual void PhysicsUpdate()
     {
-        GroundDataHandler.CheckIsGrounded();
         currentState.PhysicsUpdateState();
     }
-
-    protected abstract void CheckGround();
 }
