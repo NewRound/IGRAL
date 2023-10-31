@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum ItemType { Weapon = 1, Artifact, Consumable, ingredient }
+public enum ItemType { Weapon = 1, Artifact, Consumable, Ingredient }
 public enum Rarity { Normal = 1, Rare, Unique, Epic }
 
 public class Item : MonoBehaviour
