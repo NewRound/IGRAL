@@ -30,7 +30,7 @@ MonoBehaviour:
   <IsRanged>k__BackingField: 0
   <JumpingForce>k__BackingField: 5
   <JumpingCountMax>k__BackingField: 2
-  <RollingForce>k__BackingField: 3
+  <RollingForce>k__BackingField: 5
   <RollingCoolTime>k__BackingField: 2
   <KcalPerAttack>k__BackingField: 0
   <MaxKcal>k__BackingField: 0

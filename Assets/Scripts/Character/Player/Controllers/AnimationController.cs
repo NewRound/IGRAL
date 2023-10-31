@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
-    [field: SerializeField] public PlayerAnimationsData AnimationData { get; private set; }
+    [field: SerializeField] public CharacterAnimationsData AnimationData { get; private set; }
     private Animator _animator;
 
     [field: SerializeField] public float animationNormalizeEndedTime = 0.9f;

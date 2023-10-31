@@ -1,6 +1,6 @@
 ﻿public class PlayerMoveState : PlayerStateBase
 {
-    public PlayerMoveState(StateMachine stateMachine) : base(stateMachine)
+    public PlayerMoveState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
         
     }

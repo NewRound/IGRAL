@@ -1,29 +1,25 @@
 using UnityEngine;
 
-public abstract class PlayerStateBase : IState
+public abstract class PlayerStateBase : StateBase
 {
     [Header("Player")]
-    protected StateMachine stateMachine;
-    protected PlayerController playerController;
-    protected MovementDataHandler movementDataHandler;
-
-    [Header("Animation")]
-    protected AnimationController animationController;
-    protected PlayerAnimationsData animationsData;
+    protected PlayerStateMachine stateMachine;
+    protected InputController InputController;
+    protected PlayerMovementDataHandler movementDataHandler;
 
     [Header("Input")]
     protected PlayerInputAction inputActions;
 
-    public PlayerStateBase(StateMachine stateMachine)
+    public PlayerStateBase(PlayerStateMachine stateMachine)
     {
         this.stateMachine = stateMachine;
 
-        playerController = stateMachine.PlayerController;
+        InputController = stateMachine.InputController;
 
         movementDataHandler = stateMachine.MovementDataHandler;
 
-        animationController = playerController.AnimationController;
-        animationsData = playerController.AnimationController.AnimationData;
+        animationController = InputController.AnimationController;
+        animationsData = InputController.AnimationController.AnimationData;
 
         InitInputActions();
     }
@@ -33,34 +29,26 @@ public abstract class PlayerStateBase : IState
         stateMachine.MovementDataHandler.SetDirection(direction);
     }
 
-    public abstract void Enter();
-
-    public abstract void Exit();
-
-    public virtual void UpdateState()
+    public override void UpdateState()
     {
         stateMachine.MovementDataHandler.UpdateSpeed();
         stateMachine.MovementDataHandler.Look();
     }
 
-    public virtual void PhysicsUpdateState()
+    public override void PhysicsUpdateState()
     {
         stateMachine.MovementDataHandler.Move();
     }
 
-    public virtual void OnDead()
+    public override void OnDead()
     {
-        playerController.MoveAction -= OnMoveInput;
+        InputController.MoveAction -= OnMoveInput;
     }
 
     private void InitInputActions()
     {
-        inputActions = playerController.InputActions;
+        inputActions = InputController.InputActions;
         
-        playerController.MoveAction += OnMoveInput;
+        InputController.MoveAction += OnMoveInput;
     }
-
-    
-
-    
 }

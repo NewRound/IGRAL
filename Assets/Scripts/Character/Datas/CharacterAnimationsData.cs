@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class PlayerAnimationsData
+public class CharacterAnimationsData
 {
     [SerializeField] private string moveParameter = "@Move";
     [SerializeField] private string airParameter = "@Air";
