@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIController : MonoBehaviour
+public class UIController : CustomSingleton<UIController>
 {
     [Header("Button")]
     [SerializeField] private VariableJoystick variableJoystick;
@@ -22,11 +22,11 @@ public class UIController : MonoBehaviour
     private Vector2 _direction = Vector2.zero;
     private Vector2 _temp = Vector2.zero;
 
-    private PlayerController _playerController;
+    private InputController _inputController;
 
     private void Awake()
     {
-        _playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        _inputController = GameManager.Instance.player.GetComponent<InputController>();
 
         _healing.onClick.AddListener(OnHealingButton);
         _jump.onClick.AddListener(OnJumpButton);
@@ -51,7 +51,7 @@ public class UIController : MonoBehaviour
         if(_direction != _temp)
         {
             _direction = _temp;
-            _playerController.CallMoveAction(_direction);
+            _inputController.CallMoveAction(_direction);
         }
     }
 
@@ -63,12 +63,12 @@ public class UIController : MonoBehaviour
 
     private void OnJumpButton()
     {
-        _playerController.CallJumpAction();
+        _inputController.CallJumpAction();
     }
 
     private void OnSlideButton()
     {
-        _playerController.CallRollAction();
+        _inputController.CallRollAction();
     }
 
     private void OnSkillButton()
@@ -78,12 +78,12 @@ public class UIController : MonoBehaviour
 
     private void OnAttackButton()
     {
-        _playerController.CallAttackAction();
+        _inputController.CallAttackAction();
     }
 
     private void OnInteractionButton()
     {
-
+        GameManager.Instance.interactiveObject.GetComponent<InteractiveObject>().Use();
     }
 
     private void OnPickupButton()

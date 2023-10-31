@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
-    [field: SerializeField] public PlayerAnimationsData AnimationData { get; private set; }
+    [field: SerializeField] public CharacterAnimationsData AnimationData { get; private set; }
     private Animator _animator;
 
     [field: SerializeField] public float animationNormalizeEndedTime = 0.9f;
@@ -37,7 +37,9 @@ public class AnimationController : MonoBehaviour
     public void ReStartIfAnimationIsPlaying(int animationParameterHash, int layerIndex = 0)
     {
         if (_animator.GetCurrentAnimatorStateInfo(layerIndex).shortNameHash.Equals(animationParameterHash))
-            _animator.Play(animationParameterHash);
+        {
+            _animator.Play(animationParameterHash, layerIndex, 0f);
+        }
     }
 
     public bool CheckAnimationEnded(int animationParameterHash, int layerIndex = 0)

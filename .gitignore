@@ -83,3 +83,4 @@ UserSettings/
 *.csproj
 *.sln
 ProjectSettings/Packages/com.unity.probuilder/Settings.json
+Assets/Audio/External
