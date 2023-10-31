@@ -3,15 +3,11 @@
 public class RotationCalculator
 {
     private float _rotationSpeed;
-    private float _minAbsAngle;
-    private float _maxAbsAngle;
     private const int CIRCLE_ANGLE = 360;
 
-    public RotationCalculator(float rotationSpeed, float minAbsAngle, float maxAbsAngle)
+    public RotationCalculator(float rotationSpeed)
     {
         _rotationSpeed = rotationSpeed;
-        _minAbsAngle = minAbsAngle;
-        _maxAbsAngle = maxAbsAngle;
     }
 
     public Quaternion CalculateRotation(Quaternion rotation, Vector3 _preDirection)

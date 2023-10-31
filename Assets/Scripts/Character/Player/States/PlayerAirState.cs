@@ -1,10 +1,7 @@
 public abstract class PlayerAirState : PlayerStateBase
 {
-    protected JumpCountHandler jumpCountSetter;
-
-    public PlayerAirState(StateMachine stateMachine) : base(stateMachine)
+    public PlayerAirState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
-        jumpCountSetter = stateMachine.JumpCountSetter;
     }
 
 
