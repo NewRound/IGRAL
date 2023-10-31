@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f865ee03feb1f6e439ec5f8633defb2e, type: 3}
-  m_Name: SnupRevolver
+  m_Name: Grenade
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
   <HealthRegen>k__BackingField: 0
@@ -18,15 +18,15 @@ MonoBehaviour:
   <EvasionProbability>k__BackingField: 0
   <IsInvincible>k__BackingField: 0
   <InvincibleTime>k__BackingField: 0
-  <Attack>k__BackingField: 10
-  <AttackDelay>k__BackingField: 0.8
+  <Attack>k__BackingField: 30
+  <AttackDelay>k__BackingField: 3
   <AttackRange>k__BackingField: 5
-  <CriticalProbability>k__BackingField: 0.15
-  <CriticalMod>k__BackingField: 1.5
+  <CriticalProbability>k__BackingField: 0
+  <CriticalMod>k__BackingField: 0
   <SpeedMin>k__BackingField: 0
   <SpeedMax>k__BackingField: 0
-  <KnockbackPower>k__BackingField: 0.1
-  <KnockbackTime>k__BackingField: 0.1
+  <KnockbackPower>k__BackingField: 0
+  <KnockbackTime>k__BackingField: 0
   <IsRanged>k__BackingField: 1
   <JumpingForce>k__BackingField: 0
   <JumpingCountMax>k__BackingField: 0

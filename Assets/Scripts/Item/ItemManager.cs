@@ -4,11 +4,11 @@ using UnityEngine;
 public class ItemManager : CustomSingleton<ItemManager>
 {    
     [SerializeField] private List<Item> items;
-    [SerializeField] private Dictionary<Rarity, List<Item>> ItemsByRarity 
-        = new Dictionary<Rarity, List<Item>>();
+    private Dictionary<Rarity, List<Item>> ItemsByRarity = new Dictionary<Rarity, List<Item>>();
 
     private void Start()
     {
+        // 등급을 키값으로 하여 등급별로 아이템 리스트 생성
         foreach (Item item in items)
         {
             if(!ItemsByRarity.ContainsKey(item.ItemRarity))
@@ -16,8 +16,7 @@ public class ItemManager : CustomSingleton<ItemManager>
                 ItemsByRarity[item.ItemRarity] = new List<Item>();
             }
             ItemsByRarity[item.ItemRarity].Add(item);
-        }
-        // 등급을 키값으로 하여 등급별로 아이템 리스트 생성
+        }        
     }
 
     public void RandomDropItem(Vector3 dropPos)
@@ -26,9 +25,8 @@ public class ItemManager : CustomSingleton<ItemManager>
         Item dropItem = RandomSelectItem();
 
         // 드랍 확률에 따라 생성
-        float chance = Random.value;
-        Debug.Log(chance);
-        if (dropItem.DropProbability > chance)
+        float dropChance = Random.value;
+        if (dropItem.DropProbability > dropChance)
         {
             Instantiate(dropItem.ItemObject, dropPos, Quaternion.identity, transform);
         }
@@ -41,17 +39,17 @@ public class ItemManager : CustomSingleton<ItemManager>
         
         // 확률에 따른 등급 선택
         Rarity selectRarity = GetRarityWeight();
+
         List<Item> itemsOfSelect;
 
         // 등급에 해당하는 리스트(itemsOfSelect)를 저장(out)
-        if (ItemsByRarity.TryGetValue(selectRarity,out itemsOfSelect))
+        if (ItemsByRarity.TryGetValue(selectRarity, out itemsOfSelect))
         {
             if(itemsOfSelect.Count > 0)
             {
                 int randomIndex = Random.Range(0, itemsOfSelect.Count);
                 selectedItem = itemsOfSelect[randomIndex];
-                Debug.Log(selectedItem.ItemName);
-                Debug.Log(selectedItem.ItemRarity);
+                // 리스트 중에서 하나의 아이템 선택
             }
         }
         return selectedItem;        
