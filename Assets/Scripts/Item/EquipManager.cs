@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EquipManager : CustomSingleton<GameManager>
+public class EquipManager : CustomSingleton<EquipManager>
 {
     [SerializeField] private GameObject backEquip;
     [SerializeField] private GameObject HandEquip;       
