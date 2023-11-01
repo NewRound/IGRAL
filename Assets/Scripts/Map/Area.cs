@@ -3,27 +3,39 @@ using UnityEngine;
 
 public class Area : MonoBehaviour
 {
-    private List<GameObject> enemys = new List<GameObject>();
+    [SerializeField] float size;
+    [SerializeField] Vector3 position;
+
+    private List<EnemyMovementDataHandler> enemys = new List<EnemyMovementDataHandler>();
     private bool PlayerInArea = false;
 
+    private void Awake()
+    {
+        position = transform.position;
+        size = (MapGenerator.Instance.tileSize * size) - 1;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Enemy")
         {
-            enemys.Add(other.gameObject);
+            enemys.Add(other.GetComponent<EnemyMovementDataHandler>());
+
+            // enemy ==> float, float <발판의 중앙 x 값,  길이의 -1 값.>
+            SendAreaInfo(other.gameObject);
+
             if(PlayerInArea)
             {
-                // other ==> chaing State
+                // enemy.SetIsTracing(true);
             }
         }
 
         if (other.gameObject.tag == "Player")
         {
             PlayerInArea = true;
-            foreach(GameObject enemy in enemys)
+            foreach(EnemyMovementDataHandler enemy in enemys)
             {
-                // enemy ==> chaing State
+                // enemy.SetIsTracing(true);
             }
         }
     }
@@ -32,17 +44,21 @@ public class Area : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            enemys.Remove(other.gameObject);
+            enemys.Remove(other.GetComponent<EnemyMovementDataHandler>());
         }
 
         if (other.gameObject.tag == "Player")
         {
             PlayerInArea = false;
-            foreach (GameObject enemy in enemys)
+            foreach (EnemyMovementDataHandler enemy in enemys)
             {
-                // enemy ==> Idle State
+                // enemy.SetIsTracing(false);
             }
         }
     }
 
+    private void SendAreaInfo(GameObject enemy)
+    {
+        
+    }
 }
