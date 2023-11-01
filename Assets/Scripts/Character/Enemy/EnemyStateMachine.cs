@@ -11,9 +11,9 @@ public class EnemyStateMachine : StateMachine
 
     public EnemyMovementDataHandler MovementDataHandler { get; private set; }
 
-    public TraceDataHandler TraceDataHandler { get; private set; }
-
     public Transform PlayerTransform { get; private set; }
+
+    public bool IsAttacking { get; private set; }
 
     public EnemyStateMachine(EnemyController controller)
     {
@@ -21,17 +21,15 @@ public class EnemyStateMachine : StateMachine
 
         MovementDataHandler = new EnemyMovementDataHandler(
             EnemyController.MovementData,
-            TraceDataHandler,
+            EnemyController.Rigidbody,
+            EnemyController.transform,
             EnemyController.StatHandler.Data.SpeedMin,
-            EnemyController.StatHandler.Data.SpeedMax,
-            EnemyController.Rigidbody);
+            EnemyController.StatHandler.Data.SpeedMax
+            );
 
-        PlayerTransform = GameManager.Instance.player.transform;
-
-        TraceDataHandler = new TraceDataHandler(EnemyController.TraceData, EnemyController.transform, PlayerTransform);
+        //PlayerTransform = GameManager.Instance.player.transform;
 
         PatrolState = new EnemyPatrolState(this);
-
     }
 
     public override void Init()
@@ -39,9 +37,4 @@ public class EnemyStateMachine : StateMachine
         ChangeState(PatrolState);
     }
 
-    public override void Update()
-    {
-        TraceDataHandler.CalculateDistance();
-        base.Update();
-    }
 }
