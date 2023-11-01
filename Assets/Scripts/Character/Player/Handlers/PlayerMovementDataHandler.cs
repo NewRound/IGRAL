@@ -6,7 +6,7 @@ public class PlayerMovementDataHandler : MovementDataHandler
 {
     private RollDataHandler _rollDataHandler;
 
-    public PlayerMovementDataHandler(MovementData movementData, float speedMin, float speedMax, RollDataHandler rollDataHandler, Rigidbody rigidbody) : base(movementData, speedMin, speedMax, rigidbody)
+    public PlayerMovementDataHandler(MovementData movementData, RollDataHandler rollDataHandler, Rigidbody rigidbody, float speedMin, float speedMax) : base(movementData, rigidbody, speedMin, speedMax)
     {
         _rollDataHandler = rollDataHandler;
     }
@@ -15,6 +15,12 @@ public class PlayerMovementDataHandler : MovementDataHandler
     {
         if (_rollDataHandler.IsRolling)
             return;
+
+        if (direction.x == 0)
+        {
+            LookPreDirectionRightAway();
+            return;
+        }
 
         base.Look();
     }

@@ -10,14 +10,28 @@ public class EnemyController : CharacterController
 
     private EnemyStateMachine _stateMachine;
 
-    [field: SerializeField] public TraceData TraceData { get; private set; }
-
     [field: SerializeField] public EnemyMovementData MovementData { get; private set; }
     
     protected override void Awake()
     {
+        base.Awake();
         StatHandler = new EnemyStatHandler(stat);
         _stateMachine = new EnemyStateMachine(this);
     }
-    
+
+    private void Start()
+    {
+        _stateMachine.Init();
+    }
+
+    private void Update()
+    {
+        _stateMachine.Update();
+    }
+
+    private void FixedUpdate()
+    {
+        _stateMachine.PhysicsUpdate();
+    }
+
 }
