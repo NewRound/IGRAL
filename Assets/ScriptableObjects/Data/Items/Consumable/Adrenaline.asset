@@ -19,8 +19,8 @@ MonoBehaviour:
   <IsInvincible>k__BackingField: 0
   <InvincibleTime>k__BackingField: 0
   <Attack>k__BackingField: 0
-  <AttackDelay>k__BackingField: 0
-  <AttackRange>k__BackingField: 0.3
+  <AttackDelay>k__BackingField: 0.3
+  <AttackRange>k__BackingField: 0
   <CriticalProbability>k__BackingField: 0
   <CriticalMod>k__BackingField: 0
   <SpeedMin>k__BackingField: 0.3

@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class EquipManager : CustomSingleton<EquipManager>
 {
-    [SerializeField] private GameObject backEquip;
-    [SerializeField] private GameObject HandEquip;       
+    [SerializeField] private GameObject backWeaponPos;
+    [SerializeField] private GameObject HandWeaponPos;       
 
     public void SetBackWeapon()
     {
-        backEquip.SetActive(true);
-        HandEquip.SetActive(false);        
+        backWeaponPos.SetActive(true);
+        HandWeaponPos.SetActive(false);        
     }
 
     public void SetHandWeapon()
     {
-        backEquip.SetActive(false);
-        HandEquip.SetActive(true);
+        backWeaponPos.SetActive(false);
+        HandWeaponPos.SetActive(true);
     }
 }

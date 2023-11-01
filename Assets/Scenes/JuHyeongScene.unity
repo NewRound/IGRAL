@@ -561,6 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59230f17a7a8c7f4cb8decedf06cb9d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items: []
 --- !u!4 &887637520
 Transform:
   m_ObjectHideFlags: 0
@@ -660,7 +661,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1150153346}
         m_TargetAssemblyTypeName: EquipManager, Assembly-CSharp
         m_MethodName: SetHandWeapon
         m_Mode: 1
@@ -999,8 +1000,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8af1f1b505d91948b5fb35a62a197e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backEquip: {fileID: 0}
-  HandEquip: {fileID: 0}
+  backWeaponPos: {fileID: 2144383359}
+  HandWeaponPos: {fileID: 1814965355}
 --- !u!1 &1294625296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,6 +1737,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1814965355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6796176055088260518, guid: 32ebc784170eafc40a4aef834962e696,
+    type: 3}
+  m_PrefabInstance: {fileID: 2126099225}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1922213025
 GameObject:
   m_ObjectHideFlags: 0
@@ -2072,7 +2079,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1150153346}
         m_TargetAssemblyTypeName: EquipManager, Assembly-CSharp
         m_MethodName: SetBackWeapon
         m_Mode: 1
@@ -2190,7 +2197,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5429137764293182293, guid: 32ebc784170eafc40a4aef834962e696,
+    - target: {fileID: 5900902060767287463, guid: 32ebc784170eafc40a4aef834962e696,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2200,3 +2207,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32ebc784170eafc40a4aef834962e696, type: 3}
+--- !u!1 &2144383359 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5900902060767287463, guid: 32ebc784170eafc40a4aef834962e696,
+    type: 3}
+  m_PrefabInstance: {fileID: 2126099225}
+  m_PrefabAsset: {fileID: 0}
