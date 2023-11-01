@@ -10,6 +10,8 @@ public class ItemManager : CustomSingleton<ItemManager>
 
     private void Start()
     {
+        items = Resources.Load<ItemList>("Items/ItemList").GetItemList();      
+        
         // 등급을 키값으로 하여 등급별로 아이템 리스트 생성
         foreach (Item item in items)
         {
