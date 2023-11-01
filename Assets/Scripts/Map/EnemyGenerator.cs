@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour
 {
-    [SerializeField] private List<Vector3> SpawnPoints;
+    [SerializeField] private List<Transform> SpawnPoints;
     [SerializeField] private List<GameObject> Enemys;
 
     private void Awake()
@@ -14,12 +14,12 @@ public class EnemyGenerator : MonoBehaviour
 
     private void Start()
     {
-        foreach(Vector3 position in SpawnPoints)
+        foreach(Transform position in SpawnPoints)
         {
             int randomValue = Random.Range(0, Enemys.Count);
             GameObject enemy = Instantiate(Enemys[randomValue]);
 
-            enemy.transform.position = position;
+            enemy.transform.position = position.position;
         }
     }
 }
