@@ -19,7 +19,7 @@ public abstract class MovementDataHandler
     protected RotationCalculator rotationCalculator;
     protected Transform modelTrans;
 
-    public MovementDataHandler(MovementData movementData, float speedMin, float speedMax, Rigidbody rigidbody)
+    public MovementDataHandler(MovementData movementData, Rigidbody rigidbody, float speedMin, float speedMax)
     {
         speedCalculator = new SpeedCalculator(movementData.AcceleratingTime);
         rotationCalculator = new RotationCalculator(movementData.RotationSpeed);
@@ -75,5 +75,10 @@ public abstract class MovementDataHandler
     public void SetDirection(Vector2 direction)
     {
         this.direction = direction;
+    }
+
+    protected void SetDirection(float xPos)
+    {
+        SetDirection(new Vector2(xPos, 0f));
     }
 }
