@@ -15,6 +15,7 @@ public class EnemyStateMachine : StateMachine
 
     public bool IsAttacking { get; private set; }
 
+
     public EnemyStateMachine(EnemyController controller)
     {
         EnemyController = controller;

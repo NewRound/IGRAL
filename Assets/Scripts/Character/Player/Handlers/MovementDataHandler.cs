@@ -51,6 +51,12 @@ public abstract class MovementDataHandler
 
     public virtual void Look()
     {
+        if (direction.x == 0)
+        {
+            LookPreDirectionRightAway();
+            return;
+        }
+
         PreDirection = direction.x * Vector3.right;
 
         modelTrans.rotation = rotationCalculator.CalculateRotation(modelTrans.rotation, PreDirection);

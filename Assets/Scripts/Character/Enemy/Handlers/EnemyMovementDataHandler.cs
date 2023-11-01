@@ -9,8 +9,8 @@ public class EnemyMovementDataHandler : MovementDataHandler
     private EnemyMovementData _movementData;
     private Transform _myTrans;
     private float _tileXPos;
-    private float _tileHalfLegth;
-
+    private float _tileHalfLength;
+    private float _tilehalfPowLength;
     private float _targetXPos;
 
     public EnemyMovementDataHandler(EnemyMovementData movementData, Rigidbody rigidbody, Transform transform, float speedMin, float speedMax) : base(movementData, rigidbody, speedMin, speedMax)
@@ -53,12 +53,15 @@ public class EnemyMovementDataHandler : MovementDataHandler
     public void SetAreaData(float tileXPos, float tileLegth)
     {
         _tileXPos = tileXPos;
-        _tileHalfLegth = tileLegth * 0.5f;
+        _tileHalfLength = tileLegth * 0.5f;
+        _tilehalfPowLength = _tileHalfLength * _tileHalfLength;
     }
 
     private void CalculateDirection()
     {
-        float randomXPos = UnityEngine.Random.Range(_tileXPos - _tileHalfLegth, _tileXPos + _tileHalfLegth);
+        float randomXPos = UnityEngine.Random.Range(_tileXPos - _tilehalfPowLength, _tileXPos + _tilehalfPowLength);
+
+        randomXPos = Mathf.Clamp(randomXPos, _tileXPos - _tileHalfLength, _tileXPos + _tileHalfLength);
 
         bool isLeft = _myTrans.position.x > randomXPos;
 
