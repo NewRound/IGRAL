@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class MovementDataHandler
+public abstract class MovementDataHandler
 {
     public Vector3 PreDirection { get; private set; }
     protected Vector2 direction;
@@ -33,7 +33,7 @@ public class MovementDataHandler
         PreDirection = modelTrans.forward;
     }
 
-    public void UpdateSpeed()
+    public virtual void UpdateSpeed()
     {
         speed = speedCalculator.CalculateSpeed(
             speedMin,

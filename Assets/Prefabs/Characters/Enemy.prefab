@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 1371392166677880880}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &647222575576027766
 MonoBehaviour:
@@ -58,6 +58,11 @@ MonoBehaviour:
     <GroundYOffset>k__BackingField: 0.2
     <GroundRadiusMod>k__BackingField: 1.5
   stat: {fileID: 11400000, guid: 11b4ca19eb984324ea2bc283e81378a4, type: 2}
+  <TraceDta>k__BackingField:
+    <TracingMinDistance>k__BackingField: 5
+    <TracingMaxDistance>k__BackingField: 10
+    <TracingEndTime>k__BackingField: 3
+    <FrontRayOffsetXPos>k__BackingField: 0.5
 --- !u!54 &3914304452019150386
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -83,7 +88,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!136 &675287366416464541
 CapsuleCollider:
