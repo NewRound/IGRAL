@@ -27,10 +27,23 @@ public class Item : PickupObject
 
     public void OnUseItem()
     {
-        if(ItemType == ItemType.Consumable)
-        {
-            
-        }
+        if (ItemType != ItemType.Consumable) return;     
+        
+        // 아이템별로 스크립트 만들기???
+
+        // 체력회복
+        // 플레이어의 체력을 itemData의 health 비율 만큼 회복....
+
+        // 아드레날린
+        // 플레이어의 공격속도와 이동속도를 증가
+        // itemdata 의 attackdealy 는 감소 , speed 증가
+        // player.data.attackdelay -= itemdata.attackdelay
+        
+        // 슈류탄
+        // 전방에 투척, 일정 범위의 적들에게 데미지
+        // OnTriggerEnter?
+        // collider.other.getcomponent<T>.takeDamage(this.Itemdata.Attack)
+        
     }
 
 
