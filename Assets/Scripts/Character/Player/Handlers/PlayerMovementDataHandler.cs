@@ -18,5 +18,4 @@ public class PlayerMovementDataHandler : MovementDataHandler
 
         base.Look();
     }
-
 }

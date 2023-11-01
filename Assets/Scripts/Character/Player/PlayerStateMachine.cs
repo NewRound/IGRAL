@@ -68,6 +68,7 @@ public class PlayerStateMachine : StateMachine
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+        GroundDataHandler.CheckIsGrounded();
         CheckGround();
     }
 

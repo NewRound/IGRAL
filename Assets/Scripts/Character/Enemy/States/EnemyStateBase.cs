@@ -1,24 +1,24 @@
 public abstract class EnemyStateBase : StateBase
 {
-    protected EnemyStateMachine enemyStateMachine;
+    protected EnemyStateMachine stateMachine;
     protected EnemyController enemyController;
     protected MovementDataHandler movementDataHandler;
 
     public EnemyStateBase(EnemyStateMachine enemyStateMachine)
     {
-        this.enemyStateMachine = enemyStateMachine;
+        stateMachine = enemyStateMachine;
         enemyController = enemyStateMachine.EnemyController;
         movementDataHandler = enemyStateMachine.MovementDataHandler;
     }
 
     public override void UpdateState()
     {
-        enemyStateMachine.MovementDataHandler.UpdateSpeed();
-        enemyStateMachine.MovementDataHandler.Look();
+        stateMachine.MovementDataHandler.UpdateSpeed();
+        stateMachine.MovementDataHandler.Look();
     }
 
     public override void PhysicsUpdateState()
     {
-        enemyStateMachine.MovementDataHandler.Move();
+        stateMachine.MovementDataHandler.Move();
     }
 }
