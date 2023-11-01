@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyController : CharacterController
@@ -7,10 +8,16 @@ public class EnemyController : CharacterController
 
     public EnemyStatHandler StatHandler { get; private set; }
 
-    public event Action PatrolAction;
+    private EnemyStateMachine _stateMachine;
 
+    [field: SerializeField] public TraceData TraceData { get; private set; }
+
+    [field: SerializeField] public EnemyMovementData MovementData { get; private set; }
+    
     protected override void Awake()
     {
         StatHandler = new EnemyStatHandler(stat);
+        _stateMachine = new EnemyStateMachine(this);
     }
+    
 }

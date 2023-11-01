@@ -8,6 +8,9 @@ public abstract class PlayerController : CharacterController
 
     protected PlayerStateMachine StateMachine { get; set; }
 
+    [field: SerializeField] public MovementData MovementData { get; private set; }
+
+
     protected override void Awake()
     {
         base.Awake();

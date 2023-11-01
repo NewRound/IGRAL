@@ -16,5 +16,8 @@ public abstract class StateBase : IState
 
     public abstract void PhysicsUpdateState();
 
-    public abstract void OnDead();
+    public virtual void OnDead()
+    {
+
+    }
 }
