@@ -47,10 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae443cd5b8b34b48ab25699adf1b799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MovementData>k__BackingField:
-    <ModelTrans>k__BackingField: {fileID: 1371392166677880880}
-    <AcceleratingTime>k__BackingField: 1
-    <RotationSpeed>k__BackingField: 10
   <GroundData>k__BackingField:
     <GroundLayer>k__BackingField:
       serializedVersion: 2
@@ -58,11 +54,13 @@ MonoBehaviour:
     <GroundYOffset>k__BackingField: 0.2
     <GroundRadiusMod>k__BackingField: 1.5
   stat: {fileID: 11400000, guid: 11b4ca19eb984324ea2bc283e81378a4, type: 2}
-  <TraceDta>k__BackingField:
-    <TracingMinDistance>k__BackingField: 5
-    <TracingMaxDistance>k__BackingField: 10
-    <TracingEndTime>k__BackingField: 3
-    <FrontRayOffsetXPos>k__BackingField: 0.5
+  <MovementData>k__BackingField:
+    <ModelTrans>k__BackingField: {fileID: 1371392166677880880}
+    <AcceleratingTime>k__BackingField: 1
+    <RotationSpeed>k__BackingField: 2
+    <PatrolAnimationRatio>k__BackingField: 0.3
+    <CheckMilimeterSeconds>k__BackingField: 50
+    <WaitPatrolTime>k__BackingField: 1900
 --- !u!54 &3914304452019150386
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -177,11 +175,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: e77a8bc00d5c22a4cbbbc23772bc8d1c, type: 2}
+      objectReference: {fileID: 22100000, guid: 1dbd8d1a79fe3f847a11793b0342cc4a,
+        type: 2}
+    - target: {fileID: 95808264491268044, guid: 7126961e40fcaf34297e9547d17c2f70,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1564443653002224, guid: 7126961e40fcaf34297e9547d17c2f70,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 88858897810864663}
   m_SourcePrefab: {fileID: 100100000, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
 --- !u!4 &1371392166677880880 stripped
 Transform:
@@ -189,3 +197,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1375877319840167802}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1377424167949018250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1564443653002224, guid: 7126961e40fcaf34297e9547d17c2f70,
+    type: 3}
+  m_PrefabInstance: {fileID: 1375877319840167802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &88858897810864663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377424167949018250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08846d926da5b684ead7df64c8c79e23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <AnimationData>k__BackingField:
+    moveParameter: '@Move'
+    airParameter: '@Air'
+    attackParameter: '@Attack'
+    jumpParameter: Jump
+    fallParameter: Fall
+    RollParameter: Roll
+    speedRatioParameter: SpeedRatio
+  animationNormalizeEndedTime: 0.9

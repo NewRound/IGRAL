@@ -22,7 +22,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: a145f9bbb828567438b3b29532ad15ba,
+  m_Motion: {fileID: -203655887218126122, guid: 55c265a0ed35cd64f87a6968f15cef68,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -85,7 +85,7 @@ BlendTree:
   m_Name: Move
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: fbbdbe22f930c5340b63a2d9a5d96ee3,
+    m_Motion: {fileID: -203655887218126122, guid: 5acff6635566bce4ea826899f512bde7,
       type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
@@ -94,16 +94,16 @@ BlendTree:
     m_DirectBlendParameter: SpeedRatio
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: b237a90760958c14f80a42e5444e2e2d,
+    m_Motion: {fileID: -203655887218126122, guid: c40e6e2f9e8a71c4eaa27c5e60789aae,
       type: 3}
-    m_Threshold: 0.3
+    m_Threshold: 0.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 07e6c952ba509aa4ab5ae599c9d918ca,
+    m_Motion: {fileID: -203655887218126122, guid: 3b2635afd4f9f5d43be083d341cf1b1d,
       type: 3}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
@@ -226,43 +226,43 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: '@Air'
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: '@Attack'
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: SpeedRatio
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Jump
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Fall
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Roll
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -330,7 +330,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: deb912f19bbf7814689a39069e21a8ec,
+  m_Motion: {fileID: -203655887218126122, guid: 8ec60b65e4a337e4db97335de68edc29,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -494,7 +494,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 56f37148e67c6744aaebaf01089d89c3,
+  m_Motion: {fileID: -203655887218126122, guid: b632f9b62fd88f545ab898620bc15093,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 

@@ -39,10 +39,11 @@ public class PlayerStateMachine : StateMachine
 
         MovementDataHandler = new PlayerMovementDataHandler(
             InputController.MovementData,
-            _playerStatHandler.Data.SpeedMin,
-            _playerStatHandler.Data.SpeedMax,
             RollDataHandler,
-            inputController.Rigidbody);
+            inputController.Rigidbody,
+            _playerStatHandler.Data.SpeedMin,
+            _playerStatHandler.Data.SpeedMax
+            );
 
         JumpCountHandler = new JumpCountHandler(_playerStatHandler.Data.JumpingCountMax);
         GroundDataHandler = new GroundDataHandler(InputController.GroundData);
