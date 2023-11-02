@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using TMPro;
 using UnityEngine;
@@ -34,12 +35,17 @@ public class UISkillTree : CustomSingleton<UISkillTree>
     [SerializeField] private TextMeshProUGUI _selectedSkillName;
     [SerializeField] private TextMeshProUGUI _selectedSkillDescription;
     [SerializeField] private Button _levelUpButton;
+    
+    private Dictionary<string, int> _learnedSkills = new Dictionary<string, int>();
+    private SkillSO _selectedSkill;
 
     private void Awake()
     {
         // 테스트 스킬 포인트
-        _skillPoint = 5;
+        _skillPoint = SkillManager.Instance.skillPoint;
+        _learnedSkills = SkillManager.Instance.learnedSkills;
         _closeButton.onClick.AddListener(CloseSkillTree);
+        _levelUpButton.onClick.AddListener(OnLevelUpButton);
         _skillCategoryButtons = new Button[(int)SkillCategoryType.Max];
         _uISkillCategories = new UISkillCategory[(int)SkillCategoryType.Max];
         int i = 0;
@@ -49,7 +55,8 @@ public class UISkillTree : CustomSingleton<UISkillTree>
                 return;
 
             GameObject instantiate = Instantiate(_skillCategory, _skillCategoryTap);
-            instantiate.GetComponent<UISkillCategory>().SetSkillCategory(GetDescription.EnumToString(enumItem));
+            SkillDataSO skillDataSO = Resources.Load<SkillDataSO>($"Skill/{enumItem}");
+            instantiate.GetComponent<UISkillCategory>().SetSkillCategory(skillDataSO);
             _skillCategoryButtons[i] = instantiate.GetComponent<Button>();
             UISkillCategory uISkillCategory = instantiate.GetComponent<UISkillCategory>();
             _uISkillCategories[i] = uISkillCategory;
@@ -62,16 +69,15 @@ public class UISkillTree : CustomSingleton<UISkillTree>
 
     private void OnSkillCategory(int index)
     {
-        Debug.Log($"{index} 클릭");
         for(int i = 0; i < (int)SkillCategoryType.Max; i++)
         {
             if(index == i)
             {
-                _uISkillCategories[i].CategoryOpen();
+                _uISkillCategories[i].OpenCategory();
             }
             else
             {
-                _uISkillCategories[i].CategoryClose();
+                _uISkillCategories[i].CloseCategory();
             }
         }
     }
@@ -87,15 +93,17 @@ public class UISkillTree : CustomSingleton<UISkillTree>
         _skillTree.SetActive(false);
     }
 
-    public void UpdateSkillPoint(int add)
+    public void UpdateSkillPoint()
     {
-        _skillPoint += add;
+        SkillManager.Instance.skillPoint = _skillPoint;
+        _skillPointText.text = _skillPoint.ToString();
     }
 
 
     public void OpenSkillTree()
     {
         _skillTree.SetActive(true);
+        UpdateSkillPoint();
         //Time.timeScale = 0f;
     }
 
@@ -105,10 +113,40 @@ public class UISkillTree : CustomSingleton<UISkillTree>
         //Time.timeScale = 1f;
     }
 
-
-
-    private void SelectSkill()
+    public void SelectSkill(SkillSO skillSO)
     {
+        _selectedSkill = skillSO;
 
+        _selectedSkillName.text = skillSO.skillName;
+        _selectedSkillDescription.text = skillSO.skillDescription;
+
+        _levelUpButton.gameObject.SetActive(false);
+        if (!_learnedSkills.ContainsKey(skillSO.skillId))
+        {
+            string unlockConditionId = skillSO.unlockConditionId;
+
+            if (unlockConditionId == "" || _learnedSkills.ContainsKey(skillSO.unlockConditionId))
+            {
+                _levelUpButton.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    private void OnLevelUpButton()
+    {
+        if(_selectedSkill.skPointUse <= _skillPoint)
+        {
+            _skillPoint -= _selectedSkill.skPointUse;
+            if (!_learnedSkills.ContainsKey(_selectedSkill.skillId))
+            {
+                _learnedSkills.Add(_selectedSkill.skillId, 1);
+            }
+            else
+            {
+                _learnedSkills[_selectedSkill.skillId] += 1;
+            }
+        }
+        UpdateSkillPoint();
+        SelectSkill(_selectedSkill);
     }
 }

@@ -24,7 +24,7 @@ public class UIManager : CustomSingleton<UIManager>
     {
         foreach (UIType enumItem in Enum.GetValues(typeof(UIType)))
         {
-            GameObject ui = Resources.Load<GameObject>($"UI/{GetDescription.EnumToString(enumItem)}");
+            GameObject ui = Resources.Load<GameObject>($"UI/{enumItem}");
             GameObject instantiate = Instantiate(ui, Vector3.zero, Quaternion.identity);
             instantiate.transform.SetParent(this.transform);
         }
