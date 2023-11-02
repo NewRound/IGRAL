@@ -6,7 +6,7 @@ public class Area : MonoBehaviour
     [SerializeField] float size;
     [SerializeField] Vector3 position;
 
-    private List<EnemyMovementDataHandler> enemys = new List<EnemyMovementDataHandler>();
+    [SerializeField] public List<EnemyMovementDataHandler> enemys = new List<EnemyMovementDataHandler>();
     private bool PlayerInArea = false;
 
     private void Awake()
