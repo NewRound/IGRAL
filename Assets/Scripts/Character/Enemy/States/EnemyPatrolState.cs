@@ -9,23 +9,24 @@ public class EnemyPatrolState : EnemyMoveState
     public override void Enter()
     {
         base.Enter();
-        movementDataHandler.CheckArrivedTargetPos();
+        stateMachine.CheckArrived();
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
-        if (movementDataHandler.IsTracing)
+        if (stateMachine.IsTracing)
         {
             stateMachine.ChangeState(stateMachine.TraceState);
+            return;
         }
+
     }
 
     public override void Exit()
     {
         base.Exit();
-        movementDataHandler.LookPreDirectionRightAway();
+        stateMachine.LookPreDirectionRightAway();
+        stateMachine.StopCheckingArrived();
     }
-
-
 }

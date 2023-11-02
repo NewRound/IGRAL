@@ -15,9 +15,6 @@ public class PlayerStateMachine : StateMachine
     [field: Header("Roll")]
     public RollDataHandler RollDataHandler { get; private set; }
 
-    [field: Header("Move")]
-    public PlayerMovementDataHandler MovementDataHandler { get; private set; }
-
     [field: Header("Jump")]
     public JumpCountHandler JumpCountHandler { get; private set; }
 
@@ -33,20 +30,23 @@ public class PlayerStateMachine : StateMachine
 
         _playerStatHandler = InputController.StatHandler;
 
+        Rigid = InputController.Rigidbody;
+        ModelTrans = InputController.MovementData.ModelTrans;
+
         RollDataHandler = new RollDataHandler(
             _playerStatHandler.Data.RollingCoolTime,
             _playerStatHandler.Data.InvincibleTime);
 
-        MovementDataHandler = new PlayerMovementDataHandler(
-            InputController.MovementData,
-            RollDataHandler,
-            inputController.Rigidbody,
-            _playerStatHandler.Data.SpeedMin,
-            _playerStatHandler.Data.SpeedMax
-            );
+        SpeedCalculator = new SpeedCalculator(InputController.MovementData.AcceleratingTime);
+        RotationCalculator = new RotationCalculator(InputController.MovementData.RotationSpeed);
 
         JumpCountHandler = new JumpCountHandler(_playerStatHandler.Data.JumpingCountMax);
         GroundDataHandler = new GroundDataHandler(InputController.GroundData);
+
+        speedMin = InputController.StatHandler.Data.SpeedMin;
+        speedMax = InputController.StatHandler.Data.SpeedMax;
+
+        SetPreDirection(ModelTrans.forward);
 
         MoveState = new PlayerMoveState(this);
         JumpState = new PlayerJumpState(this);
@@ -87,5 +87,24 @@ public class PlayerStateMachine : StateMachine
                     JumpCountHandler.DecreaseJumpCount();
             }
         }
+    }
+
+    public override void Look()
+    {
+        if (RollDataHandler.IsRolling)
+            return;
+
+        if (Direction.x == 0)
+        {
+            LookPreDirectionRightAway();
+            return;
+        }
+
+        base.Look();
+    }
+
+    public override Quaternion GetRotation()
+    {
+        return RotationCalculator.CalculateRotation(ModelTrans.rotation, PreDirection);
     }
 }
