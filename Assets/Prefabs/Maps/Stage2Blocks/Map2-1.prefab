@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7849701137457136672}
   - component: {fileID: 7517006230722092901}
+  - component: {fileID: 801636105473034305}
   m_Layer: 0
   m_Name: Map2-1
   m_TagString: Untagged
@@ -99,6 +100,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalOfTiles: 16
   verticalOfTiles: 4
+--- !u!114 &801636105473034305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266464823987583687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4612ebde9350174cbd73f34955300c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnPoints: []
+  Enemys: []
 --- !u!1001 &93485801395970700
 PrefabInstance:
   m_ObjectHideFlags: 0
