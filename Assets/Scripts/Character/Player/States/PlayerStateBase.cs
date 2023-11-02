@@ -5,18 +5,17 @@ public abstract class PlayerStateBase : StateBase
     [Header("Player")]
     protected PlayerStateMachine stateMachine;
     protected InputController InputController;
-    protected PlayerMovementDataHandler movementDataHandler;
 
     [Header("Input")]
     protected PlayerInputAction inputActions;
+
+    
 
     public PlayerStateBase(PlayerStateMachine stateMachine)
     {
         this.stateMachine = stateMachine;
 
         InputController = stateMachine.InputController;
-
-        movementDataHandler = stateMachine.MovementDataHandler;
 
         animationController = InputController.AnimationController;
         animationsData = InputController.AnimationController.AnimationData;
@@ -26,18 +25,18 @@ public abstract class PlayerStateBase : StateBase
 
     public void OnMoveInput(Vector2 direction)
     {
-        stateMachine.MovementDataHandler.SetDirection(direction);
+        stateMachine.SetDirection(direction);
     }
 
     public override void UpdateState()
     {
-        stateMachine.MovementDataHandler.UpdateSpeed();
-        stateMachine.MovementDataHandler.Look();
+        stateMachine.UpdateSpeed();
+        stateMachine.Look();
     }
 
     public override void PhysicsUpdateState()
     {
-        stateMachine.MovementDataHandler.Move();
+        stateMachine.Move();
     }
 
     public override void OnDead()

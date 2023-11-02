@@ -8,7 +8,7 @@ public class EnemyController : CharacterController
 
     public EnemyStatHandler StatHandler { get; private set; }
 
-    private EnemyStateMachine _stateMachine;
+    public EnemyStateMachine StateMachine {get; private set; }
 
     [field: SerializeField] public EnemyMovementData MovementData { get; private set; }
     
@@ -16,22 +16,31 @@ public class EnemyController : CharacterController
     {
         base.Awake();
         StatHandler = new EnemyStatHandler(stat);
-        _stateMachine = new EnemyStateMachine(this);
+        StateMachine = new EnemyStateMachine(this);
     }
 
     private void Start()
     {
-        _stateMachine.Init();
+        StateMachine.Init();
     }
 
     private void Update()
     {
-        _stateMachine.Update();
+        StateMachine.Update();
     }
 
     private void FixedUpdate()
     {
-        _stateMachine.PhysicsUpdate();
+        StateMachine.PhysicsUpdate();
     }
 
+    public void ExcuteCoroutine(IEnumerator enumerator)
+    {
+        StartCoroutine(enumerator);
+    }
+
+    public void TerminateCoroutine(IEnumerator enumerator)
+    {
+        StopCoroutine(enumerator);
+    }
 }
