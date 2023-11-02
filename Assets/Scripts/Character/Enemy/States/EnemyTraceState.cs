@@ -17,7 +17,7 @@ public class EnemyTraceState : EnemyMoveState
     public override void UpdateState()
     {
         base.UpdateState();
-        if (movementDataHandler.IsTracing)
+        if (stateMachine.IsTracing)
         {
             //if (stateMachine.IsAttacking)
             //    stateMachine.ChangeState(stateMachine.AttackState);
