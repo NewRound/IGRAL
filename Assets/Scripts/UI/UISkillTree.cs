@@ -38,6 +38,7 @@ public class UISkillTree : CustomSingleton<UISkillTree>
     
     private Dictionary<string, int> _learnedSkills = new Dictionary<string, int>();
     private SkillSO _selectedSkill;
+    private int _selectedSkillCategoryIndex;
 
     private void Awake()
     {
@@ -69,7 +70,8 @@ public class UISkillTree : CustomSingleton<UISkillTree>
 
     private void OnSkillCategory(int index)
     {
-        for(int i = 0; i < (int)SkillCategoryType.Max; i++)
+        _selectedSkillCategoryIndex = index;
+        for (int i = 0; i < (int)SkillCategoryType.Max; i++)
         {
             if(index == i)
             {
@@ -148,5 +150,6 @@ public class UISkillTree : CustomSingleton<UISkillTree>
         }
         UpdateSkillPoint();
         SelectSkill(_selectedSkill);
+        _uISkillCategories[_selectedSkillCategoryIndex].UpdateCategory();
     }
 }

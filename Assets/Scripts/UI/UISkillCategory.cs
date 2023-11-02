@@ -4,6 +4,8 @@ using UnityEngine;
 public class UISkillCategory : MonoBehaviour
 {
     private SkillDataSO _skillDatas;
+    private UISkillSlot[] _slots;
+
     [Header("SkillCategory")]
     [SerializeField] private TextMeshProUGUI _skillCategoryName;
     [SerializeField] private GameObject _activate;
@@ -16,13 +18,17 @@ public class UISkillCategory : MonoBehaviour
     public void SetSkillCategory(SkillDataSO skillDataSO)
     {
         _skillDatas = skillDataSO;
-
+        _slots = new UISkillSlot[_skillDatas.skills.Length];
         _skillCategoryName.text = GetDescription.EnumToString(skillDataSO.skillCategoryType);
-
+        int i = 0;
         foreach (SkillSO skillSO in _skillDatas.skills)
         {
             GameObject instantiate = Instantiate(_uISkillSlot, _content);
-            instantiate.GetComponent<UISkillSlot>().InitSkillSlot(skillSO);
+            UISkillSlot uISkillSlot = instantiate.GetComponent<UISkillSlot>();
+            uISkillSlot.InitSkillSlot(skillSO);
+            int index = i;
+            _slots[index] = uISkillSlot;
+            i++;
         }
 
         CloseCategory();
@@ -38,5 +44,13 @@ public class UISkillCategory : MonoBehaviour
     {
         _activate.SetActive(false);
         skillTree.SetActive(false);
+    }
+
+    public void UpdateCategory()
+    {
+        foreach (UISkillSlot uISkillSlot in _slots)
+        {
+            uISkillSlot.UpdateBg();
+        }
     }
 }
