@@ -26,7 +26,6 @@ public class EnemyPatrolState : EnemyMoveState
     public override void Exit()
     {
         base.Exit();
-        stateMachine.LookPreDirectionRightAway();
         stateMachine.StopCheckingArrived();
     }
 }

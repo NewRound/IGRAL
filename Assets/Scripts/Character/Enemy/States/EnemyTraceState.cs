@@ -19,8 +19,15 @@ public class EnemyTraceState : EnemyMoveState
         base.UpdateState();
         if (stateMachine.IsTracing)
         {
-            //if (stateMachine.IsAttacking)
-            //    stateMachine.ChangeState(stateMachine.AttackState);
+            stateMachine.CheckAttackRange();
+
+            if (stateMachine.IsAttacking)
+            {
+                stateMachine.ChangeState(stateMachine.AttackState);
+                return;
+            }
+
+            stateMachine.TracePlayer();
         }
         else
         {

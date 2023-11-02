@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class AnimationController : MonoBehaviour
 {
@@ -42,9 +43,24 @@ public class AnimationController : MonoBehaviour
         }
     }
 
-    public bool CheckAnimationEnded(int animationParameterHash, int layerIndex = 0)
+    public bool CheckCurrentAnimationEnded(int animationParameterHash, int layerIndex = 0)
     {
         var stateInfo = _animator.GetCurrentAnimatorStateInfo(layerIndex);
+        if (stateInfo.shortNameHash.Equals(animationParameterHash))
+        {
+            if (stateInfo.normalizedTime >= animationNormalizeEndedTime)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public bool CheckNextAnimationEnded(int animationParameterHash, int layerIndex = 0)
+    {
+        var stateInfo = _animator.GetCurrentAnimatorStateInfo(layerIndex);
+        Debug.Log($"stateInfo : {stateInfo.shortNameHash}\n SpeedRatioParameterHash : {AnimationData.SpeedRatioParameterHash}\n MoveParameterHash : {AnimationData.MoveParameterHash}");
         if (stateInfo.shortNameHash.Equals(animationParameterHash))
         {
             if (stateInfo.normalizedTime >= animationNormalizeEndedTime)
