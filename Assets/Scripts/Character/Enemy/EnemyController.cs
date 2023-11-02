@@ -11,12 +11,17 @@ public class EnemyController : CharacterController
     public EnemyStateMachine StateMachine {get; private set; }
 
     [field: SerializeField] public EnemyMovementData MovementData { get; private set; }
-    
+
+    public EnemyAnimationController AnimationController { get; private set; }
+
     protected override void Awake()
     {
         base.Awake();
         StatHandler = new EnemyStatHandler(stat);
         StateMachine = new EnemyStateMachine(this);
+
+        AnimationController = GetComponentInChildren<EnemyAnimationController>();
+        AnimationController.Init();
     }
 
     private void Start()

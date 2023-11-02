@@ -8,6 +8,7 @@ public class EnemyAttackState : EnemyStateBase
 
     public override void Enter()
     {
+        animationController.PlayAnimation(animationsData.AttackSubStateParameterHash, true);
     }
 
     public override void UpdateState()
@@ -25,5 +26,6 @@ public class EnemyAttackState : EnemyStateBase
 
     public override void Exit()
     {
+        animationController.PlayAnimation(animationsData.AttackSubStateParameterHash, false);
     }
 }

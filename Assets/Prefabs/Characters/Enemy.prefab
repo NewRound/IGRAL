@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 1371392166677880880}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &647222575576027766
 MonoBehaviour:
@@ -188,7 +188,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1564443653002224, guid: 7126961e40fcaf34297e9547d17c2f70,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 88858897810864663}
+      addedObject: {fileID: 3987758911433361129}
   m_SourcePrefab: {fileID: 100100000, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
 --- !u!4 &1371392166677880880 stripped
 Transform:
@@ -202,7 +202,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1375877319840167802}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &88858897810864663
+--- !u!114 &3987758911433361129
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,15 +211,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1377424167949018250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08846d926da5b684ead7df64c8c79e23, type: 3}
+  m_Script: {fileID: 11500000, guid: fb44d62764ba1854582dc3942e717999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationNormalizeEndedTime: 0.9
   <AnimationData>k__BackingField:
     moveParameter: '@Move'
-    airParameter: '@Air'
     attackParameter: '@Attack'
-    jumpParameter: Jump
-    fallParameter: Fall
-    RollParameter: Roll
     speedRatioParameter: SpeedRatio
-  animationNormalizeEndedTime: 0.9

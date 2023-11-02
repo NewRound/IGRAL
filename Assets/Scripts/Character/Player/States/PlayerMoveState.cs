@@ -7,7 +7,7 @@
 
     public override void Enter()
     {
-        animationController.PlayAnimation(animationsData.MoveParameterHash, true);
+        animationController.PlayAnimation(animationsData.MoveSubStateParameterHash, true);
     }
 
     public override void UpdateState()
@@ -18,7 +18,7 @@
 
     public override void Exit()
     {
-        animationController.PlayAnimation(animationsData.MoveParameterHash, false);
+        animationController.PlayAnimation(animationsData.MoveSubStateParameterHash, false);
     }
 
     public override void OnDead()

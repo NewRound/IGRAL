@@ -41,8 +41,6 @@ public class EnemyStateMachine : StateMachine
 
         PatrolState = new EnemyPatrolState(this);
 
-        SetAreaData(9, 5);
-        
     }
 
     public override void Init()
@@ -76,6 +74,7 @@ public class EnemyStateMachine : StateMachine
     public void SetAreaData(float tileXPos, float tileLegth)
     {
         _tileXPos = tileXPos;
+        Debug.Log(tileLegth);
         _tileHalfLength = tileLegth * 0.5f;
         _tilehalfPowLength = _tileHalfLength * _tileHalfLength;
     }
@@ -141,6 +140,8 @@ public class EnemyStateMachine : StateMachine
     private void CalculateDirection()
     {
         float randomXPos = UnityEngine.Random.Range(_tileXPos - _tilehalfPowLength, _tileXPos + _tilehalfPowLength);
+
+        Debug.Log($"_tileXPos - _tileHalfLength {_tileXPos} - {_tileHalfLength}");
 
         randomXPos = Mathf.Clamp(randomXPos, _tileXPos - _tileHalfLength, _tileXPos + _tileHalfLength);
 
