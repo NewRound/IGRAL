@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 675287366416464541}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,7 +59,6 @@ MonoBehaviour:
     <AcceleratingTime>k__BackingField: 1
     <RotationSpeed>k__BackingField: 2
     <PatrolAnimationRatio>k__BackingField: 0.3
-    <CheckMilimeterSeconds>k__BackingField: 50
     <WaitPatrolTime>k__BackingField: 1900
 --- !u!54 &3914304452019150386
 Rigidbody:
