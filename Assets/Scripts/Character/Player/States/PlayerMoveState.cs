@@ -13,7 +13,7 @@
     public override void UpdateState()
     {
         base.UpdateState();
-        animationController.PlayAnimation(animationsData.SpeedRatioParameterHash, stateMachine.MovementDataHandler.GetSpeedRatio());
+        animationController.PlayAnimation(animationsData.SpeedRatioParameterHash, stateMachine.SpeedRatio);
     }
 
     public override void Exit()
