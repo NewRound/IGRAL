@@ -12,7 +12,7 @@
     public override void UpdateState()
     {
         base.UpdateState();
-        animationController.PlayAnimation(animationsData.SpeedRatioParameterHash, movementDataHandler.GetSpeedRatio());
+        animationController.PlayAnimation(animationsData.SpeedRatioParameterHash, stateMachine.SpeedRatio);
     }
 
     public override void Exit()

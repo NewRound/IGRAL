@@ -5,7 +5,7 @@ public class PlayerRollState : PlayerStateBase
     public PlayerRollState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
         InputController.RollAction += stateMachine.RollDataHandler.ResetCurrentRollingElapsedTime;
-        InputController.RollAction += stateMachine.MovementDataHandler.LookPreDirectionRightAway;
+        InputController.RollAction += stateMachine.LookPreDirectionRightAway;
     }
 
     public override void Enter()
@@ -48,14 +48,14 @@ public class PlayerRollState : PlayerStateBase
     {
         base.OnDead();
         InputController.RollAction -= stateMachine.RollDataHandler.ResetCurrentRollingElapsedTime;
-        InputController.RollAction -= stateMachine.MovementDataHandler.LookPreDirectionRightAway;
+        InputController.RollAction -= stateMachine.LookPreDirectionRightAway;
     }
 
     private void Roll()
     {
-        Vector3 velocity = movementDataHandler.Rigid.velocity;
-        velocity.x = movementDataHandler.PreDirection.x >= 0 ? InputController.StatHandler.Data.RollingForce : -InputController.StatHandler.Data.RollingForce;
-        movementDataHandler.Rigid.velocity = velocity;
+        Vector3 velocity = stateMachine.Rigid.velocity;
+        velocity.x = stateMachine.PreDirection.x >= 0 ? InputController.StatHandler.Data.RollingForce : -InputController.StatHandler.Data.RollingForce;
+        stateMachine.Rigid.velocity = velocity;
     }
 
 }

@@ -1,14 +1,14 @@
+using UnityEngine;
+
 public abstract class EnemyStateBase : StateBase
 {
     protected EnemyStateMachine stateMachine;
     protected EnemyController enemyController;
-    protected EnemyMovementDataHandler movementDataHandler;
 
     public EnemyStateBase(EnemyStateMachine enemyStateMachine)
     {
         stateMachine = enemyStateMachine;
         enemyController = enemyStateMachine.EnemyController;
-        movementDataHandler = enemyStateMachine.MovementDataHandler;
 
         animationController = enemyController.AnimationController;
         animationsData = enemyController.AnimationController.AnimationData;
@@ -16,12 +16,12 @@ public abstract class EnemyStateBase : StateBase
 
     public override void UpdateState()
     {
-        stateMachine.MovementDataHandler.UpdateSpeed();
-        stateMachine.MovementDataHandler.Look();
+        stateMachine.UpdateSpeed();
+        stateMachine.Look();
     }
 
     public override void PhysicsUpdateState()
     {
-        stateMachine.MovementDataHandler.Move();
+        stateMachine.Move();
     }
 }

@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7998517969135018991}
   - component: {fileID: 3260889113397781976}
   - component: {fileID: 3280511421725956783}
-  - component: {fileID: 3267410254615935885}
+  - component: {fileID: 724804131615974891}
+  - component: {fileID: 3259365911482137708}
   m_Layer: 0
   m_Name: NextStage
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3260889113397781976
 MeshFilter:
@@ -84,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3267410254615935885
-CapsuleCollider:
+--- !u!65 &724804131615974891
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,8 +103,21 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.52
-  m_Height: 3
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 3
+  m_Size: {x: 1.0000002, y: 2, z: 2.5817158}
+  m_Center: {x: 0.00000007947286, y: 0, z: -0.7908571}
+--- !u!114 &3259365911482137708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6071094074319484352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 845b674802a1cbc48bdda3da7dbbbc78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBePickupBy:
+    serializedVersion: 2
+    m_Bits: 128
