@@ -6,7 +6,7 @@ public class Area : MonoBehaviour
     [SerializeField] float size;
     [SerializeField] Vector3 position;
 
-    [SerializeField] public List<EnemyMovementDataHandler> enemys = new List<EnemyMovementDataHandler>();
+    [SerializeField] public List<EnemyController> enemys = new List<EnemyController>();
     private bool PlayerInArea = false;
 
     private void Awake()
@@ -19,7 +19,7 @@ public class Area : MonoBehaviour
     {
         if(other.gameObject.tag == "Enemy")
         {
-            enemys.Add(other.GetComponent<EnemyMovementDataHandler>());
+            enemys.Add(other.GetComponent<EnemyController>());
 
             // enemy ==> float, float <발판의 중앙 x 값,  길이의 -1 값.>
             SendAreaInfo(other.gameObject);
@@ -33,7 +33,7 @@ public class Area : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             PlayerInArea = true;
-            foreach(EnemyMovementDataHandler enemy in enemys)
+            foreach(EnemyController enemy in enemys)
             {
                 // enemy.SetIsTracing(true);
             }
@@ -44,13 +44,13 @@ public class Area : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            enemys.Remove(other.GetComponent<EnemyMovementDataHandler>());
+            enemys.Remove(other.GetComponent<EnemyController>());
         }
 
         if (other.gameObject.tag == "Player")
         {
             PlayerInArea = false;
-            foreach (EnemyMovementDataHandler enemy in enemys)
+            foreach (EnemyController enemy in enemys)
             {
                 // enemy.SetIsTracing(false);
             }
@@ -59,6 +59,8 @@ public class Area : MonoBehaviour
 
     private void SendAreaInfo(GameObject enemy)
     {
-        
+        Debug.Log(position.x);
+        Debug.Log(transform.position.x);
+        enemy.GetComponent<EnemyController>().StateMachine.SetAreaData(position.x, size);
     }
 }
