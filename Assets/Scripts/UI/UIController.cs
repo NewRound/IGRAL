@@ -13,11 +13,13 @@ public class UIController : CustomSingleton<UIController>
     [SerializeField] private Button _interaction;
     [SerializeField] private Button _pickup;
     [SerializeField] private Button _item;
+    [SerializeField] private Button _talk;
 
     [Header("GameObject")]
     [SerializeField] private GameObject _attackObj;
     [SerializeField] private GameObject _interactionObj;
     [SerializeField] private GameObject _pickupObj;
+    [SerializeField] private GameObject _talkObj;
 
     private Vector2 _direction = Vector2.zero;
     private Vector2 _temp = Vector2.zero;
@@ -37,7 +39,7 @@ public class UIController : CustomSingleton<UIController>
         _interaction.onClick.AddListener(OnInteractionButton);
         _pickup.onClick.AddListener(OnPickupButton);
         _item.onClick.AddListener(OnItemButton);
-
+        _talk.onClick.AddListener(OnTalkButton);
     }
 
     private void Start()
@@ -108,6 +110,11 @@ public class UIController : CustomSingleton<UIController>
     {
 
     }
+
+    private void OnTalkButton()
+    {
+
+    }
     #endregion 버튼 클릭 이벤트
 
     #region 버튼 스위칭
@@ -116,6 +123,7 @@ public class UIController : CustomSingleton<UIController>
         _attackObj.SetActive(true);
         _interactionObj.SetActive(false);
         _pickupObj.SetActive(false);
+        _talkObj.SetActive(false);
     }
 
     public void SwitchingInteraction()
@@ -123,13 +131,23 @@ public class UIController : CustomSingleton<UIController>
         _attackObj.SetActive(false); 
         _interactionObj.SetActive(true);
         _pickupObj.SetActive(false);
+        _talkObj.SetActive(false);
     }
 
     public void SwitchingPickup()
     {
         _attackObj.SetActive(false);
         _interactionObj.SetActive(false);
-        _pickupObj.SetActive(true); 
+        _pickupObj.SetActive(true);
+        _talkObj.SetActive(false);
+    }
+
+    public void SwitchingTalk()
+    {
+        _attackObj.SetActive(false);
+        _interactionObj.SetActive(false);
+        _pickupObj.SetActive(false); 
+        _talkObj.SetActive(true);
     }
     #endregion 버튼 스위칭
 }

@@ -9,6 +9,7 @@ public enum UIType
     , UIPlayerConditions
     , UIController
     , UIInventory
+    , UISkillTree
 
     , UIOption
     , UIBossCondition
@@ -47,7 +48,7 @@ public class UIManager : CustomSingleton<UIManager>
         int i = 0;
         foreach (UIType enumItem in Enum.GetValues(typeof(UIType)))
         {
-            if ((int)enumItem > 3)
+            if ((int)enumItem > 4)
             { 
                 var tr = transform.GetChild(i);
                 tr.gameObject.SetActive(false);
