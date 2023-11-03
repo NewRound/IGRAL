@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ItemArtifact : PickupArtifact,IItem
+public class ItemArtifact : PickupArtifact, IItem
 {
     [field: Header("# Artifact Info")]
     [field: SerializeField] public ItemType ItemType { get; private set; }
@@ -14,6 +14,7 @@ public class ItemArtifact : PickupArtifact,IItem
     [field: SerializeField] public int Price { get; private set; }
     [field: SerializeField] public int MaxStack { get; private set; }
     [field: SerializeField] public PlayerSO ItemData { get; private set; }
+    [field: SerializeField] public StatChange[] ItemDatas { get; private set; }
 
     public override void Pickup()
     {
