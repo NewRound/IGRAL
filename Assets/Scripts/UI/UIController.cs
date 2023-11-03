@@ -4,7 +4,8 @@ using UnityEngine.UI;
 public class UIController : CustomSingleton<UIController>
 {
     [Header("Button")]
-    [SerializeField] private VariableJoystick variableJoystick;
+    [SerializeField] private VariableJoystick _moveJoystick;
+    [SerializeField] private VariableJoystick _skillJoystick;
     [SerializeField] private Button _healing;
     [SerializeField] private Button _jump;
     [SerializeField] private Button _slide;
@@ -16,16 +17,23 @@ public class UIController : CustomSingleton<UIController>
     [SerializeField] private Button _talk;
 
     [Header("GameObject")]
+    [SerializeField] private GameObject _moveJoystickObj;
+    [SerializeField] private GameObject _skillJoystickObj;
     [SerializeField] private GameObject _attackObj;
     [SerializeField] private GameObject _interactionObj;
     [SerializeField] private GameObject _pickupObj;
     [SerializeField] private GameObject _talkObj;
+    [SerializeField] private SkillUse[] _skillUse;
 
     private Vector2 _direction = Vector2.zero;
     private Vector2 _temp = Vector2.zero;
+    private float _correctionValue;
+    public bool isSkill = false;
+    private bool _isMove = true;
 
     private InputController _inputController;
     private GameObject _interactiveObject;
+
 
     private void Awake()
     {
@@ -45,16 +53,66 @@ public class UIController : CustomSingleton<UIController>
     private void Start()
     {
         SwitchingAttack();
+        SkillManager.Instance.SetSkillUes(_skillUse);
     }
 
     private void FixedUpdate()
     {
-        _temp = Vector2.right * variableJoystick.Horizontal;
-        
-        if(_direction != _temp)
+        if (isSkill)
         {
-            _direction = _temp;
-            _inputController.CallMoveAction(_direction);
+            if(_isMove)
+            {
+                _moveJoystickObj.transform.localScale = Vector3.one * 0.5f;
+                _skillJoystickObj.transform.localScale = Vector3.one * 2;
+
+                foreach(SkillUse skillUse in _skillUse)
+                {
+                    skillUse.DisplaySkill();
+                }
+
+                _isMove = false;
+            }
+            
+            _inputController.CallMoveAction(Vector2.zero);
+            _temp = Vector2.zero;
+            _direction = Vector2.zero;
+
+            if (_skillJoystick.Horizontal == 0 || _skillJoystick.Vertical == 0)
+            {
+                isSkill = false;
+            }
+        }
+        else
+        {
+            if (!_isMove)
+            {
+                _moveJoystickObj.transform.localScale = Vector3.one;
+                _skillJoystickObj.transform.localScale = Vector3.one;
+                foreach (SkillUse skillUse in _skillUse)
+                {
+                    skillUse.NoDisplaySkill();
+                }
+                _skillJoystickObj.SetActive(false);
+                _skillJoystickObj.SetActive(true);
+                _isMove = true;
+            }
+            _correctionValue = _moveJoystick.Horizontal;
+            if (_correctionValue != 0)
+            {
+                _correctionValue = _correctionValue < 0 ? -1 : 1;
+            }
+            _temp = Vector2.right * _correctionValue;
+
+            if (_direction != _temp)
+            {
+                _direction = _temp;
+                _inputController.CallMoveAction(_direction);
+            }
+
+            if (_skillJoystick.Horizontal != 0 || _skillJoystick.Vertical != 0)
+            {
+                isSkill = true;
+            }
         }
     }
 

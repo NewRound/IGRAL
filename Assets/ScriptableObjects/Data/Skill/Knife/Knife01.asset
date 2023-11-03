@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12ff4ae1572540246816c3a4e9e742c5, type: 3}
   m_Name: Knife01
   m_EditorClassIdentifier: 
-  <skillId>k__BackingField: Knife01
+  <skillId>k__BackingField: Knife02
   <skillCategoryType>k__BackingField: 1
-  <skillName>k__BackingField: "\uCE7C\uB0A0"
-  <skillDescription>k__BackingField: "\uBCC0\uC774\uAE30\uC220 : \uCE7C\uB0A0 \uC0AC\uC6A9
-    \uAC00\uB2A5"
-  <icon>k__BackingField: {fileID: 21300000, guid: 7197282f719419f49b2db074231b5c3c,
+  <skillName>k__BackingField: "\uCE7C\uB0A0 \uAC15\uD654"
+  <skillDescription>k__BackingField: "\uCE7C\uB0A0 \uBCC0\uC774 \uACF5\uACA9\uB825
+    \uC99D\uAC00"
+  <icon>k__BackingField: {fileID: 21300000, guid: f31d4fb3f271bd341b916ccc753375ee,
     type: 3}
-  <unlockConditionId>k__BackingField: 
+  <unlockConditionId>k__BackingField: Knife01
   <skPointUse>k__BackingField: 1

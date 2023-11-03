@@ -37,14 +37,13 @@ public class UISkillTree : CustomSingleton<UISkillTree>
     [SerializeField] private Button _levelUpButton;
     
     private Dictionary<string, int> _learnedSkills = new Dictionary<string, int>();
+    private Dictionary<string, int> _baseSkills = new Dictionary<string, int>();
     private SkillSO _selectedSkill;
     private int _selectedSkillCategoryIndex;
 
     private void Awake()
     {
-        // 테스트 스킬 포인트
-        _skillPoint = SkillManager.Instance.skillPoint;
-        _learnedSkills = SkillManager.Instance.learnedSkills;
+
         _closeButton.onClick.AddListener(CloseSkillTree);
         _levelUpButton.onClick.AddListener(OnLevelUpButton);
         _skillCategoryButtons = new Button[(int)SkillCategoryType.Max];
@@ -93,6 +92,11 @@ public class UISkillTree : CustomSingleton<UISkillTree>
         
         _levelUpButton.gameObject.SetActive(false);
         _skillTree.SetActive(false);
+
+        // 테스트 스킬 포인트
+        _skillPoint = SkillManager.Instance.skillPoint;
+        _learnedSkills = SkillManager.Instance.learnedSkills;
+        _baseSkills = SkillManager.Instance.learnedSkills;
     }
 
     public void UpdateSkillPoint()
@@ -145,9 +149,15 @@ public class UISkillTree : CustomSingleton<UISkillTree>
             }
             else
             {
+                //TODO 스킬별 레벨이 있는 경우
                 _learnedSkills[_selectedSkill.skillId] += 1;
             }
         }
+        if(_baseSkills.ContainsKey(_selectedSkill.skillId))
+        {
+            SkillManager.Instance.UpdateLearn();
+        }
+
         UpdateSkillPoint();
         SelectSkill(_selectedSkill);
         _uISkillCategories[_selectedSkillCategoryIndex].UpdateCategory();
