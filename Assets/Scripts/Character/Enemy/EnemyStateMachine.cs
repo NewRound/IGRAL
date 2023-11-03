@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class EnemyStateMachine : StateMachine
 
     public EnemyPatrolState PatrolState { get; private set; }
     public EnemyTraceState TraceState { get; private set; }
+    public EnemyAttackState AttackState { get; private set; }
 
     public Transform PlayerTransform { get; private set; }
 
@@ -18,6 +20,7 @@ public class EnemyStateMachine : StateMachine
     private float _tilehalfPowLength;
     private float _targetXPos;
 
+    private IEnumerator _currentEnumerator;
 
     public EnemyStateMachine(EnemyController controller)
     {
@@ -38,8 +41,6 @@ public class EnemyStateMachine : StateMachine
 
         PatrolState = new EnemyPatrolState(this);
 
-        SetAreaData(9, 5);
-        
     }
 
     public override void Init()
@@ -53,12 +54,6 @@ public class EnemyStateMachine : StateMachine
 
         if (Direction == Vector2.zero)
             return;
-
-        if (IsTracing)
-        {
-            SpeedRatio = SpeedRatio > EnemyController.MovementData.PatrolAnimationRatio ?
-                EnemyController.MovementData.PatrolAnimationRatio : SpeedRatio;
-        }
     }
 
     public override void Look()
@@ -79,6 +74,7 @@ public class EnemyStateMachine : StateMachine
     public void SetAreaData(float tileXPos, float tileLegth)
     {
         _tileXPos = tileXPos;
+        Debug.Log(tileLegth);
         _tileHalfLength = tileLegth * 0.5f;
         _tilehalfPowLength = _tileHalfLength * _tileHalfLength;
     }
@@ -90,12 +86,32 @@ public class EnemyStateMachine : StateMachine
 
     public void CheckArrived()
     {
-        EnemyController.ExcuteCoroutine(CheckArrivedTargetPos());
+        _currentEnumerator = CheckArrivedTargetPos();
+        EnemyController.ExcuteCoroutine(_currentEnumerator);
     }
 
     public void StopCheckingArrived()
     {
-        EnemyController.TerminateCoroutine(CheckArrivedTargetPos());
+        EnemyController.TerminateCoroutine(_currentEnumerator);
+    }
+
+    public void TracePlayer()
+    {
+        if (EnemyController.transform.position.x <= _tileXPos - _tileHalfLength ||
+            EnemyController.transform.position.x >= _tileXPos + _tileHalfLength)
+        {
+            return;
+        }
+
+        Vector3 direction = (EnemyController.transform.position - PlayerTransform.position).normalized;
+        SetDirection(direction.x);
+    }
+
+    public void CheckAttackRange()
+    {
+        float distance = Vector3.Distance(EnemyController.transform.position, PlayerTransform.position);
+
+        IsAttacking = EnemyController.StatHandler.Data.AttackDistance <= distance;
     }
 
     private IEnumerator CheckArrivedTargetPos()
@@ -111,21 +127,21 @@ public class EnemyStateMachine : StateMachine
         {
             isFar = Direction.x < 0 ?
             _targetXPos <= EnemyController.transform.position.x : _targetXPos >= EnemyController.transform.position.x;
-            Debug.Log($"_targetXPos : {_targetXPos}\nEnemyController.transform.position.x : {EnemyController.transform.position.x}");
             yield return null;
         }
 
         SetDirection(Vector2.zero);
 
-        if (EnemyController.AnimationController.CheckAnimationEnded(EnemyController.AnimationController.AnimationData.SpeedRatioParameterHash, 0))
-        {
+        yield return new WaitForSeconds(EnemyController.MovementData.WaitPatrolTime);
 
-        }
+        CheckArrived();
     }
 
     private void CalculateDirection()
     {
         float randomXPos = UnityEngine.Random.Range(_tileXPos - _tilehalfPowLength, _tileXPos + _tilehalfPowLength);
+
+        Debug.Log($"_tileXPos - _tileHalfLength {_tileXPos} - {_tileHalfLength}");
 
         randomXPos = Mathf.Clamp(randomXPos, _tileXPos - _tileHalfLength, _tileXPos + _tileHalfLength);
 
@@ -137,4 +153,6 @@ public class EnemyStateMachine : StateMachine
 
         SetDirection(directionX);
     }
+
+    
 }

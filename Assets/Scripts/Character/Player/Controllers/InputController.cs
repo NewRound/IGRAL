@@ -38,6 +38,7 @@ public class InputController : PlayerController
         InputActions.Player.Move.canceled += OnMove;
         InputActions.Player.Jump.started += OnJump;
         InputActions.Player.Roll.started += OnRoll;
+        InputActions.Player.Attack.started += OnAttack;
     }
 
     private void OnDisable()
@@ -46,13 +47,13 @@ public class InputController : PlayerController
         InputActions.Player.Move.canceled -= OnMove;
         InputActions.Player.Jump.started -= OnJump;
         InputActions.Player.Roll.started -= OnRoll;
+        InputActions.Player.Attack.started -= OnAttack;
         InputActions.Disable();
     }
 
     protected override void Update()
     {
         base.Update();
-
 #if UNITY_EDITOR
         if (IsDebug)
             ReadMoveInput();

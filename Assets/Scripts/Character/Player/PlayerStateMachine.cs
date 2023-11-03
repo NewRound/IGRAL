@@ -10,6 +10,7 @@ public class PlayerStateMachine : StateMachine
     public PlayerJumpState JumpState { get; private set; }
     public PlayerFallState FallState { get; private set; }
     public PlayerRollState RollState { get; private set; }
+    public PlayerAttackState AttackState { get; private set; }
 
 
     [field: Header("Roll")]
@@ -46,12 +47,14 @@ public class PlayerStateMachine : StateMachine
         speedMin = InputController.StatHandler.Data.SpeedMin;
         speedMax = InputController.StatHandler.Data.SpeedMax;
 
-        SetPreDirection(ModelTrans.forward);
+        SetPreDirection(Vector3.right);
 
         MoveState = new PlayerMoveState(this);
         JumpState = new PlayerJumpState(this);
         FallState = new PlayerFallState(this);
         RollState = new PlayerRollState(this);
+        AttackState = new PlayerAttackState(this);
+
     }
 
     public override void Init()
@@ -64,6 +67,7 @@ public class PlayerStateMachine : StateMachine
     {
         base.Update();
         RollDataHandler.CalculateCoolTime();
+
     }
 
     public override void PhysicsUpdate()
@@ -106,5 +110,11 @@ public class PlayerStateMachine : StateMachine
     public override Quaternion GetRotation()
     {
         return RotationCalculator.CalculateRotation(ModelTrans.rotation, PreDirection);
+    }
+
+    public void OnAttackInput()
+    {
+        if (currentState != AttackState)
+            ChangeState(AttackState);
     }
 }
