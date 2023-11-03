@@ -1,11 +1,13 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public abstract class AnimationController : MonoBehaviour
+public class AnimationController : MonoBehaviour
 {
     protected Animator animator;
 
     [field: SerializeField] public float animationNormalizeEndedTime = 0.9f;
+
 
     public virtual void Init()
     {
@@ -31,4 +33,20 @@ public abstract class AnimationController : MonoBehaviour
     {
         animator.SetFloat(animationParameterHash, floatValue);
     }
+
+    public bool CheckCurrentClipEnded(AttackType attackType, int layerIndex = 0)
+    {
+        var clipInfo = animator.GetCurrentAnimatorClipInfo(layerIndex);
+        if (clipInfo[0].clip.name.Equals(attackType.ToString()))
+        {
+            var stateInfo = animator.GetCurrentAnimatorStateInfo(layerIndex);
+
+            if (stateInfo.normalizedTime >= animationNormalizeEndedTime)
+                return true;
+        }
+
+        return false;
+    }
+
+    
 }

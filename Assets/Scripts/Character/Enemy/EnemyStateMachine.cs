@@ -37,9 +37,11 @@ public class EnemyStateMachine : StateMachine
         ModelTrans.forward = Vector3.right;
         SetPreDirection(ModelTrans.forward);
 
-        //PlayerTransform = GameManager.Instance.player.transform;
+        PlayerTransform = GameManager.Instance.player.transform;
 
         PatrolState = new EnemyPatrolState(this);
+        TraceState = new EnemyTraceState(this);
+        AttackState = new EnemyAttackState(this);
 
     }
 
@@ -97,13 +99,17 @@ public class EnemyStateMachine : StateMachine
 
     public void TracePlayer()
     {
-        if (EnemyController.transform.position.x <= _tileXPos - _tileHalfLength ||
-            EnemyController.transform.position.x >= _tileXPos + _tileHalfLength)
+        Vector3 direction = (PlayerTransform.position - EnemyController.transform.position).normalized;
+
+        if (EnemyController.transform.position.x <= _tileXPos - _tileHalfLength && direction.x < 0)
+        {
+            return;
+        }
+        else if (EnemyController.transform.position.x >= _tileXPos + _tileHalfLength && direction.x > 0)
         {
             return;
         }
 
-        Vector3 direction = (EnemyController.transform.position - PlayerTransform.position).normalized;
         SetDirection(direction.x);
     }
 
@@ -111,7 +117,7 @@ public class EnemyStateMachine : StateMachine
     {
         float distance = Vector3.Distance(EnemyController.transform.position, PlayerTransform.position);
 
-        IsAttacking = EnemyController.StatHandler.Data.AttackDistance <= distance;
+        IsAttacking = EnemyController.StatHandler.Data.AttackDistance >= distance;
     }
 
     private IEnumerator CheckArrivedTargetPos()
@@ -141,8 +147,6 @@ public class EnemyStateMachine : StateMachine
     {
         float randomXPos = UnityEngine.Random.Range(_tileXPos - _tilehalfPowLength, _tileXPos + _tilehalfPowLength);
 
-        Debug.Log($"_tileXPos - _tileHalfLength {_tileXPos} - {_tileHalfLength}");
-
         randomXPos = Mathf.Clamp(randomXPos, _tileXPos - _tileHalfLength, _tileXPos + _tileHalfLength);
 
         bool isLeft = EnemyController.transform.position.x > randomXPos;
@@ -153,6 +157,4 @@ public class EnemyStateMachine : StateMachine
 
         SetDirection(directionX);
     }
-
-    
 }
