@@ -365,7 +365,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &245758306
 MonoBehaviour:
@@ -493,89 +493,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &871997424
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 647222575576027766, guid: 7a8779368e804e44da671db7ba74c0e3,
-        type: 3}
-      propertyPath: <MovementData>k__BackingField.<WaitPatrolTime>k__BackingField
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 7a8779368e804e44da671db7ba74c0e3,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 7a8779368e804e44da671db7ba74c0e3,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 7a8779368e804e44da671db7ba74c0e3,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 7a8779368e804e44da671db7ba74c0e3,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 7a8779368e804e44da671db7ba74c0e3,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 7a8779368e804e44da671db7ba74c0e3,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 7a8779368e804e44da671db7ba74c0e3,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 7a8779368e804e44da671db7ba74c0e3,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 7a8779368e804e44da671db7ba74c0e3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 7a8779368e804e44da671db7ba74c0e3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 7a8779368e804e44da671db7ba74c0e3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3395318498827927278, guid: 7a8779368e804e44da671db7ba74c0e3,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 3395318498827927278, guid: 7a8779368e804e44da671db7ba74c0e3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7a8779368e804e44da671db7ba74c0e3, type: 3}
 --- !u!1 &1215487046
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,7 +681,7 @@ Transform:
   m_Children:
   - {fileID: 2000743334}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!1001 &1474228832
 PrefabInstance:
@@ -1004,6 +921,11 @@ PrefabInstance:
     - target: {fileID: 3756644618318297898, guid: 74d295b72c3d8df49b76dc54ee6588c0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065507400657585913, guid: 74d295b72c3d8df49b76dc54ee6588c0,
+        type: 3}
+      propertyPath: <IsDebug>k__BackingField
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

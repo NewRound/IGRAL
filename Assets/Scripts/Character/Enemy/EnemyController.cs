@@ -17,11 +17,13 @@ public class EnemyController : CharacterController
     protected override void Awake()
     {
         base.Awake();
-        StatHandler = new EnemyStatHandler(stat);
-        StateMachine = new EnemyStateMachine(this);
 
         AnimationController = GetComponentInChildren<EnemyAnimationController>();
         AnimationController.Init();
+
+        StatHandler = new EnemyStatHandler(stat);
+        StateMachine = new EnemyStateMachine(this);
+
     }
 
     private void Start()
