@@ -15,28 +15,30 @@ public class Weapon : MonoBehaviour, IBattle
 
         if (other.CompareTag("Player"))
         {
-            targetSO = other.GetComponent<PlayerController>().StatHandler.Data;
+            PlayerStatHandler statHandler = other.GetComponentInParent<PlayerController>().StatHandler;
+            targetSO = statHandler.Data;
+            damageable = statHandler;
 
             if (_weaponSO == null)
             {
-                EnemyStatHandler statHandler = GetComponentInParent<EnemyController>().StatHandler;
-                damageable = statHandler;
-                _weaponSO = statHandler.Data;
+                _weaponSO = GetComponentInParent<EnemyController>().StatHandler.Data;
             }
+
+            Attack(_weaponSO, targetSO, damageable);
         }
         else if (other.CompareTag("Enemy"))
         {
-            targetSO = other.GetComponent<EnemyController>().StatHandler.Data;
-
+            EnemyStatHandler statHandler = other.GetComponentInParent<EnemyController>().StatHandler;
+            targetSO = statHandler.Data;
+            damageable = statHandler;
+            
             if (_weaponSO == null)
             {
-                PlayerStatHandler statHandler = GetComponentInParent<PlayerController>().StatHandler;
-                damageable = statHandler;
-                _weaponSO = statHandler.Data;
+                _weaponSO = GetComponentInParent<PlayerController>().StatHandler.Data;
             }
+            
+            Attack(_weaponSO, targetSO, damageable);
         }
-
-        Attack(_weaponSO, targetSO, damageable);
     }
 
     public void Attack(EntitySO attacker, HealthSO target, IDamageable targetDamageable)

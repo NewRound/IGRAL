@@ -82,12 +82,15 @@ public class InputController : PlayerController
 
     public void CallMoveAction(Vector2 inputVec)
     {
+        if (StateMachine.CurrentState == StateMachine.AttackState)
+            return;
+
         MoveAction?.Invoke(inputVec);
     }
 
     public void CallJumpAction()
     {
-        if (StateMachine.RollDataHandler.IsRolling)
+        if (StateMachine.RollDataHandler.IsRolling || StateMachine.CurrentState == StateMachine.AttackState)
             return;
 
         StateMachine.ChangeState(StateMachine.JumpState);
@@ -96,7 +99,7 @@ public class InputController : PlayerController
 
     public void CallRollAction()
     {
-        if (!StateMachine.RollDataHandler.CanRoll)
+        if (!StateMachine.RollDataHandler.CanRoll || StateMachine.CurrentState == StateMachine.AttackState)
             return;
 
         StateMachine.ChangeState(StateMachine.RollState);

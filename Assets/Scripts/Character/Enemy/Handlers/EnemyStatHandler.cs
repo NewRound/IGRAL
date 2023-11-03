@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class EnemyStatHandler : IDamageable
 {
     public EnemySO Data { get; private set; }
@@ -10,5 +12,6 @@ public class EnemyStatHandler : IDamageable
     public void Damaged(float damage)
     {
         Data.Health -= damage;
+        Debug.Log(damage);
     }
 }

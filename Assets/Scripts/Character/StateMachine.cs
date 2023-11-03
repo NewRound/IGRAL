@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class StateMachine
 {
-    protected IState currentState;
+    public IState CurrentState { get; protected set; }
 
     public Vector3 PreDirection { get; private set; }
     public Vector2 Direction { get; private set; }
@@ -25,19 +25,19 @@ public abstract class StateMachine
 
     public void ChangeState(IState newState)
     {
-        currentState?.Exit();
-        currentState = newState;
-        currentState?.Enter();
+        CurrentState?.Exit();
+        CurrentState = newState;
+        CurrentState?.Enter();
     }
 
     public virtual void Update()
     {
-        currentState.UpdateState();
+        CurrentState.UpdateState();
     }
 
     public virtual void PhysicsUpdate()
     {
-        currentState.PhysicsUpdateState();
+        CurrentState.PhysicsUpdateState();
     }
 
     public virtual void Look()

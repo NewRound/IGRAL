@@ -54,7 +54,6 @@ public class PlayerAnimationController : AnimationController
     public bool CheckCurrentClipEqual(AttackType attackType, int layerIndex = 0)
     {
         var clipInfo = animator.GetCurrentAnimatorClipInfo(layerIndex);
-        Debug.Log($"clipInfo[0].clip.name : {clipInfo[0].clip.name}\nattackType : {attackType}");
 
         if (clipInfo[0].clip.name.Equals(attackType.ToString()))
             return true;
