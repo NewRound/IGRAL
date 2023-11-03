@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyAttackState : EnemyStateBase
@@ -28,4 +29,6 @@ public class EnemyAttackState : EnemyStateBase
     {
         animationController.PlayAnimation(animationsData.AttackSubStateParameterHash, false);
     }
+
+    
 }

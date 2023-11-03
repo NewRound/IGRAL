@@ -50,20 +50,6 @@ public class PlayerAnimationController : AnimationController
 
         return false;
     }
-
-    public bool CheckCurrentClipEnded(AttackType attackType, int layerIndex = 0)
-    {
-        var clipInfo = animator.GetCurrentAnimatorClipInfo(layerIndex);
-        if (clipInfo[0].clip.name.Equals(attackType.ToString()))
-        {
-            var stateInfo = animator.GetCurrentAnimatorStateInfo(layerIndex);
-
-            if (stateInfo.normalizedTime >= animationNormalizeEndedTime)
-                return true;
-        }
-
-        return false;
-    }
     
     public bool CheckCurrentClipEqual(AttackType attackType, int layerIndex = 0)
     {

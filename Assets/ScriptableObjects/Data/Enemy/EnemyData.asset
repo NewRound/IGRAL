@@ -12,22 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96f489ea0b238e740a7f1f0abc1fabe1, type: 3}
   m_Name: EnemyData
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: 0
-  <HealthRegen>k__BackingField: 0
+  <Health>k__BackingField: 20
+  <HealthRegen>k__BackingField: 0.1
   <Defense>k__BackingField: 0
   <EvasionProbability>k__BackingField: 0
   <IsInvincible>k__BackingField: 0
   <InvincibleTime>k__BackingField: 0
-  <Attack>k__BackingField: 0
+  <Attack>k__BackingField: 2
   <AttackDelay>k__BackingField: 0
   <AttackRange>k__BackingField: 0
   <CriticalProbability>k__BackingField: 0
   <CriticalMod>k__BackingField: 0
   <SpeedMin>k__BackingField: 0.5
   <SpeedMax>k__BackingField: 2
-  <KnockbackPower>k__BackingField: 0
-  <KnockbackTime>k__BackingField: 0
+  <KnockbackPower>k__BackingField: 1
   <IsRanged>k__BackingField: 0
   <PreAttackDelay>k__BackingField: 0
-  <TraceRange>k__BackingField: 0
   <IsFlying>k__BackingField: 0
+  <AttackDistance>k__BackingField: 1
