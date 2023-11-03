@@ -6214,6 +6214,7 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 256
+  _followPos: {fileID: 5224004157000911447}
 --- !u!95 &3062654362993827054
 Animator:
   serializedVersion: 5

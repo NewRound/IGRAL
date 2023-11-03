@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
 
 public class Drone : MonoBehaviour
@@ -16,8 +17,10 @@ public class Drone : MonoBehaviour
     [Header("# RayCast")]
     [SerializeField] private float rayAngle;
     [SerializeField] private int rayCount;
-    [SerializeField] private LayerMask _enemyLayer;
+    [SerializeField] private LayerMask _enemyLayer;    
 
+    [SerializeField] private Transform _followPos;
+    
     private void OnEnable()
     {
         // 활성화 될 때 리스트 초기화
@@ -38,6 +41,8 @@ public class Drone : MonoBehaviour
 
     private void Update()
     {
+        transform.rotation = _followPos.rotation;
+
         _attackTimer += Time.deltaTime;
 
         if (_attackTimer > _attackDelay)
