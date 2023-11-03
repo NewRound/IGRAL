@@ -5,6 +5,8 @@ public abstract class PlayerStateBase : StateBase
     [Header("Player")]
     protected PlayerStateMachine stateMachine;
     protected InputController InputController;
+    protected PlayerAnimationController animationController;
+    protected PlayeranimationsData animationsData;
 
     [Header("Input")]
     protected PlayerInputAction inputActions;

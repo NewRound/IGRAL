@@ -10,11 +10,14 @@ public abstract class PlayerController : CharacterController
 
     [field: SerializeField] public MovementData MovementData { get; private set; }
 
+    public PlayerAnimationController AnimationController { get; private set; }
 
     protected override void Awake()
     {
         base.Awake();
         StatHandler = new PlayerStatHandler(stat);
+        AnimationController = GetComponentInChildren<PlayerAnimationController>();
+        AnimationController.Init();
     }
 
     protected void Start()

@@ -514,7 +514,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1513220350763136, guid: 325c2a72f558d4e419ec4f9ea74e54f5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9174234265651659216}
+      addedObject: {fileID: 2734047525383211111}
   m_SourcePrefab: {fileID: 100100000, guid: 325c2a72f558d4e419ec4f9ea74e54f5, type: 3}
 --- !u!4 &5615216039505202279 stripped
 Transform:
@@ -528,7 +528,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5619891064692260819}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9174234265651659216
+--- !u!114 &2734047525383211111
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -537,7 +537,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5618448762845716307}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08846d926da5b684ead7df64c8c79e23, type: 3}
+  m_Script: {fileID: 11500000, guid: 39e3f67d558c95f45af9ce47e53d8aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <AnimationData>k__BackingField:
@@ -548,4 +548,5 @@ MonoBehaviour:
     fallParameter: Fall
     RollParameter: Roll
     speedRatioParameter: SpeedRatio
+    attackNameHash: Attack
   animationNormalizeEndedTime: 0.9
