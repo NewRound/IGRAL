@@ -29,7 +29,7 @@ public enum StatsCategory
 
 public class ItemSlot
 {
-    public Item item;
+    public IItem item;
 }
 
 
@@ -382,7 +382,7 @@ public class UIInventory : CustomSingleton<UIInventory>
         _selectedItemStatNames.text = string.Empty;
         _selectedItemStatValues.text = string.Empty;
 
-        PlayerSO itemData = selectedItem.item.itemData;
+        PlayerSO itemData = selectedItem.item.ItemData;
 
         foreach (StatsCategory enumItem in Enum.GetValues(typeof(StatsCategory)))
         {
@@ -415,7 +415,7 @@ public class UIInventory : CustomSingleton<UIInventory>
         _selectedItemStatNames.text = string.Empty;
         _selectedItemStatValues.text = string.Empty;
 
-        PlayerSO itemData = selectedItem.item.itemData;
+        PlayerSO itemData = selectedItem.item.ItemData;
         if(itemData != null)
         {
             foreach (StatsCategory enumItem in Enum.GetValues(typeof(StatsCategory)))
@@ -435,7 +435,7 @@ public class UIInventory : CustomSingleton<UIInventory>
     #endregion 아이템 슬롯 클릭
 
     #region 아이템 슬롯 업데이트
-    public void AddItem(Item item)
+    public void AddItem(IItem item)
     {
 
 
@@ -453,7 +453,7 @@ public class UIInventory : CustomSingleton<UIInventory>
         ThrowItem(item);
     }
 
-    public void AddEquipItem(Item item)
+    public void AddEquipItem(IItem item)
     {
         ItemSlot emptySlot = GetEquipEmptySlot();
 
@@ -569,14 +569,14 @@ public class UIInventory : CustomSingleton<UIInventory>
     #endregion 버튼
 
     #region 아이템 슬롯 부족
-    private void ReturnItem(Item item)
+    private void ReturnItem(IItem item)
     {
         Debug.Log("장착칸이 가득 참");
         AddItem(item);
         //Instantiate(item.dropPrefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360f));
     }
 
-    private void ThrowItem(Item item)
+    private void ThrowItem(IItem item)
     {
         Debug.Log("인벤이 가득 참");
         //Instantiate(item.dropPrefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360f));

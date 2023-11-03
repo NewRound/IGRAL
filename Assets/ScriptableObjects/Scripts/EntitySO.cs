@@ -12,7 +12,6 @@ public class EntitySO : HealthSO
     [field: SerializeField] public float SpeedMin { get; set; }
     [field: SerializeField] public float SpeedMax { get; set; }
     [field: SerializeField] public float KnockbackPower { get; set; }
-    [field: SerializeField] public float KnockbackTime { get; set; }
     [field: SerializeField] public bool IsRanged { get; set; }
 
 }

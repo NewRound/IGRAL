@@ -1,4 +1,4 @@
-public class PlayerStatHandler : CharacterStatHandler
+public class PlayerStatHandler : IDamageable
 {
     public PlayerSO Data { get; private set; }
 
@@ -6,4 +6,10 @@ public class PlayerStatHandler : CharacterStatHandler
     {
         Data = data;
     }
+
+    public void Damaged(float damage)
+    {
+        Data.Health -= damage;
+    }
+
 }

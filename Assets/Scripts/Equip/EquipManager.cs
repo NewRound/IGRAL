@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+
+
 public class EquipManager : CustomSingleton<EquipManager>
 {
-    [SerializeField] private GameObject backWeaponPos;
+    /*[SerializeField] private GameObject backWeaponPos;
     [SerializeField] private GameObject HandWeaponPos;
 
     [SerializeField] private EquipMentStats baseStats;
@@ -101,5 +103,5 @@ public class EquipManager : CustomSingleton<EquipManager>
     {
         backWeaponPos.SetActive(false);
         HandWeaponPos.SetActive(true);
-    }
+    }*/
 }

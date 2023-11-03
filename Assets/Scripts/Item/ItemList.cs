@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class ItemList : MonoBehaviour
 {
-    [SerializeField] private Item[] itemArray;
+    [SerializeField] private IItem[] itemArray;
 
-    public Item[] GetItemArray()
+    public IItem[] GetItemArray()
     {
         return itemArray;
     }

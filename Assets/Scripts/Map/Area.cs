@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Area : MonoBehaviour
@@ -55,6 +56,7 @@ public class Area : MonoBehaviour
     {
         if(other.gameObject.tag == "Enemy")
         {
+
             enemys.Add(other.GetComponent<EnemyController>());
 
             // enemy ==> float, float <발판의 중앙 x 값,  길이의 -1 값.>
@@ -62,7 +64,7 @@ public class Area : MonoBehaviour
 
             if(PlayerInArea)
             {
-                // enemy.SetIsTracing(true);
+                enemys[enemys.Count - 1].StateMachine.SetIsTracing(true);
             }
         }
 
@@ -71,7 +73,7 @@ public class Area : MonoBehaviour
             PlayerInArea = true;
             foreach(EnemyController enemy in enemys)
             {
-                // enemy.SetIsTracing(true);
+                enemy.StateMachine.SetIsTracing(true);
             }
         }
     }
@@ -88,7 +90,7 @@ public class Area : MonoBehaviour
             PlayerInArea = false;
             foreach (EnemyController enemy in enemys)
             {
-                // enemy.SetIsTracing(false);
+                enemy.StateMachine.SetIsTracing(false);
             }
         }
     }

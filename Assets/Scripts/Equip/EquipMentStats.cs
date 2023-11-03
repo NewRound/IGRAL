@@ -1,12 +1,12 @@
-
 using System;
 
 public enum StatChangeType
 {
-    Add,
-    Reduce,
-    Multiple,
-    Override
+    Add
+    , Subtract
+    , Multiple
+    , Division
+    , Override
 }
 
 [Serializable]
