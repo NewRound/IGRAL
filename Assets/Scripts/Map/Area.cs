@@ -3,16 +3,52 @@ using UnityEngine;
 
 public class Area : MonoBehaviour
 {
-    [SerializeField] float size;
-    [SerializeField] Vector3 position;
+    [Header("EnemyCount")]
+    [SerializeField] public int enemyCount;
+
+    [Header("AreaData")]
+    [SerializeField] public float size;
+    [SerializeField] public Vector3 position;
 
     [SerializeField] public List<EnemyController> enemys = new List<EnemyController>();
+    private EnemyGenerator enemyGenerator;
     private bool PlayerInArea = false;
 
     private void Awake()
     {
+        enemyGenerator = this.GetComponentInParent<EnemyGenerator>();
+    }
+
+    private void Start()
+    {
         position = transform.position;
         size = (MapGenerator.Instance.tileSize * size) - 1;
+
+        if(enemyCount > 0)
+        {
+            if (enemyCount == 1)
+            {
+                GameObject enemy = enemyGenerator.InstantiateEnemy();
+                enemy.transform.position = position;
+            }
+            else
+            {
+                float firstPos = position.x - ((size - 1) / 2);
+                int num = enemyCount + 1;
+                float xPos;
+                for(int i = 1; i <= enemyCount; i++)
+                {
+                    GameObject enemy = enemyGenerator.InstantiateEnemy();
+                    SendAreaInfo(enemy);
+
+                    Vector3 pos = position;
+                    xPos = firstPos + (((size - 1) / num) * i);
+                    pos.x = xPos;
+                    pos.y = 1;
+                    enemy.transform.position = pos;
+                }
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,8 +95,8 @@ public class Area : MonoBehaviour
 
     private void SendAreaInfo(GameObject enemy)
     {
-        Debug.Log(position.x);
-        Debug.Log(transform.position.x);
+        Debug.Log($"{position.x},  {size}");
+        Debug.Log($"{transform.position.x},  {size}");
         enemy.GetComponent<EnemyController>().StateMachine.SetAreaData(position.x, size);
     }
 }

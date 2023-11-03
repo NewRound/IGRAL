@@ -69,8 +69,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e787de1272c2745b99198912aa3a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 4
+  size: 3
   position: {x: 0, y: 0, z: 0}
+  enemys: []
 --- !u!1001 &1353783667787415388
 PrefabInstance:
   m_ObjectHideFlags: 0
