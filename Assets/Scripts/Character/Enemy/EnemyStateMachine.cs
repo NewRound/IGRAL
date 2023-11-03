@@ -157,6 +157,4 @@ public class EnemyStateMachine : StateMachine
 
         SetDirection(directionX);
     }
-
-    
 }

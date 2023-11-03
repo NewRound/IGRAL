@@ -50,8 +50,6 @@ public class PlayerAnimationController : AnimationController
 
         return false;
     }
-
-    
     
     public bool CheckCurrentClipEqual(AttackType attackType, int layerIndex = 0)
     {

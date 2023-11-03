@@ -4,9 +4,9 @@ public abstract class EnemyStateBase : StateBase
 {
     protected EnemyStateMachine stateMachine;
     protected EnemyController enemyController;
-    protected AnimationController animationController;
+    protected EnemyAnimationController animationController;
 
-    protected EnemyAnimationsData animationsData;
+    protected CharacterAnimationsData animationsData;
 
     public EnemyStateBase(EnemyStateMachine enemyStateMachine)
     {

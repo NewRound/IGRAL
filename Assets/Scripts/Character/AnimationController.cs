@@ -1,11 +1,13 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public abstract class AnimationController : MonoBehaviour
+public class AnimationController : MonoBehaviour
 {
     protected Animator animator;
 
     [field: SerializeField] public float animationNormalizeEndedTime = 0.9f;
+
 
     public virtual void Init()
     {
@@ -45,4 +47,6 @@ public abstract class AnimationController : MonoBehaviour
 
         return false;
     }
+
+    
 }
