@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12ff4ae1572540246816c3a4e9e742c5, type: 3}
+  m_Name: Skin
+  m_EditorClassIdentifier: 
+  <skillId>k__BackingField: Skin01
+  <skillCategoryType>k__BackingField: 0
+  <skillName>k__BackingField: "\uD53C\uBD80"
+  <skillDescription>k__BackingField: "\uBCC0\uC774\uAE30\uC220 : \uD53C\uBD80 \uC0AC\uC6A9\uAC00\uB2A5"
+  <icon>k__BackingField: {fileID: 21300000, guid: a1dc992fe70e5fd4a9e60457e744e724,
+    type: 3}
+  <unlockConditionId>k__BackingField: 
+  <skPointUse>k__BackingField: 1

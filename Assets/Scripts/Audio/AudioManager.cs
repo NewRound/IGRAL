@@ -46,9 +46,9 @@ public class AudioManager : CustomSingleton<AudioManager>
 
         foreach (AudioType enumItem in Enum.GetValues(typeof(AudioType)))
         {
-            GameObject ui = Resources.Load<GameObject>($"Audio/{GetDescription.EnumToString(enumItem)}");
-            GameObject instantiate = Instantiate(ui, Vector3.zero, Quaternion.identity);
-            instantiate.transform.SetParent(this.transform);
+            GameObject ob = Resources.Load<GameObject>($"Audio/{enumItem}");
+            GameObject instantiate = Instantiate(ob, this.transform);
+
         }
         SceneManager.sceneLoaded += OnSceneLoaded;
     }

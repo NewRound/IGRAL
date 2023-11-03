@@ -81,8 +81,7 @@ public class UIInventory : CustomSingleton<UIInventory>
         _equipSlot = new UIEquipSlot[6];
         for (int n = 0; n < 6; n++)
         {
-            GameObject instantiate = Instantiate(_uIEquipSlot, Vector3.zero, Quaternion.identity);
-            instantiate.transform.SetParent(_equip);
+            GameObject instantiate = Instantiate(_uIEquipSlot, _equip);
             UIEquipSlot uIEquipSlot = instantiate.GetComponent<UIEquipSlot>();
             _equipSlot[n] = uIEquipSlot;
         }
@@ -90,8 +89,7 @@ public class UIInventory : CustomSingleton<UIInventory>
         _inventorySlot = new UIInventorySlot[12];
         for (int n = 0; n < 12; n++)
         {
-            GameObject instantiate = Instantiate(_uIinventorySlot, Vector3.zero, Quaternion.identity);
-            instantiate.transform.SetParent(_inventory);
+            GameObject instantiate = Instantiate(_uIinventorySlot, _inventory);
             UIInventorySlot uIInventorySlot = instantiate.GetComponent<UIInventorySlot>();
             _inventorySlot[n] = uIInventorySlot;
         }
@@ -102,8 +100,7 @@ public class UIInventory : CustomSingleton<UIInventory>
             if (enumItem == StatsCategory.Max)
                 return;
 
-            GameObject instantiate = Instantiate(_statsSlot, Vector3.zero, Quaternion.identity);
-            instantiate.transform.SetParent(_statsContent);
+            GameObject instantiate = Instantiate(_statsSlot, _statsContent);
             UIStatSlot uIStatSlot = instantiate.GetComponent<UIStatSlot>();
             uIStatSlot.SetCategory(GetDescription.EnumToString(enumItem));
             _statsSlotList[i] = uIStatSlot;
