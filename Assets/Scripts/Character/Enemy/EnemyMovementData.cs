@@ -5,5 +5,5 @@ using UnityEngine;
 public class EnemyMovementData : MovementData
 {
     [field: SerializeField] public float PatrolAnimationRatio { get; private set; } = 0.3f;
-    [field: SerializeField] public int WaitPatrolTime { get; private set; } = 2000;
+    [field: SerializeField] public int WaitPatrolTime { get; private set; } = 2;
 }

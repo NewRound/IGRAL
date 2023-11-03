@@ -7,7 +7,7 @@ public abstract class PlayerAirState : PlayerStateBase
 
     public override void Enter()
     {
-        animationController.PlayAnimation(animationsData.AirParameterHash, true);
+        animationController.PlayAnimation(animationsData.AirSubStateParameterHash, true);
     }
 
     public override void UpdateState()
@@ -17,6 +17,6 @@ public abstract class PlayerAirState : PlayerStateBase
 
     public override void Exit()
     {
-        animationController.PlayAnimation(animationsData.AirParameterHash, false);
+        animationController.PlayAnimation(animationsData.AirSubStateParameterHash, false);
     }
 }
