@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class ItemList : MonoBehaviour
 {
-    [SerializeField] private List<Item> itemList;
+    [SerializeField] private Item[] itemArray;
 
-    public List<Item> GetItemList()
+    public Item[] GetItemArray()
     {
-        return itemList;
+        return itemArray;
     }
 }

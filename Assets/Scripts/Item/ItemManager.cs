@@ -3,24 +3,25 @@ using UnityEngine;
 
 public class ItemManager : CustomSingleton<ItemManager>
 {    
-    [SerializeField] private List<Item> items;
+    [SerializeField] private Item[] items;
     private Dictionary<Rarity, List<Item>> ItemsByRarity = new Dictionary<Rarity, List<Item>>();
 
     public GameObject pickupItem { get; private set; }
 
     private void Start()
     {
-        items = Resources.Load<ItemList>("Items/ItemList").GetItemList();      
+        items = Resources.Load<ItemList>("Items/ItemList").GetItemArray();      
         
-        // 등급을 키값으로 하여 등급별로 아이템 리스트 생성
-        foreach (Item item in items)
+        // 등급을 키값으로 하여 등급별로 아이템 리스트 생성      
+
+        for(int i =0; i < items.Length; i++)
         {
-            if(!ItemsByRarity.ContainsKey(item.ItemRarity))
+            if (!ItemsByRarity.ContainsKey(items[i].ItemRarity))
             {
-                ItemsByRarity[item.ItemRarity] = new List<Item>();
+                ItemsByRarity[items[i].ItemRarity] = new List<Item>();
             }
-            ItemsByRarity[item.ItemRarity].Add(item);
-        }        
+            ItemsByRarity[items[i].ItemRarity].Add(items[i]);
+        }
     }
 
     public void SetPickupItem(GameObject go)
