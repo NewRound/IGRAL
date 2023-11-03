@@ -6203,12 +6203,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0638f86384de1484d83a52beaee26591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackDamage: 10
   _attackRange: 5
-  _attackDelay: 1.5
+  _attackDelay: 2
   _projectilePool: {fileID: 9207563907027774347}
-  _projectile: {fileID: 0}
+  _projectile: {fileID: 1265579702484801395, guid: 3a507462cec0c9c45b8eec6207c9fbc9,
+    type: 3}
   _projectiles: []
+  rayAngle: 60
+  rayCount: 10
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 256

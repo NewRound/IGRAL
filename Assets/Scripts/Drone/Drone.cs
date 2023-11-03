@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class Drone : MonoBehaviour
 {
-    [Header("# Attack Info")]
-    [SerializeField] private float _attackDamage;    
+    [Header("# Attack Info")]    
     [SerializeField] private float _attackRange;
     [SerializeField] private float _attackDelay;
     private float _attackTimer;
@@ -15,8 +14,8 @@ public class Drone : MonoBehaviour
     [SerializeField] private List<GameObject> _projectiles;
 
     [Header("# RayCast")]
-    float rayAngle = 60f;
-    int rayCount = 12;
+    [SerializeField] private float rayAngle;
+    [SerializeField] private int rayCount;
     [SerializeField] private LayerMask _enemyLayer;
 
     private void OnEnable()
