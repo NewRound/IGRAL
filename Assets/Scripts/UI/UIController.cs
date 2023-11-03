@@ -91,38 +91,27 @@ public class UIController : CustomSingleton<UIController>
                 if (vertical > 0.7 && horizontal * horizontal < 0.36)
                 {
                     //상, 망치, 2
-                    if(_skillIndex != 2)
-                    {
-                        _skillIndex = 2;
-                        _skillUse[2].UseSkill();
-                    }
+                    _skillIndex = 2;
                 }
                 else if(vertical < -0.7 && horizontal * horizontal < 0.36)
                 {
                     //하, 사이코 메트릭, 3
-                    if (_skillIndex != 3)
-                    {
-                        _skillIndex = 3;
-                        _skillUse[3].UseSkill();
-                    }
+                    _skillIndex = 3;
                 }
                 else if(vertical* vertical < 0.36 && horizontal < -0.7)
                 {
                     //좌, 피부, 0
-                    if (_skillIndex != 0)
-                    {
-                        _skillIndex = 0;
-                        _skillUse[0].UseSkill();
-                    }
+                    _skillIndex = 0;
                 }
                 else if (vertical * vertical < 0.36 && horizontal > 0.7)
                 {
                     //우, 칼날, 1
-                    if (_skillIndex != 1)
-                    {
-                        _skillIndex = 1;
-                        _skillUse[1].UseSkill();
-                    }
+                    _skillIndex = 1;
+                }
+                else if (vertical * vertical < 0.5 && horizontal * horizontal < 0.5)
+                {
+                    //스킬 사용 취소
+                    _skillIndex = -1;
                 }
             }
         }
@@ -142,7 +131,11 @@ public class UIController : CustomSingleton<UIController>
                 {
                     skillUse.NoDisplaySkill();
                 }
-                _skillIndex = -1;
+                if(_skillIndex > -1)
+                {
+                    _skillUse[_skillIndex].UseSkill();
+                    _skillIndex = -1;
+                }
                 _isMove = true;
             }
 
