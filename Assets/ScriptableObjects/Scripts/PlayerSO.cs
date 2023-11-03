@@ -9,6 +9,7 @@ public class PlayerSO : EntitySO
     [field: SerializeField] public float RollingForce { get; set; }
     [field: SerializeField] public float RollingCoolTime { get; set; }
     [field: SerializeField] public float KcalPerAttack { get; set; }
+    [field: SerializeField] public float Kcal { get; set; }
     [field: SerializeField] public float MaxKcal { get; set; }
     [field: SerializeField] public float WallSlidingTime { get; set; }
     [field: SerializeField] public float KnockbackTime { get; set; }

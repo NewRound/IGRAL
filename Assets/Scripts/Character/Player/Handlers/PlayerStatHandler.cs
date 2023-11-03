@@ -1,3 +1,11 @@
+using UnityEngine;
+
+public enum StatType
+{
+
+}
+
+
 public class PlayerStatHandler : IDamageable
 {
     public PlayerSO Data { get; private set; }

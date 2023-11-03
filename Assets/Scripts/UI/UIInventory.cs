@@ -35,7 +35,7 @@ public class ItemSlot
 
 public class UIInventory : CustomSingleton<UIInventory>
 {
-    [SerializeField] private PlayerSO _palyerDate;
+    private PlayerSO _palyerDate;
 
     [Header("main")]
     [SerializeField] private GameObject _uiInventory;
@@ -109,8 +109,6 @@ public class UIInventory : CustomSingleton<UIInventory>
 
     private void Start()
     {
-        UpdateStats();
-
         _selectedItemName.text = "";
         _selectedItemDescription.text = "";
         _selectedItemStatNames.text = "";
@@ -142,6 +140,9 @@ public class UIInventory : CustomSingleton<UIInventory>
         _dropEquipButton.gameObject.SetActive(false);
 
         _uiInventory.SetActive(false);
+
+        _palyerDate = GameManager.Instance.StatHandler.Data;
+        UpdateStats();
     }
 
     public void OpenInventory()
