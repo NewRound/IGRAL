@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class PickupObject : MonoBehaviour
+public class PickupArtifact : MonoBehaviour
 {
     [SerializeField] private LayerMask canBePickupBy;
 
     public virtual void Pickup()
     {
-        UIInventory.Instance.AddItem(ItemManager.Instance.pickupItem.GetComponent<Item>());
+        //인벤토리로 이동
+        UIInventory.Instance.AddItem(ItemManager.Instance.pickupItem.GetComponent<IItem>());
         UIController.Instance.SwitchingAttack();
         ItemManager.Instance.DelSetPickupItem();
     }

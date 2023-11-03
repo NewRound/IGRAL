@@ -1,16 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ItemType { Weapon, Artifact, Consumable, Ingredient }
+public enum Rarity { Normal, Rare, Unique, Epic }
+
 public class ItemManager : CustomSingleton<ItemManager>
 {    
-    [SerializeField] private Item[] items;
-    private Dictionary<Rarity, List<Item>> ItemsByRarity = new Dictionary<Rarity, List<Item>>();
+    [SerializeField] private IItem[] items;
+    private Dictionary<Rarity, List<IItem>> ItemsByRarity = new Dictionary<Rarity, List<IItem>>();
 
     public GameObject pickupItem { get; private set; }
 
     private void Start()
     {
-        items = Resources.Load<ItemList>("Items/ItemList").GetItemArray();      
+/*        items = Resources.Load<ItemList>("Items/ItemList").GetItemArray();      
         
         // 등급을 키값으로 하여 등급별로 아이템 리스트 생성      
 
@@ -18,10 +21,10 @@ public class ItemManager : CustomSingleton<ItemManager>
         {
             if (!ItemsByRarity.ContainsKey(items[i].ItemRarity))
             {
-                ItemsByRarity[items[i].ItemRarity] = new List<Item>();
+                ItemsByRarity[items[i].ItemRarity] = new List<IItem>();
             }
             ItemsByRarity[items[i].ItemRarity].Add(items[i]);
-        }
+        }*/
     }
 
     public void SetPickupItem(GameObject go)
@@ -37,7 +40,7 @@ public class ItemManager : CustomSingleton<ItemManager>
     public void RandomDropItem(Vector3 dropPos)
     {
         // 랜덤 아이템 선택
-        Item dropItem = RandomSelectItem();
+        IItem dropItem = RandomSelectItem();
 
         // 드랍 확률에 따라 생성
         float dropChance = Random.value;
@@ -48,14 +51,14 @@ public class ItemManager : CustomSingleton<ItemManager>
         else return;
     }
 
-    private Item RandomSelectItem()
+    private IItem RandomSelectItem()
     {
-        Item selectedItem = null;
+        IItem selectedItem = null;
         
         // 확률에 따른 등급 선택
         Rarity selectRarity = GetRarityWeight();
 
-        List<Item> itemsOfSelect;
+        List<IItem> itemsOfSelect;
 
         // 등급에 해당하는 리스트(itemsOfSelect)를 저장(out)
         if (ItemsByRarity.TryGetValue(selectRarity, out itemsOfSelect))
