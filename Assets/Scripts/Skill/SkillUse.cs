@@ -4,7 +4,7 @@ public class SkillUse : MonoBehaviour
 {
     [SerializeField] private GameObject _skillIcon;
     [field: SerializeField] public SkillCategoryType skillCategoryType {  get; private set; }
-    private bool _isLearned = false;
+    protected bool _isLearned = false;
 
     public void LearnedSkill()
     {
@@ -26,8 +26,6 @@ public class SkillUse : MonoBehaviour
 
     public virtual void UseSkill()
     {
-        if (!_isLearned)
-            return;
-        UIController.Instance.isSkill = false;
+
     }
 }

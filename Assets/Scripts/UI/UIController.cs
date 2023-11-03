@@ -30,6 +30,7 @@ public class UIController : CustomSingleton<UIController>
     private float _correctionValue;
     public bool isSkill = false;
     private bool _isMove = true;
+    private int _skillIndex = -1;
 
     private InputController _inputController;
     private GameObject _interactiveObject;
@@ -81,9 +82,58 @@ public class UIController : CustomSingleton<UIController>
             {
                 isSkill = false;
             }
+            else
+            {
+                float horizontal = _skillJoystick.Horizontal;
+                float vertical = _skillJoystick.Vertical;
+                
+                //조이스틱 방향, 스킬, skillUse[index]
+                if (vertical > 0.7 && horizontal * horizontal < 0.36)
+                {
+                    //상, 망치, 2
+                    if(_skillIndex != 2)
+                    {
+                        _skillIndex = 2;
+                        _skillUse[2].UseSkill();
+                    }
+                }
+                else if(vertical < -0.7 && horizontal * horizontal < 0.36)
+                {
+                    //하, 사이코 메트릭, 3
+                    if (_skillIndex != 3)
+                    {
+                        _skillIndex = 3;
+                        _skillUse[3].UseSkill();
+                    }
+                }
+                else if(vertical* vertical < 0.36 && horizontal < -0.7)
+                {
+                    //좌, 피부, 0
+                    if (_skillIndex != 0)
+                    {
+                        _skillIndex = 0;
+                        _skillUse[0].UseSkill();
+                    }
+                }
+                else if (vertical * vertical < 0.36 && horizontal > 0.7)
+                {
+                    //우, 칼날, 1
+                    if (_skillIndex != 1)
+                    {
+                        _skillIndex = 1;
+                        _skillUse[1].UseSkill();
+                    }
+                }
+            }
         }
         else
         {
+            if (_skillJoystick.Horizontal != 0 || _skillJoystick.Vertical != 0)
+            {
+                isSkill = true;
+                return;
+            }
+
             if (!_isMove)
             {
                 _moveJoystickObj.transform.localScale = Vector3.one;
@@ -92,10 +142,10 @@ public class UIController : CustomSingleton<UIController>
                 {
                     skillUse.NoDisplaySkill();
                 }
-                _skillJoystickObj.SetActive(false);
-                _skillJoystickObj.SetActive(true);
+                _skillIndex = -1;
                 _isMove = true;
             }
+
             _correctionValue = _moveJoystick.Horizontal;
             if (_correctionValue != 0)
             {
@@ -107,11 +157,6 @@ public class UIController : CustomSingleton<UIController>
             {
                 _direction = _temp;
                 _inputController.CallMoveAction(_direction);
-            }
-
-            if (_skillJoystick.Horizontal != 0 || _skillJoystick.Vertical != 0)
-            {
-                isSkill = true;
             }
         }
     }

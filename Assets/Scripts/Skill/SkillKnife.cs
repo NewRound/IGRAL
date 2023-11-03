@@ -4,7 +4,10 @@ public class SkillKnife : SkillUse
 {
     public override void UseSkill()
     {
-        base.UseSkill();
+        if (!_isLearned)
+            return;
+
+        UIController.Instance.isSkill = false;
         Debug.Log("나이프 사용");
     }
 }
