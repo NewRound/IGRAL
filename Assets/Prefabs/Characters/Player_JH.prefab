@@ -2694,7 +2694,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5224004157000911447}
   - component: {fileID: 5276911309075644705}
-  - component: {fileID: 8845993618475763680}
+  - component: {fileID: 4763821893309958397}
   m_Layer: 7
   m_Name: Character_MercenaryMale_01
   m_TagString: Untagged
@@ -2760,7 +2760,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8845993618475763680
+--- !u!114 &4763821893309958397
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2769,18 +2769,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 5218150549556975971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08846d926da5b684ead7df64c8c79e23, type: 3}
+  m_Script: {fileID: 11500000, guid: 39e3f67d558c95f45af9ce47e53d8aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationNormalizeEndedTime: 0.9
   <AnimationData>k__BackingField:
     moveParameter: '@Move'
-    airParameter: '@Air'
     attackParameter: '@Attack'
+    speedRatioParameter: SpeedRatio
+    airParameter: '@Air'
     jumpParameter: Jump
     fallParameter: Fall
-    RollParameter: Roll
-    speedRatioParameter: SpeedRatio
-  animationNormalizeEndedTime: 0.9
+    rollParameter: Roll
+    attackComboParameter: AttackCombo
 --- !u!1 &5218171933928161123
 GameObject:
   m_ObjectHideFlags: 0
