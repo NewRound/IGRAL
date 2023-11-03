@@ -6210,7 +6210,7 @@ MonoBehaviour:
     type: 3}
   _projectiles: []
   rayAngle: 60
-  rayCount: 10
+  rayCount: 12
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 256
