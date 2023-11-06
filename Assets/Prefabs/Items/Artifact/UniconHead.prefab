@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6152712077339164720}
-  - component: {fileID: 1649837358411448473}
   - component: {fileID: 3334182667953357340}
+  - component: {fileID: -2009797355151262780}
   m_Layer: 0
   m_Name: UniconHead
   m_TagString: Untagged
@@ -34,36 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &1649837358411448473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7529172391743333141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a658366414fda1246955ed44d3d8f95f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canBePickupBy:
-    serializedVersion: 2
-    m_Bits: 128
-  <ItemName>k__BackingField: UniconHead
-  <ItemID>k__BackingField: 203
-  <ItemType>k__BackingField: 2
-  <ItemRarity>k__BackingField: 3
-  <DropProbability>k__BackingField: 0
-  <ItemIcon>k__BackingField: {fileID: 21300000, guid: b0147eed3e62cd247a6fba4cb4d73d41,
-    type: 3}
-  <ItemObject>k__BackingField: {fileID: 7529172391743333141}
-  <ItemInfo>k__BackingField: "\uACF5\uACA9\uB825\uACFC \uACF5\uACA9\uC0AC\uAC70\uB9AC\uB97C
-    20% \uC99D\uAC00\uC2DC\uCF1C\uC90D\uB2C8\uB2E4."
-  <Price>k__BackingField: 2000
-  <IsStackable>k__BackingField: 0
-  <MaxStack>k__BackingField: 0
-  <itemData>k__BackingField: {fileID: 11400000, guid: 302ad47ff69f0a846b66ebf04ff28936,
-    type: 2}
 --- !u!65 &3334182667953357340
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -85,6 +55,40 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-2009797355151262780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7529172391743333141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59cc2d0d0e3aec4a9259bf044b37b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBePickupBy:
+    serializedVersion: 2
+    m_Bits: 128
+  <ItemType>k__BackingField: 1
+  <ItemName>k__BackingField: UniconHead
+  <ItemID>k__BackingField: 203
+  <ItemRarity>k__BackingField: 3
+  <DropProbability>k__BackingField: 0
+  <ItemIcon>k__BackingField: {fileID: 21300000, guid: b0147eed3e62cd247a6fba4cb4d73d41,
+    type: 3}
+  <ItemObject>k__BackingField: {fileID: 7529172391743333141}
+  <ItemInfo>k__BackingField: "\uACF5\uACA9\uB825\uACFC \uACF5\uACA9\uC0AC\uAC70\uB9AC\uB97C
+    20% \uC99D\uAC00\uC2DC\uCF1C\uC90D\uB2C8\uB2E4."
+  <Price>k__BackingField: 2000
+  <ItemData>k__BackingField: {fileID: 0}
+  <ItemDatas>k__BackingField:
+  - statsChangeType: 2
+    statType: 7
+    value: 20
+  - statsChangeType: 2
+    statType: 9
+    value: 20
 --- !u!1001 &4517638271017231832
 PrefabInstance:
   m_ObjectHideFlags: 0

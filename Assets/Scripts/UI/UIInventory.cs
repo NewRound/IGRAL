@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -330,6 +331,7 @@ public class UIInventory : CustomSingleton<UIInventory>
         {
             emptySlot.item = item;
             UpdateEquipUI();
+
             return;
         }
 
@@ -350,13 +352,23 @@ public class UIInventory : CustomSingleton<UIInventory>
 
     private void UpdateEquipUI()
     {
+        List<StatChange> statChanges = new List<StatChange> ();
+
         for (int i = 0; i < _equipItems.Length; i++)
         {
             if (_equipItems[i].item != null)
+            {
                 _equipSlot[i].Set(_equipItems[i]);
+                foreach(StatChange statChange in _equipItems[i].item.ItemDatas)
+                {
+                    statChanges.Add(statChange);
+                }
+            }
             else
                 _equipSlot[i].Clear();
         }
+        GameManager.Instance.StatHandler.UpdateStats(statChanges.ToArray());
+        UpdateStats();
     }
 
     ItemSlot GetEmptySlot()
