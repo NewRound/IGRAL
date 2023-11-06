@@ -62,7 +62,7 @@ public class StatChange
     public float value;
 }
 
-public class PlayerStatHandler : MonoBehaviour, IDamageable
+public class PlayerStatHandler : MonoBehaviour, IDamageable, IBurnable
 {
     public PlayerSO Data { get; private set; }
     public PlayerSO baseData { get; private set; }
@@ -78,19 +78,35 @@ public class PlayerStatHandler : MonoBehaviour, IDamageable
 
     public void Damaged(float damage)
     {
-        Data.Health -= damage;
+        float curValue = Mathf.Max(Data.Health - damage, 0.0f);
+        Data.Health = curValue;
+        baseData.Health = curValue;
+
+        if(curValue == 0.0f)
+        {
+            //TODO 플레이어 죽음 처리
+        }
     }
 
-    public void UpdateHealth(float health)
+    public void Recovery(float damage)
     {
-        Data.Health += health;
-        baseData.Health = Data.Health;
+        float curValue = Mathf.Min(Data.Health + damage, Data.MaxHealth);
+        Data.Health = curValue;
+        baseData.Health = curValue;
     }
 
-    public void UpdateKcal(float kcal)
+    public void BurnKcal(float kcal)
     {
-        Data.Kcal += kcal;
-        baseData.Kcal = Data.Kcal;
+        float curValue = Mathf.Max(Data.Kcal - kcal, 0.0f);
+        Data.Kcal = curValue;
+        baseData.Kcal = curValue;
+    }
+
+    public void RecoveryKcal(float kcal)
+    {
+        float curValue = Mathf.Min(Data.Kcal + kcal, Data.Kcal);
+        Data.Kcal += curValue;
+        baseData.Kcal = curValue;
     }
 
     public void UpdateStats(StatChange[] statChanges)

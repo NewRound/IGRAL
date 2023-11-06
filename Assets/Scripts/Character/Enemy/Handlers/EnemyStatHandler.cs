@@ -14,4 +14,10 @@ public class EnemyStatHandler : IDamageable
         Data.Health -= damage;
         Debug.Log(damage);
     }
+
+    public void Recovery(float damage)
+    {
+        Data.Health += damage;
+        Debug.Log(damage);
+    }
 }
