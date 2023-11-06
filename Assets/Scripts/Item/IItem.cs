@@ -12,7 +12,7 @@ public interface IItem
     public GameObject ItemObject { get; }
     public string ItemInfo { get; }
     public int Price { get; }
-    public PlayerSO ItemData { get; }
- 
+    public StatChange[] ItemDatas { get; }
+
     public void Pickup();
 }

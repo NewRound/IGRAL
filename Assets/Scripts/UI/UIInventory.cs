@@ -1,31 +1,8 @@
 using System;
-using System.ComponentModel;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
-public enum StatsCategory
-{
-    [Description("체력")] Health 
-    , [Description("체력 회복 속도")] HealthRegen 
-    , [Description("방어력")] Defense
-    , [Description("회피 확률")] EvasionProbability 
-    , [Description("공격력")] Attack 
-    , [Description("공격딜레이")] AttackDelay
-    , [Description("공격 범위")] AttackRange
-    , [Description("크리티컬 확률")] CriticalProbability 
-    , [Description("크리티컬 데미지 배율")] CriticalMod 
-    , [Description("이동속도")] SpeedMin 
-    , [Description("넉백파워")] KnockbackPower 
-    , [Description("넉백시간")] KnockbackTime 
-    , [Description("점프력")] JumpForce 
-    , [Description("점프 횟수")] MaxJumpCount 
-    , [Description("칼로리 회복")] KcalPerAttack 
-    , [Description("칼로리")] MaxKcal 
-
-
-    , Max
-}
 
 public class ItemSlot
 {
@@ -72,7 +49,7 @@ public class UIInventory : CustomSingleton<UIInventory>
     private int equipIndex;
     private int itemIndex;
 
-    private UIStatSlot[] _statsSlotList = new UIStatSlot[(int)StatsCategory.Max];
+    private UIStatSlot[] _statsSlotList = new UIStatSlot[(int)StatType.RollingForce];
 
     private void Awake()
     {
@@ -94,9 +71,9 @@ public class UIInventory : CustomSingleton<UIInventory>
         }
 
         int i = 0;
-        foreach (StatsCategory enumItem in Enum.GetValues(typeof(StatsCategory)))
+        foreach (StatType enumItem in Enum.GetValues(typeof(StatType)))
         {
-            if (enumItem == StatsCategory.Max)
+            if (enumItem >= StatType.RollingForce)
                 return;
 
             GameObject instantiate = Instantiate(_statsSlot, _statsContent);
@@ -140,8 +117,6 @@ public class UIInventory : CustomSingleton<UIInventory>
         _dropEquipButton.gameObject.SetActive(false);
 
         _uiInventory.SetActive(false);
-
-        _palyerDate = GameManager.Instance.StatHandler.Data;
         UpdateStats();
     }
 
@@ -161,63 +136,70 @@ public class UIInventory : CustomSingleton<UIInventory>
 
     public void UpdateStats()
     {
-        foreach (StatsCategory enumItem in Enum.GetValues(typeof(StatsCategory)))
+        _palyerDate = GameManager.Instance.StatHandler.Data;
+        foreach (StatType enumItem in Enum.GetValues(typeof(StatType)))
         {
             UpdateStat(enumItem);
         }
     }
 
-    private void UpdateStat(StatsCategory statsCategory)
+    private void UpdateStat(StatType statsCategory)
     {
         switch (statsCategory)
         {
-            case StatsCategory.Health:
-                _statsSlotList[(int)StatsCategory.Health].UpdateValue(_palyerDate.Health);
+            case StatType.MaxHealth:
+                _statsSlotList[(int)StatType.MaxHealth].UpdateValue(_palyerDate.Health);
                 break;
-            case StatsCategory.HealthRegen:
-                _statsSlotList[(int)StatsCategory.HealthRegen].UpdateValue(_palyerDate.HealthRegen);
+            case StatType.HealthRegen:
+                _statsSlotList[(int)StatType.HealthRegen].UpdateValue(_palyerDate.HealthRegen);
                 break;
-            case StatsCategory.Defense:
-                _statsSlotList[(int)StatsCategory.Defense].UpdateValue(_palyerDate.Defense);
+            case StatType.MaxKcal:
+                _statsSlotList[(int)StatType.MaxKcal].UpdateValue(_palyerDate.MaxKcal);
                 break;
-            case StatsCategory.EvasionProbability:
-                _statsSlotList[(int)StatsCategory.EvasionProbability].UpdateValue(_palyerDate.EvasionProbability);
+            case StatType.KcalPerAttack:
+                _statsSlotList[(int)StatType.KcalPerAttack].UpdateValue(_palyerDate.KcalPerAttack);
                 break;
-            case StatsCategory.Attack:
-                _statsSlotList[(int)StatsCategory.Attack].UpdateValue(_palyerDate.Attack);
+            case StatType.Defense:
+                _statsSlotList[(int)StatType.Defense].UpdateValue(_palyerDate.Defense);
                 break;
-            case StatsCategory.AttackDelay:
-                _statsSlotList[(int)StatsCategory.AttackDelay].UpdateValue(_palyerDate.AttackDelay);
+            case StatType.EvasionProbability:
+                _statsSlotList[(int)StatType.EvasionProbability].UpdateValue(_palyerDate.EvasionProbability);
                 break;
-            case StatsCategory.AttackRange:
-                _statsSlotList[(int)StatsCategory.AttackRange].UpdateValue(_palyerDate.AttackRange);
+            case StatType.InvincibleTime:
+                _statsSlotList[(int)StatType.InvincibleTime].UpdateValue(_palyerDate.InvincibleTime);
                 break;
-            case StatsCategory.CriticalProbability:
-                _statsSlotList[(int)StatsCategory.CriticalProbability].UpdateValue(_palyerDate.CriticalProbability);
+            case StatType.Attack:
+                _statsSlotList[(int)StatType.Attack].UpdateValue(_palyerDate.Attack);
                 break;
-            case StatsCategory.CriticalMod:
-                _statsSlotList[(int)StatsCategory.CriticalMod].UpdateValue(_palyerDate.CriticalMod);
+            case StatType.AttackDelay:
+                _statsSlotList[(int)StatType.AttackDelay].UpdateValue(_palyerDate.AttackDelay);
                 break;
-            case StatsCategory.SpeedMin:
-                _statsSlotList[(int)StatsCategory.SpeedMin].UpdateValue(_palyerDate.SpeedMin);
+            case StatType.AttackRange:
+                _statsSlotList[(int)StatType.AttackRange].UpdateValue(_palyerDate.AttackRange);
                 break;
-            case StatsCategory.KnockbackPower:
-                _statsSlotList[(int)StatsCategory.KnockbackPower].UpdateValue(_palyerDate.KnockbackPower);
+            case StatType.CriticalProbability:
+                _statsSlotList[(int)StatType.CriticalProbability].UpdateValue(_palyerDate.CriticalProbability);
                 break;
-            case StatsCategory.KnockbackTime:
-                _statsSlotList[(int)StatsCategory.KnockbackTime].UpdateValue(_palyerDate.KnockbackTime);
+            case StatType.CriticalMod:
+                _statsSlotList[(int)StatType.CriticalMod].UpdateValue(_palyerDate.CriticalMod);
                 break;
-            case StatsCategory.JumpForce:
-                _statsSlotList[(int)StatsCategory.JumpForce].UpdateValue(_palyerDate.JumpingForce);
+            case StatType.SpeedMin:
+                _statsSlotList[(int)StatType.SpeedMin].UpdateValue(_palyerDate.SpeedMin);
                 break;
-            case StatsCategory.MaxJumpCount:
-                _statsSlotList[(int)StatsCategory.MaxJumpCount].UpdateValue(_palyerDate.JumpingCountMax);
+            case StatType.SpeedMax:
+                _statsSlotList[(int)StatType.SpeedMax].UpdateValue(_palyerDate.SpeedMax);
                 break;
-            case StatsCategory.KcalPerAttack:
-                _statsSlotList[(int)StatsCategory.KcalPerAttack].UpdateValue(_palyerDate.KcalPerAttack);
+            case StatType.KnockbackPower:
+                _statsSlotList[(int)StatType.KnockbackPower].UpdateValue(_palyerDate.KnockbackPower);
                 break;
-            case StatsCategory.MaxKcal:
-                _statsSlotList[(int)StatsCategory.MaxKcal].UpdateValue(_palyerDate.MaxKcal);
+            case StatType.KnockbackTime:
+                _statsSlotList[(int)StatType.KnockbackTime].UpdateValue(_palyerDate.KnockbackTime);
+                break;
+            case StatType.JumpingForce:
+                _statsSlotList[(int)StatType.JumpingForce].UpdateValue(_palyerDate.JumpingForce);
+                break;
+            case StatType.JumpingCountMax:
+                _statsSlotList[(int)StatType.JumpingCountMax].UpdateValue(_palyerDate.JumpingCountMax);
                 break;
         }
     }
@@ -225,138 +207,26 @@ public class UIInventory : CustomSingleton<UIInventory>
     #endregion 스텟 관련
 
     #region 아이템 정보 출력
-    private string[] GetStat(PlayerSO itemData, StatsCategory statsCategory)
+    private string[] DisplayStat(StatChange itemData)
     {
-        string[] re = null;
-        switch (statsCategory)
+        string[] re = new string[2];
+        re[0] = GetDescription.EnumToString(itemData.statType);
+        switch(itemData.statsChangeType)
         {
-            case StatsCategory.Health:
-                if (itemData.Health == 0)
-                    return null;
-
-                re = new string[2];
-                re[0] = GetDescription.EnumToString(statsCategory);
-                re[1] = itemData.Health.ToString();
+            case StatsChangeType.Add:
+                re[1] = $"{itemData.value} 증가";
                 break;
-            case StatsCategory.HealthRegen:
-                if (itemData.HealthRegen == 0)
-                    return null;
-
-                re = new string[2];
-                re[0] = GetDescription.EnumToString(statsCategory);
-                re[1] = itemData.HealthRegen.ToString();
+            case StatsChangeType.Subtract:
+                re[1] = $"{itemData.value} 감소";
                 break;
-            case StatsCategory.Defense:
-                if (itemData.Defense == 0)
-                    return null;
-
-                re = new string[2];
-                re[0] = GetDescription.EnumToString(statsCategory);
-                re[1] = itemData.Defense.ToString();
+            case StatsChangeType.Multiple:
+                re[1] = $"{itemData.value}% 증가";
                 break;
-            case StatsCategory.EvasionProbability:
-                if (itemData.EvasionProbability == 0)
-                    return null;
-
-                re = new string[2];
-                re[0] = GetDescription.EnumToString(statsCategory);
-                re[1] = itemData.EvasionProbability.ToString();
+            case StatsChangeType.Divide:
+                re[1] = $"{itemData.value}% 감소";
                 break;
-            case StatsCategory.Attack:
-                if (itemData.Attack == 0)
-                    return null;
-
-                re = new string[2];
-                re[0] = GetDescription.EnumToString(statsCategory);
-                re[1] = itemData.Attack.ToString();
-                break;
-            case StatsCategory.AttackDelay:
-                if (itemData.AttackDelay == 0)
-                    return null;
-
-                re = new string[2];
-                re[0] = GetDescription.EnumToString(statsCategory);
-                re[1] = itemData.AttackDelay.ToString();
-                break;
-            case StatsCategory.AttackRange:
-                if (itemData.AttackRange == 0)
-                    return null;
-
-                re = new string[2];
-                re[0] = GetDescription.EnumToString(statsCategory);
-                re[1] = itemData.AttackRange.ToString();
-                break;
-            case StatsCategory.CriticalProbability:
-                if (itemData.CriticalProbability == 0)
-                    return null;
-
-                re = new string[2];
-                re[0] = GetDescription.EnumToString(statsCategory);
-                re[1] = itemData.CriticalProbability.ToString();
-                break;
-            case StatsCategory.CriticalMod:
-                if (itemData.CriticalMod == 0)
-                    return null;
-
-                re = new string[2];
-                re[0] = GetDescription.EnumToString(statsCategory);
-                re[1] = itemData.CriticalMod.ToString();
-                break;
-            case StatsCategory.SpeedMin:
-                if (itemData.SpeedMin == 0)
-                    return null;
-
-                re = new string[2];
-                re[0] = GetDescription.EnumToString(statsCategory);
-                re[1] = itemData.SpeedMin.ToString();
-                break;
-            case StatsCategory.KnockbackPower:
-                if (itemData.KnockbackPower == 0)
-                    return null;
-
-                re = new string[2];
-                re[0] = GetDescription.EnumToString(statsCategory);
-                re[1] = itemData.KnockbackPower.ToString();
-                break;
-            case StatsCategory.KnockbackTime:
-                if (itemData.KnockbackTime == 0)
-                    return null;
-
-                re = new string[2];
-                re[0] = GetDescription.EnumToString(statsCategory);
-                re[1] = itemData.KnockbackTime.ToString();
-                break;
-            case StatsCategory.JumpForce:
-                if (itemData.JumpingForce == 0)
-                    return null;
-
-                re = new string[2];
-                re[0] = GetDescription.EnumToString(statsCategory);
-                re[1] = itemData.JumpingForce.ToString();
-                break;
-            case StatsCategory.MaxJumpCount:
-                if (itemData.JumpingCountMax == 0)
-                    return null;
-
-                re = new string[2];
-                re[0] = GetDescription.EnumToString(statsCategory);
-                re[1] = itemData.JumpingCountMax.ToString();
-                break;
-            case StatsCategory.KcalPerAttack:
-                if (itemData.KcalPerAttack == 0)
-                    return null;
-
-                re = new string[2];
-                re[0] = GetDescription.EnumToString(statsCategory);
-                re[1] = itemData.KcalPerAttack.ToString();
-                break;
-            case StatsCategory.MaxKcal:
-                if (itemData.MaxKcal == 0)
-                    return null;
-
-                re = new string[2];
-                re[0] = GetDescription.EnumToString(statsCategory);
-                re[1] = itemData.MaxKcal.ToString();
+            case StatsChangeType.Override:
+                re[1] = $"{itemData.value}로 고정됨";
                 break;
         }
         return re;
@@ -382,11 +252,11 @@ public class UIInventory : CustomSingleton<UIInventory>
         _selectedItemStatNames.text = string.Empty;
         _selectedItemStatValues.text = string.Empty;
 
-        PlayerSO itemData = selectedItem.item.ItemData;
+        StatChange[] itemDatas = selectedItem.item.ItemDatas;
 
-        foreach (StatsCategory enumItem in Enum.GetValues(typeof(StatsCategory)))
+        foreach (StatChange itemData in itemDatas)
         {
-            string[] str = GetStat(itemData, enumItem);
+            string[] str = DisplayStat(itemData);
 
             if(str != null && str.Length == 2)
             {
@@ -415,12 +285,12 @@ public class UIInventory : CustomSingleton<UIInventory>
         _selectedItemStatNames.text = string.Empty;
         _selectedItemStatValues.text = string.Empty;
 
-        PlayerSO itemData = selectedItem.item.ItemData;
-        if(itemData != null)
+        StatChange[] itemDatas = selectedItem.item.ItemDatas;
+        if (itemDatas != null)
         {
-            foreach (StatsCategory enumItem in Enum.GetValues(typeof(StatsCategory)))
+            foreach (StatChange itemData in itemDatas)
             {
-                string[] str = GetStat(itemData, enumItem);
+                string[] str = DisplayStat(itemData);
 
                 if (str != null && str.Length == 2)
                 {
@@ -461,6 +331,7 @@ public class UIInventory : CustomSingleton<UIInventory>
         {
             emptySlot.item = item;
             UpdateEquipUI();
+
             return;
         }
 
@@ -481,13 +352,23 @@ public class UIInventory : CustomSingleton<UIInventory>
 
     private void UpdateEquipUI()
     {
+        List<StatChange> statChanges = new List<StatChange> ();
+
         for (int i = 0; i < _equipItems.Length; i++)
         {
             if (_equipItems[i].item != null)
+            {
                 _equipSlot[i].Set(_equipItems[i]);
+                foreach(StatChange statChange in _equipItems[i].item.ItemDatas)
+                {
+                    statChanges.Add(statChange);
+                }
+            }
             else
                 _equipSlot[i].Clear();
         }
+        GameManager.Instance.StatHandler.UpdateStats(statChanges.ToArray());
+        UpdateStats();
     }
 
     ItemSlot GetEmptySlot()

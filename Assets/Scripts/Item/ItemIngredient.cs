@@ -13,6 +13,7 @@ public class ItemIngredient : PickupIngredient, IItem
     [field: TextArea][field: SerializeField] public string ItemInfo { get; private set; }
     [field: SerializeField] public int Price { get; private set; }
     [field: SerializeField] public PlayerSO ItemData { get; private set; }
+    [field: SerializeField] public StatChange[] ItemDatas { get; private set; }
 
     public override void Pickup()
     {
