@@ -430,7 +430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596fe3e0e88e85140906ecc0820acffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1318932822}
 --- !u!4 &508639257
 Transform:
   m_ObjectHideFlags: 0
@@ -656,12 +655,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!1 &1318932822 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2295781759866904828, guid: 74d295b72c3d8df49b76dc54ee6588c0,
-    type: 3}
-  m_PrefabInstance: {fileID: 4217876483007382280}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1327361376
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,11 +907,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2172469692377708714, guid: 74d295b72c3d8df49b76dc54ee6588c0,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 2295781759866904828, guid: 74d295b72c3d8df49b76dc54ee6588c0,
         type: 3}
       propertyPath: m_Name
@@ -978,16 +966,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3949883484905197061, guid: 74d295b72c3d8df49b76dc54ee6588c0,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7711526134658099186, guid: 74d295b72c3d8df49b76dc54ee6588c0,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
