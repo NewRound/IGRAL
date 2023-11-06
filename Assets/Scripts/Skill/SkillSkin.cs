@@ -7,11 +7,12 @@ public class SkillSkin : SkillUse
 
     public override void UseSkill()
     {
-        if (!_isLearned)
+        if (!_isLearned || curData.Kcal < usingKcal)
             return;
 
         UIController.Instance.isSkill = false;
         Debug.Log("스킨 사용");
+        SkillManager.Instance.AllOffSkill();
         _isActive = true;
     }
 
@@ -19,6 +20,8 @@ public class SkillSkin : SkillUse
     {
         // 스킬 언락에 따른 지속시간 증가시 작성할 것.
         durationTime = 5f;
+
+        usingKcal = -100.0f;
     }
 
     private void Update()
@@ -26,19 +29,19 @@ public class SkillSkin : SkillUse
         if (_isActive)
         {
             if (mutantController.mutantType != MutantType.Skin)
+            { 
                 mutantController.ChangeMutant(MutantType.Skin);
+                UsingKcal(usingKcal);
+                Debug.Log($"{curData.Kcal}");
+            }
 
             CurrentTime += Time.deltaTime;
 
             if (CurrentTime >= durationTime)
             {
                 CurrentTime = 0f;
-                _isActive = false;
-                mutantController.ChangeMutant(MutantType.None);
+                StopSkill();
             }
-
-            // if(kcal <= 0) {break};
-            // kcal reduce
         }
     }
 }
