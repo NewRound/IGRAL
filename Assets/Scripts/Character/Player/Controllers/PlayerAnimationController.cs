@@ -23,8 +23,6 @@ public class PlayerAnimationController : AnimationController
 
     private int _attackTypeLength;
 
-    
-
     public override void Init()
     {
         base.Init();
@@ -94,4 +92,5 @@ public class PlayerAnimationController : AnimationController
         AttackType = AttackType.MeleeAttack1;
     }
 
+   
 }

@@ -1,16 +1,18 @@
+using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
-public class AnimationController : MonoBehaviour
+public abstract class AnimationController : MonoBehaviour
 {
     protected Animator animator;
 
     [field: SerializeField] public float animationNormalizeEndedTime = 0.9f;
 
-    protected void AttackEvent()
-    {
+    public event Action AttackAction;
 
+    private void AttackEvent()
+    {
+        AttackAction?.Invoke();
     }
 
     public virtual void Init()

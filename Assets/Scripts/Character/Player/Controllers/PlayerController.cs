@@ -6,7 +6,7 @@ public abstract class PlayerController : CharacterController
 
     public PlayerStatHandler StatHandler { get; private set; }
 
-    protected PlayerStateMachine StateMachine { get; set; }
+    public PlayerStateMachine StateMachine { get; protected set; }
 
     [field: SerializeField] public MovementData MovementData { get; private set; }
 
