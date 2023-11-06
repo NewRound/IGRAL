@@ -9,7 +9,23 @@ public class SkillHammer : SkillUse
 
         UIController.Instance.isSkill = false;
         Debug.Log("해머 사용");
+        _isActive = true;
+    }
 
-        GameManager.Instance.player.GetComponent<PlayerAppearanceController>().ChangeMutant(MutantType.Stone);
+    private void Update()
+    {
+        if(_isActive)
+        {
+            if (mutantController.mutantType != MutantType.Stone)
+                mutantController.ChangeMutant(MutantType.Stone);
+
+            // if(kcal <= 0) {break};
+            // kcal reduce
+            Debug.Log($"kcal : { -1 * Time.deltaTime}");
+        }
+        else
+        {
+            StopSkill();
+        }
     }
 }

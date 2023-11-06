@@ -1,10 +1,20 @@
+using System.Collections;
 using UnityEngine;
 
 public class SkillUse : MonoBehaviour
 {
     [SerializeField] private GameObject _skillIcon;
     [field: SerializeField] public SkillCategoryType skillCategoryType {  get; private set; }
+    protected PlayerController playerController;
+    protected PlayerAppearanceController mutantController;
     protected bool _isLearned = false;
+    protected bool _isActive = false;
+
+    private void Start()
+    {
+        playerController = GameManager.Instance.player.GetComponent<PlayerController>();
+        mutantController = GameManager.Instance.player.GetComponent<PlayerAppearanceController>();
+    }
 
     public void LearnedSkill()
     {
@@ -27,5 +37,14 @@ public class SkillUse : MonoBehaviour
     public virtual void UseSkill()
     {
 
+    }
+    
+    public void StopSkill()
+    {
+        
+        if (mutantController.mutantType != MutantType.None)
+            mutantController.ChangeMutant(MutantType.None);
+        
+        _isActive = false;
     }
 }
