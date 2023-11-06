@@ -85,8 +85,6 @@ public class PlayerStatHandler : MonoBehaviour, IDamageable, IBurnable
     {
         float curValue = Mathf.Max(Data.Health - damage, 0.0f);
         Data.Health = curValue;
-        baseData.Health = curValue;
-
         if(curValue == 0.0f)
         {
             //TODO 플레이어 죽음 처리
@@ -97,26 +95,27 @@ public class PlayerStatHandler : MonoBehaviour, IDamageable, IBurnable
     {
         float curValue = Mathf.Min(Data.Health + damage, Data.MaxHealth);
         Data.Health = curValue;
-        baseData.Health = curValue;
     }
 
     public void BurnKcal(float kcal)
     {
         float curValue = Mathf.Max(Data.Kcal - kcal, 0.0f);
         Data.Kcal = curValue;
-        baseData.Kcal = curValue;
     }
 
     public void RecoveryKcal(float kcal)
     {
         float curValue = Mathf.Min(Data.Kcal + kcal, Data.Kcal);
         Data.Kcal = curValue;
-        baseData.Kcal = curValue;
     }
 
     public void UpdateStats(StatChange[] statChanges)
     {
+        float health = Data.Health;
+        float kcal = Data.Kcal;
         Data = Instantiate(baseData);
+        Data.Health = health;
+        Data.Kcal = kcal;
         _multipleStats = new Dictionary<StatType, float>();
         _overrideStats = new Dictionary<StatType, float>();
 
