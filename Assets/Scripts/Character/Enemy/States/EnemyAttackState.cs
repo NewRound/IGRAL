@@ -23,6 +23,10 @@ public class EnemyAttackState : EnemyStateBase
             else
                 stateMachine.ChangeState(stateMachine.PatrolState);
         }
+        else
+        {
+            stateMachine.SetDirection(stateMachine.PlayerTransform.position.x - stateMachine.ModelTrans.position.x);
+        }
     }
 
     public override void Exit()
