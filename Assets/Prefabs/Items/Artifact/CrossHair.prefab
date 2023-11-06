@@ -83,6 +83,13 @@ MonoBehaviour:
   <MaxStack>k__BackingField: 0
   <ItemData>k__BackingField: {fileID: 11400000, guid: c5c7a2cc48ac2ff43b76124bdf047d58,
     type: 2}
+  <ItemDatas>k__BackingField:
+  - statsChangeType: 2
+    statType: 9
+    value: 2
+  - statsChangeType: 2
+    statType: 10
+    value: 2
 --- !u!1001 &7126314461349704594
 PrefabInstance:
   m_ObjectHideFlags: 0
