@@ -9,7 +9,23 @@ public class SkillKnife : SkillUse
 
         UIController.Instance.isSkill = false;
         Debug.Log("나이프 사용");
+        _isActive = true;
+    }
 
-        GameManager.Instance.player.GetComponent<PlayerAppearanceController>().ChangeMutant(MutantType.Blade);
+    private void Update()
+    {
+        if (_isActive)
+        {
+            if(mutantController.mutantType != MutantType.Blade)
+                mutantController.ChangeMutant(MutantType.Blade);
+            
+            // if(kcal <= 0) {break};
+            // kcal reduce
+            Debug.Log($"kcal : {-1 * Time.deltaTime}");
+        }
+        else
+        {
+            StopSkill();
+        }
     }
 }
