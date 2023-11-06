@@ -49,7 +49,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -67,8 +67,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e787de1272c2745b99198912aa3a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyCount: 0
   size: 1
   position: {x: 0, y: 0, z: 0}
+  enemys: []
 --- !u!1001 &2618227172503728432
 PrefabInstance:
   m_ObjectHideFlags: 0
