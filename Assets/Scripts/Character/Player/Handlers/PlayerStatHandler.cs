@@ -76,6 +76,11 @@ public class PlayerStatHandler : MonoBehaviour, IDamageable, IBurnable
         Data = Instantiate(baseData);
     }
 
+    private void Update()
+    {
+        Recovery(Data.HealthRegen * Time.deltaTime);
+    }
+
     public void Damaged(float damage)
     {
         float curValue = Mathf.Max(Data.Health - damage, 0.0f);
@@ -105,7 +110,7 @@ public class PlayerStatHandler : MonoBehaviour, IDamageable, IBurnable
     public void RecoveryKcal(float kcal)
     {
         float curValue = Mathf.Min(Data.Kcal + kcal, Data.Kcal);
-        Data.Kcal += curValue;
+        Data.Kcal = curValue;
         baseData.Kcal = curValue;
     }
 
