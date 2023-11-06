@@ -9,5 +9,7 @@ public class SkillKnife : SkillUse
 
         UIController.Instance.isSkill = false;
         Debug.Log("나이프 사용");
+
+        GameManager.Instance.player.GetComponent<PlayerAppearanceController>().ChangeMutant(MutantType.Blade);
     }
 }

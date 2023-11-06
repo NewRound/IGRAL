@@ -91,7 +91,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3566275175523547487}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: bccac84d0ced870428afff466b5ca00c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -113,20 +113,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5535471235294432816, guid: 34bd3bd594616834d941b634c8347a17,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6327854012048715749, guid: 34bd3bd594616834d941b634c8347a17,
         type: 3}
       propertyPath: m_Name
-      value: FloorTile Variant
+      value: WallTile Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6327854012048715749, guid: 34bd3bd594616834d941b634c8347a17,
         type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6672888918955914591, guid: 34bd3bd594616834d941b634c8347a17,
         type: 3}
@@ -209,7 +204,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6287740075589091277}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: bccac84d0ced870428afff466b5ca00c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 100
   <HealthRegen>k__BackingField: 1
+  <MaxHealth>k__BackingField: 100
   <Defense>k__BackingField: 0
   <EvasionProbability>k__BackingField: 0
   <IsInvincible>k__BackingField: 0
@@ -32,6 +33,7 @@ MonoBehaviour:
   <RollingForce>k__BackingField: 5
   <RollingCoolTime>k__BackingField: 2
   <KcalPerAttack>k__BackingField: 0
+  <Kcal>k__BackingField: 0
   <MaxKcal>k__BackingField: 0
   <WallSlidingTime>k__BackingField: 0
   <KnockbackTime>k__BackingField: 0.5

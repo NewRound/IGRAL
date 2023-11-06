@@ -1,5 +1,10 @@
-
 using UnityEngine;
+
+public enum StatType
+{
+
+}
+
 
 public class PlayerStatHandler : IDamageable
 {

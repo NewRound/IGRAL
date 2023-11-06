@@ -9,5 +9,7 @@ public class SkillHammer : SkillUse
 
         UIController.Instance.isSkill = false;
         Debug.Log("해머 사용");
+
+        GameManager.Instance.player.GetComponent<PlayerAppearanceController>().ChangeMutant(MutantType.Stone);
     }
 }
