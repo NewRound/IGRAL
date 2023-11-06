@@ -114,7 +114,17 @@ public class PlayerStateMachine : StateMachine
 
     public void OnAttackInput()
     {
-        if (currentState != AttackState)
+        if (CurrentState != AttackState)
+        {
             ChangeState(AttackState);
+        }
+    }
+
+    public override void Move()
+    {
+        if (CurrentState == AttackState)
+            return;
+
+        base.Move();
     }
 }
