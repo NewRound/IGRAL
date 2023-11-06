@@ -8,6 +8,10 @@ public class AnimationController : MonoBehaviour
 
     [field: SerializeField] public float animationNormalizeEndedTime = 0.9f;
 
+    protected void AttackEvent()
+    {
+
+    }
 
     public virtual void Init()
     {
