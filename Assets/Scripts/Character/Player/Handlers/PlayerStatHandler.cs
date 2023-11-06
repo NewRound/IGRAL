@@ -62,23 +62,18 @@ public class StatChange
     public float value;
 }
 
-public class PlayerStatHandler : MonoBehaviour, IDamageable, IBurnable
+public class PlayerStatHandler : IDamageable, IBurnable
 {
     public PlayerSO Data { get; private set; }
-    public PlayerSO baseData { get; private set; }
+    private PlayerSO _baseData;
 
     private Dictionary<StatType, float> _multipleStats;
     private Dictionary<StatType, float> _overrideStats;
 
     public PlayerStatHandler(PlayerSO data)
     {
-        baseData = data;
-        Data = Instantiate(baseData);
-    }
-
-    private void Update()
-    {
-        Recovery(Data.HealthRegen * Time.deltaTime);
+        _baseData = data;
+        Data = UnityEngine.Object.Instantiate(_baseData);
     }
 
     public void Damaged(float damage)
@@ -113,7 +108,7 @@ public class PlayerStatHandler : MonoBehaviour, IDamageable, IBurnable
     {
         float health = Data.Health;
         float kcal = Data.Kcal;
-        Data = Instantiate(baseData);
+        Data = UnityEngine.Object.Instantiate(_baseData);
         Data.Health = health;
         Data.Kcal = kcal;
         _multipleStats = new Dictionary<StatType, float>();
