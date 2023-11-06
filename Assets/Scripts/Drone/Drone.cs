@@ -29,7 +29,7 @@ public class Drone : MonoBehaviour
 
     private void Update()
     {
-        // SetPosition();
+        SetTransform();
         
         _attackTimer += Time.deltaTime;
 
@@ -60,20 +60,11 @@ public class Drone : MonoBehaviour
         }
     }
 
-    //private void SetPosition()
-    //{
-    //    if(_followTarget.rotation.y < 0)
-    //    {
-    //        xyOffset = new Vector3(1,2,0);
-    //    }
-    //    else if (_followTarget.rotation.y > 0)
-    //    {
-    //        xyOffset = new Vector3(-1, 2, 0);
-    //    }
-
-    //    transform.SetPositionAndRotation(_followTarget.position + xyOffset, _followTarget.rotation);
-        
-    //}
+    private void SetTransform()
+    {
+        transform.position = _followTarget.position;
+        transform.rotation = _followTarget.rotation;
+    }
 
     // 총알을 발사하는 메서드
     private void OnFire(RaycastHit hitInfo)

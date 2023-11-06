@@ -23,7 +23,8 @@ public class DroneProjectile : MonoBehaviour
     {
         if(_target != null)
         {
-            Vector3 direction = _target.position - transform.position;
+            Vector3 targetPos = _target.position + new Vector3(0f, 1f, 0f);
+            Vector3 direction = targetPos - transform.position;
             transform.forward = direction.normalized;
             transform.Translate(Vector3.forward * _movementSpeed * Time.deltaTime);
         }
@@ -46,7 +47,7 @@ public class DroneProjectile : MonoBehaviour
         // 적에게 부딪히면 데미지 주고 비활성화
         if (other.CompareTag("Enemy")) 
         {
-            EnemyStatHandler enemy = other.GetComponent<EnemyStatHandler>();
+            EnemyStatHandler enemy = other.GetComponent<EnemyController>().StatHandler;
             if(enemy != null)
             {
                 enemy.Damaged(_attackDamage);
