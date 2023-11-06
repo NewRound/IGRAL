@@ -12,9 +12,8 @@ public class ItemWeapon : PickupWeapon, IItem
     [field: SerializeField] public GameObject ItemObject { get; private set; }
     [field: TextArea][field: SerializeField] public string ItemInfo { get; private set; }
     [field: SerializeField] public int Price { get; private set; }
-    [field: SerializeField] public int MaxStack { get; private set; }
     [field: SerializeField] public PlayerSO ItemData { get; private set; }
-
+    [field: SerializeField] public StatChange[] ItemDatas { get; private set; }
     public override void Pickup()
     {
         base.Pickup();
