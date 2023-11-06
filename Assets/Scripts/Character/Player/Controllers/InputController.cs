@@ -82,9 +82,6 @@ public class InputController : PlayerController
 
     public void CallMoveAction(Vector2 inputVec)
     {
-        if (StateMachine.CurrentState == StateMachine.AttackState)
-            return;
-
         MoveAction?.Invoke(inputVec);
     }
 
@@ -99,7 +96,7 @@ public class InputController : PlayerController
 
     public void CallRollAction()
     {
-        if (!StateMachine.RollDataHandler.CanRoll || StateMachine.CurrentState == StateMachine.AttackState)
+        if (!StateMachine.RollDataHandler.CanRoll)
             return;
 
         StateMachine.ChangeState(StateMachine.RollState);

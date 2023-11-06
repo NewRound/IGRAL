@@ -73,7 +73,7 @@ public abstract class StateMachine
         Direction = new Vector2(xPos, 0f);
     }
 
-    public void Move()
+    public virtual void Move()
     {
         Vector3 velocity = new Vector3(Direction.x, 0f, 0f) * Speed;
         velocity.y = Rigid.velocity.y;
