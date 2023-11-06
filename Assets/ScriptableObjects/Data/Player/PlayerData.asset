@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 100
-  <HealthRegen>k__BackingField: 1
   <MaxHealth>k__BackingField: 100
+  <HealthRegen>k__BackingField: 1
   <Defense>k__BackingField: 0
   <EvasionProbability>k__BackingField: 0
   <IsInvincible>k__BackingField: 0

@@ -421,7 +421,6 @@ public class UIInventory : CustomSingleton<UIInventory>
         selectedItem.item = null;
         ClearInfo();
         UpdateUI();
-        UpdateEquipUI();
     }
 
     private void OnUnEquipButton()
@@ -429,7 +428,6 @@ public class UIInventory : CustomSingleton<UIInventory>
         AddItem(selectedItem.item);
         selectedItem.item = null;
         ClearInfo();
-        UpdateUI();
         UpdateEquipUI();
     }
 
