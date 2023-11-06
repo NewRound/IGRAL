@@ -62,27 +62,42 @@ public class StatChange
     public float value;
 }
 
-public class PlayerStatHandler : IDamageable
+public class PlayerStatHandler : MonoBehaviour, IDamageable
 {
     public PlayerSO Data { get; private set; }
+    public PlayerSO baseData { get; private set; }
 
     private Dictionary<StatType, float> _multipleStats;
     private Dictionary<StatType, float> _overrideStats;
 
     public PlayerStatHandler(PlayerSO data)
     {
-        Data = data;
+        baseData = data;
+        Data = Instantiate(baseData);
     }
 
     public void Damaged(float damage)
     {
         Data.Health -= damage;
-        Debug.Log(Data.Health);
+    }
+
+    public void UpdateHealth(float health)
+    {
+        Data.Health += health;
+        baseData.Health = Data.Health;
+    }
+
+    public void UpdateKcal(float kcal)
+    {
+        Data.Kcal += kcal;
+        baseData.Kcal = Data.Kcal;
     }
 
     public void UpdateStats(StatChange[] statChanges)
     {
+        Data = Instantiate(baseData);
         _multipleStats = new Dictionary<StatType, float>();
+        _overrideStats = new Dictionary<StatType, float>();
 
         // ±âº» ºÐ·ù
         foreach (StatChange statChange in statChanges)
@@ -174,164 +189,172 @@ public class PlayerStatHandler : IDamageable
         }
 
         // °ö¼À Àû¿ë
-        foreach(var entry in _multipleStats)
+        if(_multipleStats.Count > 0)
         {
-            switch (entry.Key)
+            foreach (var entry in _multipleStats)
             {
-                case StatType.Health:
-                    Data.Health = entry.Value < -100f ? 0 : Data.Health + (Data.Health * entry.Value * 0.01f);
-                    break;
-                case StatType.MaxHealth:
-                    Data.MaxHealth = entry.Value < -100f ? 0 : Data.MaxHealth + (Data.MaxHealth * entry.Value * 0.01f);
-                    break;
-                case StatType.HealthRegen:
-                    Data.HealthRegen = entry.Value < -100f ? 0 : Data.HealthRegen + (Data.HealthRegen * entry.Value * 0.01f);
-                    break;
-                case StatType.Defense:
-                    Data.Defense = entry.Value < -100f ? 0 : Data.Defense + (Data.Defense * entry.Value * 0.01f);
-                    break;
-                case StatType.EvasionProbability:
-                    Data.EvasionProbability = entry.Value < -100f ? 0 : Data.EvasionProbability + (Data.EvasionProbability * entry.Value * 0.01f);
-                    break;
-                case StatType.InvincibleTime:
-                    Data.InvincibleTime = entry.Value < -100f ? 0 : Data.InvincibleTime + (Data.InvincibleTime * entry.Value * 0.01f);
-                    break;
-                case StatType.Attack:
-                    Data.Attack = entry.Value < -100f ? 0 : Data.Attack + (Data.Attack * entry.Value * 0.01f);
-                    break;
-                case StatType.AttackDelay:
-                    Data.AttackDelay = entry.Value < -100f ? 0 : Data.AttackDelay + (Data.AttackDelay * entry.Value * 0.01f);
-                    break;
-                case StatType.AttackRange:
-                    Data.AttackRange = entry.Value < -100f ? 0 : Data.AttackRange + (Data.AttackRange * entry.Value * 0.01f);
-                    break;
-                case StatType.CriticalProbability:
-                    Data.CriticalProbability = entry.Value < -100f ? 0 : Data.CriticalProbability + (Data.CriticalProbability * entry.Value * 0.01f);
-                    break;
-                case StatType.CriticalMod:
-                    Data.CriticalMod = entry.Value < -100f ? 0 : Data.CriticalMod + (Data.CriticalMod * entry.Value * 0.01f);
-                    break;
-                case StatType.SpeedMin:
-                    Data.SpeedMin = entry.Value < -100f ? 0 : Data.SpeedMin + (Data.SpeedMin * entry.Value * 0.01f);
-                    break;
-                case StatType.SpeedMax:
-                    Data.SpeedMax = entry.Value < -100f ? 0 : Data.SpeedMax + (Data.SpeedMax * entry.Value * 0.01f);
-                    break;
-                case StatType.KnockbackPower:
-                    Data.KnockbackPower = entry.Value < -100f ? 0 : Data.KnockbackPower + (Data.KnockbackPower * entry.Value * 0.01f);
-                    break;
-                case StatType.JumpingForce:
-                    Data.JumpingForce = entry.Value < -100f ? 0 : Data.JumpingForce + (Data.JumpingForce * entry.Value * 0.01f);
-                    break;
-                case StatType.JumpingCountMax:
-                    Data.JumpingCountMax = entry.Value < -100f ? 0 : (int)(Data.JumpingCountMax + (Data.JumpingCountMax * entry.Value * 0.01f));
-                    break;
-                case StatType.RollingForce:
-                    Data.RollingForce = entry.Value < -100f ? 0 : Data.RollingForce + (Data.RollingForce * entry.Value * 0.01f);
-                    break;
-                case StatType.RollingCoolTime:
-                    Data.RollingCoolTime = entry.Value < -100f ? 0 : Data.RollingCoolTime + (Data.RollingCoolTime * entry.Value * 0.01f);
-                    break;
-                case StatType.KcalPerAttack:
-                    Data.KcalPerAttack = entry.Value < -100f ? 0 : Data.KcalPerAttack + (Data.KcalPerAttack * entry.Value * 0.01f);
-                    break;
-                case StatType.Kcal:
-                    Data.Kcal = entry.Value < -100f ? 0 : Data.Kcal + (Data.Kcal * entry.Value * 0.01f);
-                    break;
-                case StatType.MaxKcal:
-                    Data.MaxKcal = entry.Value < -100f ? 0 : Data.MaxKcal + (Data.MaxKcal * entry.Value * 0.01f);
-                    break;
-                case StatType.WallSlidingTime:
-                    Data.WallSlidingTime = entry.Value < -100f ? 0 : Data.WallSlidingTime + (Data.WallSlidingTime * entry.Value * 0.01f);
-                    break;
-                case StatType.KnockbackTime:
-                    Data.KnockbackTime = entry.Value < -100f ? 0 : Data.KnockbackTime + (Data.KnockbackTime * entry.Value * 0.01f);
-                    break;
-                case StatType.WallSlidingSpeed:
-                    Data.WallSlidingSpeed = entry.Value < -100f ? 0 : Data.WallSlidingSpeed + (Data.WallSlidingSpeed * entry.Value * 0.01f);
-                    break;
+                switch (entry.Key)
+                {
+                    case StatType.Health:
+                        Data.Health = entry.Value < -100f ? 0 : Data.Health + (float)Math.Round((Data.Health * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.MaxHealth:
+                        Data.MaxHealth = entry.Value < -100f ? 0 : Data.MaxHealth + (float)Math.Round((Data.MaxHealth * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.HealthRegen:
+                        Data.HealthRegen = entry.Value < -100f ? 0 : Data.HealthRegen + (float)Math.Round((Data.HealthRegen * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.Defense:
+                        Data.Defense = entry.Value < -100f ? 0 : Data.Defense + (float)Math.Round((Data.Defense * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.EvasionProbability:
+                        Data.EvasionProbability = entry.Value < -100f ? 0 : Data.EvasionProbability + (float)Math.Round((Data.EvasionProbability * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.InvincibleTime:
+                        Data.InvincibleTime = entry.Value < -100f ? 0 : Data.InvincibleTime + (float)Math.Round((Data.InvincibleTime * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.Attack:
+                        Data.Attack = entry.Value < -100f ? 0 : Data.Attack + (float)Math.Round((Data.Attack * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.AttackDelay:
+                        Data.AttackDelay = entry.Value < -100f ? 0 : Data.AttackDelay + (float)Math.Round((Data.AttackDelay * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.AttackRange:
+                        Data.AttackRange = entry.Value < -100f ? 0 : Data.AttackRange + (float)Math.Round((Data.AttackRange * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.CriticalProbability:
+                        Data.CriticalProbability = entry.Value < -100f ? 0 : Data.CriticalProbability + (float)Math.Round((Data.CriticalProbability * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.CriticalMod:
+                        Data.CriticalMod = entry.Value < -100f ? 0 : Data.CriticalMod + (float)Math.Round((Data.CriticalMod * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.SpeedMin:
+                        Data.SpeedMin = entry.Value < -100f ? 0 : Data.SpeedMin + (float)Math.Round((Data.SpeedMin * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.SpeedMax:
+                        Data.SpeedMax = entry.Value < -100f ? 0 : Data.SpeedMax + (float)Math.Round((Data.SpeedMax * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.KnockbackPower:
+                        Data.KnockbackPower = entry.Value < -100f ? 0 : Data.KnockbackPower + (float)Math.Round((Data.KnockbackPower * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.JumpingForce:
+                        Data.JumpingForce = entry.Value < -100f ? 0 : Data.JumpingForce + (float)Math.Round((Data.JumpingForce * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.JumpingCountMax:
+                        Data.JumpingCountMax = entry.Value < -100f ? 0 : (int)(Data.JumpingCountMax + (int)(Data.JumpingCountMax * entry.Value * 0.01f));
+                        break;
+                    case StatType.RollingForce:
+                        Data.RollingForce = entry.Value < -100f ? 0 : Data.RollingForce + (float)Math.Round((Data.RollingForce * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.RollingCoolTime:
+                        Data.RollingCoolTime = entry.Value < -100f ? 0 : Data.RollingCoolTime + (float)Math.Round((Data.RollingCoolTime * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.KcalPerAttack:
+                        Data.KcalPerAttack = entry.Value < -100f ? 0 : Data.KcalPerAttack + (float)Math.Round((Data.KcalPerAttack * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.Kcal:
+                        Data.Kcal = entry.Value < -100f ? 0 : Data.Kcal + (float)Math.Round((Data.Kcal * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.MaxKcal:
+                        Data.MaxKcal = entry.Value < -100f ? 0 : Data.MaxKcal + (float)Math.Round((Data.MaxKcal * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.WallSlidingTime:
+                        Data.WallSlidingTime = entry.Value < -100f ? 0 : Data.WallSlidingTime + (float)Math.Round((Data.WallSlidingTime * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.KnockbackTime:
+                        Data.KnockbackTime = entry.Value < -100f ? 0 : Data.KnockbackTime + (float)Math.Round((Data.KnockbackTime * entry.Value * 0.01f), 2);
+                        break;
+                    case StatType.WallSlidingSpeed:
+                        Data.WallSlidingSpeed = entry.Value < -100f ? 0 : Data.WallSlidingSpeed + (float)Math.Round((Data.WallSlidingSpeed * entry.Value * 0.01f), 2);
+                        break;
+                }
             }
         }
 
         // µ¤¾î¾²±â Àû¿ë
-        foreach (var entry in _overrideStats)
+        if(_overrideStats.Count > 0)
         {
-            switch (entry.Key)
+            foreach (var entry in _overrideStats)
             {
-                case StatType.Health:
-                    Data.Health = entry.Value;
-                    break;
-                case StatType.MaxHealth:
-                    Data.MaxHealth = entry.Value;
-                    break;
-                case StatType.HealthRegen:
-                    Data.HealthRegen = entry.Value;
-                    break;
-                case StatType.Defense:
-                    Data.Defense = entry.Value;
-                    break;
-                case StatType.EvasionProbability:
-                    Data.EvasionProbability = entry.Value;
-                    break;
-                case StatType.InvincibleTime:
-                    Data.InvincibleTime = entry.Value;
-                    break;
-                case StatType.Attack:
-                    Data.Attack = entry.Value;
-                    break;
-                case StatType.AttackDelay:
-                    Data.AttackDelay = entry.Value;
-                    break;
-                case StatType.AttackRange:
-                    Data.AttackRange = entry.Value;
-                    break;
-                case StatType.CriticalProbability:
-                    Data.CriticalProbability = entry.Value;
-                    break;
-                case StatType.CriticalMod:
-                    Data.CriticalMod = entry.Value;
-                    break;
-                case StatType.SpeedMin:
-                    Data.SpeedMin = entry.Value;
-                    break;
-                case StatType.SpeedMax:
-                    Data.SpeedMax = entry.Value;
-                    break;
-                case StatType.KnockbackPower:
-                    Data.KnockbackPower = entry.Value;
-                    break;
-                case StatType.JumpingForce:
-                    Data.JumpingForce = entry.Value;
-                    break;
-                case StatType.JumpingCountMax:
-                    Data.JumpingCountMax = (int)entry.Value;
-                    break;
-                case StatType.RollingForce:
-                    Data.RollingForce = entry.Value;
-                    break;
-                case StatType.RollingCoolTime:
-                    Data.RollingCoolTime = entry.Value;
-                    break;
-                case StatType.KcalPerAttack:
-                    Data.KcalPerAttack = entry.Value;
-                    break;
-                case StatType.Kcal:
-                    Data.Kcal = entry.Value;
-                    break;
-                case StatType.MaxKcal:
-                    Data.MaxKcal = entry.Value;
-                    break;
-                case StatType.WallSlidingTime:
-                    Data.WallSlidingTime = entry.Value;
-                    break;
-                case StatType.KnockbackTime:
-                    Data.KnockbackTime = entry.Value;
-                    break;
-                case StatType.WallSlidingSpeed:
-                    Data.WallSlidingSpeed = entry.Value;
-                    break;
+                switch (entry.Key)
+                {
+                    case StatType.Health:
+                        Data.Health = entry.Value;
+                        break;
+                    case StatType.MaxHealth:
+                        Data.MaxHealth = entry.Value;
+                        break;
+                    case StatType.HealthRegen:
+                        Data.HealthRegen = entry.Value;
+                        break;
+                    case StatType.Defense:
+                        Data.Defense = entry.Value;
+                        break;
+                    case StatType.EvasionProbability:
+                        Data.EvasionProbability = entry.Value;
+                        break;
+                    case StatType.InvincibleTime:
+                        Data.InvincibleTime = entry.Value;
+                        break;
+                    case StatType.Attack:
+                        Data.Attack = entry.Value;
+                        break;
+                    case StatType.AttackDelay:
+                        Data.AttackDelay = entry.Value;
+                        break;
+                    case StatType.AttackRange:
+                        Data.AttackRange = entry.Value;
+                        break;
+                    case StatType.CriticalProbability:
+                        Data.CriticalProbability = entry.Value;
+                        break;
+                    case StatType.CriticalMod:
+                        Data.CriticalMod = entry.Value;
+                        break;
+                    case StatType.SpeedMin:
+                        Data.SpeedMin = entry.Value;
+                        break;
+                    case StatType.SpeedMax:
+                        Data.SpeedMax = entry.Value;
+                        break;
+                    case StatType.KnockbackPower:
+                        Data.KnockbackPower = entry.Value;
+                        break;
+                    case StatType.JumpingForce:
+                        Data.JumpingForce = entry.Value;
+                        break;
+                    case StatType.JumpingCountMax:
+                        Data.JumpingCountMax = (int)entry.Value;
+                        break;
+                    case StatType.RollingForce:
+                        Data.RollingForce = entry.Value;
+                        break;
+                    case StatType.RollingCoolTime:
+                        Data.RollingCoolTime = entry.Value;
+                        break;
+                    case StatType.KcalPerAttack:
+                        Data.KcalPerAttack = entry.Value;
+                        break;
+                    case StatType.Kcal:
+                        Data.Kcal = entry.Value;
+                        break;
+                    case StatType.MaxKcal:
+                        Data.MaxKcal = entry.Value;
+                        break;
+                    case StatType.WallSlidingTime:
+                        Data.WallSlidingTime = entry.Value;
+                        break;
+                    case StatType.KnockbackTime:
+                        Data.KnockbackTime = entry.Value;
+                        break;
+                    case StatType.WallSlidingSpeed:
+                        Data.WallSlidingSpeed = entry.Value;
+                        break;
+                }
             }
+
         }
+
     }
 
     private float CalculateStat(StatType statType, StatsChangeType statsChangeType, float a, float b)
