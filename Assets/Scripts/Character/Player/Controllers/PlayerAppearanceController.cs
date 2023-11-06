@@ -13,7 +13,7 @@ public enum MutantType
 
 public class PlayerAppearanceController : MonoBehaviour
 {
-    private MutantType mutantType;
+    public MutantType mutantType { get; private set; }
 
     [SerializeField] public List<GameObject> Mutant_Stone;
     [SerializeField] public List<GameObject> Mutant_Blade;
@@ -92,7 +92,5 @@ public class PlayerAppearanceController : MonoBehaviour
         {
             obj.SetActive(OnOff);
         }
-        
     }
-    
 }

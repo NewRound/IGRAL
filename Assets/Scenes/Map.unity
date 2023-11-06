@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!198 &91741692 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8899435572765527247, guid: b444d85655d9eed4690573a8a1147852,
+    type: 3}
+  m_PrefabInstance: {fileID: 1869801237}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &158388193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -196,32 +202,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bc2182ab0cf94742adaf0ebf4a9a7b1, type: 3}
---- !u!1 &232830727 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1895562986543425228, guid: b444d85655d9eed4690573a8a1147852,
-    type: 3}
-  m_PrefabInstance: {fileID: 1869801237}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &232830733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232830727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c88fbc6a2cafe574ca890221fd115627, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Mutant_Stone:
-  - {fileID: 728713711}
-  - {fileID: 1691079507}
-  - {fileID: 1067471562}
-  Mutant_Blade:
-  - {fileID: 1244345688}
-  Mutant_Sheld: []
-  Mutant_SkinBaby: []
 --- !u!1 &237668064
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,18 +320,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &728713711 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2914068683234625984, guid: b444d85655d9eed4690573a8a1147852,
-    type: 3}
-  m_PrefabInstance: {fileID: 1869801237}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1067471562 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3015571220016706540, guid: b444d85655d9eed4690573a8a1147852,
-    type: 3}
-  m_PrefabInstance: {fileID: 1869801237}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1244302383
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,18 +438,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!1 &1244345688 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7523755263775500966, guid: b444d85655d9eed4690573a8a1147852,
-    type: 3}
-  m_PrefabInstance: {fileID: 1869801237}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1691079507 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3005243873249840336, guid: b444d85655d9eed4690573a8a1147852,
-    type: 3}
-  m_PrefabInstance: {fileID: 1869801237}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1796737965
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,13 +550,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2978497340149888580, guid: b444d85655d9eed4690573a8a1147852, type: 3}
+    - target: {fileID: 7225548810922626653, guid: b444d85655d9eed4690573a8a1147852,
+        type: 3}
+      propertyPath: particleSystem
+      value: 
+      objectReference: {fileID: 91741692}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1895562986543425228, guid: b444d85655d9eed4690573a8a1147852,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 232830733}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b444d85655d9eed4690573a8a1147852, type: 3}

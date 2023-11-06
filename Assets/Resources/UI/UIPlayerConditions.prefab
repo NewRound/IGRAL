@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7145756457677429305}
   - component: {fileID: 8425919150593976443}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2259818252944498140
 RectTransform:
   m_ObjectHideFlags: 0
@@ -110,9 +110,9 @@ RectTransform:
   m_Father: {fileID: 983320043643278518}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 200, y: -150}
   m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3966771082601205357
@@ -287,10 +287,10 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
@@ -462,6 +462,7 @@ GameObject:
   - component: {fileID: 1443082964324397758}
   - component: {fileID: 1097035954911589398}
   - component: {fileID: 3442104597975952808}
+  - component: {fileID: 3869344807628742997}
   m_Layer: 5
   m_Name: UIPlayerConditions
   m_TagString: Untagged
@@ -553,6 +554,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3869344807628742997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3390433913963968643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cf3f41e2b03e24684e583b70f1d44a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health:
+    uiBar: {fileID: 8425919150593976443}
+  kcal:
+    uiBar: {fileID: 746840582048693507}
 --- !u!1 &3632446091409876512
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +582,7 @@ GameObject:
   - component: {fileID: 3628209375636839954}
   - component: {fileID: 746840582048693507}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Calorie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -624,7 +641,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.53
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
