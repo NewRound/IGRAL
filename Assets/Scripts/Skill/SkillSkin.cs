@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class SkillSkin : SkillUse
 {
-    public float durationTime = 5000f;
+    public float durationTime = 5f;
     private float CurrentTime = 0f;
-
 
     public override void UseSkill()
     {
@@ -18,29 +17,28 @@ public class SkillSkin : SkillUse
 
     private void Awake()
     {
-        durationTime = 5000f;
+        // 스킬 언락에 따른 지속시간 증가시 작성할 것.
+        durationTime = 5f;
     }
 
     private void Update()
     {
         if (_isActive)
         {
-            mutantController.ChangeMutant(MutantType.Skin);
-            while (true)
-            {
-                if (!_isActive || CurrentTime >= durationTime)
-                {
-                    CurrentTime = 0f;
-                    _isActive = false;
-                    break;
-                }
+            if (mutantController.mutantType != MutantType.Skin)
+                mutantController.ChangeMutant(MutantType.Skin);
 
-                CurrentTime += Time.deltaTime;
-                // if(kcal <= 0) {break};
-                // kcal reduce
-                Debug.Log($"kcal : {CurrentTime}/{durationTime},    {-1 * Time.deltaTime}");
+            CurrentTime += Time.deltaTime;
+
+            if (CurrentTime >= durationTime)
+            {
+                CurrentTime = 0f;
+                _isActive = false;
+                mutantController.ChangeMutant(MutantType.None);
             }
-            mutantController.ChangeMutant(MutantType.None);
+
+            // if(kcal <= 0) {break};
+            // kcal reduce
         }
     }
 }

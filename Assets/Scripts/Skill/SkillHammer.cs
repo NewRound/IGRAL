@@ -16,20 +16,16 @@ public class SkillHammer : SkillUse
     {
         if(_isActive)
         {
-            mutantController.ChangeMutant(MutantType.Stone);
-            while (true)
-            {
-                if (!_isActive)
-                {
-                    _isActive = false;
-                    break;
-                }
-                // if(kcal <= 0) {break};
-                // kcal reduce
-                Debug.Log($"kcal : { -1 * Time.deltaTime}");
-            }
-            mutantController.ChangeMutant(MutantType.None);
+            if (mutantController.mutantType != MutantType.Stone)
+                mutantController.ChangeMutant(MutantType.Stone);
+
+            // if(kcal <= 0) {break};
+            // kcal reduce
+            Debug.Log($"kcal : { -1 * Time.deltaTime}");
+        }
+        else
+        {
+            StopSkill();
         }
     }
-
 }

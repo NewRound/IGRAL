@@ -16,19 +16,16 @@ public class SkillKnife : SkillUse
     {
         if (_isActive)
         {
-            mutantController.ChangeMutant(MutantType.Blade);
-            while (true)
-            {
-                if (!_isActive)
-                {
-                    _isActive = false;
-                    break;
-                }
-                // if(kcal <= 0) {break};
-                // kcal reduce
-                Debug.Log($"kcal : {-1 * Time.deltaTime}");
-            }
-            mutantController.ChangeMutant(MutantType.None);
+            if(mutantController.mutantType != MutantType.Blade)
+                mutantController.ChangeMutant(MutantType.Blade);
+            
+            // if(kcal <= 0) {break};
+            // kcal reduce
+            Debug.Log($"kcal : {-1 * Time.deltaTime}");
+        }
+        else
+        {
+            StopSkill();
         }
     }
 }

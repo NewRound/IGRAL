@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SkillPsychometric : SkillUse
 {
-    public float durationTime = 5000.0f;
+    public float durationTime = 5.0f;
     private float CurrentTime = 0f;
 
     public override void UseSkill()
@@ -17,30 +17,28 @@ public class SkillPsychometric : SkillUse
 
     private void Awake()
     {
-        durationTime = 5000f;
+        durationTime = 5f;
+        Debug.Log($"{durationTime}");
     }
 
     private void Update()
     {
         if (_isActive)
         {
-            mutantController.ChangeMutant(MutantType.Sheld);
-            while (true)
-            {
-                if (!_isActive || CurrentTime >= durationTime)
-                {
-                    CurrentTime = 0f;
-                    _isActive = false;
-                    break;
-                }
+            if (mutantController.mutantType != MutantType.Sheld)
+                mutantController.ChangeMutant(MutantType.Sheld);
+            
+            CurrentTime += Time.deltaTime;
 
-                CurrentTime += Time.deltaTime;
-                // if(kcal <= 0) {break};
-                // kcal reduce
-                Debug.Log($"kcal : {CurrentTime}/{durationTime},    {-1 * Time.deltaTime}");
+            if (CurrentTime >= durationTime)
+            {
+                CurrentTime = 0f;
+                _isActive = false;
+                mutantController.ChangeMutant(MutantType.None);
             }
-            mutantController.ChangeMutant(MutantType.None);
+
+            // if(kcal <= 0) {break};
+            // kcal reduce
         }
     }
-
 }
