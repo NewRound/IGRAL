@@ -53,6 +53,6 @@ public class SkillUse : MonoBehaviour
 
     public virtual void UsingKcal(float kcal)
     {
-        GameManager.Instance.StatHandler.UpdateKcal(kcal);
+        GameManager.Instance.StatHandler.BurnKcal(kcal);
     }
 }

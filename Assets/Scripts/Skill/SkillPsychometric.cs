@@ -19,7 +19,7 @@ public class SkillPsychometric : SkillUse
     private void Awake()
     {
         durationTime = 5f;
-        usingKcal = -50f;
+        usingKcal = 50f;
         Debug.Log($"{durationTime}");
     }
 

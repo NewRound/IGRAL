@@ -4,7 +4,7 @@ public class SkillKnife : SkillUse
 {
     private void Awake()
     {
-        usingKcal = -1.0f;
+        usingKcal = 1.0f;
     }
 
     public override void UseSkill()

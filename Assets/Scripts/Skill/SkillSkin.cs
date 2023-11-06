@@ -21,7 +21,7 @@ public class SkillSkin : SkillUse
         // 스킬 언락에 따른 지속시간 증가시 작성할 것.
         durationTime = 5f;
 
-        usingKcal = -100.0f;
+        usingKcal = 100.0f;
     }
 
     private void Update()

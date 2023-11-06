@@ -4,7 +4,7 @@ public class SkillHammer : SkillUse
 {
     private void Awake()
     {
-        usingKcal = - 2.0f;
+        usingKcal = 2.0f;
     }
 
     public override void UseSkill()
