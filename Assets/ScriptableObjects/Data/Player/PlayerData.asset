@@ -33,8 +33,8 @@ MonoBehaviour:
   <RollingForce>k__BackingField: 5
   <RollingCoolTime>k__BackingField: 2
   <KcalPerAttack>k__BackingField: 0
-  <Kcal>k__BackingField: 0
-  <MaxKcal>k__BackingField: 0
+  <Kcal>k__BackingField: 300
+  <MaxKcal>k__BackingField: 300
   <WallSlidingTime>k__BackingField: 0
   <KnockbackTime>k__BackingField: 0.5
   <WallSlidingSpeed>k__BackingField: 0

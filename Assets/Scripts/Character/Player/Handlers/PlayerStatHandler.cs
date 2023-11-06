@@ -62,31 +62,24 @@ public class StatChange
     public float value;
 }
 
-public class PlayerStatHandler : MonoBehaviour, IDamageable, IBurnable
+public class PlayerStatHandler : IDamageable, IBurnable
 {
     public PlayerSO Data { get; private set; }
-    public PlayerSO baseData { get; private set; }
+    private PlayerSO _baseData;
 
     private Dictionary<StatType, float> _multipleStats;
     private Dictionary<StatType, float> _overrideStats;
 
     public PlayerStatHandler(PlayerSO data)
     {
-        baseData = data;
-        Data = Instantiate(baseData);
-    }
-
-    private void Update()
-    {
-        Recovery(Data.HealthRegen * Time.deltaTime);
+        _baseData = data;
+        Data = UnityEngine.Object.Instantiate(_baseData);
     }
 
     public void Damaged(float damage)
     {
         float curValue = Mathf.Max(Data.Health - damage, 0.0f);
         Data.Health = curValue;
-        baseData.Health = curValue;
-
         if(curValue == 0.0f)
         {
             //TODO 플레이어 죽음 처리
@@ -97,26 +90,27 @@ public class PlayerStatHandler : MonoBehaviour, IDamageable, IBurnable
     {
         float curValue = Mathf.Min(Data.Health + damage, Data.MaxHealth);
         Data.Health = curValue;
-        baseData.Health = curValue;
     }
 
     public void BurnKcal(float kcal)
     {
         float curValue = Mathf.Max(Data.Kcal - kcal, 0.0f);
         Data.Kcal = curValue;
-        baseData.Kcal = curValue;
     }
 
     public void RecoveryKcal(float kcal)
     {
         float curValue = Mathf.Min(Data.Kcal + kcal, Data.Kcal);
         Data.Kcal = curValue;
-        baseData.Kcal = curValue;
     }
 
     public void UpdateStats(StatChange[] statChanges)
     {
-        Data = Instantiate(baseData);
+        float health = Data.Health;
+        float kcal = Data.Kcal;
+        Data = UnityEngine.Object.Instantiate(_baseData);
+        Data.Health = health;
+        Data.Kcal = kcal;
         _multipleStats = new Dictionary<StatType, float>();
         _overrideStats = new Dictionary<StatType, float>();
 
