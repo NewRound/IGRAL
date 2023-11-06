@@ -31,4 +31,12 @@ public class SkillManager : CustomSingleton<SkillManager>
             }
         }
     }
+
+    public void AllOffSkill()
+    {
+        foreach(SkillUse skillUse in _skillUse)
+        {
+            skillUse.StopSkill();
+        }
+    }
 }

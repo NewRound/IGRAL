@@ -92,7 +92,5 @@ public class PlayerAppearanceController : MonoBehaviour
         {
             obj.SetActive(OnOff);
         }
-        
     }
-    
 }
