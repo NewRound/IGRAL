@@ -3,34 +3,54 @@ using UnityEngine;
 public class DroneProjectile : MonoBehaviour
 {
     [SerializeField] private float _attackDamage;
+    [SerializeField] private float _movementSpeed;
+    [SerializeField] private float _maxDuration;
+    private float _curDuration;
 
-    private Vector3 _myPos;
-    private Vector3 _targetPos;
-
-    private Rigidbody _rigid;
-
-    private void Awake()
-    {
-        _rigid = GetComponent<Rigidbody>();
-    }    
+    private Transform _target;
 
     private void OnEnable()
     {
-        _myPos = transform.position;
+        _curDuration = 0f;
+    }
+
+    private void OnDisable()
+    {
+        _target = null;
     }
 
     private void Update()
     {
-        // 타겟 위치로 이동하기
-        // rigidbody moveposition 
+        if(_target != null)
+        {
+            Vector3 direction = _target.position - transform.position;
+            transform.forward = direction.normalized;
+            transform.Translate(Vector3.forward * _movementSpeed * Time.deltaTime);
+        }
+
+        _curDuration += Time.deltaTime;
+
+        if (_curDuration >= _maxDuration)
+        {
+            gameObject.SetActive(false);
+        }
     }
+
+    public void SetTarget(Transform target)
+    {
+        _target = target;        
+    }    
 
     private void OnTriggerEnter(Collider other)
     {
         // 적에게 부딪히면 데미지 주고 비활성화
         if (other.CompareTag("Enemy")) 
         {
-            other.GetComponent<EnemyStatHandler>().Damaged(_attackDamage);
+            EnemyStatHandler enemy = other.GetComponent<EnemyStatHandler>();
+            if(enemy != null)
+            {
+                enemy.Damaged(_attackDamage);
+            }            
             gameObject.SetActive(false);
         }
     }

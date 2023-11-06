@@ -76,7 +76,7 @@ public class PlayerStatHandler : IDamageable
     public void Damaged(float damage)
     {
         Data.Health -= damage;
-        Debug.Log(Data.Health);
+        //Debug.Log(Data.Health);
     }
 
     public void UpdateStats(StatChange[] statChanges)
