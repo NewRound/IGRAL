@@ -106,11 +106,87 @@ public class PlayerStatHandler : IDamageable, IBurnable
 
     public void UpdateStats(StatChange[] statChanges)
     {
-        float health = Data.Health;
-        float kcal = Data.Kcal;
-        Data = UnityEngine.Object.Instantiate(_baseData);
-        Data.Health = health;
-        Data.Kcal = kcal;
+        // 데이터 초기화
+        foreach (StatType enumItem in Enum.GetValues(typeof(StatType)))
+        {
+            float a = -1f;
+            switch (enumItem)
+            {
+                case StatType.MaxHealth:
+                    Data.MaxHealth = _baseData.MaxHealth;
+                    break;
+                case StatType.HealthRegen:
+                    Data.HealthRegen = _baseData.HealthRegen;
+                    break;
+                case StatType.Defense:
+                    Data.Defense = _baseData.Defense;
+                    break;
+                case StatType.EvasionProbability:
+                    Data.EvasionProbability = _baseData.EvasionProbability;
+                    break;
+                case StatType.InvincibleTime:
+                    Data.InvincibleTime = _baseData.InvincibleTime;
+                    break;
+                case StatType.Attack:
+                    Data.Attack = _baseData.Attack;
+                    break;
+                case StatType.AttackDelay:
+                    Data.AttackDelay = _baseData.AttackDelay;
+                    break;
+                case StatType.AttackRange:
+                    Data.AttackRange = _baseData.AttackRange;
+                    break;
+                case StatType.CriticalProbability:
+                    Data.CriticalProbability = _baseData.CriticalProbability;
+                    break;
+                case StatType.CriticalMod:
+                    Data.CriticalMod = _baseData.CriticalMod;
+                    break;
+                case StatType.SpeedMin:
+                    Data.SpeedMin = _baseData.SpeedMin;
+                    break;
+                case StatType.SpeedMax:
+                    Data.SpeedMax = _baseData.SpeedMax;
+                    break;
+                case StatType.KnockbackPower:
+                    Data.KnockbackPower = _baseData.KnockbackPower;
+                    break;
+                case StatType.JumpingForce:
+                    Data.JumpingForce = _baseData.JumpingForce;
+                    break;
+                case StatType.JumpingCountMax:
+                    Data.JumpingCountMax = _baseData.JumpingCountMax;
+                    break;
+                case StatType.RollingForce:
+                    Data.RollingForce = _baseData.RollingForce;
+                    break;
+                case StatType.RollingCoolTime:
+                    Data.RollingCoolTime = _baseData.RollingCoolTime;
+                    break;
+                case StatType.KcalPerAttack:
+                    Data.KcalPerAttack = _baseData.KcalPerAttack;
+                    break;
+                case StatType.MaxKcal:
+                    Data.MaxKcal = _baseData.MaxKcal;
+                    break;
+                case StatType.WallSlidingTime:
+                    Data.WallSlidingTime = _baseData.WallSlidingTime;
+                    break;
+                case StatType.KnockbackTime:
+                    Data.KnockbackTime = _baseData.KnockbackTime;
+                    break;
+                case StatType.WallSlidingSpeed:
+                    Data.WallSlidingSpeed = _baseData.WallSlidingSpeed;
+                    break;
+                case StatType.IsInvincible:
+                    Data.IsInvincible = _baseData.IsInvincible;
+                    break;
+                case StatType.IsRanged:
+                    Data.IsRanged = _baseData.IsRanged;
+                    break;
+            }
+        }
+
         _multipleStats = new Dictionary<StatType, float>();
         _overrideStats = new Dictionary<StatType, float>();
 
@@ -369,7 +445,6 @@ public class PlayerStatHandler : IDamageable, IBurnable
             }
 
         }
-
     }
 
     private float CalculateStat(StatType statType, StatsChangeType statsChangeType, float a, float b)
