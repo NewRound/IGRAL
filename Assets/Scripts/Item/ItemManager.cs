@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ItemType { Weapon, Artifact, Consumable, Ingredient }
+public enum ItemType { Weapon, Artifact, Consumable, Ingredient, Recovery }
 public enum Rarity { Normal, Rare, Unique, Epic }
 
 public class ItemManager : CustomSingleton<ItemManager>
