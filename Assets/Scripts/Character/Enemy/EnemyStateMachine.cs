@@ -73,6 +73,14 @@ public class EnemyStateMachine : StateMachine
         return RotationCalculator.CalculateRotation(ModelTrans.rotation, PreDirection);
     }
 
+    public override void Move()
+    {
+        if (IsAttacking)
+            return;
+
+        base.Move();
+    }
+
     public void SetAreaData(float tileXPos, float tileLegth)
     {
         _tileXPos = tileXPos;

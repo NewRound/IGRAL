@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5065507400657585913}
   - component: {fileID: 6515203177115831943}
   - component: {fileID: 7073742005176302465}
+  - component: {fileID: 3670558426772475694}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -165,6 +166,27 @@ CapsuleCollider:
   m_Height: 1.76
   m_Direction: 1
   m_Center: {x: 0, y: 0.89, z: 0}
+--- !u!114 &3670558426772475694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2295781759866904828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88fbc6a2cafe574ca890221fd115627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Mutant_Stone:
+  - {fileID: 2914068683234625984, guid: b444d85655d9eed4690573a8a1147852, type: 3}
+  - {fileID: 3005243873249840336, guid: b444d85655d9eed4690573a8a1147852, type: 3}
+  - {fileID: 3015571220016706540, guid: b444d85655d9eed4690573a8a1147852, type: 3}
+  Mutant_Blade:
+  - {fileID: 7523755263775500966, guid: b444d85655d9eed4690573a8a1147852, type: 3}
+  Mutant_Sheld:
+  - {fileID: 5977364530130823264, guid: b444d85655d9eed4690573a8a1147852, type: 3}
+  Mutant_SkinBaby: []
 --- !u!1001 &2641340031537897439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -248,11 +270,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5979763998991106167, guid: d6a5c159ac3a67340a14b2d0cf7aa846, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1330570532514501082, guid: d6a5c159ac3a67340a14b2d0cf7aa846,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7974620981368325889}
   m_SourcePrefab: {fileID: 100100000, guid: d6a5c159ac3a67340a14b2d0cf7aa846, type: 3}
+--- !u!1 &3949883484905197061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1330570532514501082, guid: d6a5c159ac3a67340a14b2d0cf7aa846,
+    type: 3}
+  m_PrefabInstance: {fileID: 2641340031537897439}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7974620981368325889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3949883484905197061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65aaa6819a28d394788dc653c209e1b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <AttackData>k__BackingField: {fileID: 11400000, guid: 166172af088f0b9418212546c762064f,
+    type: 2}
 --- !u!4 &6419366929947105664 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9057232486277760607, guid: d6a5c159ac3a67340a14b2d0cf7aa846,

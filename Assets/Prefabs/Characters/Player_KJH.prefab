@@ -10560,7 +10560,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1900934516514845729
 Transform:
   m_ObjectHideFlags: 0
@@ -11535,6 +11535,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rubble_Pebbles_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1490646748009286, guid: b3cdda3cca11aab4b831821407447d27, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4854328431926918, guid: b3cdda3cca11aab4b831821407447d27, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -11811,7 +11815,7 @@ PrefabInstance:
     - target: {fileID: 2599358758847223417, guid: e43d5f36139965149a68a9247da035ce,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4668291831083901820, guid: e43d5f36139965149a68a9247da035ce,
         type: 3}
