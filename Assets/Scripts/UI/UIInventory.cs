@@ -123,13 +123,13 @@ public class UIInventory : CustomSingleton<UIInventory>
     public void OpenInventory()
     {
         _uiInventory.SetActive(true);
-        //Time.timeScale = 0f;
+        GameManager.Instance.StopGameTime();
     }
 
     public void CloseInventory()
     {
         _uiInventory.SetActive(false);
-        //Time.timeScale = 1f;
+        GameManager.Instance.PlayGameTime();
     }
 
     #region ½ºÅÝ °ü·Ã

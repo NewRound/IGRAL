@@ -38,12 +38,14 @@ public class UISkillCategory : MonoBehaviour
     {
         _activate.SetActive(true);
         skillTree.SetActive(true);
+        GameManager.Instance.StopGameTime();
     }
 
     public void CloseCategory()
     {
         _activate.SetActive(false);
         skillTree.SetActive(false);
+        GameManager.Instance.PlayGameTime();
     }
 
     public void UpdateCategory()

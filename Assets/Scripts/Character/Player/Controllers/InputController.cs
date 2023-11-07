@@ -62,7 +62,9 @@ public class InputController : PlayerController
 
     public void OnMove(InputAction.CallbackContext context)
     {
+#if UNITY_EDITOR
         _isMovePressed = context.started;
+#endif
     }
 
     public void OnJump(InputAction.CallbackContext context)
