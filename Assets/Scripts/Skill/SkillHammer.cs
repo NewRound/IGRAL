@@ -25,6 +25,8 @@ public class SkillHammer : SkillUse
             if (mutantController.mutantType != MutantType.Stone)
                 mutantController.ChangeMutant(MutantType.Stone);
 
+            Debug.Log(usingKcal);
+
             UsingKcal(usingKcal * Time.deltaTime);
             Debug.Log($"{curData.Kcal}");
 
