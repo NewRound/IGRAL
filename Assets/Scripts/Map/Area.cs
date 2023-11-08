@@ -45,7 +45,7 @@ public class Area : MonoBehaviour
                     Vector3 pos = position;
                     xPos = firstPos + (((size - 1) / num) * i);
                     pos.x = xPos;
-                    pos.y = 1;
+                    pos.y += 1;
                     enemy.transform.position = pos;
                 }
             }

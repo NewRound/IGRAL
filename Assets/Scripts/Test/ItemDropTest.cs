@@ -1,7 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemDropTest : MonoBehaviour
 {
+    [SerializeField] List<GameObject> itemPos;
+
     private void Start()
     {
         Invoke("ItemDrop", 1f);
@@ -9,8 +12,9 @@ public class ItemDropTest : MonoBehaviour
 
     private void ItemDrop()
     {
-        //현재는 아티팩트만 구현되어 있음
-        ItemManager.Instance.RandomDropItem(transform.position, ItemType.Artifact);
+        foreach(GameObject item in itemPos)
+        {
+            ItemManager.Instance.RandomDropItem(item.transform.position, ItemType.Artifact);
+        }
     }
-
 }
