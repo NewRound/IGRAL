@@ -15,6 +15,7 @@ public class PatrolObject : MonoBehaviour, IMovingObject
     private float elapsedTime;                              // 이동이후 걸리는 시간(필요한가?)
     protected bool isMoving = false;                        // 움직이는 중인가?.
     private int destinationIndex;
+    private bool isActive = false;
 
     private void Awake()
     {
@@ -30,8 +31,11 @@ public class PatrolObject : MonoBehaviour, IMovingObject
 
     public void Use()
     {
-        if (CheckCondition())
+        if (CheckCondition() && !isActive)
+        {
+            isActive = true;
             StartCoroutine(Move());
+        }
     }
 
     public bool CheckCondition()

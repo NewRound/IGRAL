@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class NextStageObject : InteractiveObject
 {
+    private bool isUsed = false;
+
     public override void Use()
     {
-        if (CheckCondition())
+        if (CheckCondition() && !isUsed)
         {
+            isUsed = true;
             MapGenerator.Instance.InstantiateStage();
         }
     }
