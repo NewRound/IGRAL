@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2894725488433605855}
   - component: {fileID: 4020095911026595820}
   - component: {fileID: 4707743557171308025}
+  - component: {fileID: 1586339639373859731}
   m_Layer: 0
   m_Name: Map1-1
   m_TagString: Untagged
@@ -80,6 +81,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemys:
   - {fileID: 3395318498827927278, guid: 7a8779368e804e44da671db7ba74c0e3, type: 3}
+--- !u!114 &1586339639373859731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956369038203279772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 315c6752af9046443aecd67cb74f01b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPos:
+  - {fileID: 1259807394191841078}
 --- !u!1 &3920019274588219985
 GameObject:
   m_ObjectHideFlags: 0
@@ -2704,6 +2719,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5963424083120640868, guid: 19bc4b8e37c108744ac5f1a946455552,
+        type: 3}
+      propertyPath: enemyCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6872955569916084899, guid: 19bc4b8e37c108744ac5f1a946455552,
         type: 3}
       propertyPath: m_Name
@@ -3003,7 +3023,7 @@ PrefabInstance:
     - target: {fileID: 5963424083120640868, guid: 19bc4b8e37c108744ac5f1a946455552,
         type: 3}
       propertyPath: enemyCount
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6872955569916084899, guid: 19bc4b8e37c108744ac5f1a946455552,
         type: 3}
@@ -5624,6 +5644,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22bf23f646e1a8f42aeb408978984c0c, type: 3}
+--- !u!1 &1259807394191841078 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9185469643278844319, guid: 22bf23f646e1a8f42aeb408978984c0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7927157638057563817}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4722304925882123367 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3425573076798673614, guid: 22bf23f646e1a8f42aeb408978984c0c,
@@ -5858,7 +5884,7 @@ PrefabInstance:
     - target: {fileID: 5963424083120640868, guid: 19bc4b8e37c108744ac5f1a946455552,
         type: 3}
       propertyPath: enemyCount
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6872955569916084899, guid: 19bc4b8e37c108744ac5f1a946455552,
         type: 3}
