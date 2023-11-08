@@ -31,14 +31,12 @@ public class UIOption : MonoBehaviour
     private void OnEnable()
     {
         OpenPanel();
-
-        //Time.timeScale = 0f;
+        GameManager.Instance.StopGameTime();
     }
 
     private void OnDisable()
     {
-
-        //Time.timeScale = 1.0f;
+        GameManager.Instance.PlayGameTime();
     }
 
     private void OpenPanel()

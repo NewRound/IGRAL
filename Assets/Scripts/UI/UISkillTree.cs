@@ -43,7 +43,6 @@ public class UISkillTree : CustomSingleton<UISkillTree>
 
     private void Awake()
     {
-
         _closeButton.onClick.AddListener(CloseSkillTree);
         _levelUpButton.onClick.AddListener(OnLevelUpButton);
         _skillCategoryButtons = new Button[(int)SkillCategoryType.Max];
@@ -110,13 +109,13 @@ public class UISkillTree : CustomSingleton<UISkillTree>
     {
         _skillTree.SetActive(true);
         UpdateSkillPoint();
-        //Time.timeScale = 0f;
+        GameManager.Instance.StopGameTime();
     }
 
     public void CloseSkillTree()
     {
         _skillTree.SetActive(false);
-        //Time.timeScale = 1f;
+        GameManager.Instance.PlayGameTime();
     }
 
     public void SelectSkill(SkillSO skillSO)

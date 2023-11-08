@@ -21,13 +21,16 @@ public class UIPlayerConditions : MonoBehaviour
     [SerializeField] private Condition health;
     [SerializeField] private Condition kcal;
 
-    private void Awake()
+    private void Start()
     {
         playerSO = GameManager.Instance.StatHandler.Data;
     }
 
     private void Update()
     {
+        if(playerSO == null)
+            return;
+
         health.FillAmount(playerSO.Health, playerSO.MaxHealth);
         kcal.FillAmount(playerSO.Kcal, playerSO.MaxKcal);
     }

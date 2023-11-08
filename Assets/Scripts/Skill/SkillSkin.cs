@@ -2,25 +2,12 @@ using UnityEngine;
 
 public class SkillSkin : SkillUse
 {
-    public float durationTime = 5f;
-    private float CurrentTime = 0f;
-
-    public override void UseSkill()
-    {
-        if (!_isLearned || curData.Kcal < usingKcal)
-            return;
-
-        UIController.Instance.isSkill = false;
-        Debug.Log("스킨 사용");
-        SkillManager.Instance.AllOffSkill();
-        _isActive = true;
-    }
 
     private void Awake()
     {
         // 스킬 언락에 따른 지속시간 증가시 작성할 것.
         durationTime = 5f;
-
+        _currentTime = 0f;
         usingKcal = 100.0f;
     }
 
@@ -32,14 +19,13 @@ public class SkillSkin : SkillUse
             { 
                 mutantController.ChangeMutant(MutantType.Skin);
                 UsingKcal(usingKcal);
-                Debug.Log($"{curData.Kcal}");
             }
 
-            CurrentTime += Time.deltaTime;
+            _currentTime += Time.deltaTime;
 
-            if (CurrentTime >= durationTime)
+            if (_currentTime >= durationTime)
             {
-                CurrentTime = 0f;
+                _currentTime = 0f;
                 StopSkill();
             }
         }

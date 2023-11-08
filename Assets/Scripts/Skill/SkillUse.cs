@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class SkillUse : MonoBehaviour
@@ -9,8 +8,11 @@ public class SkillUse : MonoBehaviour
     protected PlayerAppearanceController mutantController;
     protected PlayerSO curData;
 
-    public float usingKcal = 0;
+    public float usingKcal;
 
+    public float durationTime;
+    public float _currentTime;
+    
     protected bool _isLearned = false;
     protected bool _isActive = false;
 
@@ -38,16 +40,27 @@ public class SkillUse : MonoBehaviour
         }
     }
 
-    public virtual void UseSkill()
+    public void UseSkill()
     {
+        if (_isActive)
+        {
+            StopSkill();
+            return;
+        }
 
+        if (!_isLearned || curData.Kcal < usingKcal)
+            return;
+
+        UIController.Instance.isSkill = false;
+        SkillManager.Instance.AllOffSkill();
+        _isActive = true;
     }
     
     public void StopSkill()
     {
         if (mutantController.mutantType != MutantType.None)
             mutantController.ChangeMutant(MutantType.None);
-        
+        _currentTime = 0;
         _isActive = false;
     }
 

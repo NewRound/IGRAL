@@ -109,7 +109,6 @@ public class PlayerStatHandler : IDamageable, IBurnable
         // 데이터 초기화
         foreach (StatType enumItem in Enum.GetValues(typeof(StatType)))
         {
-            float a = -1f;
             switch (enumItem)
             {
                 case StatType.MaxHealth:
