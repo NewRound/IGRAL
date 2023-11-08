@@ -67,14 +67,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59cc2d0d0e3aec4a9259bf044b37b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBePickupBy:
-    serializedVersion: 2
-    m_Bits: 128
   <ItemType>k__BackingField: 1
   <ItemName>k__BackingField: CrossHair
   <ItemID>k__BackingField: 202
   <ItemRarity>k__BackingField: 0
-  <DropProbability>k__BackingField: 0
+  <DropProbability>k__BackingField: 10
   <ItemIcon>k__BackingField: {fileID: 21300000, guid: a7c3b5dbb1f02e747b5a6d53266d534f,
     type: 3}
   <ItemObject>k__BackingField: {fileID: 7029496953711119324}
@@ -88,6 +85,9 @@ MonoBehaviour:
   - statsChangeType: 0
     statType: 10
     value: 2
+  canBePickupBy:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &7126314461349704594
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1226744191478353330}
-  - component: {fileID: 1809202498628761301}
   - component: {fileID: 5507797187464905553}
+  - component: {fileID: -8564858340489343500}
   m_Layer: 0
   m_Name: Grenade
   m_TagString: Untagged
@@ -34,36 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &1809202498628761301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4363432721671547792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a658366414fda1246955ed44d3d8f95f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canBePickupBy:
-    serializedVersion: 2
-    m_Bits: 128
-  <ItemName>k__BackingField: Grenade
-  <ItemID>k__BackingField: 302
-  <ItemType>k__BackingField: 3
-  <ItemRarity>k__BackingField: 2
-  <DropProbability>k__BackingField: 0
-  <ItemIcon>k__BackingField: {fileID: 21300000, guid: 4fdfaca8f3224324da39fef4a095a6ef,
-    type: 3}
-  <ItemObject>k__BackingField: {fileID: 4363432721671547792}
-  <ItemInfo>k__BackingField: "\uC804\uBC29\uC758 \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C
-    \uC90D\uB2C8\uB2E4."
-  <Price>k__BackingField: 150
-  <IsStackable>k__BackingField: 1
-  <MaxStack>k__BackingField: 5
-  <itemData>k__BackingField: {fileID: 11400000, guid: fdd529c0497a9334ab79b10955ae9217,
-    type: 2}
 --- !u!65 &5507797187464905553
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -85,6 +55,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-8564858340489343500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363432721671547792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 863fdecfe12faee4fa314e22e83b17e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ItemType>k__BackingField: 2
+  <ItemName>k__BackingField: Grenade
+  <ItemID>k__BackingField: 302
+  <ItemRarity>k__BackingField: 2
+  <DropProbability>k__BackingField: 0
+  <ItemIcon>k__BackingField: {fileID: 21300000, guid: 4fdfaca8f3224324da39fef4a095a6ef,
+    type: 3}
+  <ItemObject>k__BackingField: {fileID: 4363432721671547792}
+  <ItemInfo>k__BackingField: "\uC804\uBC29\uC758 \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C
+    \uC90D\uB2C8\uB2E4."
+  <Price>k__BackingField: 150
+  <ItemDatas>k__BackingField: []
+  canBePickupBy:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &9156863841168662975
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -44,14 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a3f3dad5899b0c40a80a0633941c515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemArray:
-  - {fileID: 7810302218828746133, guid: fe3380ca2dcbbed4ab9945564bd6bec3, type: 3}
-  - {fileID: 3479467415619507566, guid: 28b78ef8c0e998448bead32c1beccb61, type: 3}
-  - {fileID: 1649837358411448473, guid: faf95db245eeaed42a277deb8211c4c4, type: 3}
-  - {fileID: 4188371592421132238, guid: 0e30f48b00e811a44b3c08d030010a3c, type: 3}
-  - {fileID: 1809202498628761301, guid: 9763da1957af0304c992026141d0a4be, type: 3}
-  - {fileID: 317934448076109833, guid: 7e7645d11779d0f4d844f5759bff3d64, type: 3}
-  - {fileID: 4727521834631077362, guid: 9c6895cb171c47e4f84cb3de63df8855, type: 3}
+  <itemArtifact>k__BackingField:
+  - {fileID: -5387398142043064414, guid: fe3380ca2dcbbed4ab9945564bd6bec3, type: 3}
+  - {fileID: 7389382411398805147, guid: 28b78ef8c0e998448bead32c1beccb61, type: 3}
+  - {fileID: -2009797355151262780, guid: faf95db245eeaed42a277deb8211c4c4, type: 3}
+  - {fileID: -2009797355151262780, guid: 48ccab22d5cddf9499e7282dc6903e06, type: 3}
+  <itemConsumable>k__BackingField:
+  - {fileID: -5962201317160129790, guid: 0e30f48b00e811a44b3c08d030010a3c, type: 3}
+  - {fileID: -8564858340489343500, guid: 9763da1957af0304c992026141d0a4be, type: 3}
+  - {fileID: -1616625068077151466, guid: 7e7645d11779d0f4d844f5759bff3d64, type: 3}
+  <itemIngredient>k__BackingField:
+  - {fileID: 5569813981006145841, guid: 9c6895cb171c47e4f84cb3de63df8855, type: 3}
+  <itemWeapons>k__BackingField:
   - {fileID: -5557540238927093250, guid: e43d5f36139965149a68a9247da035ce, type: 3}
   - {fileID: -5295956255358241109, guid: 208c47a1540a4064790863a3a267b52d, type: 3}
   - {fileID: 2661367105329351878, guid: b8c24d96fbc706242aa03cdb2383a13d, type: 3}

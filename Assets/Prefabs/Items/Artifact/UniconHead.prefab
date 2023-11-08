@@ -67,21 +67,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59cc2d0d0e3aec4a9259bf044b37b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBePickupBy:
-    serializedVersion: 2
-    m_Bits: 128
   <ItemType>k__BackingField: 1
   <ItemName>k__BackingField: UniconHead
   <ItemID>k__BackingField: 203
   <ItemRarity>k__BackingField: 3
-  <DropProbability>k__BackingField: 0
+  <DropProbability>k__BackingField: 10
   <ItemIcon>k__BackingField: {fileID: 21300000, guid: b0147eed3e62cd247a6fba4cb4d73d41,
     type: 3}
   <ItemObject>k__BackingField: {fileID: 7529172391743333141}
   <ItemInfo>k__BackingField: "\uACF5\uACA9\uB825\uACFC \uACF5\uACA9\uC0AC\uAC70\uB9AC\uB97C
     20% \uC99D\uAC00\uC2DC\uCF1C\uC90D\uB2C8\uB2E4."
   <Price>k__BackingField: 2000
-  <ItemData>k__BackingField: {fileID: 0}
   <ItemDatas>k__BackingField:
   - statsChangeType: 2
     statType: 7
@@ -89,6 +85,9 @@ MonoBehaviour:
   - statsChangeType: 2
     statType: 9
     value: 20
+  canBePickupBy:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &4517638271017231832
 PrefabInstance:
   m_ObjectHideFlags: 0
