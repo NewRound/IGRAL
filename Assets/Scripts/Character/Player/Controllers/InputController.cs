@@ -20,6 +20,7 @@ public class InputController : PlayerController
     public PlayerInputAction InputActions { get; private set; }
     public PlayerInputAction.PlayerActions PlayerActions { get; private set; }
 
+    public Transform DronePos;
 
     protected override void Awake()
     {
