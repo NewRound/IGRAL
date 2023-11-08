@@ -38,7 +38,7 @@ public class UISkillTree : CustomSingleton<UISkillTree>
     
     private Dictionary<string, int> _learnedSkills = new Dictionary<string, int>();
     private Dictionary<string, int> _baseSkills = new Dictionary<string, int>();
-    private SkillSO _selectedSkill;
+    private SkillInfoSO _selectedSkill;
     private int _selectedSkillCategoryIndex;
 
     private void Awake()
@@ -54,8 +54,8 @@ public class UISkillTree : CustomSingleton<UISkillTree>
                 return;
 
             GameObject instantiate = Instantiate(_skillCategory, _skillCategoryTap);
-            SkillDataSO skillDataSO = Resources.Load<SkillDataSO>($"Skill/{enumItem}");
-            instantiate.GetComponent<UISkillCategory>().SetSkillCategory(skillDataSO);
+            SkillSetSO skillSetSO = Resources.Load<SkillSetSO>($"Skill/{enumItem}");
+            instantiate.GetComponent<UISkillCategory>().SetSkillCategory(skillSetSO);
             _skillCategoryButtons[i] = instantiate.GetComponent<Button>();
             UISkillCategory uISkillCategory = instantiate.GetComponent<UISkillCategory>();
             _uISkillCategories[i] = uISkillCategory;
@@ -118,19 +118,19 @@ public class UISkillTree : CustomSingleton<UISkillTree>
         GameManager.Instance.PlayGameTime();
     }
 
-    public void SelectSkill(SkillSO skillSO)
+    public void SelectSkill(SkillInfoSO skillInfoSO)
     {
-        _selectedSkill = skillSO;
+        _selectedSkill = skillInfoSO;
 
-        _selectedSkillName.text = skillSO.skillName;
-        _selectedSkillDescription.text = skillSO.skillDescription;
+        _selectedSkillName.text = skillInfoSO.skillName;
+        _selectedSkillDescription.text = skillInfoSO.skillDescription;
 
         _levelUpButton.gameObject.SetActive(false);
-        if (!_learnedSkills.ContainsKey(skillSO.skillId))
+        if (!_learnedSkills.ContainsKey(skillInfoSO.skillId))
         {
-            string unlockConditionId = skillSO.unlockConditionId;
+            string unlockConditionId = skillInfoSO.unlockConditionId;
 
-            if (unlockConditionId == "" || _learnedSkills.ContainsKey(skillSO.unlockConditionId))
+            if (unlockConditionId == "" || _learnedSkills.ContainsKey(skillInfoSO.unlockConditionId))
             {
                 _levelUpButton.gameObject.SetActive(true);
             }

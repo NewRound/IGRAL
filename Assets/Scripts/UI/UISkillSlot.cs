@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class UISkillSlot : MonoBehaviour
 {
-    private SkillSO _skillSO;
+    private SkillInfoSO _skillInfoSO;
     [SerializeField] private Button _skillButton;
     [SerializeField] private Image _skillIcon;
     [SerializeField] private Image _bg;
@@ -11,18 +11,18 @@ public class UISkillSlot : MonoBehaviour
     private bool _learned = false;
     private bool _unlock = false;
 
-    public void InitSkillSlot(SkillSO skillSO)
+    public void InitSkillSlot(SkillInfoSO skillInfoSO)
     {
-        _skillSO = skillSO;
-        _skillIcon.sprite = skillSO.icon;
-        _skillButton.onClick.AddListener(() => UISkillTree.Instance.SelectSkill(_skillSO));
+        _skillInfoSO = skillInfoSO;
+        _skillIcon.sprite = skillInfoSO.icon;
+        _skillButton.onClick.AddListener(() => UISkillTree.Instance.SelectSkill(_skillInfoSO));
         UpdateBg();
     }
 
     public void UpdateBg()
     {
-        _learned = SkillManager.Instance.learnedSkills.ContainsKey(_skillSO.skillId);
-        _unlock = _skillSO.unlockConditionId == "" ? true : SkillManager.Instance.learnedSkills.ContainsKey(_skillSO.unlockConditionId);
+        _learned = SkillManager.Instance.learnedSkills.ContainsKey(_skillInfoSO.skillId);
+        _unlock = _skillInfoSO.unlockConditionId == "" ? true : SkillManager.Instance.learnedSkills.ContainsKey(_skillInfoSO.unlockConditionId);
 
         if (_unlock && !_learned)
         {
