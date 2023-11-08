@@ -2,22 +2,11 @@ using UnityEngine;
 
 public class SkillPsychometric : SkillUse
 {
-    public float durationTime = 5.0f;
-    private float CurrentTime = 0f;
-
-    public override void UseSkill()
-    {
-        if (!_isLearned || curData.Kcal < usingKcal)
-            return;
-
-        UIController.Instance.isSkill = false;
-        SkillManager.Instance.AllOffSkill();
-        _isActive = true;
-    }
 
     private void Awake()
     {
         durationTime = 5f;
+        _currentTime = 0f;
         usingKcal = 50f;
     }
 
@@ -30,11 +19,11 @@ public class SkillPsychometric : SkillUse
                 mutantController.ChangeMutant(MutantType.Sheld);
                 UsingKcal(usingKcal);
             }
-            CurrentTime += Time.deltaTime;
+            _currentTime += Time.deltaTime;
 
-            if (CurrentTime >= durationTime)
+            if (_currentTime >= durationTime)
             {
-                CurrentTime = 0f;
+                _currentTime = 0f;
                 StopSkill();
             }
         }
