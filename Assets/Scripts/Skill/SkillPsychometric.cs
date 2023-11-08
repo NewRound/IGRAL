@@ -11,7 +11,6 @@ public class SkillPsychometric : SkillUse
             return;
 
         UIController.Instance.isSkill = false;
-        Debug.Log("사이코 메트릭 사용");
         SkillManager.Instance.AllOffSkill();
         _isActive = true;
     }
@@ -20,7 +19,6 @@ public class SkillPsychometric : SkillUse
     {
         durationTime = 5f;
         usingKcal = 50f;
-        Debug.Log($"{durationTime}");
     }
 
     private void Update()
@@ -31,7 +29,6 @@ public class SkillPsychometric : SkillUse
             {
                 mutantController.ChangeMutant(MutantType.Sheld);
                 UsingKcal(usingKcal);
-                Debug.Log($"{curData.Kcal}");
             }
             CurrentTime += Time.deltaTime;
 

@@ -13,7 +13,6 @@ public class SkillKnife : SkillUse
             return;
 
         UIController.Instance.isSkill = false;
-        Debug.Log("나이프 사용");
         SkillManager.Instance.AllOffSkill();
         _isActive = true;
     }
@@ -26,14 +25,11 @@ public class SkillKnife : SkillUse
                 mutantController.ChangeMutant(MutantType.Blade);
 
             UsingKcal(usingKcal * Time.deltaTime);
-            Debug.Log($"{curData.Kcal}");
 
             if (curData.Kcal <= 0) 
             {
                 StopSkill();
             }
-            
-            Debug.Log($"kcal : {-1 * Time.deltaTime}");
         }
     }
 }

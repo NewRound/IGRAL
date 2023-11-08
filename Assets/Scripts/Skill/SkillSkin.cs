@@ -11,7 +11,6 @@ public class SkillSkin : SkillUse
             return;
 
         UIController.Instance.isSkill = false;
-        Debug.Log("스킨 사용");
         SkillManager.Instance.AllOffSkill();
         _isActive = true;
     }
@@ -32,7 +31,6 @@ public class SkillSkin : SkillUse
             { 
                 mutantController.ChangeMutant(MutantType.Skin);
                 UsingKcal(usingKcal);
-                Debug.Log($"{curData.Kcal}");
             }
 
             CurrentTime += Time.deltaTime;

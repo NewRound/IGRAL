@@ -436,6 +436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skillIcon: {fileID: 3613173768512384200}
   <skillCategoryType>k__BackingField: 2
+  usingKcal: 0
 --- !u!1 &2120648791519233285
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,6 +647,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skillIcon: {fileID: 2568166237985777258}
   <skillCategoryType>k__BackingField: 3
+  usingKcal: 0
+  durationTime: 5
 --- !u!1 &2179262604911975300
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,6 +710,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skillIcon: {fileID: 3908754257425026391}
   <skillCategoryType>k__BackingField: 0
+  usingKcal: 0
+  durationTime: 5
 --- !u!1 &2220450769899509655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1469,6 +1474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skillIcon: {fileID: 2220450769899509655}
   <skillCategoryType>k__BackingField: 1
+  usingKcal: 0
 --- !u!1 &3613173768512384200
 GameObject:
   m_ObjectHideFlags: 0

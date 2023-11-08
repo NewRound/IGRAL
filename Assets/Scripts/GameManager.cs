@@ -5,18 +5,11 @@ public class GameManager : CustomSingleton<GameManager>
     public GameObject player { get; private set; }
     public PlayerStatHandler StatHandler { get; private set; }
 
-    private void Awake()
+    private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         StatHandler = player.GetComponent<InputController>().StatHandler;
 
-        Debug.Log(UIManager.Instance);
-        Debug.Log(AudioManager.Instance);
-        Debug.Log(ItemManager.Instance);
-    }
-
-    private void Start()
-    {
         Time.timeScale = 1f;
         if (!PlayerPrefs.HasKey("bgmVolume"))
         {
@@ -24,7 +17,9 @@ public class GameManager : CustomSingleton<GameManager>
             PlayerPrefs.SetFloat("sfxVolume", 1.0f);
         }
 
-        Debug.Log(StatHandler.Data.Health);
+        Debug.Log(UIManager.Instance);
+        Debug.Log(AudioManager.Instance);
+        Debug.Log(ItemManager.Instance);
 
         //임시 배경음 시작
         Invoke("StartBGM", 1f);
