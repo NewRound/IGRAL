@@ -222,9 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stage1_mapBlocks:
   - {fileID: 4824331087629307386, guid: 6aa78e00e2a94f946b563b6310fd3158, type: 3}
-  - {fileID: 956369038203279772, guid: 8bd4e3368014c904daff82ee7f5cf833, type: 3}
   - {fileID: 2518162360672717026, guid: 35e3e5a605d235c4882b2aa034f3eb59, type: 3}
-  - {fileID: 2432211495697727503, guid: bb88c791a356e7c4bb741ebc101ff07c, type: 3}
   - {fileID: 2629458215611954142, guid: 6ec2126d7349b2b448315cdeb744e981, type: 3}
   Stage2_mapBlocks:
   - {fileID: 266464823987583687, guid: f7601eabb86f7284794049e42801acf1, type: 3}

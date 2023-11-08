@@ -4,6 +4,7 @@ public class ActivationObject : MonoBehaviour, IObject
 {
     public void Use()
     {
-        this.gameObject.SetActive(true);
+        if(!this.gameObject.activeSelf)
+            this.gameObject.SetActive(true);
     }
 }
