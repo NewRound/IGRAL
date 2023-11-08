@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3582183451185783059}
-  - component: {fileID: 6554584845719712901}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -32,34 +31,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6554584845719712901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2904414029982399314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b59cc2d0d0e3aec4a9259bf044b37b1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <ItemType>k__BackingField: 1
-  <ItemName>k__BackingField: ItemTest1
-  <ItemID>k__BackingField: 101010
-  <ItemRarity>k__BackingField: 1
-  <DropProbability>k__BackingField: 10
-  <ItemIcon>k__BackingField: {fileID: 21300000, guid: 0af7eb30401287d498b732d7a6cb9500,
-    type: 3}
-  <ItemInfo>k__BackingField: "\uC544\uC774\uD15C \uD14C\uC2A4\uD2B8 \uC785\uB2C8\uB2E4."
-  <Price>k__BackingField: 123123
-  <ItemDatas>k__BackingField:
-  - statsChangeType: 0
-    statType: 2
-    value: 5
-  - statsChangeType: 2
-    statType: 12
-    value: 20
-  canBePickupBy:
-    serializedVersion: 2
-    m_Bits: 128

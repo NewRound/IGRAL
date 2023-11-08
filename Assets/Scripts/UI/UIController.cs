@@ -199,7 +199,7 @@ public class UIController : CustomSingleton<UIController>
 
     private void OnPickupButton()
     {
-        ItemManager.Instance.pickupItem.GetComponent<Item>().Pickup();
+        ItemManager.Instance.pickupItem.Pickup();
         UIManager.Instance.CloseUI<UIItemPopup>().CloseItemPopup();
     }
 

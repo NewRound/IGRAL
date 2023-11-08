@@ -9,30 +9,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f865ee03feb1f6e439ec5f8633defb2e, type: 3}
+  m_Script: {fileID: 11500000, guid: f040ec91d9fa2dc4d90eadc7ed8bf761, type: 3}
   m_Name: CrossHair
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: 0
-  <HealthRegen>k__BackingField: 0
-  <Defense>k__BackingField: 0
-  <EvasionProbability>k__BackingField: 0
-  <IsInvincible>k__BackingField: 0
-  <InvincibleTime>k__BackingField: 0
-  <Attack>k__BackingField: 0
-  <AttackDelay>k__BackingField: 0
-  <AttackRange>k__BackingField: 0
-  <CriticalProbability>k__BackingField: 0.2
-  <CriticalMod>k__BackingField: 0.2
-  <SpeedMin>k__BackingField: 0
-  <SpeedMax>k__BackingField: 0
-  <KnockbackPower>k__BackingField: 0
-  <KnockbackTime>k__BackingField: 0
-  <IsRanged>k__BackingField: 0
-  <JumpingForce>k__BackingField: 0
-  <JumpingCountMax>k__BackingField: 0
-  <RollingForce>k__BackingField: 0
-  <RollingCoolTime>k__BackingField: 0
-  <KcalPerAttack>k__BackingField: 0
-  <MaxKcal>k__BackingField: 0
-  <WallSlidingTime>k__BackingField: 0
-  <WallSlidingSpeed>k__BackingField: 0
+  <ItemType>k__BackingField: 1
+  <ItemName>k__BackingField: CrossHair
+  <ItemID>k__BackingField: 202
+  <ItemRarity>k__BackingField: 1
+  <DropProbability>k__BackingField: 10
+  <ItemIcon>k__BackingField: {fileID: 21300000, guid: a7c3b5dbb1f02e747b5a6d53266d534f,
+    type: 3}
+  <ItemInfo>k__BackingField: "\uCE58\uBA85\uD0C0 \uD53C\uD574,\uD655\uB960\uC744
+    20% \uC62C\uB824\uC90D\uB2C8\uB2E4."
+  <Price>k__BackingField: 100
+  <canBePickupBy>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 128
+  <ItemDatas>k__BackingField:
+  - statsChangeType: 2
+    statType: 10
+    value: 20
+  - statsChangeType: 2
+    statType: 11
+    value: 20

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6420305821229536160}
-  - component: {fileID: -5295956255358241109}
   - component: {fileID: 4181390143194836985}
   m_Layer: 0
   m_Name: ShotGun
@@ -34,35 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &-5295956255358241109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8902205794440729496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a658366414fda1246955ed44d3d8f95f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canBePickupBy:
-    serializedVersion: 2
-    m_Bits: 128
-  <ItemName>k__BackingField: ShotGun
-  <ItemID>k__BackingField: 102
-  <ItemType>k__BackingField: 1
-  <ItemRarity>k__BackingField: 1
-  <DropProbability>k__BackingField: 0
-  <ItemIcon>k__BackingField: {fileID: 21300000, guid: 12b8a4ff61d791a41a2ab30f2570e198,
-    type: 3}
-  <ItemObject>k__BackingField: {fileID: 8902205794440729496}
-  <ItemInfo>k__BackingField: "\uC911\uADFC\uAC70\uB9AC\uC6A9 \uC0F7\uAC74\uC785\uB2C8\uB2E4."
-  <Price>k__BackingField: 150
-  <IsStackable>k__BackingField: 0
-  <MaxStack>k__BackingField: 0
-  <itemData>k__BackingField: {fileID: 11400000, guid: d544a5d7871f51541bf2cf202687fbf6,
-    type: 2}
 --- !u!65 &4181390143194836985
 BoxCollider:
   m_ObjectHideFlags: 0
