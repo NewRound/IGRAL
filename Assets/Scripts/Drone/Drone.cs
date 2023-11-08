@@ -10,10 +10,15 @@ public class Drone : MonoBehaviour
     [Header("# RayCast")]
     [SerializeField] private float _rayAngle;
     [SerializeField] private int _rayCount;
-    [SerializeField] private LayerMask _enemyLayer;    
+    [SerializeField] private LayerMask _enemyLayer;
 
-    [SerializeField] private Transform _followTarget;
-    
+    [Header("# Move Info")]    
+    [SerializeField] private float _movementSpeed;
+    private InputController _player;
+    private Transform _followTarget;
+
+    private Rigidbody _rigid;
+
     public void ActiveDrone()
     {
         // 활성화
@@ -25,10 +30,17 @@ public class Drone : MonoBehaviour
         // 비활성화
         gameObject.SetActive(false);
     }
+    private void Start()
+    {
+        _rigid = GetComponent<Rigidbody>();
+        _player = GameManager.Instance.player.GetComponent<InputController>();
+
+        _followTarget = _player.DronePos;           
+    }
 
     private void Update()
     {
-        SetTransform();
+        MoveToFollowTarget();
         
         _attackTimer += Time.deltaTime;
 
@@ -59,10 +71,20 @@ public class Drone : MonoBehaviour
         }
     }
 
-    private void SetTransform()
-    {
-        transform.position = _followTarget.position;
-        transform.rotation = _followTarget.rotation;
+    private void MoveToFollowTarget()
+    {       
+        Vector3 _followTargetPos = _followTarget.position;
+
+        // 위치 도달했으면 움직임 멈추기
+        if ((_followTargetPos - transform.position).sqrMagnitude < 0.1f * 0.1f) return;
+
+        // 전방 방향 설정
+        transform.forward = _followTarget.forward;
+
+        // 부드러운 움직임 구현하기
+        Vector3 lerpPos = Vector3.Lerp(transform.position, _followTargetPos, _movementSpeed * Time.deltaTime);
+
+        _rigid.MovePosition(lerpPos);
     }
 
     // 총알을 발사하는 메서드
@@ -70,7 +92,7 @@ public class Drone : MonoBehaviour
     {
         Debug.Log("OnFire");
         DroneProjectile projectile = ProjectilePool.Instance.GetProjectile();
-
+        // hitInfo.collider.bounds.center
         projectile.SetTarget(hitInfo.transform);
         projectile.transform.position = transform.position;        
     }    

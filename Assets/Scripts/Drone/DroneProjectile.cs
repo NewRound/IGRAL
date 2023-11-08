@@ -38,7 +38,7 @@ public class DroneProjectile : MonoBehaviour
     }
 
     public void SetTarget(Transform target)
-    {
+    {      
         _target = target;        
     }    
 
