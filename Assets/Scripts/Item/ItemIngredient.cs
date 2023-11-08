@@ -1,22 +1,18 @@
 using UnityEngine;
 
-public class ItemIngredient : PickupIngredient, IItem
+public class ItemIngredient : Item
 {
-    [field: Header("# Ingredient  Info")]
-    [field: SerializeField] public ItemType ItemType { get; private set; }
-    [field: SerializeField] public string ItemName { get; private set; }
-    [field: SerializeField] public int ItemID { get; private set; }
-    [field: SerializeField] public Rarity ItemRarity { get; private set; }
-    [field: SerializeField] public float DropProbability { get; private set; }
-    [field: SerializeField] public Sprite ItemIcon { get; private set; }
-    [field: SerializeField] public GameObject ItemObject { get; private set; }
-    [field: TextArea][field: SerializeField] public string ItemInfo { get; private set; }
-    [field: SerializeField] public int Price { get; private set; }
-    [field: SerializeField] public StatChange[] ItemDatas { get; private set; }
-
     public override void Pickup()
     {
         base.Pickup();
-        gameObject.SetActive(false);
+        //TODO 재료 아이템은 충돌시 바로 추가되는 함수 구현 필요
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (canBePickupBy.value == (canBePickupBy.value | (1 << other.gameObject.layer)))
+        {
+            Pickup();
+        }
     }
 }

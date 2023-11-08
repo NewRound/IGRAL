@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7029496953711119324
+--- !u!1 &7529172391743333141
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9158105250187875201}
-  - component: {fileID: -5387398142043064414}
+  - component: {fileID: 6152712077339164720}
+  - component: {fileID: -2009797355151262780}
   m_Layer: 0
-  m_Name: CrossHair
+  m_Name: UniqueTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9158105250187875201
+--- !u!4 &6152712077339164720
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7029496953711119324}
+  m_GameObject: {fileID: 7529172391743333141}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,36 +32,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5387398142043064414
+--- !u!114 &-2009797355151262780
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7029496953711119324}
+  m_GameObject: {fileID: 7529172391743333141}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b59cc2d0d0e3aec4a9259bf044b37b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <ItemType>k__BackingField: 1
-  <ItemName>k__BackingField: CrossHair
-  <ItemID>k__BackingField: 202
-  <ItemRarity>k__BackingField: 0
+  <ItemName>k__BackingField: UniqueTest
+  <ItemID>k__BackingField: 203
+  <ItemRarity>k__BackingField: 2
   <DropProbability>k__BackingField: 10
-  <ItemIcon>k__BackingField: {fileID: 21300000, guid: a7c3b5dbb1f02e747b5a6d53266d534f,
+  <ItemIcon>k__BackingField: {fileID: 21300000, guid: b0147eed3e62cd247a6fba4cb4d73d41,
     type: 3}
-  <ItemObject>k__BackingField: {fileID: 7029496953711119324}
-  <ItemInfo>k__BackingField: "\"\uCE58\uBA85\uD0C0 \uD53C\uD574,\uD655\uB960\uC744
-    20% \uC62C\uB824\uC90D\uB2C8\uB2E4.\""
-  <Price>k__BackingField: 0
+  <ItemObject>k__BackingField: {fileID: 7529172391743333141}
+  <ItemInfo>k__BackingField: "\uACF5\uACA9\uB825\uACFC \uACF5\uACA9\uC0AC\uAC70\uB9AC\uB97C
+    20% \uC99D\uAC00\uC2DC\uCF1C\uC90D\uB2C8\uB2E4\nUniqueTest"
+  <Price>k__BackingField: 2000
   <ItemDatas>k__BackingField:
-  - statsChangeType: 0
-    statType: 11
-    value: 2
-  - statsChangeType: 0
-    statType: 10
-    value: 2
+  - statsChangeType: 2
+    statType: 7
+    value: 20
+  - statsChangeType: 2
+    statType: 9
+    value: 20
   canBePickupBy:
     serializedVersion: 2
     m_Bits: 128

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ItemImageTest : MonoBehaviour
 {
-    public IItem test;
+    public Item test;
 
     // Start is called before the first frame update
     void Start()

@@ -1,18 +1,38 @@
 using UnityEngine;
 
-public interface IItem 
+public class Item : MonoBehaviour
 {
-    public ItemType ItemType { get; }
+    [field: Header("ItemInfo")]
+    [field: SerializeField] public ItemType ItemType { get; private set; }
+    [field: SerializeField] public string ItemName { get; private set; }
+    [field: SerializeField] public int ItemID { get; private set; }
+    [field: SerializeField] public Rarity ItemRarity { get; private set; }
+    [field: SerializeField] public int DropProbability { get; private set; }
+    [field: SerializeField] public Sprite ItemIcon { get; private set; }
+    [field: SerializeField] public GameObject ItemObject { get; private set; }
+    [field: TextArea][field: SerializeField] public string ItemInfo { get; private set; }
+    [field: SerializeField] public int Price { get; private set; }
+    [field: SerializeField] public StatChange[] ItemDatas { get; private set; }
 
-    public string ItemName { get; }
-    public int ItemID { get; }
-    public Rarity ItemRarity { get; }
-    public float DropProbability { get; }
-    public Sprite ItemIcon { get; }
-    public GameObject ItemObject { get; }
-    public string ItemInfo { get; }
-    public int Price { get; }
-    public StatChange[] ItemDatas { get; }
+    [SerializeField] protected LayerMask canBePickupBy;
 
-    public void Pickup();
+    public virtual void Pickup()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void DropSet(Item item)
+    {
+        ItemType = item.ItemType;
+        ItemName = item.ItemName;
+        ItemID = item.ItemID;
+        ItemRarity = item.ItemRarity;
+        DropProbability = item.DropProbability;
+        ItemIcon = item.ItemIcon;
+        ItemObject = item.ItemObject;
+        ItemInfo = item.ItemInfo;
+        Price = item.Price;
+        ItemDatas = item.ItemDatas;
+        canBePickupBy = item.canBePickupBy;
+    }
 }
