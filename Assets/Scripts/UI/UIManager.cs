@@ -14,6 +14,7 @@ public enum UIType
     , UIOption
     , UIBossCondition
     , UIPopup
+    , UIItemPopup
 }
 
 public class UIManager : CustomSingleton<UIManager>

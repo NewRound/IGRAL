@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3228559244319843634}
-  - component: {fileID: 4727521834631077362}
   - component: {fileID: 2171163845150614485}
+  - component: {fileID: 5569813981006145841}
   m_Layer: 0
   m_Name: GoldKey
   m_TagString: Untagged
@@ -34,36 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &4727521834631077362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 729912012676004922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a658366414fda1246955ed44d3d8f95f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canBePickupBy:
-    serializedVersion: 2
-    m_Bits: 128
-  <ItemName>k__BackingField: GoldKey
-  <ItemID>k__BackingField: 401
-  <ItemType>k__BackingField: 4
-  <ItemRarity>k__BackingField: 1
-  <DropProbability>k__BackingField: 0
-  <ItemIcon>k__BackingField: {fileID: 21300000, guid: 5d56d05424920014c8a3e5ea0376564e,
-    type: 3}
-  <ItemObject>k__BackingField: {fileID: 729912012676004922}
-  <ItemInfo>k__BackingField: "\uC5B4\uB518\uAC00\uC5D0 \uC4F8 \uC218 \uC788\uC744
-    \uAC83 \uAC19\uC2B5\uB2C8\uB2E4."
-  <Price>k__BackingField: 250
-  <IsStackable>k__BackingField: 1
-  <MaxStack>k__BackingField: 10
-  <itemData>k__BackingField: {fileID: 11400000, guid: 3e185adfda2a0fe4a90ac1f6da8bd344,
-    type: 2}
 --- !u!65 &2171163845150614485
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -85,6 +55,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5569813981006145841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729912012676004922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe71b2bdc12a7cc49a174102f2b79ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ItemType>k__BackingField: 3
+  <ItemName>k__BackingField: GoldKey
+  <ItemID>k__BackingField: 401
+  <ItemRarity>k__BackingField: 1
+  <DropProbability>k__BackingField: 0
+  <ItemIcon>k__BackingField: {fileID: 21300000, guid: 5d56d05424920014c8a3e5ea0376564e,
+    type: 3}
+  <ItemObject>k__BackingField: {fileID: 729912012676004922}
+  <ItemInfo>k__BackingField: "\uC5B4\uB518\uAC00\uC5D0 \uC4F8 \uC218 \uC788\uC744
+    \uAC83 \uAC19\uC2B5\uB2C8\uB2E4."
+  <Price>k__BackingField: 250
+  <ItemDatas>k__BackingField: []
+  canBePickupBy:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &7627136086961297975
 PrefabInstance:
   m_ObjectHideFlags: 0

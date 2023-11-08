@@ -1,27 +1,33 @@
 using UnityEngine;
 
-public class ItemConsumable : PickupConsumable, IItem
+public class ItemConsumable : Item
 {
-    [field: Header("# Consumable Info")]
-    [field: SerializeField] public ItemType ItemType { get; private set; }
-    [field: SerializeField] public string ItemName { get; private set; }
-    [field: SerializeField] public int ItemID { get; private set; }
-    [field: SerializeField] public Rarity ItemRarity { get; private set; }
-    [field: SerializeField] public float DropProbability { get; private set; }
-    [field: SerializeField] public Sprite ItemIcon { get; private set; }
-    [field: SerializeField] public GameObject ItemObject { get; private set; }
-    [field: TextArea][field: SerializeField] public string ItemInfo { get; private set; }
-    [field: SerializeField] public int Price { get; private set; }
-    [field: SerializeField] public StatChange[] ItemDatas { get; private set; }
-
     public override void Pickup()
     {
         base.Pickup();
-        gameObject.SetActive(false);
+        //TODO 소비형 아이템 교체 함수 구현 필요
+
+        UIController.Instance.SwitchingAttack();
+        ItemManager.Instance.DelSetPickupItem();
     }
 
-    public void UseConsumable()
+    private void OnTriggerEnter(Collider other)
     {
-        //TODO 사용 효과
+        if (canBePickupBy.value == (canBePickupBy.value | (1 << other.gameObject.layer)))
+        {
+            ItemManager.Instance.SetPickupItem(this.gameObject);
+            UIController.Instance.SwitchingPickup();
+            UIManager.Instance.OpenUI<UIItemPopup>().OpenItemPopup(this);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (canBePickupBy.value == (canBePickupBy.value | (1 << other.gameObject.layer)))
+        {
+            ItemManager.Instance.DelSetPickupItem();
+            UIController.Instance.SwitchingAttack();
+            UIManager.Instance.CloseUI<UIItemPopup>().CloseItemPopup();
+        }
     }
 }
