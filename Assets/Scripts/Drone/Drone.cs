@@ -13,7 +13,6 @@ public class Drone : MonoBehaviour
     [SerializeField] private LayerMask _enemyLayer;    
 
     [SerializeField] private Transform _followTarget;
-    private Vector3 xyOffset;
     
     public void ActiveDrone()
     {
