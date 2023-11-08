@@ -49,6 +49,7 @@ MonoBehaviour:
   - {fileID: 7389382411398805147, guid: 28b78ef8c0e998448bead32c1beccb61, type: 3}
   - {fileID: -2009797355151262780, guid: faf95db245eeaed42a277deb8211c4c4, type: 3}
   - {fileID: -2009797355151262780, guid: 48ccab22d5cddf9499e7282dc6903e06, type: 3}
+  - {fileID: 6554584845719712901, guid: 909c92fa07373664b8457541429234df, type: 3}
   <itemConsumable>k__BackingField:
   - {fileID: -5962201317160129790, guid: 0e30f48b00e811a44b3c08d030010a3c, type: 3}
   - {fileID: -8564858340489343500, guid: 9763da1957af0304c992026141d0a4be, type: 3}

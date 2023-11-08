@@ -9,7 +9,6 @@ public class Item : MonoBehaviour
     [field: SerializeField] public Rarity ItemRarity { get; private set; }
     [field: SerializeField] public int DropProbability { get; private set; }
     [field: SerializeField] public Sprite ItemIcon { get; private set; }
-    [field: SerializeField] public GameObject ItemObject { get; private set; }
     [field: TextArea][field: SerializeField] public string ItemInfo { get; private set; }
     [field: SerializeField] public int Price { get; private set; }
     [field: SerializeField] public StatChange[] ItemDatas { get; private set; }
@@ -29,7 +28,6 @@ public class Item : MonoBehaviour
         ItemRarity = item.ItemRarity;
         DropProbability = item.DropProbability;
         ItemIcon = item.ItemIcon;
-        ItemObject = item.ItemObject;
         ItemInfo = item.ItemInfo;
         Price = item.Price;
         ItemDatas = item.ItemDatas;

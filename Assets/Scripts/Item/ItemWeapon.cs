@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ItemWeapon : Item
 {
+    [field: SerializeField] public GameObject ItemObject { get; private set; }
+
     public override void Pickup()
     {
         base.Pickup();
