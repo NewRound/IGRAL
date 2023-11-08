@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,11 +6,16 @@ using UnityEngine.UI;
 public class Condition
 {
     [SerializeField] private Image uiBar;
+    [SerializeField] private TextMeshProUGUI _curValue;
+    [SerializeField] private TextMeshProUGUI _maxValue;
 
     public void FillAmount(float curValue, float maxValue)
     {
         if (maxValue == 0.0f)
             return;
+
+        _curValue.text = ((int)curValue).ToString();
+        _maxValue.text = ((int)maxValue).ToString();
 
         uiBar.fillAmount =  (curValue / maxValue);
     }

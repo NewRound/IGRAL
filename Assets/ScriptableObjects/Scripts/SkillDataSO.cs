@@ -1,8 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SkillDataSO", menuName = "SO/SkillData/SkillDataSO")]
-public class SkillDataSO : ScriptableObject
+[CreateAssetMenu(fileName = "SkillData", menuName = "SO/SkillData/SkillDataSO")]
+public class SkillDataSO : PlayerSO
 {
-    [field: SerializeField] public SkillCategoryType skillCategoryType { get; private set; }
-    [field: SerializeField] public SkillSO[] skills { get; private set; }
+
 }

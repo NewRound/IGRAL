@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UISkillCategory : MonoBehaviour
 {
-    private SkillDataSO _skillDatas;
+    private SkillSetSO _skillSets;
     private UISkillSlot[] _slots;
 
     [Header("SkillCategory")]
@@ -15,17 +15,17 @@ public class UISkillCategory : MonoBehaviour
     [SerializeField] private Transform _content;
     public GameObject skillTree;
     
-    public void SetSkillCategory(SkillDataSO skillDataSO)
+    public void SetSkillCategory(SkillSetSO skillDataSO)
     {
-        _skillDatas = skillDataSO;
-        _slots = new UISkillSlot[_skillDatas.skills.Length];
+        _skillSets = skillDataSO;
+        _slots = new UISkillSlot[_skillSets.skills.Length];
         _skillCategoryName.text = GetDescription.EnumToString(skillDataSO.skillCategoryType);
         int i = 0;
-        foreach (SkillSO skillSO in _skillDatas.skills)
+        foreach (SkillInfoSO skillInfoSO in _skillSets.skills)
         {
             GameObject instantiate = Instantiate(_uISkillSlot, _content);
             UISkillSlot uISkillSlot = instantiate.GetComponent<UISkillSlot>();
-            uISkillSlot.InitSkillSlot(skillSO);
+            uISkillSlot.InitSkillSlot(skillInfoSO);
             int index = i;
             _slots[index] = uISkillSlot;
             i++;
