@@ -8,10 +8,11 @@ public class ItemManager : CustomSingleton<ItemManager>
 {
     public ItemSO itemSO { get; private set; }
     public PickupItem pickupItem { get; private set; }
+    public ItemConsumable itemConsumable { get; private set; }
     private PickupItem itemBox;
 
     private Dictionary<Rarity, List<ItemSO>> _itemsArtifactByRarity = new Dictionary<Rarity, List<ItemSO>>();
-    private Dictionary<Rarity, List<ItemSO>> _itemsConsumableByRarity = new Dictionary<Rarity, List<ItemSO>>();
+    private Dictionary<Rarity, List<ItemConsumable>> _itemsConsumableByRarity = new Dictionary<Rarity, List<ItemConsumable>>();
     private Dictionary<Rarity, List<ItemSO>> _itemsIngredientByRarity = new Dictionary<Rarity, List<ItemSO>>();
     private Dictionary<Rarity, List<ItemSO>> _itemsWeaponByRarity = new Dictionary<Rarity, List<ItemSO>>();
 
@@ -37,11 +38,11 @@ public class ItemManager : CustomSingleton<ItemManager>
         // itemConsumable
         for (int i = 0; i < items.itemConsumable.Length; i++)
         {
-            if (!_itemsConsumableByRarity.ContainsKey(items.itemConsumable[i].ItemRarity))
+            if (!_itemsConsumableByRarity.ContainsKey(items.itemConsumable[i].item.ItemRarity))
             {
-                _itemsConsumableByRarity[items.itemConsumable[i].ItemRarity] = new List<ItemSO>();
+                _itemsConsumableByRarity[items.itemConsumable[i].item.ItemRarity] = new List<ItemConsumable>();
             }
-            _itemsConsumableByRarity[items.itemConsumable[i].ItemRarity].Add(items.itemConsumable[i]);
+            _itemsConsumableByRarity[items.itemConsumable[i].item.ItemRarity].Add(items.itemConsumable[i]);
         }
 
         // itemIngredient
@@ -70,6 +71,12 @@ public class ItemManager : CustomSingleton<ItemManager>
         itemSO = itemData;
         pickupItem = pickup;
     }
+    
+    public void SetConsumable(ItemConsumable itemData)
+    {
+        itemConsumable = itemData;
+    }
+
 
     public void DelSetPickupItem()
     {
@@ -77,42 +84,59 @@ public class ItemManager : CustomSingleton<ItemManager>
         pickupItem = null;
     }
 
+    public void DelConsumable()
+    {
+        itemConsumable = null;
+    }
+
 
     public void RandomDropItem(Vector3 dropPos, ItemType itemType)
     {
         int targetRarity = Probability.Drop(rarityProbability);
 
-        List<ItemSO> items = new List<ItemSO>();
-
         switch (itemType)
         {
             case ItemType.Artifact:
-                items = _itemsArtifactByRarity[(Rarity)targetRarity];
+                List<ItemSO> itemArtifact = _itemsArtifactByRarity[(Rarity)targetRarity];
+                if (itemArtifact.Count > 0)
+                {
+                    int[] probability = new int[itemArtifact.Count];
+                    for (int i = 0; i < itemArtifact.Count; i++)
+                    {
+                        probability[i] = itemArtifact[i].DropProbability;
+                    }
+
+                    int target = Probability.Drop(probability);
+                    PickupItem pickupItem = Instantiate(itemBox);
+                    pickupItem.DropItemSet(itemArtifact[target]);
+                    pickupItem.transform.position = dropPos;
+                }
                 break;
             case ItemType.Consumable:
-                items = _itemsArtifactByRarity[(Rarity)targetRarity];
+                List<ItemConsumable> itemConsumable = _itemsConsumableByRarity[(Rarity)targetRarity];
+                if (itemConsumable.Count > 0)
+                {
+                    int[] probability = new int[itemConsumable.Count];
+                    for (int i = 0; i < itemConsumable.Count; i++)
+                    {
+                        probability[i] = itemConsumable[i].item.DropProbability;
+                    }
+
+                    int target = Probability.Drop(probability);
+                    PickupItem pickupItem = Instantiate(itemBox);
+                    pickupItem.DropConsumableItemSet(itemConsumable[target]);
+                    pickupItem.transform.position = dropPos;
+                }
                 break;
             case ItemType.Ingredient:
-                items = _itemsArtifactByRarity[(Rarity)targetRarity];
+                // TODO 구현 필요
                 break;
             case ItemType.Weapon:
-                items = _itemsArtifactByRarity[(Rarity)targetRarity];
+                // TODO 구현 필요
                 break;
         }
 
-        if(items.Count > 0)
-        {
-            int[] probability = new int[items.Count];
-            for (int i = 0; i < items.Count; i++)
-            {
-                probability[i] = items[i].DropProbability;
-            }
 
-            int target = Probability.Drop(probability);
-            PickupItem pickupItem = Instantiate(itemBox);
-            pickupItem.PickupItemSet(items[target]);
-            pickupItem.transform.position = dropPos;
-        }
     }
 
 }
