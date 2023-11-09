@@ -2204,7 +2204,7 @@ Transform:
   m_Children:
   - {fileID: 3969972136033454779}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3430761117332815084
 MonoBehaviour:
@@ -2285,6 +2285,7 @@ MonoBehaviour:
     <AcceleratingTime>k__BackingField: 1
     <RotationSpeed>k__BackingField: 10
   <IsDebug>k__BackingField: 0
+  DronePos: {fileID: 6236739943561386907}
 --- !u!54 &5265941964371304423
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3783,7 +3784,7 @@ GameObject:
   - component: {fileID: 6236739943561386907}
   m_Layer: 7
   m_Name: DronePos
-  m_TagString: Untagged
+  m_TagString: DronePos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
