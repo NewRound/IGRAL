@@ -6,6 +6,7 @@ public class ItemConsumable : MonoBehaviour
 
     public virtual void UseConsumable()
     {
+        UIController.Instance.DelConsumableItem();
 
     }
 }

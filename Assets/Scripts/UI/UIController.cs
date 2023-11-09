@@ -17,6 +17,10 @@ public class UIController : CustomSingleton<UIController>
     [SerializeField] private Button _talk;
 
     [Header("GameObject")]
+    [SerializeField] private Image _emptied;
+    [SerializeField] private Image _consumableItem;
+
+    [Header("GameObject")]
     [SerializeField] private GameObject _moveJoystickObj;
     [SerializeField] private GameObject _skillJoystickObj;
     [SerializeField] private GameObject _attackObj;
@@ -154,6 +158,21 @@ public class UIController : CustomSingleton<UIController>
         }
     }
 
+    public void SetConsumableItem(ItemConsumable itemConsumable)
+    {
+        _emptied.gameObject.SetActive(false);
+        _consumableItem.sprite = itemConsumable.item.ItemIcon;
+        _consumableItem.gameObject.SetActive(true);
+
+    }
+
+    public void DelConsumableItem()
+    {
+        _consumableItem.sprite = null;
+        _consumableItem.gameObject.SetActive(false);
+        _emptied.gameObject.SetActive(true);
+    }
+
     #region 상호작용 게임오브젝트 관리
     public void SetInteractiveObject(GameObject go)
     {
@@ -205,7 +224,10 @@ public class UIController : CustomSingleton<UIController>
 
     private void OnItemButton()
     {
+        if (ItemManager.Instance.itemConsumable == null)
+            return;
 
+        ItemManager.Instance.itemConsumable.UseConsumable();
     }
 
     private void OnTalkButton()
