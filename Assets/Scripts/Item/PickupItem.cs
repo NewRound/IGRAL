@@ -2,17 +2,22 @@ using UnityEngine;
 
 public class PickupItem : MonoBehaviour
 {
-    public ItemSO item;
+    public ItemSO item { get; private set; }
+    public ItemConsumable itemConsumable { get; private set; }
 
-    public void PickupItemSet(ItemSO dropItem)
+    public void DropItemSet(ItemSO dropItem)
     {
-        Debug.Log(dropItem.ItemType);
         item = dropItem;
+    }
+
+    public void DropConsumableItemSet(ItemConsumable dropItem)
+    {
+        item = dropItem.item;
+        itemConsumable = dropItem;
     }
 
     public void Pickup()
     {
-        Debug.Log(item.ItemType);
         //인벤토리로 이동
         switch (item.ItemType)
         {
@@ -23,6 +28,7 @@ public class PickupItem : MonoBehaviour
                 break;
             case ItemType.Consumable:
                 //TODO 소비형 아이템 교체 함수 구현 필요
+                UIController.Instance.SetConsumableItem(itemConsumable);
                 UIController.Instance.SwitchingAttack();
                 ItemManager.Instance.DelSetPickupItem();
                 break;

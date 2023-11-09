@@ -437,6 +437,8 @@ MonoBehaviour:
   _skillIcon: {fileID: 3613173768512384200}
   <skillCategoryType>k__BackingField: 2
   usingKcal: 0
+  durationTime: 0
+  _currentTime: 0
 --- !u!1 &2120648791519233285
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +576,8 @@ MonoBehaviour:
   _pickup: {fileID: 6477225818755269681}
   _item: {fileID: 605243387250621379}
   _talk: {fileID: 2704519765144946242}
+  _emptied: {fileID: 3700362265728339878}
+  _consumableItem: {fileID: 4761928882154667102}
   _moveJoystickObj: {fileID: 1505083443027045202}
   _skillJoystickObj: {fileID: 4851662778794749573}
   _attackObj: {fileID: 4666885127103604407}
@@ -649,6 +653,7 @@ MonoBehaviour:
   <skillCategoryType>k__BackingField: 3
   usingKcal: 0
   durationTime: 5
+  _currentTime: 0
 --- !u!1 &2179262604911975300
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,6 +717,7 @@ MonoBehaviour:
   <skillCategoryType>k__BackingField: 0
   usingKcal: 0
   durationTime: 5
+  _currentTime: 0
 --- !u!1 &2220450769899509655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,6 +1481,8 @@ MonoBehaviour:
   _skillIcon: {fileID: 2220450769899509655}
   <skillCategoryType>k__BackingField: 1
   usingKcal: 0
+  durationTime: 0
+  _currentTime: 0
 --- !u!1 &3613173768512384200
 GameObject:
   m_ObjectHideFlags: 0
@@ -3098,7 +3106,7 @@ GameObject:
   - component: {fileID: 4761928882154667102}
   - component: {fileID: 605243387250621379}
   m_Layer: 5
-  m_Name: Item
+  m_Name: ConsumableItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
