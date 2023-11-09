@@ -10,25 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f040ec91d9fa2dc4d90eadc7ed8bf761, type: 3}
-  m_Name: UniconHead 1
+  m_Name: LeatherArmor
   m_EditorClassIdentifier: 
   <ItemType>k__BackingField: 1
-  <ItemName>k__BackingField: UniqueTest
-  <ItemID>k__BackingField: 203
-  <ItemRarity>k__BackingField: 2
-  <DropProbability>k__BackingField: 10
-  <ItemIcon>k__BackingField: {fileID: 21300000, guid: b0147eed3e62cd247a6fba4cb4d73d41,
+  <ItemName>k__BackingField: LeatherArmor
+  <ItemID>k__BackingField: 209
+  <ItemRarity>k__BackingField: 0
+  <DropProbability>k__BackingField: 60
+  <ItemIcon>k__BackingField: {fileID: 21300000, guid: 2f1eaeeaad36ee5469eff7ff158f37ba,
     type: 3}
-  <ItemInfo>k__BackingField: "\uACF5\uACA9\uB825\uACFC \uACF5\uACA9\uC0AC\uAC70\uB9AC\uB97C
-    20% \uC99D\uAC00\uC2DC\uCF1C\uC90D\uB2C8\uB2E4.\nUniqueTest"
-  <Price>k__BackingField: 100
+  <ItemInfo>k__BackingField: "\uAC00\uC8FD\uC73C\uB85C \uB9CC\uB4E0 \uAC11\uC637,
+    \uBC29\uC5B4\uB825\uC744 2% \uC62C\uB824\uC90D\uB2C8\uB2E4.\n4\uC138\uD2B8 :
+    \uBC29\uC5B4\uB825 5%"
+  <Price>k__BackingField: 200
   <canBePickupBy>k__BackingField:
     serializedVersion: 2
     m_Bits: 128
   <ItemDatas>k__BackingField:
   - statsChangeType: 2
-    statType: 7
-    value: 20
-  - statsChangeType: 2
-    statType: 9
-    value: 20
+    statType: 4
+    value: 2
