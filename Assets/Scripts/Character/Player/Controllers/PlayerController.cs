@@ -28,7 +28,7 @@ public abstract class PlayerController : CharacterController
     protected virtual void Update()
     {
         StateMachine.Update();
-        StatHandler.Recovery(StatHandler.Data.HealthRegen);
+        StatHandler.Recovery(StatHandler.Data.HealthRegen * Time.deltaTime);
     }
 
     protected void FixedUpdate()
