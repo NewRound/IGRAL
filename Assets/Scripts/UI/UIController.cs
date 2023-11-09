@@ -38,7 +38,7 @@ public class UIController : CustomSingleton<UIController>
 
     private void Awake()
     {
-        _inputController = GameManager.Instance.player.GetComponent<InputController>();
+        _inputController = GameManager.Instance.PlayerInputController;
 
         _healing.onClick.AddListener(OnHealingButton);
         _jump.onClick.AddListener(OnJumpButton);
@@ -199,7 +199,7 @@ public class UIController : CustomSingleton<UIController>
 
     private void OnPickupButton()
     {
-        ItemManager.Instance.pickupItem.GetComponent<Item>().Pickup();
+        ItemManager.Instance.pickupItem.Pickup();
         UIManager.Instance.CloseUI<UIItemPopup>().CloseItemPopup();
     }
 

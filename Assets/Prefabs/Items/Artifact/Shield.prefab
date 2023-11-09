@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6549884101529220126}
-  - component: {fileID: 7389382411398805147}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -32,32 +31,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7389382411398805147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6262700966609355473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b59cc2d0d0e3aec4a9259bf044b37b1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <ItemType>k__BackingField: 1
-  <ItemName>k__BackingField: Shield
-  <ItemID>k__BackingField: 201
-  <ItemRarity>k__BackingField: 1
-  <DropProbability>k__BackingField: 10
-  <ItemIcon>k__BackingField: {fileID: 21300000, guid: f892f8f3b6d68904c81921af80db2730,
-    type: 3}
-  <ItemObject>k__BackingField: {fileID: 6262700966609355473}
-  <ItemInfo>k__BackingField: "\uBC29\uC5B4\uB825\uC744 5% \uC99D\uAC00\uC2DC\uCF1C\uC90D\uB2C8\uB2E4."
-  <Price>k__BackingField: 0
-  <ItemDatas>k__BackingField:
-  - statsChangeType: 2
-    statType: 4
-    value: 5
-  canBePickupBy:
-    serializedVersion: 2
-    m_Bits: 128

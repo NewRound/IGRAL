@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ItemSlot
 {
-    public Item item;
+    public ItemSO item;
 }
 
 
@@ -305,7 +305,7 @@ public class UIInventory : CustomSingleton<UIInventory>
     #endregion 아이템 슬롯 클릭
 
     #region 아이템 슬롯 업데이트
-    public void AddItem(Item item)
+    public void AddItem(ItemSO item)
     {
 
 
@@ -323,7 +323,7 @@ public class UIInventory : CustomSingleton<UIInventory>
         ThrowItem(item);
     }
 
-    public void AddEquipItem(Item item)
+    public void AddEquipItem(ItemSO item)
     {
         ItemSlot emptySlot = GetEquipEmptySlot();
 
@@ -448,14 +448,14 @@ public class UIInventory : CustomSingleton<UIInventory>
     #endregion 버튼
 
     #region 아이템 슬롯 부족
-    private void ReturnItem(Item item)
+    private void ReturnItem(ItemSO item)
     {
         Debug.Log("장착칸이 가득 참");
         AddItem(item);
         //Instantiate(item.dropPrefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360f));
     }
 
-    private void ThrowItem(Item item)
+    private void ThrowItem(ItemSO item)
     {
         Debug.Log("인벤이 가득 참");
         //Instantiate(item.dropPrefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360f));

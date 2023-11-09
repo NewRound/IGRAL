@@ -37,7 +37,7 @@ public class EnemyStateMachine : StateMachine
         ModelTrans.forward = Vector3.right;
         SetPreDirection(ModelTrans.forward);
 
-        PlayerTransform = GameManager.Instance.player.transform;
+        PlayerTransform = GameManager.Instance.PlayerTransform;
 
         PatrolState = new EnemyPatrolState(this);
         TraceState = new EnemyTraceState(this);

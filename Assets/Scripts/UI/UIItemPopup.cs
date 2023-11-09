@@ -7,7 +7,7 @@ public class UIItemPopup : MonoBehaviour
     [SerializeField] private Image _icon;
     [SerializeField] private TextMeshProUGUI _itemName;
 
-    public void OpenItemPopup(Item item)
+    public void OpenItemPopup(ItemSO item)
     {
         _icon.sprite = item.ItemIcon;
         _itemName.text = item.ItemName;
