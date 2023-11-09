@@ -18,7 +18,7 @@ public class SkillUse : MonoBehaviour
 
     private void Start()
     {
-        mutantController = GameManager.Instance.player.GetComponent<PlayerAppearanceController>();
+        mutantController = GameManager.Instance.PlayerTransform.GetComponent<PlayerAppearanceController>();
         curData = GameManager.Instance.StatHandler.Data;
     }
 

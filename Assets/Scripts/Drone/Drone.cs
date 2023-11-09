@@ -33,7 +33,7 @@ public class Drone : MonoBehaviour
     private void Start()
     {
         _rigid = GetComponent<Rigidbody>();
-        _player = GameManager.Instance.player.GetComponent<InputController>();
+        _player = GameManager.Instance.PlayerInputController;
 
         _followTarget = _player.DronePos;           
     }

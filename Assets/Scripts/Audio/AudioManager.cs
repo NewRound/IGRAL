@@ -32,6 +32,12 @@ public class AudioManager : CustomSingleton<AudioManager>
 
     private void Awake()
     {
+        if (!PlayerPrefs.HasKey("bgmVolume"))
+        {
+            PlayerPrefs.SetFloat("bgmVolume", 1.0f);
+            PlayerPrefs.SetFloat("sfxVolume", 1.0f);
+        }
+
         bgmPlayer = gameObject.AddComponent<AudioSource>();
         bgmPlayer.loop = true;
         bgmPlayer.volume = PlayerPrefs.GetFloat("bgmVolume");

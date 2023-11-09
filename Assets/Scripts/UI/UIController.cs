@@ -38,7 +38,7 @@ public class UIController : CustomSingleton<UIController>
 
     private void Awake()
     {
-        _inputController = GameManager.Instance.player.GetComponent<InputController>();
+        _inputController = GameManager.Instance.PlayerInputController;
 
         _healing.onClick.AddListener(OnHealingButton);
         _jump.onClick.AddListener(OnJumpButton);
