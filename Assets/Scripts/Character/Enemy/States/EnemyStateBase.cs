@@ -19,6 +19,12 @@ public abstract class EnemyStateBase : StateBase
 
     public override void UpdateState()
     {
+        if (stateMachine.PlayerStateMachine.IsDead && stateMachine.CurrentState != stateMachine.PatrolState)
+        {
+            stateMachine.ChangeState(stateMachine.PatrolState);
+            return;
+        }
+
         stateMachine.UpdateSpeed();
         stateMachine.Look();
     }
@@ -26,5 +32,12 @@ public abstract class EnemyStateBase : StateBase
     public override void PhysicsUpdateState()
     {
         stateMachine.Move();
+    }
+
+    public override void OnDead()
+    {
+        base.OnDead();
+        stateMachine.SetIsTracing(false);
+        stateMachine.SetIsAttacking(false);
     }
 }

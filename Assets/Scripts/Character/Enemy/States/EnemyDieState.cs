@@ -15,8 +15,7 @@ public class EnemyDieState : EnemyStateBase
         if (stateMachine.IsDead)
             return;
 
-        stateMachine.SetDead(true);
-        animationController.PlayAnimation(animationsData.dieParameterHash, true);
+        OnDead();
     }
 
     public override void UpdateState()
@@ -27,7 +26,14 @@ public class EnemyDieState : EnemyStateBase
 
     public override void Exit()
     {
+        stateMachine.SetDead(false);
+        animationController.PlayAnimation(animationsData.dieParameterHash, false);
     }
 
-    
+    public override void OnDead()
+    {
+        base.OnDead();
+        stateMachine.SetDead(true);
+        animationController.PlayAnimation(animationsData.dieParameterHash, true);
+    }
 }

@@ -16,18 +16,19 @@ public class PlayerDieState : PlayerStateBase
 
         stateMachine.SetDead(true);
         animationController.PlayAnimation(animationsData.dieParameterHash, true);
+        OnDead();
     }
 
     public override void UpdateState()
     {
         if (!stateMachine.IsDead)
             stateMachine.ChangeState(stateMachine.MoveState);
-
     }
 
     public override void Exit()
     {
         stateMachine.SetDead(false);
         animationController.PlayAnimation(animationsData.dieParameterHash, false);
+        InitInputActions();
     }
 }
