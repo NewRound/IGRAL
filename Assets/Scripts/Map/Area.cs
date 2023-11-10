@@ -97,8 +97,8 @@ public class Area : MonoBehaviour
 
     private void SendAreaInfo(GameObject enemy)
     {
-        Debug.Log($"{position.x},  {size}");
-        Debug.Log($"{transform.position.x},  {size}");
-        enemy.GetComponent<EnemyController>().StateMachine.SetAreaData(position.x, size);
+        EnemyStateMachine enemyStateMachine = enemy.GetComponent<EnemyController>().StateMachine;
+        enemyStateMachine.SetAreaData(transform.position.x, size);
+        enemyStateMachine.Init();
     }
 }

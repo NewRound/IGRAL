@@ -84,7 +84,7 @@ public class EnemyStateMachine : StateMachine
     public void SetAreaData(float tileXPos, float tileLegth)
     {
         _tileXPos = tileXPos;
-        Debug.Log(tileLegth);
+        Debug.Log($"{tileXPos},  {tileLegth}");
         _tileHalfLength = tileLegth * 0.5f;
         _tilehalfPowLength = _tileHalfLength * _tileHalfLength;
     }
