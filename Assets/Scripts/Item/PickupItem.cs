@@ -30,6 +30,7 @@ public class PickupItem : MonoBehaviour
                 //TODO 소비형 아이템 교체 함수 구현 필요
                 UIController.Instance.SetConsumableItem(itemConsumable);
                 UIController.Instance.SwitchingAttack();
+                ItemManager.Instance.SetConsumable(itemConsumable);
                 ItemManager.Instance.DelSetPickupItem();
                 break;
             case ItemType.Ingredient:
