@@ -6,6 +6,9 @@ public class GameManager : CustomSingleton<GameManager>
     [field: SerializeField] public InputController PlayerInputController { get; private set; }
     public PlayerStatHandler StatHandler { get; private set; }
 
+    // 오브젝트 플링 매니저가 없어서 임시로 드론을 위치시킴
+    [SerializeField] private GameObject droneGo;
+    public Drone drone { get; private set; }
 
     private void Start()
     {
@@ -19,6 +22,12 @@ public class GameManager : CustomSingleton<GameManager>
 
         //임시 배경음 시작
         Invoke("StartBGM", 1f);
+
+
+        //드론 임시 세팅
+        drone = Instantiate(droneGo.GetComponent<Drone>());
+        drone.gameObject.transform.parent = transform;
+        drone.InActiveDrone();
     }
 
     private void StartBGM()

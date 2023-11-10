@@ -28,7 +28,6 @@ public class ProjectilePool : CustomSingleton<ProjectilePool>
             {
                 selectProjectile = projectile;
                 selectProjectile.gameObject.SetActive(true);
-                Debug.Log("투사체 활성화");
                 break;
             }
         }
@@ -36,7 +35,6 @@ public class ProjectilePool : CustomSingleton<ProjectilePool>
         // 비활성화된 총알이 없으면 생성
         if (!selectProjectile)
         {
-            Debug.Log("투사체 생성");
             DroneProjectile projectile = Instantiate(_projectile, transform);
             selectProjectile = projectile.GetComponent<DroneProjectile>();
             _projectiles.Add(selectProjectile);
