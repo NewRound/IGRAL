@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <item>k__BackingField: {fileID: 11400000, guid: cb96ba729d418d944baea37c55feb35e,
     type: 2}
+  drone: {fileID: 8557774888783762140, guid: 10438cf6aba9e3644b4e295bc3147315, type: 3}
