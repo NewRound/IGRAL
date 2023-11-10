@@ -11,6 +11,7 @@ public class PlayerStateMachine : StateMachine
     public PlayerFallState FallState { get; private set; }
     public PlayerRollState RollState { get; private set; }
     public PlayerAttackState AttackState { get; private set; }
+    public PlayerDieState DieState { get; private set; }
 
 
     [field: Header("Roll")]
@@ -54,7 +55,7 @@ public class PlayerStateMachine : StateMachine
         FallState = new PlayerFallState(this);
         RollState = new PlayerRollState(this);
         AttackState = new PlayerAttackState(this);
-
+        DieState = new PlayerDieState(this);
     }
 
     public override void Init()
@@ -126,5 +127,10 @@ public class PlayerStateMachine : StateMachine
             return;
 
         base.Move();
+    }
+
+    public void Ondead()
+    {
+        ChangeState(DieState);
     }
 }

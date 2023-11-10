@@ -5,6 +5,6 @@ public class UniqueDrone : ItemConsumable
     public override void UseConsumable()
     {
         base.UseConsumable();
-        Debug.Log("UniqueDrone");
+        GameManager.Instance.drone.ActiveDrone(100f);
     }
 }

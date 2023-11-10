@@ -29,6 +29,7 @@ public class EnemyController : CharacterController
     private void Start()
     {
         StateMachine.Init();
+        StatHandler.DieAction += StateMachine.Ondead;
     }
 
     private void Update()
@@ -49,5 +50,10 @@ public class EnemyController : CharacterController
     public void TerminateCoroutine(IEnumerator enumerator)
     {
         StopCoroutine(enumerator);
+    }
+
+    private void OnDestroy()
+    {
+        StatHandler.DieAction -= StateMachine.Ondead;
     }
 }

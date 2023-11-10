@@ -16,7 +16,11 @@ public class EnemyTraceState : EnemyMoveState
 
     public override void UpdateState()
     {
+        if (stateMachine.PlayerStateMachine.IsDead)
+            return;
+
         base.UpdateState();
+
         if (stateMachine.IsTracing)
         {
             stateMachine.CheckAttackRange();

@@ -15,6 +15,10 @@ public class EnemyAttackState : EnemyStateBase
     public override void UpdateState()
     {
         base.UpdateState();
+
+        if (stateMachine.PlayerStateMachine.IsDead)
+            return;
+
         stateMachine.CheckAttackRange();
         if (!stateMachine.IsAttacking)
         {
