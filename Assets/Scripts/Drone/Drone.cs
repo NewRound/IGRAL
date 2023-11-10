@@ -14,23 +14,35 @@ public class Drone : MonoBehaviour
 
     [Header("# Move Info")]    
     [SerializeField] private float _movementSpeed;
+
     private InputController _player;
     private Transform _followTarget;
-
     private Rigidbody _rigid;
 
-    public void ActiveDrone()
+    private float _durationTime;
+    private float _time;
+    private bool _isActive = false;
+
+    public void ActiveDrone(float durationTime)
     {
         // 활성화
         gameObject.SetActive(true);
+        _durationTime = durationTime;
+        gameObject.transform.position = _followTarget.position;
+        _time = 0.0f;
+        _isActive = true;
     }
 
     public void InActiveDrone()
     {
         // 비활성화
+        _isActive = false;
+        _durationTime = 0.0f;
+        _time = 0.0f;
         gameObject.SetActive(false);
     }
-    private void Start()
+
+    private void Awake()
     {
         _rigid = GetComponent<Rigidbody>();
         _player = GameManager.Instance.PlayerInputController;
@@ -38,8 +50,11 @@ public class Drone : MonoBehaviour
         _followTarget = _player.DronePos;           
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        if (!_isActive)
+            return;
+
         MoveToFollowTarget();
         
         _attackTimer += Time.deltaTime;
@@ -57,17 +72,17 @@ public class Drone : MonoBehaviour
 
                 RaycastHit hit;                
                 if (Physics.Raycast(transform.position, rayDirection, out hit, _attackRange, _enemyLayer))
-                {
-                    Debug.Log("Target In Range");                    
+                {               
                     OnFire(hit);
                     break;
                 }
-
-                else
-                { 
-                    Debug.Log("There is no Target");
-                }
             }
+        }
+
+        _time += Time.deltaTime;
+        if (_time >= _durationTime)
+        {
+            InActiveDrone();
         }
     }
 
@@ -90,7 +105,6 @@ public class Drone : MonoBehaviour
     // 총알을 발사하는 메서드
     private void OnFire(RaycastHit hitInfo)
     {
-        Debug.Log("OnFire");
         DroneProjectile projectile = ProjectilePool.Instance.GetProjectile();
         // hitInfo.collider.bounds.center
         projectile.SetTarget(hitInfo.transform);
