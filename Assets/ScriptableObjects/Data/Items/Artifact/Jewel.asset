@@ -35,8 +35,8 @@ MonoBehaviour:
     statType: 13
     value: 15
   - statsChangeType: 2
-    statType: 23
+    statType: 0
     value: 15
   - statsChangeType: 2
-    statType: 21
+    statType: 2
     value: 15
