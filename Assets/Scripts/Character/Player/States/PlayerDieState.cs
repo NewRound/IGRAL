@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.XR;
-
 public class PlayerDieState : PlayerStateBase
 {
     public PlayerDieState(PlayerStateMachine stateMachine) : base(stateMachine)
