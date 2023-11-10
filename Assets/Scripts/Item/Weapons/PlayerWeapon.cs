@@ -30,6 +30,9 @@ public class PlayerWeapon : Weapon
 
     private void OnDrawGizmos()
     {
+        if (_myTrans == null)
+            return;
+
         Vector3 offsetVec = _myTrans.position;
         offsetVec.y = 0.5f;
         Gizmos.DrawRay(offsetVec, _modelTrans.forward * 10f);

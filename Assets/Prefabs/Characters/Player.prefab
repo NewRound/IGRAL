@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 5615216039505202279}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6279680537438127429
 MonoBehaviour:
@@ -116,6 +116,7 @@ MonoBehaviour:
     <AcceleratingTime>k__BackingField: 1
     <RotationSpeed>k__BackingField: 10
   <IsDebug>k__BackingField: 1
+  DronePos: {fileID: 0}
 --- !u!54 &6515203177115831943
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -298,8 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65aaa6819a28d394788dc653c209e1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackData>k__BackingField: {fileID: 11400000, guid: 166172af088f0b9418212546c762064f,
-    type: 2}
+  attackData: {fileID: 11400000, guid: 166172af088f0b9418212546c762064f, type: 2}
 --- !u!4 &6419366929947105664 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9057232486277760607, guid: d6a5c159ac3a67340a14b2d0cf7aa846,

@@ -70,6 +70,8 @@ public class PlayerStatHandler : IDamageable, IBurnable
     private Dictionary<StatType, float> _multipleStats;
     private Dictionary<StatType, float> _overrideStats;
 
+    public event Action DieAction;
+
     public PlayerStatHandler(PlayerSO data)
     {
         _baseData = data;
@@ -82,7 +84,7 @@ public class PlayerStatHandler : IDamageable, IBurnable
         Data.Health = curValue;
         if(curValue == 0.0f)
         {
-            //TODO 플레이어 죽음 처리
+            DieAction?.Invoke();
         }
     }
 

@@ -23,6 +23,7 @@ public abstract class PlayerController : CharacterController
     protected void Start()
     {
         StateMachine.Init();
+        StatHandler.DieAction += StateMachine.Ondead;
     }
 
     protected virtual void Update()
@@ -34,6 +35,11 @@ public abstract class PlayerController : CharacterController
     protected void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
+    }
+
+    protected void OnDestroy()
+    {
+        StatHandler.DieAction -= StateMachine.Ondead;
     }
 
 #if UNITY_EDITOR
