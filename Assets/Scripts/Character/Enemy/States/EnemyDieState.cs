@@ -34,6 +34,7 @@ public class EnemyDieState : EnemyStateBase
     {
         base.OnDead();
         stateMachine.SetDead(true);
+        stateMachine.SetDirection(Vector2.zero);
         animationController.PlayAnimation(animationsData.dieParameterHash, true);
     }
 }

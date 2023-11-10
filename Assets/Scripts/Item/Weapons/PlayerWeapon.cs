@@ -34,8 +34,8 @@ public class PlayerWeapon : Weapon
             return;
 
         Vector3 offsetVec = _myTrans.position;
-        offsetVec.y = 0.5f;
-        Gizmos.DrawRay(offsetVec, _modelTrans.forward * 10f);
+        offsetVec.y += 0.5f;
+        Gizmos.DrawRay(offsetVec, _modelTrans.forward * _playerSO.AttackRange);
     }
 
     protected override void OnAttack()
@@ -43,11 +43,10 @@ public class PlayerWeapon : Weapon
         HealthSO targetSO = null;
         IDamageable damageable = null;
         Vector3 offsetVec = _myTrans.position;
-        offsetVec.y = 0.5f;
+        offsetVec.y += 0.5f;
 
 
-        RaycastHit[] hits = Physics.RaycastAll(offsetVec, _modelTrans.forward, 10f, 1 << LayerMask.NameToLayer(targetTag));
-        //int combo = _playerAnimationController.AttackCombo;
+        RaycastHit[] hits = Physics.RaycastAll(offsetVec, _modelTrans.forward, _playerSO.AttackRange, 1 << LayerMask.NameToLayer(targetTag));
 
         foreach (RaycastHit hit in hits)
         {
