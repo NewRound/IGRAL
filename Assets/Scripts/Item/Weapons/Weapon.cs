@@ -8,7 +8,7 @@ public enum Tag
     Enemy,
 }
 
-public class Weapon : MonoBehaviour, IBattle
+public abstract class Weapon : MonoBehaviour, IBattle
 {
     private const int PERCENT_EXCLUDE_MAX_VALUE = 101;
 
@@ -34,8 +34,5 @@ public class Weapon : MonoBehaviour, IBattle
         targetDamageable.Damaged(attackDamage);
     }
 
-    protected virtual void OnAttack()
-    {
-
-    }
+    protected abstract void OnAttack();
 }

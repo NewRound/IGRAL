@@ -9,6 +9,7 @@ public class EnemyStateMachine : StateMachine
     public EnemyPatrolState PatrolState { get; private set; }
     public EnemyTraceState TraceState { get; private set; }
     public EnemyAttackState AttackState { get; private set; }
+    public EnemyDieState DieState { get; private set; }
 
     public Transform PlayerTransform { get; private set; }
 
@@ -21,6 +22,9 @@ public class EnemyStateMachine : StateMachine
     private float _targetXPos;
 
     private IEnumerator _currentEnumerator;
+
+    public PlayerStateMachine PlayerStateMachine { get; private set; }
+    
 
     public EnemyStateMachine(EnemyController controller)
     {
@@ -38,11 +42,12 @@ public class EnemyStateMachine : StateMachine
         SetPreDirection(ModelTrans.forward);
 
         PlayerTransform = GameManager.Instance.PlayerTransform;
+        PlayerStateMachine = GameManager.Instance.PlayerInputController.StateMachine;
 
         PatrolState = new EnemyPatrolState(this);
         TraceState = new EnemyTraceState(this);
         AttackState = new EnemyAttackState(this);
-
+        DieState = new EnemyDieState(this);
     }
 
     public override void Init()
@@ -125,7 +130,18 @@ public class EnemyStateMachine : StateMachine
     {
         float distance = Vector3.Distance(EnemyController.transform.position, PlayerTransform.position);
 
-        IsAttacking = EnemyController.StatHandler.Data.AttackDistance >= distance;
+        bool isAttacking = EnemyController.StatHandler.Data.AttackDistance >= distance;
+        SetIsAttacking(isAttacking);
+    }
+
+    public void SetIsAttacking(bool isAttacking)
+    {
+        IsAttacking = isAttacking;
+    }
+
+    public void Ondead()
+    {
+        ChangeState(DieState);
     }
 
     private IEnumerator CheckArrivedTargetPos()

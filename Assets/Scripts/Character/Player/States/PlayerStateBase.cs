@@ -44,9 +44,10 @@ public abstract class PlayerStateBase : StateBase
     public override void OnDead()
     {
         InputController.MoveAction -= OnMoveInput;
+        inputActions.Disable();
     }
 
-    private void InitInputActions()
+    public void InitInputActions()
     {
         inputActions = InputController.InputActions;
         

@@ -21,6 +21,8 @@ public abstract class StateMachine
     public RotationCalculator RotationCalculator { get; protected set; }
     public Transform ModelTrans { get; protected set; }
 
+    public bool IsDead { get; private set; }
+
     public abstract void Init();
 
     public void ChangeState(IState newState)
@@ -78,6 +80,11 @@ public abstract class StateMachine
         Vector3 velocity = new Vector3(Direction.x, 0f, 0f) * Speed;
         velocity.y = Rigid.velocity.y;
         Rigid.velocity = velocity;
+    }
+
+    public void SetDead(bool isDead)
+    {
+        IsDead = isDead;
     }
 
     public abstract Quaternion GetRotation();

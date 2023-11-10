@@ -15,6 +15,10 @@ public class EnemyPatrolState : EnemyMoveState
     public override void UpdateState()
     {
         base.UpdateState();
+
+        if (stateMachine.PlayerStateMachine.IsDead)
+            return;
+
         if (stateMachine.IsTracing)
         {
             stateMachine.ChangeState(stateMachine.TraceState);

@@ -43,12 +43,12 @@ public class EnemyWeapon : Weapon
         HealthSO targetSO = null;
         IDamageable damageable = null;
         Vector3 offsetVec = _myTrans.position;
-        offsetVec.y = 0.5f;
+        offsetVec.y += 0.5f;
 
         Ray ray = new Ray(offsetVec, _modelTrans.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 10f, 1 << LayerMask.NameToLayer(targetTag)))
+        if (Physics.Raycast(ray, out hit, _enemySO.AttackRange, 1 << LayerMask.NameToLayer(targetTag)))
         {
             PlayerStatHandler statHandler = hit.collider.GetComponentInParent<PlayerController>().StatHandler;
 
@@ -57,19 +57,4 @@ public class EnemyWeapon : Weapon
             Attack(_enemySO, targetSO, damageable);
         }
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    HealthSO targetSO = null;
-    //    IDamageable damageable = null;
-
-    //    if (other.CompareTag(targetTag))
-    //    {
-    //        PlayerStatHandler statHandler = other.GetComponentInParent<PlayerController>().StatHandler;
-    //        targetSO = statHandler.Data;
-    //        damageable = statHandler;
-
-    //        Attack(_enemySO, targetSO, damageable);
-    //    }
-    //}
 }
