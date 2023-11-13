@@ -66,4 +66,4 @@ public class ElevatorObject : MonoBehaviour, IMovingObject
     {
         return true;
     }
-}
+}zzzzzz
