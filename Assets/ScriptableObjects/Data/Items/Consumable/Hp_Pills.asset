@@ -9,29 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f865ee03feb1f6e439ec5f8633defb2e, type: 3}
+  m_Script: {fileID: 11500000, guid: f040ec91d9fa2dc4d90eadc7ed8bf761, type: 3}
   m_Name: Hp_Pills
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: 0.05
-  <HealthRegen>k__BackingField: 0
-  <Defense>k__BackingField: 0
-  <EvasionProbability>k__BackingField: 0
-  <IsInvincible>k__BackingField: 0
-  <InvincibleTime>k__BackingField: 0
-  <Attack>k__BackingField: 0
-  <AttackDelay>k__BackingField: 0
-  <AttackRange>k__BackingField: 0
-  <CriticalProbability>k__BackingField: 0
-  <CriticalMod>k__BackingField: 0
-  <SpeedMin>k__BackingField: 0
-  <SpeedMax>k__BackingField: 0
-  <KnockbackPower>k__BackingField: 0
-  <KnockbackTime>k__BackingField: 0
-  <IsRanged>k__BackingField: 0
-  <JumpForce>k__BackingField: 0
-  <Combo>k__BackingField: 0
-  <MaxJumpCount>k__BackingField: 0
-  <KcalPerAttack>k__BackingField: 0
-  <MaxKcal>k__BackingField: 0
-  <WallSlidingTime>k__BackingField: 0
-  <WallSlidingSpeed>k__BackingField: 0
+  <ItemType>k__BackingField: 2
+  <ItemName>k__BackingField: Hp_Pills
+  <ItemID>k__BackingField: 301
+  <ItemRarity>k__BackingField: 0
+  <DropProbability>k__BackingField: 80
+  <ItemIcon>k__BackingField: {fileID: 21300000, guid: dedac241ce0e17d48b2ff161809ab841,
+    type: 3}
+  <ItemInfo>k__BackingField: 
+  <Price>k__BackingField: 0
+  <canBePickupBy>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 128
+  <ItemDatas>k__BackingField: []
