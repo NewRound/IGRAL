@@ -35,7 +35,8 @@ public class UISkillTree : CustomSingleton<UISkillTree>
     [SerializeField] private TextMeshProUGUI _selectedSkillName;
     [SerializeField] private TextMeshProUGUI _selectedSkillDescription;
     [SerializeField] private Button _levelUpButton;
-    
+    [SerializeField] private TextMeshProUGUI _selectedSkillSituation;
+
     private Dictionary<string, int> _learnedSkills = new Dictionary<string, int>();
     private Dictionary<string, int> _baseSkills = new Dictionary<string, int>();
     private SkillInfoSO _selectedSkill;
@@ -69,6 +70,7 @@ public class UISkillTree : CustomSingleton<UISkillTree>
     private void OnSkillCategory(int index)
     {
         _selectedSkillCategoryIndex = index;
+        InitSkillInfo();
         for (int i = 0; i < (int)SkillCategoryType.Max; i++)
         {
             if(index == i)
@@ -86,10 +88,7 @@ public class UISkillTree : CustomSingleton<UISkillTree>
     {
         _skillPointText.text = _skillPoint.ToString();
 
-        _selectedSkillName.text = "";
-        _selectedSkillDescription.text = "";
-        
-        _levelUpButton.gameObject.SetActive(false);
+        InitSkillInfo();
         _skillTree.SetActive(false);
 
         // 테스트 스킬 포인트
@@ -103,7 +102,6 @@ public class UISkillTree : CustomSingleton<UISkillTree>
         SkillManager.Instance.skillPoint = _skillPoint;
         _skillPointText.text = _skillPoint.ToString();
     }
-
 
     public void OpenSkillTree()
     {
@@ -121,6 +119,7 @@ public class UISkillTree : CustomSingleton<UISkillTree>
     public void SelectSkill(SkillInfoSO skillInfoSO)
     {
         _selectedSkill = skillInfoSO;
+        InitSkillInfo();
 
         _selectedSkillName.text = skillInfoSO.skillName;
         _selectedSkillDescription.text = skillInfoSO.skillDescription;
@@ -134,12 +133,34 @@ public class UISkillTree : CustomSingleton<UISkillTree>
             {
                 _levelUpButton.gameObject.SetActive(true);
             }
+            else
+            {
+                _selectedSkillSituation.text = "해당 스킬은 지금 배울 수 없습니다.";
+            }
         }
+        else
+        {
+            _selectedSkillSituation.text = "해당 스킬은 이미 배웠습니다.";
+        }
+    }
+
+    private void InitSkillInfo()
+    {
+        _selectedSkillName.text = "";
+        _selectedSkillDescription.text = "";
+        _selectedSkillSituation.text = "";
+        _levelUpButton.gameObject.SetActive(false);
     }
 
     private void OnLevelUpButton()
     {
-        if(_selectedSkill.skPointUse <= _skillPoint)
+        UIPopup uIPopup = UIManager.Instance.OpenUI<UIPopup>();
+        uIPopup.SetPopup("스킬 레벨업", $"{_selectedSkill.skillName}을 배우시겠습니까?", LevelUp);
+    }
+
+    private void LevelUp()
+    {
+        if (_selectedSkill.skPointUse <= _skillPoint)
         {
             _skillPoint -= _selectedSkill.skPointUse;
             if (!_learnedSkills.ContainsKey(_selectedSkill.skillId))
@@ -152,7 +173,7 @@ public class UISkillTree : CustomSingleton<UISkillTree>
                 _learnedSkills[_selectedSkill.skillId] += 1;
             }
         }
-        if(_baseSkills.ContainsKey(_selectedSkill.skillId))
+        if (_baseSkills.ContainsKey(_selectedSkill.skillId))
         {
             SkillManager.Instance.UpdateLearn();
         }
