@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class PlayerController : CharacterController
+public abstract class PlayerController : EntityController
 {
     [SerializeField] private PlayerSO stat;
 

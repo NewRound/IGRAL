@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public abstract class CharacterController : MonoBehaviour
+public abstract class EntityController : MonoBehaviour
 {
     public Rigidbody Rigidbody { get; private set; }
 

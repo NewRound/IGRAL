@@ -56,10 +56,7 @@ public class EnemyStateMachine : StateMachine
 
     public override void UpdateSpeed()
     {
-        base.UpdateSpeed();
-
-        if (Direction == Vector2.zero)
-            return;
+        Speed = SpeedCalculator.CalculateSpeed(speedMin, speedMax, out speedRatio, Direction == Vector2.zero, CurrentState == PatrolState);
     }
 
     public override void Look()

@@ -12,8 +12,8 @@ public abstract class StateMachine
     [field: Header("Speed")]
     public SpeedCalculator SpeedCalculator { get; protected set; }
     public float Speed { get; protected set; }
-    public float SpeedRatio { get => _speedRatio; protected set => _speedRatio = value; }
-    private float _speedRatio;
+    public float SpeedRatio { get => speedRatio; protected set => speedRatio = value; }
+    protected float speedRatio;
     protected float speedMin;
     protected float speedMax;
 
@@ -52,7 +52,7 @@ public abstract class StateMachine
 
     public virtual void UpdateSpeed()
     {
-        Speed = SpeedCalculator.CalculateSpeed(speedMin, speedMax, out _speedRatio, Direction == Vector2.zero);
+        Speed = SpeedCalculator.CalculateSpeed(speedMin, speedMax, out speedRatio, Direction == Vector2.zero);
     }
 
     public void SetPreDirection(Vector3 direction)
@@ -95,4 +95,11 @@ public abstract class StateMachine
 
     public abstract Quaternion GetRotation();
 
+    public void Knockback(Vector3 forward, float knockbackPower)
+    {
+        if (IsDead)
+            return;
+
+        Rigid.AddForce(forward * knockbackPower, ForceMode.Impulse);
+    }
 }
