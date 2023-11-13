@@ -14,6 +14,13 @@
     {
         base.UpdateState();
         animationController.PlayAnimation(animationsData.SpeedRatioParameterHash, stateMachine.SpeedRatio);
+        if (!stateMachine.GroundDataHandler.IsGrounded)
+            stateMachine.ChangeState(stateMachine.FallState);
+    }
+
+    public override void PhysicsUpdateState()
+    {
+        base.PhysicsUpdateState();
     }
 
     public override void Exit()

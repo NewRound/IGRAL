@@ -3,32 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AttackType
+public enum AnimTag
 {
-    MeleeAttack1 = 1,
-    MeleeAttack2,
-    MeleeAttack3,
-    MeleeAttack4,
+    Attack,
 }
 
 public class PlayerAnimationController : AnimationController
 {
     [field: SerializeField] public PlayeranimationsData AnimationData { get; private set; }
 
-    public bool IsAttackInputted { get; private set; }
-
     public int AttackCombo { get; private set; }
-
-    public AttackType AttackType { get; private set; }
-
-    private int _attackTypeLength;
 
     public override void Init()
     {
         base.Init();
         AnimationData.Init();
-        AttackType = AttackType.MeleeAttack1;
-        _attackTypeLength = Enum.GetValues(typeof(AttackType)).Length;
     }
 
     public void ReStartIfAnimationIsPlaying(int animationParameterHash, int layerIndex = 0)
@@ -51,29 +40,30 @@ public class PlayerAnimationController : AnimationController
         return false;
     }
     
-    public bool CheckCurrentClipEqual(AttackType attackType, int layerIndex = 0)
+    public float GetNormalizeTime(int animationHash, int layerIndex = 0)
     {
-        var clipInfo = animator.GetCurrentAnimatorClipInfo(layerIndex);
+        var stateInfo = animator.GetCurrentAnimatorStateInfo(layerIndex);
+        return stateInfo.normalizedTime;
+    }
 
-        if (clipInfo[0].clip.name.Equals(attackType.ToString()))
-            return true;
+    public float GetNormalizeTime(AnimTag animTag, int layerIndex = 0)
+    {
+        string tag = animTag.ToString();
+        var currentStateInfo = animator.GetCurrentAnimatorStateInfo(layerIndex);
+        var nextStateInfo = animator.GetNextAnimatorStateInfo(layerIndex);
+
+        if (animator.IsInTransition(layerIndex))
+        {
+            if (nextStateInfo.IsTag(tag))
+                return nextStateInfo.normalizedTime;
+        }
         else
-            return false;
-    }
+        {
+            if (currentStateInfo.IsTag(tag))
+                return currentStateInfo.normalizedTime;
+        }
 
-    public void OnAttackInputted()
-    {
-        SetAttackInputted(true);
-    }
-
-    public void SetAttackInputted(bool isInputted)
-    {
-        IsAttackInputted = isInputted;
-    }
-
-    public void IncreaseAttackCombo()
-    {
-        AttackCombo = AttackCombo >= _attackTypeLength ? AttackCombo : ++AttackCombo;
+        return 0;
     }
 
     public void ResetCombo()
@@ -81,16 +71,8 @@ public class PlayerAnimationController : AnimationController
         AttackCombo = 0;
     }
 
-    public void SetNextAttackType()
+    public void IncreaseCombo()
     {
-        AttackType = (AttackType)AttackCombo;
+        AttackCombo++;
     }
-
-
-    public void ReSetAttackType()
-    {
-        AttackType = AttackType.MeleeAttack1;
-    }
-
-   
 }

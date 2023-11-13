@@ -13,7 +13,6 @@ public class EnemyStateMachine : StateMachine
 
     public Transform PlayerTransform { get; private set; }
 
-    public bool IsAttacking { get; private set; }
     public bool IsTracing { get; private set; }
 
     private float _tileXPos;
@@ -132,11 +131,6 @@ public class EnemyStateMachine : StateMachine
 
         bool isAttacking = EnemyController.StatHandler.Data.AttackDistance >= distance;
         SetIsAttacking(isAttacking);
-    }
-
-    public void SetIsAttacking(bool isAttacking)
-    {
-        IsAttacking = isAttacking;
     }
 
     public void Ondead()

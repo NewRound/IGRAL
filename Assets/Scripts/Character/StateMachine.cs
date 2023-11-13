@@ -22,6 +22,7 @@ public abstract class StateMachine
     public Transform ModelTrans { get; protected set; }
 
     public bool IsDead { get; private set; }
+    public bool IsAttacking { get; private set; }
 
     public abstract void Init();
 
@@ -85,6 +86,11 @@ public abstract class StateMachine
     public void SetDead(bool isDead)
     {
         IsDead = isDead;
+    }
+
+    public void SetIsAttacking(bool isAttacking)
+    {
+        IsAttacking = isAttacking;
     }
 
     public abstract Quaternion GetRotation();
