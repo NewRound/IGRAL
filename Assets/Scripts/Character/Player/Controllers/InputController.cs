@@ -90,7 +90,7 @@ public class InputController : PlayerController
 
     public void CallJumpAction()
     {
-        if (StateMachine.RollDataHandler.IsRolling || StateMachine.CurrentState == StateMachine.AttackState)
+        if (StateMachine.RollDataHandler.IsRolling || StateMachine.CurrentState == StateMachine.ComboAttackState)
             return;
 
         StateMachine.ChangeState(StateMachine.JumpState);

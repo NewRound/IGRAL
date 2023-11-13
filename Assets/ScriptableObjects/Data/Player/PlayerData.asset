@@ -26,7 +26,7 @@ MonoBehaviour:
   <CriticalMod>k__BackingField: 0
   <SpeedMin>k__BackingField: 3
   <SpeedMax>k__BackingField: 5
-  <KnockbackPower>k__BackingField: 2
+  <KnockbackPower>k__BackingField: 10
   <IsRanged>k__BackingField: 0
   <JumpingForce>k__BackingField: 5
   <JumpingCountMax>k__BackingField: 2

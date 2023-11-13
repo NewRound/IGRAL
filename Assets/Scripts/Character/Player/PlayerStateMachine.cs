@@ -10,7 +10,7 @@ public class PlayerStateMachine : StateMachine
     public PlayerJumpState JumpState { get; private set; }
     public PlayerFallState FallState { get; private set; }
     public PlayerRollState RollState { get; private set; }
-    public PlayerAttackState AttackState { get; private set; }
+    public PlayerComboAttackState ComboAttackState { get; private set; }
     public PlayerDieState DieState { get; private set; }
 
 
@@ -49,12 +49,13 @@ public class PlayerStateMachine : StateMachine
         speedMax = InputController.StatHandler.Data.SpeedMax;
 
         SetPreDirection(Vector3.right);
+        InputController.AttackAction += OnAttackInput;
 
         MoveState = new PlayerMoveState(this);
         JumpState = new PlayerJumpState(this);
         FallState = new PlayerFallState(this);
         RollState = new PlayerRollState(this);
-        AttackState = new PlayerAttackState(this);
+        ComboAttackState = new PlayerComboAttackState(this);
         DieState = new PlayerDieState(this);
     }
 
@@ -115,15 +116,13 @@ public class PlayerStateMachine : StateMachine
 
     public void OnAttackInput()
     {
-        if (CurrentState != AttackState)
-        {
-            ChangeState(AttackState);
-        }
+        if (CurrentState != ComboAttackState)
+            ChangeState(ComboAttackState);
     }
 
     public override void Move()
     {
-        if (CurrentState == AttackState)
+        if (CurrentState == ComboAttackState)
             return;
 
         base.Move();
@@ -131,6 +130,7 @@ public class PlayerStateMachine : StateMachine
 
     public void Ondead()
     {
+        InputController.AttackAction -= OnAttackInput;
         ChangeState(DieState);
     }
 }

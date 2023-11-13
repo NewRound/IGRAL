@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class EnemyController : CharacterController
+public class EnemyController : EntityController
 {
     [SerializeField] private EnemySO stat;
 
