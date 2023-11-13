@@ -10,21 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f040ec91d9fa2dc4d90eadc7ed8bf761, type: 3}
-  m_Name: WhetStone
+  m_Name: Chest
   m_EditorClassIdentifier: 
   <ItemType>k__BackingField: 1
-  <ItemName>k__BackingField: whetStone
-  <ItemID>k__BackingField: 215
-  <ItemRarity>k__BackingField: 0
-  <DropProbability>k__BackingField: 60
-  <ItemIcon>k__BackingField: {fileID: 21300000, guid: 3e4fcc84a0ac95b429c56452575f6021,
+  <ItemName>k__BackingField: Chest
+  <ItemID>k__BackingField: 218
+  <ItemRarity>k__BackingField: 1
+  <DropProbability>k__BackingField: 30
+  <ItemIcon>k__BackingField: {fileID: 21300000, guid: e767bc37b5b12a84c852f2914f35936e,
     type: 3}
-  <ItemInfo>k__BackingField: "\uC22B\uB3CC, \uACF5\uACA9\uB825\uC744 3% \uC62C\uB824\uC90D\uB2C8\uB2E4."
-  <Price>k__BackingField: 200
+  <ItemInfo>k__BackingField: "\uAC00\uC2B4 \uBCF4\uD638\uB300, \uBC29\uC5B4\uB825\uC744
+    5% \uC62C\uB824\uC90D\uB2C8\uB2E4."
+  <Price>k__BackingField: 500
   <canBePickupBy>k__BackingField:
     serializedVersion: 2
     m_Bits: 128
   <ItemDatas>k__BackingField:
   - statsChangeType: 2
-    statType: 7
-    value: 3
+    statType: 4
+    value: 5
