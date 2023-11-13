@@ -2760,9 +2760,9 @@ MonoBehaviour:
   m_fontSize: 64
   m_fontSizeBase: 64
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 64
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
@@ -3033,7 +3033,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 401a8cbb3d00f334dbb0fb2d91ad2018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _palyerDate: {fileID: 11400000, guid: b0fc20cf64efd4447af12d44a0a90ef4, type: 2}
   _uiInventory: {fileID: 8785053729862439456}
   _close: {fileID: 1315510539458816819}
   _statsContent: {fileID: 4914794317462538675}

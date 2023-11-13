@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3506700100030912907}
   - component: {fileID: 6542899461247430670}
   - component: {fileID: 913548775497931162}
+  - component: {fileID: 6270632487670395695}
   m_Layer: 5
   m_Name: UIPopup
   m_TagString: Untagged
@@ -33,7 +34,7 @@ RectTransform:
   m_Children:
   - {fileID: 4649362839042126960}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -103,6 +104,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6270632487670395695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077732285878800581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f6293d4c64c9d489db6192e6eff984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textTitle: {fileID: 3850764170427484735}
+  _textContent: {fileID: 544314777648078075}
+  _btnClose: {fileID: 1656638651870289271}
+  _btnY: {fileID: 6418660611385166741}
+  _btnN: {fileID: 3581657849816450573}
 --- !u!1 &2936207355737528646
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +270,7 @@ GameObject:
   - component: {fileID: 4794385934381437227}
   - component: {fileID: 6418660611385166741}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BtnY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -510,7 +528,7 @@ GameObject:
   - component: {fileID: 9050006373109708028}
   - component: {fileID: 1656638651870289271}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -912,7 +930,7 @@ GameObject:
   - component: {fileID: 6202873444994137025}
   - component: {fileID: 3581657849816450573}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: BtnN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
