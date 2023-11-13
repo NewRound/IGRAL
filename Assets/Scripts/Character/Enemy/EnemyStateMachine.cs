@@ -13,7 +13,6 @@ public class EnemyStateMachine : StateMachine
 
     public Transform PlayerTransform { get; private set; }
 
-    public bool IsAttacking { get; private set; }
     public bool IsTracing { get; private set; }
 
     private float _tileXPos;
@@ -57,10 +56,7 @@ public class EnemyStateMachine : StateMachine
 
     public override void UpdateSpeed()
     {
-        base.UpdateSpeed();
-
-        if (Direction == Vector2.zero)
-            return;
+        Speed = SpeedCalculator.CalculateSpeed(speedMin, speedMax, out speedRatio, Direction == Vector2.zero, CurrentState == PatrolState);
     }
 
     public override void Look()
@@ -132,11 +128,6 @@ public class EnemyStateMachine : StateMachine
 
         bool isAttacking = EnemyController.StatHandler.Data.AttackDistance >= distance;
         SetIsAttacking(isAttacking);
-    }
-
-    public void SetIsAttacking(bool isAttacking)
-    {
-        IsAttacking = isAttacking;
     }
 
     public void Ondead()

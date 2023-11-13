@@ -50,10 +50,13 @@ public class PlayerWeapon : Weapon
 
         foreach (RaycastHit hit in hits)
         {
-            EnemyStatHandler statHandler = hit.collider.GetComponentInParent<EnemyController>().StatHandler;
+            EnemyController enemyController = hit.collider.GetComponentInParent<EnemyController>();
+            EnemyStatHandler statHandler = enemyController.StatHandler;
 
             targetSO = statHandler.Data;
             damageable = statHandler;
+
+            enemyController.StateMachine.Knockback(_modelTrans.forward, _playerSO.KnockbackPower);
 
             Attack(_playerSO, targetSO, damageable);
         }

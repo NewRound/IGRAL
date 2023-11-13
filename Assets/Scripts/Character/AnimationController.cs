@@ -40,19 +40,4 @@ public abstract class AnimationController : MonoBehaviour
         animator.SetFloat(animationParameterHash, floatValue);
     }
 
-    public bool CheckCurrentClipEnded(AttackType attackType, int layerIndex = 0)
-    {
-        var clipInfo = animator.GetCurrentAnimatorClipInfo(layerIndex);
-        if (clipInfo[0].clip.name.Equals(attackType.ToString()))
-        {
-            var stateInfo = animator.GetCurrentAnimatorStateInfo(layerIndex);
-
-            if (stateInfo.normalizedTime >= animationNormalizeEndedTime)
-                return true;
-        }
-
-        return false;
-    }
-
-    
 }
