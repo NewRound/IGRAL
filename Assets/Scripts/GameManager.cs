@@ -17,8 +17,8 @@ public class GameManager : CustomSingleton<GameManager>
         Time.timeScale = 1f;
 
         Debug.Log(UIManager.Instance);
-        Debug.Log(AudioManager.Instance);
-        Debug.Log(ItemManager.Instance);
+        //Debug.Log(AudioManager.Instance);
+        //Debug.Log(ItemManager.Instance);
 
         //임시 배경음 시작
         Invoke("StartBGM", 1f);
