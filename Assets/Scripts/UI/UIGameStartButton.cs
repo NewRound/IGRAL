@@ -17,6 +17,6 @@ public class UIGameStartButton : MonoBehaviour
 
     private void OnStartButton()
     {
-        LoadSceneManager.Instance.LoadScene("SampleScene");
+        LoadSceneManager.Instance.LoadScene("LobbyScene");
     }
 }

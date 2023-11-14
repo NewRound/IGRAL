@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4741242002548900529}
   - component: {fileID: 8953572980651118138}
   - component: {fileID: 8197829220654912453}
-  - component: {fileID: 4372676331601055230}
+  - component: {fileID: 6259584429020618605}
   m_Layer: 0
   m_Name: Merchant
   m_TagString: Untagged
@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 5668062999981735177}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3816316624627972419
 MonoBehaviour:
@@ -1483,8 +1483,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5409666237402154264}
   m_Mesh: {fileID: 0}
---- !u!64 &4372676331601055230
-MeshCollider:
+--- !u!65 &6259584429020618605
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1498,13 +1498,12 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 3}
+  m_Center: {x: 1.7483158, y: 1.555243, z: -3}
 --- !u!1001 &5672734490327504893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1561,7 +1560,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64475440655322744, guid: f5a0476d9eb4a484a9a808e3730c5889, type: 3}
+    - {fileID: 64771316088623826, guid: f5a0476d9eb4a484a9a808e3730c5889, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
