@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Hp_Pills
   m_EditorClassIdentifier: 
   <ItemType>k__BackingField: 2
-  <ItemName>k__BackingField: Hp_Pills
+  <ItemName>k__BackingField: "\uD68C\uBCF5\uC57D"
   <ItemID>k__BackingField: 301
   <ItemRarity>k__BackingField: 0
   <DropProbability>k__BackingField: 30
   <ItemIcon>k__BackingField: {fileID: 21300000, guid: dedac241ce0e17d48b2ff161809ab841,
     type: 3}
-  <ItemInfo>k__BackingField: 
+  <ItemInfo>k__BackingField: "\uCCB4\uB825\uC744 5% \uD68C\uBCF5\uC2DC\uCF1C\uC90D\uB2C8\uB2E4."
   <Price>k__BackingField: 0
   <canBePickupBy>k__BackingField:
     serializedVersion: 2

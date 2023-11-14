@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Chest
   m_EditorClassIdentifier: 
   <ItemType>k__BackingField: 1
-  <ItemName>k__BackingField: Chest
+  <ItemName>k__BackingField: "\uAC00\uC2B4 \uBCF4\uD638\uB300"
   <ItemID>k__BackingField: 218
   <ItemRarity>k__BackingField: 1
   <DropProbability>k__BackingField: 30
