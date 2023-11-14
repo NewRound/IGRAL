@@ -1,4 +1,3 @@
-using UnityEngine;
 
 public class Hp_Pills : ItemConsumable
 {

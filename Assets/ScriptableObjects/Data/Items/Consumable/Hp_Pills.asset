@@ -16,7 +16,7 @@ MonoBehaviour:
   <ItemName>k__BackingField: Hp_Pills
   <ItemID>k__BackingField: 301
   <ItemRarity>k__BackingField: 0
-  <DropProbability>k__BackingField: 80
+  <DropProbability>k__BackingField: 30
   <ItemIcon>k__BackingField: {fileID: 21300000, guid: dedac241ce0e17d48b2ff161809ab841,
     type: 3}
   <ItemInfo>k__BackingField: 

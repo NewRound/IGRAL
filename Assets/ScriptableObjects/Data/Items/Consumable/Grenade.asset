@@ -16,7 +16,7 @@ MonoBehaviour:
   <ItemName>k__BackingField: Grenade
   <ItemID>k__BackingField: 302
   <ItemRarity>k__BackingField: 1
-  <DropProbability>k__BackingField: 50
+  <DropProbability>k__BackingField: 30
   <ItemIcon>k__BackingField: {fileID: 21300000, guid: 4fdfaca8f3224324da39fef4a095a6ef,
     type: 3}
   <ItemInfo>k__BackingField: 
