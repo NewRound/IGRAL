@@ -13,7 +13,7 @@ public class LoadScene : MonoBehaviour
         nextScene = PlayerPrefs.GetString("Scene");
         if(nextScene == null)
         {
-            SceneManager.LoadScene("IntoScenes");
+            SceneManager.LoadScene("IntroScenes");
         }
         StartCoroutine(LoadScenes());
     }
