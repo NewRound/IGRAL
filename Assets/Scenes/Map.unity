@@ -668,6 +668,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596fe3e0e88e85140906ecc0820acffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PlayerTransform>k__BackingField: {fileID: 1869801238}
+  <PlayerInputController>k__BackingField: {fileID: 1869801242}
+  droneGo: {fileID: 8557774888783762140, guid: 10438cf6aba9e3644b4e295bc3147315, type: 3}
 --- !u!4 &1796737967
 Transform:
   m_ObjectHideFlags: 0
@@ -767,6 +770,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1869801237}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1869801242 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4890461704555741385, guid: b444d85655d9eed4690573a8a1147852,
+    type: 3}
+  m_PrefabInstance: {fileID: 1869801237}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9ce993643829345911fefab9dfe1a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1890110226
 GameObject:
   m_ObjectHideFlags: 0
