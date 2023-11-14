@@ -21,18 +21,12 @@ public class ElevatorObject : MonoBehaviour, IMovingObject
     {
         if (!isMoving)
         {
-            Debug.Log("isMoving = false");
-            Debug.Log($"{transform.position}, {StartPosition}, {Destination.position}");
-            Debug.Log($"{Vector3.Distance(transform.position, Destination.position)}, {Vector3.Distance(transform.position, StartPosition)}");
-
             if (Vector3.Distance(transform.position, Destination.position) < 0.1)
             {
-                Debug.Log("go to StartPosition");
                 StartCoroutine(Move(transform.position, StartPosition));
             }
             else if (Vector3.Distance(transform.position, StartPosition) < 0.1)
             {
-                Debug.Log("go to destination");
                 StartCoroutine(Move(transform.position, Destination.position));
             }
             else
