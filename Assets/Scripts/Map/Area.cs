@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Area : MonoBehaviour
 {
@@ -58,7 +58,7 @@ public class Area : MonoBehaviour
         {
 
             enemys.Add(other.GetComponent<EnemyController>());
-
+            other.GetComponent<EnemyController>().StatHandler.DieAction += UpdateEnemyDied;
             // enemy ==> float, float <발판의 중앙 x 값,  길이의 -1 값.>
             SendAreaInfo(other.gameObject);
 
@@ -100,5 +100,17 @@ public class Area : MonoBehaviour
         EnemyStateMachine enemyStateMachine = enemy.GetComponent<EnemyController>().StateMachine;
         enemyStateMachine.SetAreaData(transform.position.x, size);
         enemyStateMachine.Init();
+    }
+
+    void UpdateEnemyDied()
+    {
+        foreach(EnemyController enemy in enemys)
+        {
+            if (enemy.StateMachine.IsDead)
+            {
+                enemys.Remove(enemy);
+                return;
+            }
+        }
     }
 }
