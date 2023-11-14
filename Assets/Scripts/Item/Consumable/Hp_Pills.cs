@@ -9,7 +9,6 @@ public class Hp_Pills : ItemConsumable
         base.UseConsumable();
 
         _value = GameManager.Instance.StatHandler.Data.MaxHealth * 0.05f;
-        Debug.Log("체력회복량" + _value);
         GameManager.Instance.StatHandler.Recovery(_value);
     }
 }
