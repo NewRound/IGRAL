@@ -26,9 +26,14 @@ public abstract class EntityController : MonoBehaviour
     public virtual void OnDamaged()
     {
         if (_blinkCoroutine == null)
+        {
             _blinkCoroutine = Blink();
+        }
         else
+        {
             StopCoroutine(_blinkCoroutine);
+            myMaterial.color = Color.white;
+        }
 
         StartCoroutine(_blinkCoroutine);
     }
