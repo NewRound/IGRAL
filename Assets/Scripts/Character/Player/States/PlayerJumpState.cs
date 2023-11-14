@@ -35,7 +35,7 @@ public class PlayerJumpState : PlayerAirState
 
     private void Jump()
     {
-        if (stateMachine.JumpCount > 0)
+        if (stateMachine.JumpCountHandler.JumpCount > 0)
         {
             animationController.ReStartIfAnimationIsPlaying(animationsData.JumpParameterHash);
             stateMachine.JumpCountHandler.DecreaseJumpCount();

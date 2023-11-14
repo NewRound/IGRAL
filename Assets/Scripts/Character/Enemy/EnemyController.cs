@@ -30,6 +30,7 @@ public class EnemyController : EntityController
     private void Start()
     {
         StateMachine.Init();
+        StatHandler.DamagedAction += OnDamaged;
         StatHandler.DieAction += StateMachine.Ondead;
     }
 
@@ -43,6 +44,14 @@ public class EnemyController : EntityController
         StateMachine.PhysicsUpdate();
     }
 
+    public override void OnDamaged()
+    {
+        if (StateMachine.IsDead)
+            return;
+        base.OnDamaged();
+    }
+
+
     public void ExcuteCoroutine(IEnumerator enumerator)
     {
         StartCoroutine(enumerator);
@@ -53,20 +62,11 @@ public class EnemyController : EntityController
         StopCoroutine(enumerator);
     }
 
-    public void OnDamaged()
-    {
-        StartCoroutine(Blink());
-    }
-
-    private IEnumerator Blink()
-    {
-
-        myMaterial.DOColor(Color.red, 1f);
-        yield return 1f;
-    }
+    
 
     private void OnDestroy()
     {
         StatHandler.DieAction -= StateMachine.Ondead;
+        StatHandler.DamagedAction -= OnDamaged;
     }
 }
