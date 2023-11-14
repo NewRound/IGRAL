@@ -23,6 +23,8 @@ public class PlayerStateMachine : StateMachine
     [field: Header("Ground")]
     public GroundDataHandler GroundDataHandler { get; private set; }
 
+    public int JumpCount { get; private set; }
+
     [Header("Stat")]
     private PlayerStatHandler _playerStatHandler;
 

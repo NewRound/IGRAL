@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class EnemyController : EntityController
 {
     [SerializeField] private EnemySO stat;
-
+    
     public EnemyStatHandler StatHandler { get; private set; }
 
     public EnemyStateMachine StateMachine {get; private set; }
@@ -50,6 +51,18 @@ public class EnemyController : EntityController
     public void TerminateCoroutine(IEnumerator enumerator)
     {
         StopCoroutine(enumerator);
+    }
+
+    public void OnDamaged()
+    {
+        StartCoroutine(Blink());
+    }
+
+    private IEnumerator Blink()
+    {
+
+        myMaterial.DOColor(Color.red, 1f);
+        yield return 1f;
     }
 
     private void OnDestroy()

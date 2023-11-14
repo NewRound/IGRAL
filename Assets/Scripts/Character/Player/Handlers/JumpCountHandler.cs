@@ -6,7 +6,6 @@
     public JumpCountHandler(int jumpCountMax)
     {
         SetJumpCountMax(jumpCountMax);
-        ResetJumpCount();
     }
 
     public void IncreaseJumpCount()
@@ -27,6 +26,6 @@
     public void SetJumpCountMax(int count)
     {
         _jumpCountMax = count;
+        ResetJumpCount();
     }
-
 }

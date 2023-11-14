@@ -71,6 +71,7 @@ public class PlayerStatHandler : IDamageable, IBurnable
     private Dictionary<StatType, float> _overrideStats;
 
     public event Action DieAction;
+    public event Action DamagedAction;
 
     public PlayerStatHandler(PlayerSO data)
     {
@@ -82,7 +83,9 @@ public class PlayerStatHandler : IDamageable, IBurnable
     {
         float curValue = Mathf.Max(Data.Health - damage, 0.0f);
         Data.Health = curValue;
-        if(curValue == 0.0f)
+        DamagedAction?.Invoke();
+
+        if (curValue == 0.0f)
         {
             DieAction?.Invoke();
         }
