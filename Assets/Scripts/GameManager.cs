@@ -8,6 +8,8 @@ public class GameManager : CustomSingleton<GameManager>
     [field: SerializeField] public InputController PlayerInputController { get; private set; }
     public PlayerStatHandler StatHandler { get; private set; }
 
+    public int currentStage = 0;
+
     // 오브젝트 플링 매니저가 없어서 임시로 드론을 위치시킴
     [SerializeField] private GameObject droneGo;
     public Drone drone { get; private set; }
