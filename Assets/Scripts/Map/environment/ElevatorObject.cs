@@ -30,7 +30,7 @@ public class ElevatorObject : MonoBehaviour, IMovingObject
                 Debug.Log("go to StartPosition");
                 StartCoroutine(Move(transform.position, StartPosition));
             }
-            else if(Vector3.Distance(transform.position, StartPosition) < 0.1)
+            else if (Vector3.Distance(transform.position, StartPosition) < 0.1)
             {
                 Debug.Log("go to destination");
                 StartCoroutine(Move(transform.position, Destination.position));
@@ -66,4 +66,4 @@ public class ElevatorObject : MonoBehaviour, IMovingObject
     {
         return true;
     }
-}zzzzzz
+}
