@@ -42,8 +42,6 @@ public class UIController : CustomSingleton<UIController>
 
     private void Awake()
     {
-        _inputController = GameManager.Instance.PlayerInputController;
-
         _healing.onClick.AddListener(OnHealingButton);
         _jump.onClick.AddListener(OnJumpButton);
         _slide.onClick.AddListener(OnSlideButton);
@@ -57,6 +55,8 @@ public class UIController : CustomSingleton<UIController>
 
     private void Start()
     {
+        _inputController = GameManager.Instance.PlayerInputController;
+
         SwitchingAttack();
         SkillManager.Instance.SetSkillUes(_skillUse);
     }
