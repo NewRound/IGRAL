@@ -60,6 +60,15 @@ public class StatChange
     public StatsChangeType statsChangeType;
     public StatType statType;
     public float value;
+
+    public StatChange(StatsChangeType _changeType, StatType _statType, float _value)
+    {
+        statsChangeType = _changeType;
+        statType = _statType;
+        value = _value;        
+    }
+
+    
 }
 
 public class PlayerStatHandler : IDamageable, IBurnable
