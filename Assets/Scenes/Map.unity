@@ -222,7 +222,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stage1_mapBlocks:
   - {fileID: 4824331087629307386, guid: 6aa78e00e2a94f946b563b6310fd3158, type: 3}
+  - {fileID: 956369038203279772, guid: 8bd4e3368014c904daff82ee7f5cf833, type: 3}
   - {fileID: 2518162360672717026, guid: 35e3e5a605d235c4882b2aa034f3eb59, type: 3}
+  - {fileID: 2432211495697727503, guid: bb88c791a356e7c4bb741ebc101ff07c, type: 3}
   - {fileID: 2629458215611954142, guid: 6ec2126d7349b2b448315cdeb744e981, type: 3}
   Stage2_mapBlocks:
   - {fileID: 266464823987583687, guid: f7601eabb86f7284794049e42801acf1, type: 3}
@@ -544,6 +546,12 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!4 &1312073719 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1348491182525177873, guid: b444d85655d9eed4690573a8a1147852,
+    type: 3}
+  m_PrefabInstance: {fileID: 1869801237}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1352038930
 GameObject:
   m_ObjectHideFlags: 3
@@ -670,6 +678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PlayerTransform>k__BackingField: {fileID: 1869801238}
   <PlayerInputController>k__BackingField: {fileID: 1869801242}
+  currentStage: 0
   droneGo: {fileID: 8557774888783762140, guid: 10438cf6aba9e3644b4e295bc3147315, type: 3}
 --- !u!4 &1796737967
 Transform:
@@ -754,6 +763,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4890461704555741385, guid: b444d85655d9eed4690573a8a1147852,
+        type: 3}
+      propertyPath: DronePos
+      value: 
+      objectReference: {fileID: 1312073719}
     - target: {fileID: 6575580719262856232, guid: b444d85655d9eed4690573a8a1147852,
         type: 3}
       propertyPath: _followTarget

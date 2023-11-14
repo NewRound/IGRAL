@@ -17,7 +17,7 @@ public class MapGenerator : MonoBehaviour
 
     private List<int> RandommapBlockIndex = new List<int>();
 
-    private int currentStage = 0;
+    private int currentStage;
 
     private void Awake()
     {
@@ -25,6 +25,8 @@ public class MapGenerator : MonoBehaviour
         {
             Instance = this;
         }
+
+        currentStage = GameManager.Instance.currentStage;
     }
 
     private void Start()
@@ -61,13 +63,10 @@ public class MapGenerator : MonoBehaviour
         if(createStage == null || createStage.Count == 0)
             return;
 
-        Debug.Log($"{numberOfmapBlock}, {createStage.Count - 2} ");
-
         // ·£´ý »ý¼º TODO
         if (createStage.Count - 2 < numberOfmapBlock)
         {
             int randomValue;
-            Debug.Log($"{RandommapBlockIndex.Count}, {createStage.Count - 2} ");
 
             while (RandommapBlockIndex.Count != createStage.Count - 2)
             {
@@ -76,14 +75,12 @@ public class MapGenerator : MonoBehaviour
                 if (!RandommapBlockIndex.Contains(randomValue))
                 {
                     RandommapBlockIndex.Add(randomValue);
-                    Debug.Log(randomValue);
                 }
             }
         }
         else
         {
             int randomValue;
-            
 
             while (RandommapBlockIndex.Count != numberOfmapBlock)
             {

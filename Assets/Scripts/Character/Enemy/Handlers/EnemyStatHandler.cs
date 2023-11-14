@@ -5,6 +5,7 @@ public class EnemyStatHandler : IDamageable
 {
     public EnemySO Data { get; private set; }
 
+    public event Action DamagedAction;
     public event Action DieAction;
 
     public EnemyStatHandler(EnemySO data)
@@ -12,10 +13,11 @@ public class EnemyStatHandler : IDamageable
         Data = data;
     }
 
-
     public void Damaged(float damage)
     {
         Data.Health -= damage;
+
+        DamagedAction?.Invoke();
 
         if (Data.Health <= 0)
         {

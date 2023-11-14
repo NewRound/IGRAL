@@ -23,6 +23,7 @@ public abstract class PlayerController : EntityController
     protected void Start()
     {
         StateMachine.Init();
+        StatHandler.DamagedAction += OnDamaged;
         StatHandler.DieAction += StateMachine.Ondead;
     }
 
@@ -39,7 +40,15 @@ public abstract class PlayerController : EntityController
 
     protected void OnDestroy()
     {
+        StatHandler.DamagedAction -= OnDamaged;
         StatHandler.DieAction -= StateMachine.Ondead;
+    }
+
+    public override void OnDamaged()
+    {
+        if (StateMachine.IsDead)
+            return;
+        base.OnDamaged();
     }
 
 #if UNITY_EDITOR
