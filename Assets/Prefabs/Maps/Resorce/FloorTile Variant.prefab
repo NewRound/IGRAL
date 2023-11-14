@@ -115,6 +115,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5535471235294432816, guid: 34bd3bd594616834d941b634c8347a17,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5535471235294432816, guid: 34bd3bd594616834d941b634c8347a17,
+        type: 3}
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
