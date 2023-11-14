@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shield
   m_EditorClassIdentifier: 
   <ItemType>k__BackingField: 1
-  <ItemName>k__BackingField: Shield
+  <ItemName>k__BackingField: "\uACBD\uCC30 \uBC29\uD328"
   <ItemID>k__BackingField: 201
   <ItemRarity>k__BackingField: 2
   <DropProbability>k__BackingField: 15

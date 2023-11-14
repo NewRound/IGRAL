@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &318946014987433072
+--- !u!1 &4796633775959417004
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7451950237583907005}
-  - component: {fileID: 3537300938652765695}
+  - component: {fileID: 6973673584699451408}
+  - component: {fileID: 3937666986044914369}
   m_Layer: 0
-  m_Name: Hp_Pills
+  m_Name: Adrenaline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7451950237583907005
+--- !u!4 &6973673584699451408
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318946014987433072}
+  m_GameObject: {fileID: 4796633775959417004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3537300938652765695
+--- !u!114 &3937666986044914369
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318946014987433072}
+  m_GameObject: {fileID: 4796633775959417004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a20dbb68b42f21f49be19e694f5340f9, type: 3}
+  m_Script: {fileID: 11500000, guid: f15ea1007028d9947a03d88b8d3d3e1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <item>k__BackingField: {fileID: 11400000, guid: 6b5edc5c4fe26d64ea9f86fb33c7b5de,
+  <item>k__BackingField: {fileID: 11400000, guid: 9e514954ae7d40d41b33648bce4394e5,
     type: 2}

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Grenade
   m_EditorClassIdentifier: 
   <ItemType>k__BackingField: 2
-  <ItemName>k__BackingField: Grenade
+  <ItemName>k__BackingField: "\uC288\uB958\uD0C4"
   <ItemID>k__BackingField: 302
   <ItemRarity>k__BackingField: 1
-  <DropProbability>k__BackingField: 50
+  <DropProbability>k__BackingField: 80
   <ItemIcon>k__BackingField: {fileID: 21300000, guid: 4fdfaca8f3224324da39fef4a095a6ef,
     type: 3}
-  <ItemInfo>k__BackingField: 
+  <ItemInfo>k__BackingField: "\uC804\uBC29\uC5D0 \uC288\uB958\uD0C4\uC744 \uD22C\uCC99\uD569\uB2C8\uB2E4."
   <Price>k__BackingField: 0
   <canBePickupBy>k__BackingField:
     serializedVersion: 2
