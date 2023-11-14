@@ -57,12 +57,14 @@ public class AudioManager : CustomSingleton<AudioManager>
 
         }
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        _bgmAudio = gameObject.GetComponentInChildren<BGMAudio>();
+        _sfxAudio = gameObject.GetComponentInChildren<SFXAudio>();
     }
 
     private void Start()
     {
-        _bgmAudio = gameObject.GetComponentInChildren<BGMAudio>();
-        _sfxAudio = gameObject.GetComponentInChildren<SFXAudio>();
+        
 
         _sfx = _sfxAudio.GetSFX();
         for (int i = 0; i < (int)SFXType.Max; i++)

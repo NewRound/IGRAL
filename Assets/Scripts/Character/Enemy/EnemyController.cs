@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class EnemyController : EntityController
 {
     [SerializeField] private EnemySO stat;
-
+    
     public EnemyStatHandler StatHandler { get; private set; }
 
     public EnemyStateMachine StateMachine {get; private set; }
@@ -29,6 +30,7 @@ public class EnemyController : EntityController
     private void Start()
     {
         StateMachine.Init();
+        StatHandler.DamagedAction += OnDamaged;
         StatHandler.DieAction += StateMachine.Ondead;
     }
 
@@ -42,6 +44,14 @@ public class EnemyController : EntityController
         StateMachine.PhysicsUpdate();
     }
 
+    public override void OnDamaged()
+    {
+        if (StateMachine.IsDead)
+            return;
+        base.OnDamaged();
+    }
+
+
     public void ExcuteCoroutine(IEnumerator enumerator)
     {
         StartCoroutine(enumerator);
@@ -52,8 +62,11 @@ public class EnemyController : EntityController
         StopCoroutine(enumerator);
     }
 
+    
+
     private void OnDestroy()
     {
         StatHandler.DieAction -= StateMachine.Ondead;
+        StatHandler.DamagedAction -= OnDamaged;
     }
 }

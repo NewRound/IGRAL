@@ -252,6 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9ce993643829345911fefab9dfe1a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 5298042452414414939}
   <GroundData>k__BackingField:
     <GroundLayer>k__BackingField:
       serializedVersion: 2
@@ -264,6 +265,7 @@ MonoBehaviour:
     <AcceleratingTime>k__BackingField: 1
     <RotationSpeed>k__BackingField: 10
   <IsDebug>k__BackingField: 1
+  DronePos: {fileID: 0}
 --- !u!54 &6915422241685555383
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7852,6 +7854,7 @@ MonoBehaviour:
     moveParameter: '@Move'
     attackParameter: '@Attack'
     speedRatioParameter: SpeedRatio
+    dieParameter: Die
     airParameter: '@Air'
     jumpParameter: Jump
     fallParameter: Fall

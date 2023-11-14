@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae443cd5b8b34b48ab25699adf1b799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 1364651820711602488}
   <GroundData>k__BackingField:
     <GroundLayer>k__BackingField:
       serializedVersion: 2
@@ -762,6 +763,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7081425277022746894}
   m_SourcePrefab: {fileID: 100100000, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+--- !u!137 &1364651820711602488 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 137411157249760834, guid: 7126961e40fcaf34297e9547d17c2f70,
+    type: 3}
+  m_PrefabInstance: {fileID: 1375877319840167802}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1371392166677880880 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4557240161818442, guid: 7126961e40fcaf34297e9547d17c2f70,
@@ -797,6 +804,7 @@ MonoBehaviour:
     moveParameter: '@Move'
     attackParameter: '@Attack'
     speedRatioParameter: SpeedRatio
+    dieParameter: Die
 --- !u!1001 &1895070799657223616
 PrefabInstance:
   m_ObjectHideFlags: 0
