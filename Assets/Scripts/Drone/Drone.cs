@@ -105,9 +105,9 @@ public class Drone : MonoBehaviour
     // 총알을 발사하는 메서드
     private void OnFire(RaycastHit hitInfo)
     {
-        DroneBullet projectile = ProjectilePool.Instance.GetProjectile();
-        // hitInfo.collider.bounds.center
-        projectile.SetTarget(hitInfo.transform);
-        projectile.transform.position = transform.position;        
+        GameObject projectile = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.DroneBullet);
+        DroneBullet droneBullet = projectile.GetComponent<DroneBullet>();
+        droneBullet.SetTarget(hitInfo.transform);
+        droneBullet.transform.position = transform.position;        
     }    
 }

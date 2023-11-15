@@ -7,7 +7,7 @@ public class NormalDrone : ItemConsumable
     {
         base.UseConsumable();
 
-        GameObject go = ObjectPoolingManager.Instance.GetGameObject((int)ObjectPoolType.Drone);
+        GameObject go = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.Drone);
         Drone drone = go.GetComponent<Drone>();
         drone.ActiveDrone(30f);
 

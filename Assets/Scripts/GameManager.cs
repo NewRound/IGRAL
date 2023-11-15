@@ -7,7 +7,7 @@ public class GameManager : CustomSingleton<GameManager>
     [field: SerializeField] public InputController PlayerInputController { get; private set; }
     public PlayerStatHandler StatHandler { get; private set; }
 
-    public int currentStage = 0;
+    public int currentStage = 1;
 
     private void Start()
     {
@@ -21,8 +21,6 @@ public class GameManager : CustomSingleton<GameManager>
 
         //임시 배경음 시작
         Invoke("StartBGM", 1f);
-
-        // 씬 매니저의 sceneLoaded에 체인을 건다.
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         DontDestroyOnLoad(gameObject);
