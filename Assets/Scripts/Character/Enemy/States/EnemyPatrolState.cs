@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class EnemyPatrolState : EnemyMoveState
 {
     public EnemyPatrolState(EnemyStateMachine stateMachine) : base(stateMachine)

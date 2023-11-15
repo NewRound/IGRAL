@@ -25,6 +25,7 @@ public class Drone : MonoBehaviour
 
     public void ActiveDrone(float durationTime)
     {
+        _followTarget = _player.DronePos;
         // 활성화
         gameObject.SetActive(true);
         _durationTime = durationTime;
@@ -47,7 +48,6 @@ public class Drone : MonoBehaviour
         _rigid = GetComponent<Rigidbody>();
         _player = GameManager.Instance.PlayerInputController;
 
-        _followTarget = _player.DronePos;           
     }
 
     private void FixedUpdate()
@@ -105,7 +105,7 @@ public class Drone : MonoBehaviour
     // 총알을 발사하는 메서드
     private void OnFire(RaycastHit hitInfo)
     {
-        DroneProjectile projectile = ProjectilePool.Instance.GetProjectile();
+        DroneBullet projectile = ProjectilePool.Instance.GetProjectile();
         // hitInfo.collider.bounds.center
         projectile.SetTarget(hitInfo.transform);
         projectile.transform.position = transform.position;        
