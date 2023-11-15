@@ -355,6 +355,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1505051824214600944}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5053410637254180756 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5963424083120640868, guid: 7b3eca323f5e8724b914e3a6c5a39f84,
+    type: 3}
+  m_PrefabInstance: {fileID: 1505051824214600944}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e787de1272c2745b99198912aa3a6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1695248446458983773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1162,6 +1174,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5963424083120640868, guid: e269e5a127f7c1c479b349f2f3fdf6ef,
+        type: 3}
+      propertyPath: enemyCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6872955569916084899, guid: e269e5a127f7c1c479b349f2f3fdf6ef,
         type: 3}
       propertyPath: m_Name
@@ -1483,6 +1500,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5963424083120640868, guid: 8247e6fe26438b741844119069ca7794,
+        type: 3}
+      propertyPath: enemyCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6872955569916084899, guid: 8247e6fe26438b741844119069ca7794,
         type: 3}
       propertyPath: m_Name
@@ -1667,6 +1689,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 212003164239025690, guid: 6c2a40834f611b54f8fb21fb258eb0c5,
         type: 3}
+      propertyPath: targetArea
+      value: 
+      objectReference: {fileID: 5053410637254180756}
+    - target: {fileID: 212003164239025690, guid: 6c2a40834f611b54f8fb21fb258eb0c5,
+        type: 3}
       propertyPath: ConnectedObject.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1808,6 +1835,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963424083120640868, guid: 7b3eca323f5e8724b914e3a6c5a39f84,
+        type: 3}
+      propertyPath: enemyCount
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6872955569916084899, guid: 7b3eca323f5e8724b914e3a6c5a39f84,
         type: 3}

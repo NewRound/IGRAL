@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WhetStone
   m_EditorClassIdentifier: 
   <ItemType>k__BackingField: 1
-  <ItemName>k__BackingField: whetStone
+  <ItemName>k__BackingField: "\uC22B\uB3CC"
   <ItemID>k__BackingField: 215
   <ItemRarity>k__BackingField: 0
   <DropProbability>k__BackingField: 60

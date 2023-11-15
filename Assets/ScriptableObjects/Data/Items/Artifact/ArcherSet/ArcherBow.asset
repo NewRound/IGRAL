@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ArcherBow
   m_EditorClassIdentifier: 
   <ItemType>k__BackingField: 1
-  <ItemName>k__BackingField: ArcherBow
+  <ItemName>k__BackingField: "\uD654\uC0B4"
   <ItemID>k__BackingField: 213
   <ItemRarity>k__BackingField: 1
   <DropProbability>k__BackingField: 30

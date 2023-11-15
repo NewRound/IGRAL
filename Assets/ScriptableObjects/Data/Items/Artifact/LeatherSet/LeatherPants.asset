@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LeatherPants
   m_EditorClassIdentifier: 
   <ItemType>k__BackingField: 1
-  <ItemName>k__BackingField: LeatherPants
+  <ItemName>k__BackingField: "\uAC00\uC8FD \uBC14\uC9C0"
   <ItemID>k__BackingField: 211
   <ItemRarity>k__BackingField: 0
   <DropProbability>k__BackingField: 60
