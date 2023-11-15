@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 public class EnemyStatHandler : IDamageable
 {
@@ -28,6 +27,5 @@ public class EnemyStatHandler : IDamageable
     public void Recovery(float damage)
     {
         Data.Health += damage;
-        Debug.Log(damage);
     }
 }

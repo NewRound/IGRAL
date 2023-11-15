@@ -1,7 +1,6 @@
-using DG.Tweening;
-using System;
 using System.Collections;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class EnemyController : EntityController
 {
@@ -14,6 +13,8 @@ public class EnemyController : EntityController
     [field: SerializeField] public EnemyMovementData MovementData { get; private set; }
 
     public EnemyAnimationController AnimationController { get; private set; }
+
+    private float time; 
 
     protected override void Awake()
     {
@@ -34,8 +35,22 @@ public class EnemyController : EntityController
         StatHandler.DieAction += StateMachine.Ondead;
     }
 
+    private void OnEnable()
+    {
+        time = 0.0f;
+    }
+
     private void Update()
     {
+        if (StateMachine.IsDead)
+        {
+            time += Time.deltaTime;
+            if(time > 5f)
+            {
+                gameObject.SetActive(false);
+            }
+
+        }
         StateMachine.Update();
     }
 

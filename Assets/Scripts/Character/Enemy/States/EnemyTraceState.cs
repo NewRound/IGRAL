@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
-
 public class EnemyTraceState : EnemyMoveState
 {
     public EnemyTraceState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)

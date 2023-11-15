@@ -1,6 +1,3 @@
-using System.Collections;
-using UnityEngine;
-
 public class EnemyAttackState : EnemyStateBase
 {
     public EnemyAttackState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
