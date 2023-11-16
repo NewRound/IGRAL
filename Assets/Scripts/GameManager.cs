@@ -7,6 +7,8 @@ public class GameManager : CustomSingleton<GameManager>
     [field: SerializeField] public Camera Camera { get; private set; }
     [field: SerializeField] public Transform PlayerTransform { get; private set; }
     [field: SerializeField] public InputController PlayerInputController { get; private set; }
+    [field: SerializeField] public PlayerAppearanceController PlayerAppearanceController { get; private set; }
+
     public PlayerStatHandler StatHandler { get; private set; }
 
     public int currentStage = 1;

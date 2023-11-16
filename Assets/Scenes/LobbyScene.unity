@@ -435,7 +435,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh71212
+  m_Name: pb_Mesh43796
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -1680,7 +1680,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-474038
+  m_Name: pb_Mesh-301056
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -1851,7 +1851,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh71158
+  m_Name: pb_Mesh43742
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -5487,6 +5487,7 @@ MonoBehaviour:
   <Camera>k__BackingField: {fileID: 2115556912}
   <PlayerTransform>k__BackingField: {fileID: 1421064223}
   <PlayerInputController>k__BackingField: {fileID: 1421064224}
+  <PlayerAppearanceController>k__BackingField: {fileID: 1421064225}
   currentStage: 0
 --- !u!1001 &1421064222
 PrefabInstance:
@@ -5577,6 +5578,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9ce993643829345911fefab9dfe1a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1421064225 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7225548810922626653, guid: b444d85655d9eed4690573a8a1147852,
+    type: 3}
+  m_PrefabInstance: {fileID: 1421064222}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88fbc6a2cafe574ca890221fd115627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1606772846
@@ -6888,6 +6901,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObjectPoolingManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6972390640826292499, guid: 2173bdac8f9eefa46b8083dfd9980e87,
+        type: 3}
+      propertyPath: <stage01>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 3395318498827927278, guid: eab15e65cee65e24c9dc77ea145223ba,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
