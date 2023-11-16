@@ -37,6 +37,7 @@ public class EnemyController : EntityController
     private void OnEnable()
     {
         time = 0.0f;
+        StatHandler = new EnemyStatHandler(Instantiate(stat));
     }
 
     private void Update()
