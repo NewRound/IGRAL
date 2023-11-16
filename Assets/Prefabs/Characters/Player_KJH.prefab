@@ -292,7 +292,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!136 &7473969627206679985
 CapsuleCollider:
@@ -329,6 +329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88fbc6a2cafe574ca890221fd115627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Mutant_None:
+  - {fileID: 7103124675430555320}
   Mutant_Stone:
   - {fileID: 2914068683234625984}
   - {fileID: 3005243873249840336}
@@ -9914,6 +9916,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 64118701099562318, guid: 1e3861f9ad1beae4eadd9ad081712f57,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10238,6 +10245,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 64118701099562318, guid: 1e3861f9ad1beae4eadd9ad081712f57,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10321,6 +10333,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 64230521630829010, guid: b3cdda3cca11aab4b831821407447d27,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10403,6 +10420,11 @@ PrefabInstance:
     - target: {fileID: 4854328431926918, guid: b3cdda3cca11aab4b831821407447d27, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64230521630829010, guid: b3cdda3cca11aab4b831821407447d27,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

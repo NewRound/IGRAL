@@ -15,6 +15,8 @@ public class PlayerAppearanceController : MonoBehaviour
 {
     public MutantType mutantType { get; private set; }
 
+    [SerializeField] public List<GameObject> Mutant_None;
+
     [SerializeField] public List<GameObject> Mutant_Stone;
     [SerializeField] public List<GameObject> Mutant_Blade;
     [SerializeField] public List<GameObject> Mutant_Sheld;
@@ -23,6 +25,7 @@ public class PlayerAppearanceController : MonoBehaviour
     private void Awake()
     {
         mutantType = MutantType.None;
+        OnOffMutant(MutantType.None, true);
         OnOffMutant(MutantType.Stone, false);
         OnOffMutant(MutantType.Blade, false);
         OnOffMutant(MutantType.Sheld, false);
@@ -31,37 +34,21 @@ public class PlayerAppearanceController : MonoBehaviour
 
     public void ChangeMutant(MutantType type)
     {
-        if(type == MutantType.None)
+        if(type == MutantType.Skin || mutantType == MutantType.Sheld)
         {
-            OnOffMutant(mutantType, false);
-            mutantType = MutantType.None;
-            return;
+            if(mutantType != MutantType.None)
+            {
+                OnOffMutant(mutantType, false);
+            }
         }
-
-        if(mutantType != MutantType.None)
+        else
         {
             OnOffMutant(mutantType, false);
         }
 
         mutantType = type;
 
-        switch (type)
-        {
-            case MutantType.Stone:
-                OnOffMutant(mutantType, true);
-                break;
-            case MutantType.Blade:
-                OnOffMutant(mutantType, true);
-                break;
-            case MutantType.Sheld:
-                OnOffMutant(mutantType, true);
-                break;
-            case MutantType.Skin:
-                OnOffMutant(mutantType, true);
-                break;
-            default:
-                return;
-        }
+        OnOffMutant(mutantType, true);
     }
 
     private void OnOffMutant(MutantType type, bool OnOff)
@@ -69,6 +56,10 @@ public class PlayerAppearanceController : MonoBehaviour
         List<GameObject> Mutant;
         switch (type)
         {
+            case MutantType.None:
+                Mutant = Mutant_None;
+
+                break;
             case MutantType.Stone:
                 Mutant = Mutant_Stone;
 
