@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class EnemyController : EntityController
 {
@@ -23,7 +22,7 @@ public class EnemyController : EntityController
         AnimationController = GetComponentInChildren<EnemyAnimationController>();
         AnimationController.Init();
 
-        StatHandler = new EnemyStatHandler(stat);
+        StatHandler = new EnemyStatHandler(Instantiate(stat));
         StateMachine = new EnemyStateMachine(this);
 
     }
@@ -38,6 +37,7 @@ public class EnemyController : EntityController
     private void OnEnable()
     {
         time = 0.0f;
+        StatHandler = new EnemyStatHandler(Instantiate(stat));
     }
 
     private void Update()

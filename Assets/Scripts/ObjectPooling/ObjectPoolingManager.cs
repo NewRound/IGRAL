@@ -91,7 +91,6 @@ public class ObjectPoolingManager : CustomSingleton<ObjectPoolingManager>
     public GameObject GetEnemy(int index)
     {
         GameObject select = null;
-        Debug.Log(enemyPools);
         if (index > enemyPools.Length)
             index = 0;
 
