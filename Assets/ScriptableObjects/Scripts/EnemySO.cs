@@ -4,7 +4,12 @@ using UnityEngine;
 public class EnemySO : EntitySO
 {
     [field: Header("Enemy")]
+    [field: SerializeField] public int EnemyID { get; set; }
     [field: SerializeField] public float PreAttackDelay { get; set; }
     [field: SerializeField] public bool IsFlying { get; set; }
     [field: SerializeField] public float AttackDistance { get; set; }
+
+    [field: SerializeField] public float Armor { get; set; }
+    [field: SerializeField] public float MaxArmor { get; set; }
+
 }
