@@ -20,21 +20,18 @@ public abstract class EntityController : MonoBehaviour
     protected virtual void Awake()
     {
         Rigidbody = GetComponent<Rigidbody>();
-        myMaterial = meshRenderer.material;
+        myMaterial = meshRenderer.materials[0];
     }
 
     public virtual void OnDamaged()
     {
-        if (_blinkCoroutine == null)
-        {
-            _blinkCoroutine = Blink();
-        }
-        else
+        if (_blinkCoroutine != null)
         {
             StopCoroutine(_blinkCoroutine);
             myMaterial.color = Color.white;
         }
 
+        _blinkCoroutine = Blink();
         StartCoroutine(_blinkCoroutine);
     }
 

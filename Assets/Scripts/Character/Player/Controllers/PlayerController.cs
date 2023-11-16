@@ -12,6 +12,8 @@ public abstract class PlayerController : EntityController
 
     public PlayerAnimationController AnimationController { get; private set; }
 
+    private Material _auraMaterial;
+
     protected override void Awake()
     {
         base.Awake();
@@ -22,6 +24,8 @@ public abstract class PlayerController : EntityController
 
     protected void Start()
     {
+        _auraMaterial = meshRenderer.sharedMaterials[1];
+        meshRenderer.sharedMaterials[1] = null;
         StateMachine.Init();
         StatHandler.DamagedAction += OnDamaged;
         StatHandler.DieAction += StateMachine.Ondead;
