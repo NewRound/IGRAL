@@ -1,5 +1,3 @@
-using DG.Tweening;
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -15,6 +13,8 @@ public class EnemyController : EntityController
 
     public EnemyAnimationController AnimationController { get; private set; }
 
+    private float time; 
+
     protected override void Awake()
     {
         base.Awake();
@@ -22,7 +22,7 @@ public class EnemyController : EntityController
         AnimationController = GetComponentInChildren<EnemyAnimationController>();
         AnimationController.Init();
 
-        StatHandler = new EnemyStatHandler(stat);
+        StatHandler = new EnemyStatHandler(Instantiate(stat));
         StateMachine = new EnemyStateMachine(this);
 
     }
@@ -34,8 +34,23 @@ public class EnemyController : EntityController
         StatHandler.DieAction += StateMachine.Ondead;
     }
 
+    private void OnEnable()
+    {
+        time = 0.0f;
+        StatHandler = new EnemyStatHandler(Instantiate(stat));
+    }
+
     private void Update()
     {
+        if (StateMachine.IsDead)
+        {
+            time += Time.deltaTime;
+            if(time > 5f)
+            {
+                gameObject.SetActive(false);
+            }
+
+        }
         StateMachine.Update();
     }
 

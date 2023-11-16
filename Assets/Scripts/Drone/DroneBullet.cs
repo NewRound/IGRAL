@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DroneProjectile : MonoBehaviour
+public class DroneBullet : MonoBehaviour
 {
     [SerializeField] private float _attackDamage;
     [SerializeField] private float _movementSpeed;

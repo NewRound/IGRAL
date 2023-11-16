@@ -1,10 +1,15 @@
+using UnityEngine;
+
 public class EpicDrone : ItemConsumable
 {
 
     public override void UseConsumable()
     {
         base.UseConsumable();
-        GameManager.Instance.drone.ActiveDrone(200f);
+
+        GameObject go = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.Drone);
+        Drone drone = go.GetComponent<Drone>();
+        drone.ActiveDrone(200f);
     }
 
 }
