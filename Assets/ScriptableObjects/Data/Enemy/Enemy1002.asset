@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96f489ea0b238e740a7f1f0abc1fabe1, type: 3}
-  m_Name: EnemyData
+  m_Name: Enemy1002
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: -725
-  <MaxHealth>k__BackingField: 0
+  <Health>k__BackingField: 20
+  <MaxHealth>k__BackingField: 20
   <HealthRegen>k__BackingField: 0.1
   <Defense>k__BackingField: 0
   <EvasionProbability>k__BackingField: 0
@@ -24,10 +24,13 @@ MonoBehaviour:
   <AttackRange>k__BackingField: 1
   <CriticalProbability>k__BackingField: 0
   <CriticalMod>k__BackingField: 0
-  <SpeedMin>k__BackingField: 0.5
-  <SpeedMax>k__BackingField: 2
+  <SpeedMin>k__BackingField: 4
+  <SpeedMax>k__BackingField: 6
   <KnockbackPower>k__BackingField: 1
   <IsRanged>k__BackingField: 0
+  <EnemyID>k__BackingField: 1002
   <PreAttackDelay>k__BackingField: 0
   <IsFlying>k__BackingField: 0
   <AttackDistance>k__BackingField: 1
+  <Armor>k__BackingField: 12
+  <MaxArmor>k__BackingField: 12

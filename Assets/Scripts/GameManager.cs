@@ -1,16 +1,17 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Cinemachine;
 
 public class GameManager : CustomSingleton<GameManager>
 {
+
+    [field: SerializeField] public Camera Camera { get; private set; }
     [field: SerializeField] public Transform PlayerTransform { get; private set; }
     [field: SerializeField] public InputController PlayerInputController { get; private set; }
+    [field: SerializeField] public PlayerAppearanceController PlayerAppearanceController { get; private set; }
+
     public PlayerStatHandler StatHandler { get; private set; }
 
-    // 오브젝트 플링 매니저가 없어서 임시로 드론을 위치시킴
-    [SerializeField] private GameObject droneGo;
-    public Drone drone { get; private set; }
+    public int currentStage = 1;
 
     private void Start()
     {
@@ -24,16 +25,9 @@ public class GameManager : CustomSingleton<GameManager>
 
         //임시 배경음 시작
         Invoke("StartBGM", 1f);
-
-
-        //드론 임시 세팅
-        drone = Instantiate(droneGo.GetComponent<Drone>());
-        drone.gameObject.transform.parent = transform;
-        drone.InActiveDrone();
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
         DontDestroyOnLoad(gameObject);
-        // 씬 매니저의 sceneLoaded에 체인을 건다.
-        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

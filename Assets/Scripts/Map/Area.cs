@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Area : MonoBehaviour
@@ -12,13 +11,7 @@ public class Area : MonoBehaviour
     [SerializeField] public Vector3 position;
 
     [SerializeField] public List<EnemyController> enemys = new List<EnemyController>();
-    private EnemyGenerator enemyGenerator;
     private bool PlayerInArea = false;
-
-    private void Awake()
-    {
-        enemyGenerator = this.GetComponentInParent<EnemyGenerator>();
-    }
 
     private void Start()
     {
@@ -29,7 +22,7 @@ public class Area : MonoBehaviour
         {
             if (enemyCount == 1)
             {
-                GameObject enemy = enemyGenerator.InstantiateEnemy();
+                GameObject enemy = ObjectPoolingManager.Instance.GetEnemy(0);
                 enemy.transform.position = position;
             }
             else
@@ -39,7 +32,7 @@ public class Area : MonoBehaviour
                 float xPos;
                 for(int i = 1; i <= enemyCount; i++)
                 {
-                    GameObject enemy = enemyGenerator.InstantiateEnemy();
+                    GameObject enemy = ObjectPoolingManager.Instance.GetEnemy(0);
                     SendAreaInfo(enemy);
 
                     Vector3 pos = position;
@@ -58,7 +51,7 @@ public class Area : MonoBehaviour
         {
 
             enemys.Add(other.GetComponent<EnemyController>());
-
+            other.GetComponent<EnemyController>().StatHandler.DieAction += UpdateEnemyDied;
             // enemy ==> float, float <발판의 중앙 x 값,  길이의 -1 값.>
             SendAreaInfo(other.gameObject);
 
@@ -100,5 +93,17 @@ public class Area : MonoBehaviour
         EnemyStateMachine enemyStateMachine = enemy.GetComponent<EnemyController>().StateMachine;
         enemyStateMachine.SetAreaData(transform.position.x, size);
         enemyStateMachine.Init();
+    }
+
+    void UpdateEnemyDied()
+    {
+        foreach(EnemyController enemy in enemys)
+        {
+            if (enemy.StateMachine.IsDead)
+            {
+                enemys.Remove(enemy);
+                return;
+            }
+        }
     }
 }

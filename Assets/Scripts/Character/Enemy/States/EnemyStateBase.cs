@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public abstract class EnemyStateBase : StateBase
 {
     protected EnemyStateMachine stateMachine;

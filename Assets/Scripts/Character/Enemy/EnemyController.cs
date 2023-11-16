@@ -1,12 +1,12 @@
-using DG.Tweening;
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class EnemyController : EntityController
 {
     [SerializeField] private EnemySO stat;
-    
+    [SerializeField] private UIEnemyHealth uIEnemyHealth;
+    [SerializeField] private GameObject EnemyArmor;
+
     public EnemyStatHandler StatHandler { get; private set; }
 
     public EnemyStateMachine StateMachine {get; private set; }
@@ -15,6 +15,9 @@ public class EnemyController : EntityController
 
     public EnemyAnimationController AnimationController { get; private set; }
 
+
+    private float time; 
+
     protected override void Awake()
     {
         base.Awake();
@@ -22,7 +25,12 @@ public class EnemyController : EntityController
         AnimationController = GetComponentInChildren<EnemyAnimationController>();
         AnimationController.Init();
 
-        StatHandler = new EnemyStatHandler(stat);
+        if (stat.MaxArmor > 0)
+            EnemyArmor.SetActive(true);
+        else
+            EnemyArmor.SetActive(false);
+
+        StatHandler = new EnemyStatHandler(Instantiate(stat), uIEnemyHealth, EnemyArmor);
         StateMachine = new EnemyStateMachine(this);
 
     }
@@ -34,8 +42,28 @@ public class EnemyController : EntityController
         StatHandler.DieAction += StateMachine.Ondead;
     }
 
+    private void OnEnable()
+    {
+        time = 0.0f;
+        if (stat.MaxArmor > 0)
+            EnemyArmor.SetActive(true);
+        else
+            EnemyArmor.SetActive(false);
+
+        StatHandler = new EnemyStatHandler(Instantiate(stat), uIEnemyHealth, EnemyArmor);
+    }
+
     private void Update()
     {
+        if (StateMachine.IsDead)
+        {
+            time += Time.deltaTime;
+            if(time > 5f)
+            {
+                gameObject.SetActive(false);
+            }
+
+        }
         StateMachine.Update();
     }
 

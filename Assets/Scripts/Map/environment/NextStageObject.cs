@@ -1,17 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NextStageObject : InteractiveObject
 {
-    private bool isUsed = false;
-
     public override void Use()
     {
-        if (CheckCondition() && !isUsed)
+        if (CheckCondition())
         {
-            isUsed = true;
-            MapGenerator.Instance.InstantiateStage();
+            int stage = GameManager.Instance.currentStage;
+            stage++;
+            GameManager.Instance.currentStage = stage;
+            string sceneName = SceneManager.GetActiveScene().name;
+            LoadSceneManager.Instance.LoadScene(sceneName);
         }
     }
 
