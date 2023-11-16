@@ -4,7 +4,8 @@ using UnityEngine;
 public class EnemyController : EntityController
 {
     [SerializeField] private EnemySO stat;
-    
+    [SerializeField] private UIEnemyHealth uIEnemyHealth;
+
     public EnemyStatHandler StatHandler { get; private set; }
 
     public EnemyStateMachine StateMachine {get; private set; }
@@ -12,6 +13,7 @@ public class EnemyController : EntityController
     [field: SerializeField] public EnemyMovementData MovementData { get; private set; }
 
     public EnemyAnimationController AnimationController { get; private set; }
+
 
     private float time; 
 
@@ -22,7 +24,7 @@ public class EnemyController : EntityController
         AnimationController = GetComponentInChildren<EnemyAnimationController>();
         AnimationController.Init();
 
-        StatHandler = new EnemyStatHandler(Instantiate(stat));
+        StatHandler = new EnemyStatHandler(Instantiate(stat), uIEnemyHealth);
         StateMachine = new EnemyStateMachine(this);
 
     }
@@ -37,7 +39,7 @@ public class EnemyController : EntityController
     private void OnEnable()
     {
         time = 0.0f;
-        StatHandler = new EnemyStatHandler(Instantiate(stat));
+        StatHandler = new EnemyStatHandler(Instantiate(stat), uIEnemyHealth);
     }
 
     private void Update()

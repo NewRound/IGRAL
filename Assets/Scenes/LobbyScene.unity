@@ -5484,6 +5484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596fe3e0e88e85140906ecc0820acffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Camera>k__BackingField: {fileID: 2115556912}
   <PlayerTransform>k__BackingField: {fileID: 1421064223}
   <PlayerInputController>k__BackingField: {fileID: 1421064224}
   currentStage: 0
