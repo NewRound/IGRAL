@@ -59,6 +59,15 @@ public class ObjectPoolingManager : CustomSingleton<ObjectPoolingManager>
     {
         pools = new List<GameObject>[prefabs.Length];
 
+        temp = stage01;
+
+        enemyPools = new List<GameObject>[temp.Length];
+
+        for (int index = 0; index < temp.Length; index++)
+        {
+            enemyPools[index] = new List<GameObject>();
+        }
+
         for (int index = 0; index < pools.Length; index++)
         {
             pools[index] = new List<GameObject>();
