@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 3580481853838212378}
   - component: {fileID: 5960458081393673077}
   - component: {fileID: 4890461704555741385}
+  - component: {fileID: 1831597438973618730}
   - component: {fileID: 6915422241685555383}
   - component: {fileID: 7473969627206679985}
   - component: {fileID: 7225548810922626653}
@@ -183,7 +184,7 @@ Transform:
   - {fileID: 1900934516514845729}
   - {fileID: 8842046337329788824}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &5960458081393673077
 MonoBehaviour:
@@ -267,6 +268,24 @@ MonoBehaviour:
     <RotationSpeed>k__BackingField: 10
   <IsDebug>k__BackingField: 1
   DronePos: {fileID: 1348491182525177873}
+--- !u!114 &1831597438973618730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895562986543425228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3d7c67418aec345a09592151d9c71d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  auraDuration: 1
+  dissolveDuration: 0.5
+  activeProperty: _ActiveFloat
+  splitValue: _SplitValue
+  dissolveMaterial: {fileID: 2100000, guid: 8d1a604ff1417aa498b2bfb0f9a91766, type: 2}
+  auraMaterial: {fileID: 2100000, guid: 8161ad8952d97f8479d5cfcb96e88830, type: 2}
 --- !u!54 &6915422241685555383
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5184,7 +5203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5046702371801800156
 Transform:
   m_ObjectHideFlags: 0
@@ -5217,7 +5236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &793680206182100372
 Transform:
   m_ObjectHideFlags: 0
@@ -7618,6 +7637,7 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a74066172cf19cd4bacae3c6600a7217, type: 2}
+  - {fileID: 2100000, guid: 8161ad8952d97f8479d5cfcb96e88830, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9916,6 +9936,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23860226736757060, guid: 1e3861f9ad1beae4eadd9ad081712f57,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d1a604ff1417aa498b2bfb0f9a91766, type: 2}
     - target: {fileID: 64118701099562318, guid: 1e3861f9ad1beae4eadd9ad081712f57,
         type: 3}
       propertyPath: m_IsTrigger
@@ -10245,6 +10270,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23860226736757060, guid: 1e3861f9ad1beae4eadd9ad081712f57,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d1a604ff1417aa498b2bfb0f9a91766, type: 2}
     - target: {fileID: 64118701099562318, guid: 1e3861f9ad1beae4eadd9ad081712f57,
         type: 3}
       propertyPath: m_IsTrigger
@@ -10333,6 +10363,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23921653936986682, guid: b3cdda3cca11aab4b831821407447d27,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d1a604ff1417aa498b2bfb0f9a91766, type: 2}
     - target: {fileID: 64230521630829010, guid: b3cdda3cca11aab4b831821407447d27,
         type: 3}
       propertyPath: m_IsTrigger
@@ -10421,6 +10456,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23921653936986682, guid: b3cdda3cca11aab4b831821407447d27,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d1a604ff1417aa498b2bfb0f9a91766, type: 2}
     - target: {fileID: 64230521630829010, guid: b3cdda3cca11aab4b831821407447d27,
         type: 3}
       propertyPath: m_IsTrigger

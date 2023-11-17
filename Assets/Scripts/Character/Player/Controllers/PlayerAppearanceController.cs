@@ -83,6 +83,10 @@ public class PlayerAppearanceController : MonoBehaviour
         }
         foreach (GameObject obj in Mutant)
         {
+            if (OnOff && mutantType != MutantType.None)
+            {
+                GameManager.Instance.PlayerInputController.EffectController.SetDissolveMaterial(obj.GetComponentInChildren<MeshRenderer>().sharedMaterial);
+            }
             obj.SetActive(OnOff);
         }
     }

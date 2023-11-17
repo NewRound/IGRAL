@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SkillUse : MonoBehaviour
@@ -15,6 +16,8 @@ public class SkillUse : MonoBehaviour
     
     protected bool _isLearned = false;
     protected bool _isActive = false;
+
+    public Action<bool> SkillAction;
 
     private void Start()
     {
@@ -53,6 +56,7 @@ public class SkillUse : MonoBehaviour
 
         UIController.Instance.isSkill = false;
         SkillManager.Instance.AllOffSkill();
+        SkillAction?.Invoke(true);
         _isActive = true;
     }
     
@@ -62,6 +66,7 @@ public class SkillUse : MonoBehaviour
             mutantController.ChangeMutant(MutantType.None);
         _currentTime = 0;
         _isActive = false;
+        SkillAction?.Invoke(false);
     }
 
     public virtual void UsingKcal(float kcal)
