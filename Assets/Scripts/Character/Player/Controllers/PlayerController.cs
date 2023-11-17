@@ -12,16 +12,20 @@ public abstract class PlayerController : EntityController
 
     public PlayerAnimationController AnimationController { get; private set; }
 
+    public PlayerEffectController EffectController { get; private set; }
+
     protected override void Awake()
     {
         base.Awake();
         StatHandler = new PlayerStatHandler(stat);
+        EffectController = GetComponent<PlayerEffectController>();
         AnimationController = GetComponentInChildren<PlayerAnimationController>();
         AnimationController.Init();
     }
 
     protected void Start()
     {
+        EffectController.SetAuraMaterial(meshRenderer.sharedMaterials[1]);
         StateMachine.Init();
         StatHandler.DamagedAction += OnDamaged;
         StatHandler.DieAction += StateMachine.Ondead;

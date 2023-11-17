@@ -45,20 +45,30 @@ public class PlayerWeapon : Weapon
         Vector3 offsetVec = _myTrans.position;
         offsetVec.y += 0.5f;
 
-
         RaycastHit[] hits = Physics.RaycastAll(offsetVec, _modelTrans.forward, _playerSO.AttackRange, 1 << LayerMask.NameToLayer(targetTag));
 
         foreach (RaycastHit hit in hits)
         {
-            EnemyController enemyController = hit.collider.GetComponentInParent<EnemyController>();
-            EnemyStatHandler statHandler = enemyController.StatHandler;
+            damageable = hit.collider.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+                EnemyController enemyController = hit.collider.GetComponentInParent<EnemyController>();
+                EnemyStatHandler statHandler = enemyController.StatHandler;
 
-            targetSO = statHandler.Data;
-            damageable = statHandler;
+                targetSO = statHandler.Data;
+                damageable = statHandler;
 
-            enemyController.StateMachine.Knockback(_modelTrans.forward, _playerSO.KnockbackPower);
+                enemyController.StateMachine.Knockback(_modelTrans.forward, _playerSO.KnockbackPower);
 
-            Attack(_playerSO, targetSO, damageable);
+                Attack(_playerSO, targetSO, damageable);
+                return;
+            }
+
+            IInteract interactable = hit.collider.GetComponent<IInteract>();
+            if (interactable != null)
+            {
+                Attack(interactable);
+            }
         }
     }
 
