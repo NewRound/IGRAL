@@ -22,6 +22,7 @@ public class PlayerAppearanceController : MonoBehaviour
     [SerializeField] public List<GameObject> Mutant_Sheld;
     [SerializeField] public List<GameObject> Mutant_SkinBaby;
 
+    [SerializeField] public Animator animator;
     private void Awake()
     {
         mutantType = MutantType.None;
@@ -45,6 +46,7 @@ public class PlayerAppearanceController : MonoBehaviour
         {
             OnOffMutant(mutantType, false);
         }
+        animator.SetInteger("MutantType", (int)type);
 
         mutantType = type;
 
