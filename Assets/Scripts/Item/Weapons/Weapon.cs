@@ -34,5 +34,11 @@ public abstract class Weapon : MonoBehaviour, IBattle
         targetDamageable.Damaged(attackDamage);
     }
 
+
+    public void Attack(IInteract interactable)
+    {
+        interactable.Interact();
+    }
+
     protected abstract void OnAttack();
 }

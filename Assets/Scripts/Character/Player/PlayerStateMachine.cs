@@ -122,9 +122,6 @@ public class PlayerStateMachine : StateMachine
 
     public override void Move()
     {
-        if (CurrentState == ComboAttackState)
-            return;
-
         base.Move();
     }
 
