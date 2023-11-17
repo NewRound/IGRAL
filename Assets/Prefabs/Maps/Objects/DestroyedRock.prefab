@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4619278367260883715}
   - component: {fileID: 6620257722054331587}
   - component: {fileID: 6666078520132597745}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Rubble_Pebbles_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 7174371336964788282}
   - component: {fileID: 914535233447242720}
   - component: {fileID: 5540522347329480919}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Rubble_Pebbles_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 7053499726865481998}
   - component: {fileID: 1399860718354636381}
   - component: {fileID: 6669948308231124242}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Rock_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 6168957690090887459}
   - component: {fileID: 501674368515886375}
   - component: {fileID: 2747545056438618416}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Rubble_Pebbles_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 2990798275413261192}
   - component: {fileID: 624447565312862142}
   - component: {fileID: 36655383735617978}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Rubble_Pebbles_02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 7941039820604366595}
   - component: {fileID: 3368872879638302970}
   - component: {fileID: 73549142198027030}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Rock_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -554,7 +554,7 @@ GameObject:
   - component: {fileID: 5791592088670114591}
   - component: {fileID: 2937542865870442639}
   - component: {fileID: 2521968456347822588}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Rock_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,7 +656,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4729225698964345736}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DestroyedRock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,7 +697,7 @@ GameObject:
   - component: {fileID: 7475778740453238757}
   - component: {fileID: 5810170842644228486}
   - component: {fileID: 2482155256833503026}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Rubble_Pebbles_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
