@@ -1,6 +1,6 @@
 
 
-public abstract class PlayerAttackState : PlayerStateBase
+public abstract class PlayerAttackState : PlayerMoveState
 {
     public PlayerAttackState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -9,6 +9,7 @@ public abstract class PlayerAttackState : PlayerStateBase
     public override void Enter()
     {
         animationController.PlayAnimation(animationsData.AttackSubStateParameterHash, true);
+        stateMachine.LookPreDirectionRightAway();
     }
 
     public override void UpdateState()

@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class PlayerJumpState : PlayerAirState
 {
+    private bool _isAttacked = false;
+
     public PlayerJumpState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
         InputController.JumpAction += Jump;
+        InputController.AttackAction += OnAttackInputted;
     }
 
     public override void Enter()
@@ -19,6 +22,14 @@ public class PlayerJumpState : PlayerAirState
         animationController.PlayAnimation(animationsData.JumpParameterHash, false);
     }
 
+    public override void UpdateState()
+    {
+        base.UpdateState();
+
+        if (_isAttacked)
+            stateMachine.ChangeState(stateMachine.ComboAttackState);
+    }
+
     public override void PhysicsUpdateState()
     {
         base.PhysicsUpdateState();
@@ -31,6 +42,7 @@ public class PlayerJumpState : PlayerAirState
     {
         base.OnDead();
         InputController.JumpAction -= Jump;
+        InputController.AttackAction -= OnAttackInputted;
     }
 
     private void Jump()
@@ -43,5 +55,10 @@ public class PlayerJumpState : PlayerAirState
             velocity.y = InputController.StatHandler.Data.JumpingForce;
             stateMachine.Rigid.velocity = velocity;
         }
+    }
+
+    private void OnAttackInputted()
+    {
+        _isAttacked = true;
     }
 }
