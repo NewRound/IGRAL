@@ -49,8 +49,12 @@ public class PlayerEffectController : MonoBehaviour
 
         _currentEnumerator = ShowWeaponEffectGradually();
 
-        _dissolveMaterial.DOFloat(1, splitValue, dissolveDuration);
-        StartCoroutine(_currentEnumerator);
+        if (_dissolveMaterial != null)
+        {
+            _dissolveMaterial.DOFloat(1, splitValue, dissolveDuration);
+            StartCoroutine(_currentEnumerator);
+        }
+
     }
 
     public void DisappearWeapon()
