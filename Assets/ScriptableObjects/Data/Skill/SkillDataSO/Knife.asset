@@ -39,5 +39,5 @@ MonoBehaviour:
   <KnockbackTime>k__BackingField: 0
   <WallSlidingSpeed>k__BackingField: 0
   <UsingKcal>k__BackingField: 0
-  <DurationKcal>k__BackingField: 0
+  <DurationKcal>k__BackingField: 1
   <DurationTime>k__BackingField: 0

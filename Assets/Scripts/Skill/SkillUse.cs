@@ -9,7 +9,6 @@ public class SkillUse : MonoBehaviour
     protected PlayerSO curData;
 
     public float usingKcal;
-
     public float durationTime;
     public float _currentTime;
     
