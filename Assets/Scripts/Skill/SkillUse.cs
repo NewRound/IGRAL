@@ -10,9 +10,9 @@ public class SkillUse : MonoBehaviour
     protected PlayerSO curData;
 
     public float usingKcal;
-    public float durationKcal;
+
     public float durationTime;
-    protected float _currentTime;
+    public float _currentTime;
     
     protected bool _isLearned = false;
     protected bool _isActive = false;
@@ -59,8 +59,7 @@ public class SkillUse : MonoBehaviour
         SkillAction?.Invoke(true);
         _isActive = true;
     }
-
-
+    
     public void StopSkill()
     {
         if (mutantController.mutantType != MutantType.None)
@@ -73,10 +72,5 @@ public class SkillUse : MonoBehaviour
     public virtual void UsingKcal(float kcal)
     {
         GameManager.Instance.StatHandler.BurnKcal(kcal);
-    }
-
-    public virtual void UpdataSkillData()
-    {
-        
     }
 }

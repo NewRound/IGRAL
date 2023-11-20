@@ -16,12 +16,8 @@ MonoBehaviour:
   <skillCategoryType>k__BackingField: 1
   <skillName>k__BackingField: "\uCE7C\uB0A0 \uAC15\uD654"
   <skillDescription>k__BackingField: "\uCE7C\uB0A0 \uBCC0\uC774 \uACF5\uACA9\uB825
-    3 \uCD94\uAC00"
+    \uC99D\uAC00"
   <icon>k__BackingField: {fileID: 21300000, guid: f31d4fb3f271bd341b916ccc753375ee,
     type: 3}
   <unlockConditionId>k__BackingField: Knife
   <skPointUse>k__BackingField: 1
-  <statChanges>k__BackingField:
-  - statsChangeType: 0
-    statType: 7
-    value: 3

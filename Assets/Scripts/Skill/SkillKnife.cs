@@ -2,12 +2,9 @@ using UnityEngine;
 
 public class SkillKnife : SkillUse
 {
-    public override void UpdataSkillData()
-    { 
-        _currentTime = 0f;
-        usingKcal = SkillManager.Instance.knifeData.UsingKcal;
-        durationKcal = SkillManager.Instance.knifeData.DurationKcal;
-        durationTime = SkillManager.Instance.knifeData.DurationTime;
+    private void Awake()
+    {
+        usingKcal = 1.0f;
     }
 
     private void Update()
@@ -17,7 +14,7 @@ public class SkillKnife : SkillUse
             if(mutantController.mutantType != MutantType.Blade)
                 mutantController.ChangeMutant(MutantType.Blade);
 
-            UsingKcal(durationKcal * Time.deltaTime);
+            UsingKcal(usingKcal * Time.deltaTime);
 
             if (curData.Kcal <= 0) 
             {

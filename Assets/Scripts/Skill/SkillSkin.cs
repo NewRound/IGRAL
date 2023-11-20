@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class SkillSkin : SkillUse
 {
-    public override void UpdataSkillData()
+
+    private void Awake()
     {
+        // 스킬 언락에 따른 지속시간 증가시 작성할 것.
+        durationTime = 5f;
         _currentTime = 0f;
-        usingKcal = SkillManager.Instance.skinData.UsingKcal;
-        durationKcal = SkillManager.Instance.skinData.DurationKcal;
-        durationTime = SkillManager.Instance.skinData.DurationTime;
+        usingKcal = 100.0f;
     }
 
     private void Update()

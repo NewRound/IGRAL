@@ -64,23 +64,6 @@ public class UISkillTree : CustomSingleton<UISkillTree>
             _skillCategoryButtons[i].onClick.AddListener(() => OnSkillCategory(index));
             _uISkillCategories[i].skillTree.transform.SetParent(_skillTreeInfo);
             i++;
-
-            switch (enumItem)
-            {
-                case SkillCategoryType.Skin:
-                    SkillManager.Instance.skinData = Instantiate(skillSetSO.skillsData);
-                    break;
-                case SkillCategoryType.Knife:
-                    SkillManager.Instance.knifeData = Instantiate(skillSetSO.skillsData);
-                    break;
-                case SkillCategoryType.Hammer:
-                    SkillManager.Instance.hammerData = Instantiate(skillSetSO.skillsData);
-                    break;
-                case SkillCategoryType.Psychometric:
-                    SkillManager.Instance.psychometricrData = Instantiate(skillSetSO.skillsData);
-                    break;
-            }
-
         }
     }
 
@@ -198,14 +181,5 @@ public class UISkillTree : CustomSingleton<UISkillTree>
         UpdateSkillPoint();
         SelectSkill(_selectedSkill);
         _uISkillCategories[_selectedSkillCategoryIndex].UpdateCategory();
-
-        if (_selectedSkill.statChanges == null)
-            return;
-
-        if (_selectedSkill.statChanges.Length > 0)
-        {
-            SkillManager.Instance.UpdateSkillSO(_selectedSkill.skillCategoryType, _selectedSkill.statChanges);
-        }
-
     }
 }
