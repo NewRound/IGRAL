@@ -46,10 +46,10 @@ public class PlayerAppearanceController : MonoBehaviour
         {
             OnOffMutant(mutantType, false);
         }
-        animator.SetInteger("MutantType", (int)type);
+        //animator.SetInteger("MutantType", (int)type);
 
         mutantType = type;
-
+        GameManager.Instance.StatHandler.UpdateSkillStat(type);
         OnOffMutant(mutantType, true);
     }
 
@@ -60,7 +60,6 @@ public class PlayerAppearanceController : MonoBehaviour
         {
             case MutantType.None:
                 Mutant = Mutant_None;
-
                 break;
             case MutantType.Stone:
                 Mutant = Mutant_Stone;

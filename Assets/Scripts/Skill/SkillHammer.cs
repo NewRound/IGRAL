@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class SkillHammer : SkillUse
 {
-    private void Awake()
+    public override void UpdataSkillData()
     {
-        usingKcal = 2.0f;
+        _currentTime = 0f;
+        usingKcal = SkillManager.Instance.hammerData.UsingKcal;
+        durationKcal = SkillManager.Instance.hammerData.DurationKcal;
+        durationTime = SkillManager.Instance.hammerData.DurationTime;
     }
 
     private void Update()
@@ -14,7 +17,7 @@ public class SkillHammer : SkillUse
             if (mutantController.mutantType != MutantType.Stone)
                 mutantController.ChangeMutant(MutantType.Stone);
 
-            UsingKcal(usingKcal * Time.deltaTime);
+            UsingKcal(durationKcal * Time.deltaTime);
 
             if (curData.Kcal <= 0)
             {

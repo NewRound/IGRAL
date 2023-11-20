@@ -36,6 +36,9 @@ public enum StatType
     , [Description("원거리 여부")] IsRanged
 
     , Max
+    , [Description("소비 칼로리")] UsingKcal
+    , [Description("초당 소비되는 칼로리")] DurationKcal
+    , [Description("유지 시간")] DurationTime
 }
 
 public enum StatsChangeType
@@ -74,6 +77,7 @@ public class StatChange
 public class PlayerStatHandler : IDamageable, IBurnable
 {
     public PlayerSO Data { get; private set; }
+    private PlayerSO BackData;
     private PlayerSO _baseData;
 
     private Dictionary<StatType, float> _multipleStats;
@@ -456,8 +460,108 @@ public class PlayerStatHandler : IDamageable, IBurnable
                         break;
                 }
             }
+        }
+        BackData = UnityEngine.Object.Instantiate(Data);
+    }
+
+    private void UpdateStats(SkillDataSO skillDataSO)
+    {
+        foreach (StatType enumItem in Enum.GetValues(typeof(StatType)))
+        {
+            switch (enumItem)
+            {
+                case StatType.MaxHealth:
+                    Data.MaxHealth += skillDataSO.MaxHealth;
+                    break;
+                case StatType.HealthRegen:
+                    Data.HealthRegen += skillDataSO.HealthRegen;
+                    break;
+                case StatType.Defense:
+                    Data.Defense += skillDataSO.Defense;
+                    break;
+                case StatType.EvasionProbability:
+                    Data.EvasionProbability += skillDataSO.EvasionProbability;
+                    break;
+                case StatType.InvincibleTime:
+                    Data.InvincibleTime += skillDataSO.InvincibleTime;
+                    break;
+                case StatType.Attack:
+                    Data.Attack += skillDataSO.Attack;
+                    break;
+                case StatType.AttackDelay:
+                    Data.AttackDelay += skillDataSO.AttackDelay;
+                    break;
+                case StatType.AttackRange:
+                    Data.AttackRange += skillDataSO.AttackRange;
+                    break;
+                case StatType.CriticalProbability:
+                    Data.CriticalProbability += skillDataSO.CriticalProbability;
+                    break;
+                case StatType.CriticalMod:
+                    Data.CriticalMod += skillDataSO.CriticalMod;
+                    break;
+                case StatType.SpeedMin:
+                    Data.SpeedMin += skillDataSO.SpeedMin;
+                    break;
+                case StatType.SpeedMax:
+                    Data.SpeedMax += skillDataSO.SpeedMax;
+                    break;
+                case StatType.KnockbackPower:
+                    Data.KnockbackPower += skillDataSO.KnockbackPower;
+                    break;
+                case StatType.JumpingForce:
+                    Data.JumpingForce += skillDataSO.JumpingForce;
+                    break;
+                case StatType.JumpingCountMax:
+                    Data.JumpingCountMax += skillDataSO.JumpingCountMax;
+                    break;
+                case StatType.RollingForce:
+                    Data.RollingForce += skillDataSO.RollingForce;
+                    break;
+                case StatType.RollingCoolTime:
+                    Data.RollingCoolTime += skillDataSO.RollingCoolTime;
+                    break;
+                case StatType.KcalPerAttack:
+                    Data.KcalPerAttack += skillDataSO.KcalPerAttack;
+                    break;
+                case StatType.MaxKcal:
+                    Data.MaxKcal += skillDataSO.MaxKcal;
+                    break;
+                case StatType.WallSlidingTime:
+                    Data.WallSlidingTime += skillDataSO.WallSlidingTime;
+                    break;
+                case StatType.KnockbackTime:
+                    Data.KnockbackTime += skillDataSO.KnockbackTime;
+                    break;
+                case StatType.WallSlidingSpeed:
+                    Data.WallSlidingSpeed += skillDataSO.WallSlidingSpeed;
+                    break;
+            }
+        }
+    }
+
+    public void UpdateSkillStat(MutantType mutantType)
+    {
+        switch(mutantType) 
+        {
+            case MutantType.None:
+                UIInventory.Instance.UpdateEquipUI();
+                break;
+            case MutantType.Stone:
+                UpdateStats(SkillManager.Instance.hammerData);
+                break;
+            case MutantType.Blade:
+                UpdateStats(SkillManager.Instance.knifeData);
+                break;
+            case MutantType.Sheld:
+                UpdateStats(SkillManager.Instance.psychometricrData);
+                break;
+            case MutantType.Skin:
+                UpdateStats(SkillManager.Instance.skinData);
+                break;
 
         }
+        UIInventory.Instance.UpdateStats();
     }
 
     private float CalculateStat(StatType statType, StatsChangeType statsChangeType, float a, float b)
