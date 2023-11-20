@@ -1,90 +1,86 @@
 using DG.Tweening;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerEffectController : MonoBehaviour
 {
-    [Header("Dissolve")]
-    private Material _dissolveMaterial;
-    [SerializeField] private float dissolveDuration = 0.5f;
-    [SerializeField] private string splitValue = "_SplitValue";
-
-    [Header("Aura")]
-    private Material _auraMaterial;
-    [SerializeField] private float auraDuration = 1f;
-    [SerializeField] private string activeProperty = "_ActiveFloat";
-
     private IEnumerator _currentEnumerator;
 
-    private void Update()
+    [field: SerializeField] public EffectDataHandler EffectDataHandler { get; private set; }
+    private EffectViewer _effectViewer;
+
+    private void Awake()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            AppearWeapon();
-        }
-        else if (Input.GetMouseButtonDown(1))
-        {
-            DisappearWeapon();
-        }
+        _effectViewer = new EffectViewer(EffectDataHandler.EffectData);
     }
 
-
-
-    public void SetDissolveMaterial(Material material)
+    public void AppearWeapon(List<GameObject> goList)
     {
-        _dissolveMaterial = material;
-    }
+        CheckCurrentWeaponEffect(goList , true);
 
-    public void SetAuraMaterial(Material material)
-    {
-        _auraMaterial = material;
-    }
-
-    public void AppearWeapon()
-    {
         if (_currentEnumerator != null)
         {
-            StopCoroutine(_currentEnumerator);
-        }
-
-        _currentEnumerator = ShowWeaponEffectGradually();
-
-        if (_dissolveMaterial != null)
-        {
-            _dissolveMaterial.DOFloat(1, splitValue, dissolveDuration);
             StartCoroutine(_currentEnumerator);
         }
-
     }
 
-    public void DisappearWeapon()
+    public void DisappearWeapon(List<GameObject> goList)
     {
-        CheckCurrentWeaponEffectEnumeration();
+        CheckCurrentWeaponEffect(goList, false);
 
-        _dissolveMaterial.DOFloat(0, splitValue, dissolveDuration);
-        StartCoroutine(_currentEnumerator);
+        if (_currentEnumerator != null)
+        {
+            StartCoroutine(_currentEnumerator);
+        }
     }
 
-    private void CheckCurrentWeaponEffectEnumeration()
+    public void AppearWeaponWithoutDissolve(List<GameObject> goList)
+    {
+        CheckCurrentWeaponEffectWithoutDissolve(goList, true);
+
+        if (_currentEnumerator != null)
+        {
+            StartCoroutine(_currentEnumerator);
+        }
+    }
+
+    public void DisappearWeaponWithoutDissolve(List<GameObject> goList)
+    {
+        CheckCurrentWeaponEffectWithoutDissolve(goList, false);
+
+        if (_currentEnumerator != null)
+        {
+            StartCoroutine(_currentEnumerator);
+        }
+    }
+
+    private void CheckCurrentWeaponEffect(List<GameObject> goList, bool isActive)
     {
         if (_currentEnumerator != null)
         {
             StopCoroutine(_currentEnumerator);
         }
 
-        _currentEnumerator = ShowWeaponEffectGradually();
+        _currentEnumerator = isActive ? 
+            _effectViewer.ShowWeaponEffectGradually(goList) : 
+            _effectViewer.ConcealWeaponEffectGradually(goList);
     }
 
-    private void ActivateAura(bool isActive)
+    private void CheckCurrentWeaponEffectWithoutDissolve(List<GameObject> goList, bool isActive)
     {
-        float activeFloat = isActive ? 1 : 0;
-        _auraMaterial.SetFloat(activeProperty, activeFloat);
+        if (_currentEnumerator != null)
+        {
+            StopCoroutine(_currentEnumerator);
+        }
+
+        _currentEnumerator = isActive ?
+            _effectViewer.ShowWeaponEffectWithoutDissolve(goList) :
+            _effectViewer.ConcealWeaponEffectWithoutDissolve(goList);
     }
 
-    private IEnumerator ShowWeaponEffectGradually()
+    public void ResetViewerData()
     {
-        ActivateAura(true);
-        yield return CoroutineRef.GetWaitForSeconds(auraDuration);
-        ActivateAura(false);
+        _effectViewer.ResetData();
     }
 }

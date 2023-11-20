@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,7 +24,11 @@ public class PlayerAppearanceController : MonoBehaviour
     [SerializeField] public List<GameObject> Mutant_SkinBaby;
 
     [SerializeField] public Animator animator;
-    private void Awake()
+
+
+    private bool _wasMaterialSet;
+
+    private void Start()
     {
         mutantType = MutantType.None;
         OnOffMutant(MutantType.None, true);
@@ -80,13 +85,33 @@ public class PlayerAppearanceController : MonoBehaviour
             default:
                 return;
         }
-        foreach (GameObject obj in Mutant)
+
+        PlayerEffectController effectController = GameManager.Instance.PlayerInputController.EffectController;
+
+        if (mutantType != MutantType.None && mutantType != MutantType.Skin)
         {
-            if (OnOff && mutantType != MutantType.None)
+            if (!_wasMaterialSet)
             {
-                GameManager.Instance.PlayerInputController.EffectController.SetDissolveMaterial(obj.GetComponentInChildren<MeshRenderer>().sharedMaterial);
+                effectController.EffectDataHandler.SetDissolveMaterial(Mutant[0].GetComponentInChildren<MeshRenderer>().sharedMaterial);
+                effectController.ResetViewerData();
+                _wasMaterialSet = true;
             }
-            obj.SetActive(OnOff);
+
+            if (OnOff)
+                effectController.AppearWeapon(Mutant);
+            else
+                effectController.DisappearWeapon(Mutant);
         }
+        else
+        {
+            if (OnOff)
+                effectController.AppearWeaponWithoutDissolve(Mutant);
+            else
+                effectController.DisappearWeaponWithoutDissolve(Mutant);
+        }
+
+        
     }
+
+
 }

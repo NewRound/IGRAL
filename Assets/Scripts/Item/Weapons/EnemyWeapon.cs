@@ -12,7 +12,7 @@ public class EnemyWeapon : Weapon
     {
         _enemyAnimationController = GetComponentInParent<EnemyAnimationController>();
 
-        targetTag = Tag.Player.ToString();
+        targetTag = GlobalEnums.Tag.Player.ToString();
 
         EnemyController enemyController = GetComponentInParent<EnemyController>();
         _enemySO = enemyController.StatHandler.Data;
@@ -30,7 +30,7 @@ public class EnemyWeapon : Weapon
     public void Init(EnemySO enemySO)
     {
         _enemySO = enemySO;
-        targetTag = Tag.Player.ToString();
+        targetTag = GlobalEnums.Tag.Player.ToString();
     }
 
     public void UpdateStat(EnemySO enemySO)
