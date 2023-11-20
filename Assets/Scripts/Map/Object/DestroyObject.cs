@@ -29,7 +29,7 @@ public class DestroyObject : MonoBehaviour, IInteract
         SpreadParticle(); // ÆÄÆí
 
         _destroyableObj.SetActive(false);
-        _destroyedObj.SetActive(true);
+        if (_destroyedObj != null) _destroyedObj.SetActive(true);
     }
 
     private void SpreadParticle()
