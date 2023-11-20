@@ -45,7 +45,7 @@ public class PlayerWeapon : Weapon
         Vector3 offsetVec = _myTrans.position;
         offsetVec.y += 0.5f;
 
-        RaycastHit[] hits = Physics.RaycastAll(offsetVec, _modelTrans.forward, _playerSO.AttackRange, 1 << LayerMask.NameToLayer(targetTag));
+        RaycastHit[] hits = Physics.RaycastAll(offsetVec, _modelTrans.forward, _playerSO.AttackRange, 1 << LayerMask.NameToLayer(targetTag) | 1 << LayerMask.NameToLayer(GlobalEnums.Tag.Interactable.ToString()));
         Debug.Log("Attack");
         foreach (RaycastHit hit in hits)
         {
