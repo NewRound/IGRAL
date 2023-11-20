@@ -24,8 +24,8 @@ MonoBehaviour:
   <AttackRange>k__BackingField: 1
   <CriticalProbability>k__BackingField: 0
   <CriticalMod>k__BackingField: 0
-  <SpeedMin>k__BackingField: 4
-  <SpeedMax>k__BackingField: 6
+  <SpeedMin>k__BackingField: 3
+  <SpeedMax>k__BackingField: 3
   <KnockbackPower>k__BackingField: 1
   <IsRanged>k__BackingField: 0
   <EnemyID>k__BackingField: 1002

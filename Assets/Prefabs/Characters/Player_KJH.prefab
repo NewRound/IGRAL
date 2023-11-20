@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 6915422241685555383}
   - component: {fileID: 7473969627206679985}
   - component: {fileID: 7225548810922626653}
+  - component: {fileID: 3509297508253123059}
   m_Layer: 7
   m_Name: Player_KJH
   m_TagString: Player
@@ -184,7 +185,7 @@ Transform:
   - {fileID: 1900934516514845729}
   - {fileID: 8842046337329788824}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &5960458081393673077
 MonoBehaviour:
@@ -280,10 +281,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3d7c67418aec345a09592151d9c71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dissolveDuration: 0.5
-  splitValue: _SplitValue
-  auraDuration: 1
-  activeProperty: _ActiveFloat
+  <EffectDataHandler>k__BackingField:
+    <EffectData>k__BackingField:
+      <DissolveDuration>k__BackingField: 0.5
+      <SplitValue>k__BackingField: _SplitValue
+      <AuraDuration>k__BackingField: 1
+      <ActiveProperty>k__BackingField: _ActiveFloat
 --- !u!54 &6915422241685555383
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -359,6 +362,19 @@ MonoBehaviour:
   Mutant_SkinBaby:
   - {fileID: 2541467568795205321}
   animator: {fileID: 5276911309075644705}
+--- !u!114 &3509297508253123059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895562986543425228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65aaa6819a28d394788dc653c209e1b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackData: {fileID: 11400000, guid: 166172af088f0b9418212546c762064f, type: 2}
 --- !u!1 &2541467568795205321
 GameObject:
   m_ObjectHideFlags: 0
@@ -9632,7 +9648,6 @@ GameObject:
   m_Component:
   - component: {fileID: 452756799320697789}
   - component: {fileID: 8215572614971497445}
-  - component: {fileID: 101583969907515081}
   m_Layer: 9
   m_Name: Machete
   m_TagString: Weapon
@@ -9677,19 +9692,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.12194811, y: 0.79220784, z: 0.20814447}
   m_Center: {x: 0.0095933005, y: 0.48831204, z: 0.01913516}
---- !u!114 &101583969907515081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7103124675430555320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65aaa6819a28d394788dc653c209e1b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackData: {fileID: 11400000, guid: 166172af088f0b9418212546c762064f, type: 2}
 --- !u!1001 &3004339507976691606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9704,7 +9706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1490646748009286, guid: b3cdda3cca11aab4b831821407447d27, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4854328431926918, guid: b3cdda3cca11aab4b831821407447d27, type: 3}
       propertyPath: m_RootOrder
@@ -9766,6 +9768,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23921653936986682, guid: b3cdda3cca11aab4b831821407447d27,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d1a604ff1417aa498b2bfb0f9a91766, type: 2}
     m_RemovedComponents:
     - {fileID: 64230521630829010, guid: b3cdda3cca11aab4b831821407447d27, type: 3}
     m_RemovedGameObjects: []
@@ -10145,6 +10152,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8759977314344558568, guid: e43d5f36139965149a68a9247da035ce,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d1a604ff1417aa498b2bfb0f9a91766, type: 2}
     - target: {fileID: 8776432649427703994, guid: e43d5f36139965149a68a9247da035ce,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -10372,7 +10384,8 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64230521630829010, guid: b3cdda3cca11aab4b831821407447d27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10465,7 +10478,8 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64230521630829010, guid: b3cdda3cca11aab4b831821407447d27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

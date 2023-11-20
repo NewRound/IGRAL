@@ -12,9 +12,9 @@ public class PlayerWeapon : Weapon
     {
         targetTag = GlobalEnums.Tag.Enemy.ToString();
         // 임시
-        _playerAnimationController = GetComponentInParent<PlayerAnimationController>();
+        _playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
 
-        InputController inputController = GetComponentInParent<InputController>();
+        InputController inputController = GetComponent<InputController>();
         _playerSO = inputController.StatHandler.Data;
         _modelTrans = inputController.StateMachine.ModelTrans;
         _myTrans = inputController.transform;
@@ -46,7 +46,7 @@ public class PlayerWeapon : Weapon
         offsetVec.y += 0.5f;
 
         RaycastHit[] hits = Physics.RaycastAll(offsetVec, _modelTrans.forward, _playerSO.AttackRange, 1 << LayerMask.NameToLayer(targetTag));
-
+        Debug.Log("Attack");
         foreach (RaycastHit hit in hits)
         {
             damageable = hit.collider.GetComponent<IDamageable>();

@@ -15,5 +15,6 @@ MonoBehaviour:
   <skillCategoryType>k__BackingField: 0
   <skills>k__BackingField:
   - {fileID: 11400000, guid: bc11efe1a19edf645bbd686c3eebfc7a, type: 2}
+  - {fileID: 11400000, guid: b645f90f5684d704eb5d8ab064f2b0bf, type: 2}
   <skillsData>k__BackingField: {fileID: 11400000, guid: dc2354b6e5d53cb4289387050a2aa2a0,
     type: 2}

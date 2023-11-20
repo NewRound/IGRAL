@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12ff4ae1572540246816c3a4e9e742c5, type: 3}
-  m_Name: Knife01
+  m_Name: Hammer01
   m_EditorClassIdentifier: 
-  <skillId>k__BackingField: Knife01
-  <skillCategoryType>k__BackingField: 1
-  <skillName>k__BackingField: "\uCE7C\uB0A0 \uAC15\uD654"
-  <skillDescription>k__BackingField: "\uCE7C\uB0A0 \uBCC0\uC774 \uACF5\uACA9\uB825
-    3 \uCD94\uAC00"
-  <icon>k__BackingField: {fileID: 21300000, guid: f31d4fb3f271bd341b916ccc753375ee,
+  <skillId>k__BackingField: Hammer01
+  <skillCategoryType>k__BackingField: 2
+  <skillName>k__BackingField: "\uB9DD\uCE58 \uAC15\uD654"
+  <skillDescription>k__BackingField: "\uB9DD\uCE58 \uBCC0\uC774 \uBC29\uC5B4\uB825
+    2 \uCD94\uAC00"
+  <icon>k__BackingField: {fileID: 21300000, guid: d3c7f8cfbfc68ec4ab9c694f02ad3dae,
     type: 3}
-  <unlockConditionId>k__BackingField: Knife
+  <unlockConditionId>k__BackingField: Hammer
   <skPointUse>k__BackingField: 1
   <statChanges>k__BackingField:
   - statsChangeType: 0
-    statType: 7
-    value: 3
+    statType: 4
+    value: 2

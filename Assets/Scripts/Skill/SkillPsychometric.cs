@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class SkillPsychometric : SkillUse
 {
-
-    private void Awake()
+    public override void UpdataSkillData()
     {
-        durationTime = 5f;
         _currentTime = 0f;
-        usingKcal = 50f;
+        usingKcal = SkillManager.Instance.psychometricrData.UsingKcal;
+        durationKcal = SkillManager.Instance.psychometricrData.DurationKcal;
+        durationTime = SkillManager.Instance.psychometricrData.DurationTime;
     }
 
     private void Update()
