@@ -6,9 +6,12 @@ public class BossBehaviourTree : BehaviourTree
 {
     [SerializeField] private Transform[] waypoints;
 
-    [SerializeField] private EnemySO _enemySO;
+    [SerializeField] private EnemySO enemySO;
 
+    [SerializeField] private GameObject bulletPrefab;
+    
     private Rigidbody _rigid;
+
 
     private void Awake()
     {
@@ -17,7 +20,11 @@ public class BossBehaviourTree : BehaviourTree
 
     protected override Node SetTree()
     {
-        Node root = new PatrolNode(_rigid, waypoints, _enemySO.SpeedMax);
+        Node root = new Sequence(new List<Node>
+        {
+            new PatrolNode(_rigid, waypoints, enemySO.SpeedMax),
+            new ShootNode(bulletPrefab.GetComponent<Bullet>(), GameManager.Instance.PlayerTransform, transform ,5)
+        });
 
         return root;
     }

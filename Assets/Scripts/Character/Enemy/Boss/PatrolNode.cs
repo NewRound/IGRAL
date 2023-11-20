@@ -24,7 +24,7 @@ public class PatrolNode : Node
 
         float horizontalSub = _rigid.position.x - _waypoints[_currentWayPointIndex].position.x;
         bool isWaypointLeft = horizontalSub > 0;
-        Vector3 velocity = isWaypointLeft ? Vector3.left * _speed : Vector3.right * _speed;
+        Vector3 velocity = isWaypointLeft ? Vector3.left * _speed * Time.fixedDeltaTime * 10f : Vector3.right * _speed * Time.fixedDeltaTime * 10f;
         velocity.y = _rigid.velocity.y;
         _rigid.velocity = velocity;
 

@@ -10,7 +10,7 @@ public class Selector : Node
 
     }
 
-    public Selector(List<Node> children) : base()
+    public Selector(List<Node> children) : base(children)
     {
 
     }
