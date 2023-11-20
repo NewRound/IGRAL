@@ -14,6 +14,7 @@ namespace GlobalEnums
     {
         Player,
         Enemy,
+        Interactable
     }
 
     public enum NodeState
