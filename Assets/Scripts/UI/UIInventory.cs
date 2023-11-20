@@ -350,7 +350,7 @@ public class UIInventory : CustomSingleton<UIInventory>
         }
     }
 
-    private void UpdateEquipUI()
+    public void UpdateEquipUI()
     {
         List<StatChange> statChanges = new List<StatChange> ();
 

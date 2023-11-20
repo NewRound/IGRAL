@@ -12,4 +12,5 @@ public class SkillInfoSO : ScriptableObject
 
     [field: SerializeField] public string unlockConditionId { get; private set; }
     [field: SerializeField] public int skPointUse { get; private set; }
+    [field: SerializeField] public StatChange[] statChanges { get; private set; }
 }
