@@ -10,7 +10,7 @@ public class PlayerWeapon : Weapon
 
     private void Start()
     {
-        targetTag = Tag.Enemy.ToString();
+        targetTag = GlobalEnums.Tag.Enemy.ToString();
         // 임시
         _playerAnimationController = GetComponentInParent<PlayerAnimationController>();
 

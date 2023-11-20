@@ -1,11 +1,5 @@
 using UnityEngine;
 
-public enum AnimatorLayer
-{
-    BaseLayer,
-    UpperLayer,
-}
-
 public abstract class PlayerStateBase : StateBase
 {
     [Header("Player")]

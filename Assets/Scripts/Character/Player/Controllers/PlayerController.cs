@@ -25,7 +25,7 @@ public abstract class PlayerController : EntityController
 
     protected void Start()
     {
-        EffectController.SetAuraMaterial(meshRenderer.sharedMaterials[1]);
+        EffectController.EffectDataHandler.SetAuraMaterial(meshRenderer.sharedMaterials[1]);
         StateMachine.Init();
         StatHandler.DamagedAction += OnDamaged;
         StatHandler.DieAction += StateMachine.Ondead;

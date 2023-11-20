@@ -358,7 +358,7 @@ MonoBehaviour:
   - {fileID: 5977364530130823264}
   Mutant_SkinBaby:
   - {fileID: 2541467568795205321}
-  animator: {fileID: 0}
+  animator: {fileID: 5276911309075644705}
 --- !u!1 &2541467568795205321
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +376,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8842046337329788824
 Transform:
   m_ObjectHideFlags: 0
@@ -9704,7 +9704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1490646748009286, guid: b3cdda3cca11aab4b831821407447d27, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4854328431926918, guid: b3cdda3cca11aab4b831821407447d27, type: 3}
       propertyPath: m_RootOrder
