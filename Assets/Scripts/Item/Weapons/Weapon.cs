@@ -1,12 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public enum Tag
-{
-    Player,
-    Enemy,
-}
 
 public abstract class Weapon : MonoBehaviour, IBattle
 {

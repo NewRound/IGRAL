@@ -185,7 +185,7 @@ Transform:
   - {fileID: 1900934516514845729}
   - {fileID: 8842046337329788824}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &5960458081393673077
 MonoBehaviour:
@@ -281,10 +281,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3d7c67418aec345a09592151d9c71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dissolveDuration: 0.5
-  splitValue: _SplitValue
-  auraDuration: 1
-  activeProperty: _ActiveFloat
+  <EffectDataHandler>k__BackingField:
+    <EffectData>k__BackingField:
+      <DissolveDuration>k__BackingField: 0.5
+      <SplitValue>k__BackingField: _SplitValue
+      <AuraDuration>k__BackingField: 1
+      <ActiveProperty>k__BackingField: _ActiveFloat
 --- !u!54 &6915422241685555383
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -390,7 +392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8842046337329788824
 Transform:
   m_ObjectHideFlags: 0
@@ -9766,6 +9768,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23921653936986682, guid: b3cdda3cca11aab4b831821407447d27,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d1a604ff1417aa498b2bfb0f9a91766, type: 2}
     m_RemovedComponents:
     - {fileID: 64230521630829010, guid: b3cdda3cca11aab4b831821407447d27, type: 3}
     m_RemovedGameObjects: []
@@ -10145,6 +10152,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8759977314344558568, guid: e43d5f36139965149a68a9247da035ce,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d1a604ff1417aa498b2bfb0f9a91766, type: 2}
     - target: {fileID: 8776432649427703994, guid: e43d5f36139965149a68a9247da035ce,
         type: 3}
       propertyPath: m_LocalScale.x

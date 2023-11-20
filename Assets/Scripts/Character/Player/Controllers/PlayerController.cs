@@ -21,11 +21,11 @@ public abstract class PlayerController : EntityController
         EffectController = GetComponent<PlayerEffectController>();
         AnimationController = GetComponentInChildren<PlayerAnimationController>();
         AnimationController.Init();
+        EffectController.EffectDataHandler.SetAuraMaterial(meshRenderer.sharedMaterials[1]);
     }
 
     protected void Start()
     {
-        EffectController.SetAuraMaterial(meshRenderer.sharedMaterials[1]);
         StateMachine.Init();
         StatHandler.DamagedAction += OnDamaged;
         StatHandler.DieAction += StateMachine.Ondead;
