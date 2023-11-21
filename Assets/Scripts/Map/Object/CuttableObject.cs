@@ -39,7 +39,6 @@ public class CuttableObject : MonoBehaviour, IInteract
 
     public void Interact()
     {
-        Debug.Log("잘림");
         if (_player.mutantType != MutantType.Blade) return;
 
         _audioSource.PlayOneShot(_audioClip); // 효과음
