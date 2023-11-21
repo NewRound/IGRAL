@@ -57,11 +57,6 @@ public class PlayerEffectController : MonoBehaviour
 
     private void CheckCurrentWeaponEffect(List<GameObject> goList, bool isActive)
     {
-        if (_currentEnumerator != null)
-        {
-            StopCoroutine(_currentEnumerator);
-        }
-
         _currentEnumerator = isActive ? 
             _effectViewer.ShowWeaponEffectGradually(goList) : 
             _effectViewer.ConcealWeaponEffectGradually(goList);
@@ -69,11 +64,6 @@ public class PlayerEffectController : MonoBehaviour
 
     private void CheckCurrentWeaponEffectWithoutDissolve(List<GameObject> goList, bool isActive)
     {
-        if (_currentEnumerator != null)
-        {
-            StopCoroutine(_currentEnumerator);
-        }
-
         _currentEnumerator = isActive ?
             _effectViewer.ShowWeaponEffectWithoutDissolve(goList) :
             _effectViewer.ConcealWeaponEffectWithoutDissolve(goList);
