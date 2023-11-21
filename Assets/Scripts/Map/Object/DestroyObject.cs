@@ -28,7 +28,7 @@ public class DestroyObject : MonoBehaviour, IInteract
         _player = GameManager.Instance.PlayerAppearanceController;
 
         _destroyableObj.SetActive(true);
-        _destroyedObj.SetActive(false);
+        if (_destroyedObj != null) _destroyedObj.SetActive(false);
 
         for(int i = 0; i< _particles.Length; i++)
         {
@@ -38,14 +38,14 @@ public class DestroyObject : MonoBehaviour, IInteract
 
     public void Interact()
     {
-        Debug.Log("상호작용");
         if (_player.mutantType != MutantType.Stone) return;
 
         _audioSource.PlayOneShot(_audioClip); // 효과음
         SpreadParticle(); // 파편
 
-        _destroyableObj.SetActive(false);
         _myCollider.enabled = false;
+
+        _destroyableObj.SetActive(false);        
         if (_destroyedObj != null) _destroyedObj.SetActive(true);
     }
 

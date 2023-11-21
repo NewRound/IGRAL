@@ -44,10 +44,12 @@ public class DroneBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        EnemyController enemyController = other.GetComponent<EnemyController>();
         // 적에게 부딪히면 데미지 주고 비활성화
-        if (other.CompareTag("Enemy")) 
+
+        if (enemyController != null) 
         {
-            EnemyStatHandler enemy = other.GetComponent<EnemyController>().StatHandler;
+            EnemyStatHandler enemy = enemyController.StatHandler;
             if(enemy != null)
             {
                 enemy.Damaged(_attackDamage);
