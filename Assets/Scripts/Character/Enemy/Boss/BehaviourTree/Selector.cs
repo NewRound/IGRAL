@@ -10,7 +10,7 @@ public class Selector : Node
 
     }
 
-    public Selector(List<Node> children) : base()
+    public Selector(List<Node> children) : base(children)
     {
 
     }
@@ -29,10 +29,6 @@ public class Selector : Node
                     return state;
                 case NodeState.Failure:
                     continue;
-                default:
-                    state = NodeState.Success;
-                    return state;
-
             }
         }
 

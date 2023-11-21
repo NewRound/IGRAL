@@ -10,7 +10,7 @@ public class PlayerDieState : PlayerStateBase
             return;
 
         stateMachine.SetDead(true);
-        animationController.PlayAnimation(animationsData.dieParameterHash, true);
+        animationController.PlayAnimation(animationsData.DieParameterHash, true);
         OnDead();
     }
 
@@ -23,7 +23,7 @@ public class PlayerDieState : PlayerStateBase
     public override void Exit()
     {
         stateMachine.SetDead(false);
-        animationController.PlayAnimation(animationsData.dieParameterHash, false);
+        animationController.PlayAnimation(animationsData.DieParameterHash, false);
         InitInputActions();
     }
 }
