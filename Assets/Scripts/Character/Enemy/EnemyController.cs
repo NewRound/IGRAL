@@ -6,6 +6,7 @@ public class EnemyController : EntityController
     [SerializeField] private EnemySO stat;
     [SerializeField] private UIEnemyHealth uIEnemyHealth;
     [SerializeField] private GameObject EnemyArmor;
+    [SerializeField] private Transform BulletSpawnPosition;
 
     public EnemyStatHandler StatHandler { get; private set; }
 

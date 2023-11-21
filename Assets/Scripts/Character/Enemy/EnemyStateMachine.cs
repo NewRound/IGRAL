@@ -44,8 +44,13 @@ public class EnemyStateMachine : StateMachine
 
         PatrolState = new EnemyPatrolState(this);
         TraceState = new EnemyTraceState(this);
-        AttackState = new EnemyAttackState(this);
+        if (EnemyController.StatHandler.Data.IsRanged)
+            AttackState = new EnemyRangedAttackState(this);
+        else
+            AttackState = new EnemyAttackState(this);
         DieState = new EnemyDieState(this);
+
+
     }
 
     public override void Init()

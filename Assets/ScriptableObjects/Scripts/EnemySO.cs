@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnemyData", menuName = "SO/EntityData/EnemyData")]

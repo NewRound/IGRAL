@@ -19,10 +19,13 @@ public class SkillUse : MonoBehaviour
 
     public Action<bool> SkillAction;
 
+    private PlayerStatHandler _playerStatHandler;
+
     private void Start()
     {
         mutantController = GameManager.Instance.PlayerTransform.GetComponent<PlayerAppearanceController>();
         curData = GameManager.Instance.StatHandler.Data;
+        _playerStatHandler = GameManager.Instance.StatHandler;
     }
 
     public void LearnedSkill()
@@ -72,7 +75,7 @@ public class SkillUse : MonoBehaviour
 
     public virtual void UsingKcal(float kcal)
     {
-        GameManager.Instance.StatHandler.BurnKcal(kcal);
+        _playerStatHandler.BurnKcal(kcal);
     }
 
     public virtual void UpdataSkillData()
