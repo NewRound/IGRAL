@@ -9,7 +9,9 @@ public class BossBehaviourTree : BehaviourTree
     [SerializeField] private EnemySO enemySO;
 
     [SerializeField] private GameObject bulletPrefab;
-    
+
+    [SerializeField] private PhaseSO phaseSO;
+
     private Rigidbody _rigid;
 
 
@@ -24,12 +26,11 @@ public class BossBehaviourTree : BehaviourTree
         {
             new Sequence(new List<Node>
             {
+                //new CheckHpNode()
                 new PatrolNode(_rigid, waypoints, enemySO.SpeedMax),
                 new ShootNode(bulletPrefab.GetComponent<Bullet>(), GameManager.Instance.PlayerTransform, transform ,5)
             })
         });
-            
-            
 
         return root;
     }
