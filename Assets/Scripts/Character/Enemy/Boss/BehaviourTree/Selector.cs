@@ -29,10 +29,6 @@ public class Selector : Node
                     return state;
                 case NodeState.Failure:
                     continue;
-                default:
-                    state = NodeState.Success;
-                    return state;
-
             }
         }
 

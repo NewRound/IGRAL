@@ -20,11 +20,16 @@ public class BossBehaviourTree : BehaviourTree
 
     protected override Node SetTree()
     {
-        Node root = new Sequence(new List<Node>
+        Node root = new Selector(new List<Node>
         {
-            new PatrolNode(_rigid, waypoints, enemySO.SpeedMax),
-            new ShootNode(bulletPrefab.GetComponent<Bullet>(), GameManager.Instance.PlayerTransform, transform ,5)
+            new Sequence(new List<Node>
+            {
+                new PatrolNode(_rigid, waypoints, enemySO.SpeedMax),
+                new ShootNode(bulletPrefab.GetComponent<Bullet>(), GameManager.Instance.PlayerTransform, transform ,5)
+            })
         });
+            
+            
 
         return root;
     }
