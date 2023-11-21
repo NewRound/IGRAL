@@ -44,7 +44,7 @@ public class EnemyStateMachine : StateMachine
 
         PatrolState = new EnemyPatrolState(this);
         TraceState = new EnemyTraceState(this);
-        if (EnemyController.StatHandler.Data.IsRanged)
+        if(controller.StatHandler.Data.IsRanged)
             AttackState = new EnemyRangedAttackState(this);
         else
             AttackState = new EnemyAttackState(this);
@@ -67,9 +67,9 @@ public class EnemyStateMachine : StateMachine
     {
         if (Direction.x == 0)
         {
+            LookPreDirectionRightAway();
             return;
         }
-
         base.Look();
     }
 

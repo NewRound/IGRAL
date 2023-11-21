@@ -94,4 +94,16 @@ public class EnemyController : EntityController
         StatHandler.DieAction -= StateMachine.Ondead;
         StatHandler.DamagedAction -= OnDamaged;
     }
+
+    public void EnemyBulletSpawn()
+    {
+        GameObject go = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.EnemyBullet);
+        go.transform.SetPositionAndRotation(BulletSpawnPosition.position, Quaternion.identity);
+
+        EnemyBullet enemyBullet = go.GetComponent<EnemyBullet>();
+        enemyBullet.SetEnemyBullet(stat);
+
+        AudioManager.Instance.PlaySFX(SFXType.Shooting);
+
+    }
 }

@@ -1,39 +1,50 @@
+using UnityEngine;
+
 public class EnemyRangedAttackState : EnemyAttackState
 {
+    private float _attackDelay;
+    private float _attackTime;
+    private bool _isAttack = true;
+
     public EnemyRangedAttackState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
     {
+        _attackTime = 0;
+        _attackDelay = enemyController.StatHandler.Data.AttackDelay;
     }
 
     public override void Enter()
     {
-        animationController.PlayAnimation(animationsData.AttackSubStateParameterHash, true);
+        base.Enter();
+
+        animationController.AttackAction += EnemyBulletSpawn;
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
 
-        if (stateMachine.PlayerStateMachine.IsDead)
-            return;
-
-        stateMachine.CheckAttackRange();
-        if (!stateMachine.IsAttacking)
+        _attackTime += Time.deltaTime;
+        if(_attackDelay <= _attackTime)
         {
-            if (stateMachine.IsTracing)
-                stateMachine.ChangeState(stateMachine.TraceState);
-            else
-                stateMachine.ChangeState(stateMachine.PatrolState);
-        }
-        else
-        {
-            stateMachine.SetDirection(stateMachine.PlayerTransform.position.x - stateMachine.ModelTrans.position.x);
+            _isAttack = true;
         }
     }
 
     public override void Exit()
     {
-        animationController.PlayAnimation(animationsData.AttackSubStateParameterHash, false);
+        base.Exit();
+        animationController.AttackAction -= EnemyBulletSpawn;
     }
 
+
+    private void EnemyBulletSpawn()
+    {
+        if(_isAttack)
+        {
+            enemyController.EnemyBulletSpawn();
+            _isAttack = false;
+            _attackTime = 0;
+        }
+    }
 
 }

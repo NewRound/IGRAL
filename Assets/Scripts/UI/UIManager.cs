@@ -47,11 +47,16 @@ public class UIManager : CustomSingleton<UIManager>
 
     private void Start()
     {
+        InitOpenUI();
+    }
+
+    public void InitOpenUI()
+    {
         int i = 0;
         foreach (UIType enumItem in Enum.GetValues(typeof(UIType)))
         {
             if ((int)enumItem > 4)
-            { 
+            {
                 var tr = transform.GetChild(i);
                 tr.gameObject.SetActive(false);
             }

@@ -8,6 +8,17 @@ public class EnemyBullet : MonoBehaviour
     private float _movementSpeed;
     private float _maxDuration;
     private float _curDuration;
+    private Transform _target;
+
+    private void OnEnable()
+    {
+        _target = GameManager.Instance.PlayerTransform;
+    }
+
+    private void Start ()
+    {
+        _target = GameManager.Instance.PlayerTransform;
+    }
 
     private void Update()
     {
@@ -21,7 +32,11 @@ public class EnemyBullet : MonoBehaviour
     }
 
     public void SetEnemyBullet(EnemySO enemySO)
-    {
+    { 
+        Vector3 targetPos = _target.position + new Vector3(0f, 1f, 0f);
+        Vector3 direction = targetPos - transform.position;
+        transform.forward = direction.normalized;
+
         _attackDamage = enemySO.Attack;
         _movementSpeed = enemySO.ProjectileSpeed;
         _maxDuration = enemySO.ProjectileDuration;

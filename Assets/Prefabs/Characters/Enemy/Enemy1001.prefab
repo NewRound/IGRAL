@@ -1935,6 +1935,7 @@ MonoBehaviour:
   stat: {fileID: 11400000, guid: 11b4ca19eb984324ea2bc283e81378a4, type: 2}
   uIEnemyHealth: {fileID: 2014377666931229930}
   EnemyArmor: {fileID: 7420963802485680229}
+  BulletSpawnPosition: {fileID: 0}
   <MovementData>k__BackingField:
     <ModelTrans>k__BackingField: {fileID: 1371392166677880880}
     <AcceleratingTime>k__BackingField: 1
