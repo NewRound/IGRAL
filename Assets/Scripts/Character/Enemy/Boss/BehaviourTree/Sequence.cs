@@ -8,22 +8,20 @@ public class Sequence : Node
     
     }
     
-    public Sequence(List<Node> children) : base() 
+    public Sequence(List<Node> children) : base(children) 
     { 
     
     }
 
     public override NodeState Evaluate()
     {
-        bool anyChildIsRunning = false;
-
         foreach (Node node in children)
         {
             switch (node.Evaluate())
             {
                 case NodeState.Running:
-                    anyChildIsRunning = true;
-                    continue;
+                    state = NodeState.Running;
+                    return state;
                 case NodeState.Success:
                     continue;
                 case NodeState.Failure:
@@ -32,11 +30,10 @@ public class Sequence : Node
                 default:
                     state = NodeState.Success;
                     return state;
-                    
             }
         }
 
-        state = anyChildIsRunning ? NodeState.Running : NodeState.Success;
+        state = NodeState.Success;
         return state;
     }
 }
