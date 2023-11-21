@@ -27,14 +27,14 @@ public class EffectViewer
 
     public IEnumerator ShowWeaponEffectWithoutDissolve(List<GameObject> goList)
     {
+        ActivateAura(true);
+        yield return CoroutineRef.GetWaitForSeconds(_data.AuraDuration);
+        ActivateAura(false);
+
         foreach (GameObject go in goList)
         {
             go.SetActive(true);
         }
-
-        ActivateAura(true);
-        yield return CoroutineRef.GetWaitForSeconds(_data.AuraDuration);
-        ActivateAura(false);
     }
 
     public IEnumerator ConcealWeaponEffectGradually(List<GameObject> goList)
@@ -53,14 +53,15 @@ public class EffectViewer
 
     public IEnumerator ConcealWeaponEffectWithoutDissolve(List<GameObject> goList)
     {
-        ActivateAura(true);
-        yield return CoroutineRef.GetWaitForSeconds(_data.AuraDuration);
-        ActivateAura(false);
-
         foreach (GameObject go in goList)
         {
             go.SetActive(false);
         }
+
+        ActivateAura(true);
+        yield return CoroutineRef.GetWaitForSeconds(_data.AuraDuration);
+        ActivateAura(false);
+
     }
 
     public void ResetData()
@@ -74,6 +75,4 @@ public class EffectViewer
         float activeFloat = isActive ? 1 : 0;
         _data.AuraMaterial.SetFloat(_data.ActiveProperty, activeFloat);
     }
-
-    
 }

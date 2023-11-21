@@ -27,9 +27,6 @@ public class Sequence : Node
                 case NodeState.Failure:
                     state = NodeState.Failure;
                     return state;
-                default:
-                    state = NodeState.Success;
-                    return state;
             }
         }
 

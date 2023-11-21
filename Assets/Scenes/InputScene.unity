@@ -1232,7 +1232,7 @@ Transform:
   m_GameObject: {fileID: 1228818221}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.473, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 387175109}
@@ -1259,6 +1259,7 @@ MonoBehaviour:
   enemySO: {fileID: 11400000, guid: 11b4ca19eb984324ea2bc283e81378a4, type: 2}
   bulletPrefab: {fileID: 4268869961335013936, guid: fc56f2eb7a00be14497139269877f2c3,
     type: 3}
+  phaseSO: {fileID: 0}
 --- !u!54 &1228818224
 Rigidbody:
   m_ObjectHideFlags: 0
