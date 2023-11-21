@@ -22,9 +22,17 @@ public class CheckHpNode : Node
 
         if (nextPhaseHealth > _statHandler.Data.Health)
         {
+            if (_statHandler.Data.Health <= 0) 
+            {
+                state = NodeState.Failure;
+                return state;
+            }
+
             _currentPhase++;
             _currentPhase = _currentPhase > _totalPhase ? _totalPhase : _currentPhase;
         }
-        return base.Evaluate();
+
+        state = NodeState.Success;
+        return state;
     }
 }

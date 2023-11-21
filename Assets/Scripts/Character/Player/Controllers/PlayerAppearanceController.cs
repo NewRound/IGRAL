@@ -25,11 +25,14 @@ public class PlayerAppearanceController : MonoBehaviour
 
     [SerializeField] public Animator animator;
 
-
-    private bool _wasMaterialSet;
+    private PlayerEffectController _playerEffectController;
 
     private void Start()
     {
+        _playerEffectController = GameManager.Instance.PlayerInputController.EffectController;
+        _playerEffectController.EffectDataHandler.SetDissolveMaterial(Mutant_Stone[0].GetComponentInChildren<MeshRenderer>().sharedMaterial);
+        _playerEffectController.ResetViewerData();
+
         mutantType = MutantType.None;
         OnOffMutant(MutantType.None, true);
         OnOffMutant(MutantType.Stone, false);
@@ -40,7 +43,7 @@ public class PlayerAppearanceController : MonoBehaviour
 
     public void ChangeMutant(MutantType type)
     {
-        if(type == MutantType.Skin || mutantType == MutantType.Sheld)
+        if(type == MutantType.Skin || type == MutantType.Sheld)
         {
             if(mutantType != MutantType.None)
             {
@@ -86,32 +89,20 @@ public class PlayerAppearanceController : MonoBehaviour
                 return;
         }
 
-        PlayerEffectController effectController = GameManager.Instance.PlayerInputController.EffectController;
 
-        if (mutantType != MutantType.None && mutantType != MutantType.Skin)
+        if (type != MutantType.None && type != MutantType.Skin)
         {
-            if (!_wasMaterialSet)
-            {
-                effectController.EffectDataHandler.SetDissolveMaterial(Mutant[0].GetComponentInChildren<MeshRenderer>().sharedMaterial);
-                effectController.ResetViewerData();
-                _wasMaterialSet = true;
-            }
-
             if (OnOff)
-                effectController.AppearWeapon(Mutant);
+                _playerEffectController.AppearWeapon(Mutant);
             else
-                effectController.DisappearWeapon(Mutant);
+                _playerEffectController.DisappearWeapon(Mutant);
         }
         else
         {
             if (OnOff)
-                effectController.AppearWeaponWithoutDissolve(Mutant);
+                _playerEffectController.AppearWeaponWithoutDissolve(Mutant);
             else
-                effectController.DisappearWeaponWithoutDissolve(Mutant);
+                _playerEffectController.DisappearWeaponWithoutDissolve(Mutant);
         }
-
-        
     }
-
-
 }
