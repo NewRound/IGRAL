@@ -6905,7 +6905,7 @@ PrefabInstance:
         type: 3}
       propertyPath: <stage01>k__BackingField.Array.data[0]
       value: 
-      objectReference: {fileID: 3395318498827927278, guid: eab15e65cee65e24c9dc77ea145223ba,
+      objectReference: {fileID: 6808942935880626619, guid: b6b074c28ffda244aa41ace463d4e3a9,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

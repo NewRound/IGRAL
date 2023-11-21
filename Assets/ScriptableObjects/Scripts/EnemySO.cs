@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnemyData", menuName = "SO/EntityData/EnemyData")]
@@ -12,4 +13,7 @@ public class EnemySO : EntitySO
     [field: SerializeField] public float Armor { get; set; }
     [field: SerializeField] public float MaxArmor { get; set; }
 
+    [field: Header("Ranged")]
+    [field: SerializeField] public float ProjectileSpeed { get; set; }
+    [field: SerializeField] public float ProjectileDuration { get; set; }
 }

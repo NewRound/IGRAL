@@ -15,7 +15,6 @@ public class EnemyController : EntityController
 
     public EnemyAnimationController AnimationController { get; private set; }
 
-
     private float time; 
 
     protected override void Awake()
@@ -79,7 +78,6 @@ public class EnemyController : EntityController
         base.OnDamaged();
     }
 
-
     public void ExcuteCoroutine(IEnumerator enumerator)
     {
         StartCoroutine(enumerator);
@@ -89,8 +87,6 @@ public class EnemyController : EntityController
     {
         StopCoroutine(enumerator);
     }
-
-    
 
     private void OnDestroy()
     {

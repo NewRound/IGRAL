@@ -31,6 +31,8 @@ MonoBehaviour:
   <EnemyID>k__BackingField: 2001
   <PreAttackDelay>k__BackingField: 0
   <IsFlying>k__BackingField: 0
-  <AttackDistance>k__BackingField: 1
+  <AttackDistance>k__BackingField: 10
   <Armor>k__BackingField: 0
   <MaxArmor>k__BackingField: 0
+  <ProjectileSpeed>k__BackingField: 2
+  <ProjectileDuration>k__BackingField: 2

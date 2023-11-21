@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -77,7 +76,12 @@ public class EnemyStateMachine : StateMachine
     public override void Move()
     {
         if (IsAttacking)
-            return;
+        {
+            SpeedRatio = 0;
+            SetDirection(0);
+            EnemyController.AnimationController.PlayAnimation(EnemyController.AnimationController.AnimationData.SpeedRatioParameterHash, SpeedRatio);
+        }
+
 
         base.Move();
     }
