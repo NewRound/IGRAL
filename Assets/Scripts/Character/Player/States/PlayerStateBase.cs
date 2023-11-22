@@ -11,8 +11,6 @@ public abstract class PlayerStateBase : StateBase
     [Header("Input")]
     protected PlayerInputAction inputActions;
 
-    
-
     public PlayerStateBase(PlayerStateMachine stateMachine)
     {
         this.stateMachine = stateMachine;
@@ -45,6 +43,7 @@ public abstract class PlayerStateBase : StateBase
     {
         InputController.MoveAction -= OnMoveInput;
         inputActions.Disable();
+        UIManager.Instance.OpenUI<UIGameOver>().Open();
     }
 
     public void InitInputActions()
