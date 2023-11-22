@@ -2,7 +2,6 @@
 
 public class PlayerWeapon : Weapon
 {
-    [field: SerializeField] private AttackSO attackData;
     private PlayerSO _playerSO;
     private PlayerAnimationController _playerAnimationController;
     private Transform _modelTrans;
