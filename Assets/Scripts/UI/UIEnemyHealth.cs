@@ -8,10 +8,10 @@ public class UIEnemyHealth : MonoBehaviour
 
     private Quaternion _cameraRotation;
     private bool _isDisplay = false;
-    private float _displayTime = 2f;
+    private float _displayTime = 1f;
     private float _time = 0f;
 
-    private void Awake()
+    private void Start()
     {
         _cameraRotation = GameManager.Instance.Camera.transform.rotation;
     }

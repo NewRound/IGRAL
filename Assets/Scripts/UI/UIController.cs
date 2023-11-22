@@ -39,6 +39,10 @@ public class UIController : CustomSingleton<UIController>
     private InputController _inputController;
     private GameObject _interactiveObject;
 
+    private void InputControllerSet()
+    {
+        _inputController = GameManager.Instance.PlayerInputController;
+    }
 
     private void Awake()
     {
@@ -55,10 +59,12 @@ public class UIController : CustomSingleton<UIController>
 
     private void Start()
     {
-        _inputController = GameManager.Instance.PlayerInputController;
 
         SwitchingAttack();
         SkillManager.Instance.SetSkillUes(_skillUse);
+
+        InputControllerSet();
+        GameManager.Instance.SceneLoad += InputControllerSet;
     }
 
     private void FixedUpdate()
