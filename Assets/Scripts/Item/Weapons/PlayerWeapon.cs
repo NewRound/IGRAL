@@ -49,10 +49,10 @@ public class PlayerWeapon : Weapon
         Debug.Log("Attack");
         foreach (RaycastHit hit in hits)
         {
-            damageable = hit.collider.GetComponent<IDamageable>();
+            EnemyController enemyController = hit.collider.GetComponentInParent<EnemyController>();
+            damageable = enemyController.StatHandler;
             if (damageable != null)
             {
-                EnemyController enemyController = hit.collider.GetComponentInParent<EnemyController>();
                 EnemyStatHandler statHandler = enemyController.StatHandler;
 
                 targetSO = statHandler.Data;
@@ -61,7 +61,6 @@ public class PlayerWeapon : Weapon
                 enemyController.StateMachine.Knockback(_modelTrans.forward, _playerSO.KnockbackPower);
 
                 Attack(_playerSO, targetSO, damageable);
-                return;
             }
 
             IInteract interactable = hit.collider.GetComponent<IInteract>();

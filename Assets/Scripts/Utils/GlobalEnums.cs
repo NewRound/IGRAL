@@ -23,4 +23,11 @@ namespace GlobalEnums
         Success,
         Failure,
     }
+
+    public enum BTValues
+    {
+        CurrentPhaseSkillCoolTime,
+        CurrentSkillElapsedTime,
+        WasSkillUsed,
+    }
 }
