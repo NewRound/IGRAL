@@ -636,7 +636,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 876
+  m_VersionIndex: 879
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2515,6 +2515,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3430049445580886215, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4291408492792258258, guid: 7b0d863f53841cc4cbdf6bafaf199315,
         type: 3}
       propertyPath: Damage
@@ -2529,6 +2534,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Laser (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298185967708539379, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661585237129201516, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847871125104573386, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2960,6 +2980,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2724938153811397475, guid: 9eb0751f346dc894cbd57197357494e9,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3020611264977413168, guid: 9eb0751f346dc894cbd57197357494e9,
         type: 3}
       propertyPath: m_Size.x
@@ -3336,6 +3361,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3430049445580886215, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4291408492792258258, guid: 7b0d863f53841cc4cbdf6bafaf199315,
         type: 3}
       propertyPath: Damage
@@ -3350,6 +3380,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Laser
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298185967708539379, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661585237129201516, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847871125104573386, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5443,6 +5488,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3430049445580886215, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4291408492792258258, guid: 7b0d863f53841cc4cbdf6bafaf199315,
         type: 3}
       propertyPath: Damage
@@ -5457,6 +5507,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Laser (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298185967708539379, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661585237129201516, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847871125104573386, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5752,6 +5817,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3430049445580886215, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4291408492792258258, guid: 7b0d863f53841cc4cbdf6bafaf199315,
         type: 3}
       propertyPath: Damage
@@ -5766,6 +5836,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Laser (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298185967708539379, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661585237129201516, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847871125104573386, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6934,6 +7019,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4582635947964521757}
     m_Modifications:
+    - target: {fileID: 16465422699500843, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 713329952426552827, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117780043173484676, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950617617434692046, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272582654383311511, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3445620772528701822, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3654155244872800710, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3759568660912081305, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
         type: 3}
       propertyPath: m_RootOrder
@@ -6989,6 +7109,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4021605383181182706, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823628665500077864, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5478082204240150932, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
         type: 3}
       propertyPath: m_Name
@@ -6998,6 +7128,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6097711834343319620, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6720305650727506068, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7689528702218888013, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

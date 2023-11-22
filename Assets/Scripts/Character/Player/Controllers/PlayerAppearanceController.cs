@@ -54,7 +54,7 @@ public class PlayerAppearanceController : MonoBehaviour
         {
             OnOffMutant(mutantType, false);
         }
-        //animator.SetInteger("MutantType", (int)type);
+        animator.SetInteger("MutantType", (int)type);
 
         mutantType = type;
         GameManager.Instance.StatHandler.UpdateSkillStat(type);
