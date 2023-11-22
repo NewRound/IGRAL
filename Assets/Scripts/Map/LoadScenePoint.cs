@@ -13,6 +13,8 @@ public class LoadScenePoint : InteractiveObject
 
     public override void Use()
     {
+        GameManager.Instance.BackUpPlayerSO();
+
         switch (scenes)
         {
             case Scenes.LobbyScene:
