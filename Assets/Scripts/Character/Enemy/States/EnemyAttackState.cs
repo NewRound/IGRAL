@@ -35,5 +35,5 @@ public class EnemyAttackState : EnemyStateBase
         animationController.PlayAnimation(animationsData.AttackSubStateParameterHash, false);
     }
 
-    
+
 }

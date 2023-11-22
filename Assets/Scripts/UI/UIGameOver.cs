@@ -12,18 +12,14 @@ public class UIGameOver : MonoBehaviour
         button.onClick.AddListener(OnButton);
     }
 
-    private void OnDisable()
+    public void Open()
     {
-        bg.alpha = 0;   
-    }
-
-    private void OnEnable()
-    {
-        bg.DOFade(1f, 2f);
+        bg.alpha = 0;
+        bg.DOFade(1f, 5f);
     }
 
     private void OnButton()
     {
-        LoadSceneManager.Instance.LoadScene("IntroScenes");
+        LoadSceneManager.Instance.LoadScene("LobbyScene");
     }
 }

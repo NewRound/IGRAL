@@ -6,6 +6,7 @@ public class EnemyController : EntityController
     [SerializeField] private EnemySO stat;
     [SerializeField] private UIEnemyHealth uIEnemyHealth;
     [SerializeField] private GameObject EnemyArmor;
+    [SerializeField] private Transform BulletSpawnPosition;
 
     public EnemyStatHandler StatHandler { get; private set; }
 
@@ -14,7 +15,6 @@ public class EnemyController : EntityController
     [field: SerializeField] public EnemyMovementData MovementData { get; private set; }
 
     public EnemyAnimationController AnimationController { get; private set; }
-
 
     private float time; 
 
@@ -79,7 +79,6 @@ public class EnemyController : EntityController
         base.OnDamaged();
     }
 
-
     public void ExcuteCoroutine(IEnumerator enumerator)
     {
         StartCoroutine(enumerator);
@@ -90,11 +89,21 @@ public class EnemyController : EntityController
         StopCoroutine(enumerator);
     }
 
-    
-
     private void OnDestroy()
     {
         StatHandler.DieAction -= StateMachine.Ondead;
         StatHandler.DamagedAction -= OnDamaged;
+    }
+
+    public void EnemyBulletSpawn()
+    {
+        GameObject go = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.EnemyBullet);
+        go.transform.SetPositionAndRotation(BulletSpawnPosition.position, Quaternion.identity);
+
+        EnemyBullet enemyBullet = go.GetComponent<EnemyBullet>();
+        enemyBullet.SetEnemyBullet(stat);
+
+        AudioManager.Instance.PlaySFX(SFXType.Shooting);
+
     }
 }
