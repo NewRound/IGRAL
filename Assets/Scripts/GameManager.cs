@@ -20,6 +20,7 @@ public class GameManager : CustomSingleton<GameManager>
         Time.timeScale = 1f;
 
         Debug.Log(UIManager.Instance);
+
         //Debug.Log(AudioManager.Instance);
         //Debug.Log(ItemManager.Instance);
 

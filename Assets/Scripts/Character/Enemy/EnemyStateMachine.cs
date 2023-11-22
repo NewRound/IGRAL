@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -45,8 +44,13 @@ public class EnemyStateMachine : StateMachine
 
         PatrolState = new EnemyPatrolState(this);
         TraceState = new EnemyTraceState(this);
-        AttackState = new EnemyAttackState(this);
+        if(controller.StatHandler.Data.IsRanged)
+            AttackState = new EnemyRangedAttackState(this);
+        else
+            AttackState = new EnemyAttackState(this);
         DieState = new EnemyDieState(this);
+
+
     }
 
     public override void Init()
@@ -63,9 +67,9 @@ public class EnemyStateMachine : StateMachine
     {
         if (Direction.x == 0)
         {
+            LookPreDirectionRightAway();
             return;
         }
-
         base.Look();
     }
 
@@ -77,7 +81,12 @@ public class EnemyStateMachine : StateMachine
     public override void Move()
     {
         if (IsAttacking)
-            return;
+        {
+            SpeedRatio = 0;
+            SetDirection(0);
+            EnemyController.AnimationController.PlayAnimation(EnemyController.AnimationController.AnimationData.SpeedRatioParameterHash, SpeedRatio);
+        }
+
 
         base.Move();
     }
