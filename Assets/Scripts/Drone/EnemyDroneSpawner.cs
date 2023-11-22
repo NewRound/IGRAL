@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyDroneSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float durationTime;
 
-    // Update is called once per frame
-    void Update()
+    public void SpawnDrone()
     {
-        
+        GameObject _enemyDrone = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.EnemyDrone);
+        _enemyDrone.transform.position = transform.position;
+
+        EnemyDrone _drone = _enemyDrone.GetComponent<EnemyDrone>();
+        _drone.ActiveDrone(durationTime);
     }
 }

@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6972390640826292499
 MonoBehaviour:
@@ -46,7 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <prefabs>k__BackingField:
   - {fileID: 8557774888783762140, guid: 10438cf6aba9e3644b4e295bc3147315, type: 3}
+  - {fileID: 3627069796774146742, guid: a05f0378f5fd02149be782201eaf8ca2, type: 3}
   - {fileID: 1265579702484801395, guid: 3a507462cec0c9c45b8eec6207c9fbc9, type: 3}
+  - {fileID: 1265579702484801395, guid: dde74aed46d4dad4795db9d476307e3f, type: 3}
+  - {fileID: 1265579702484801395, guid: 4901e2694b797594dba47e80f8d11648, type: 3}
   <stage01>k__BackingField:
   - {fileID: 6808942935880626619, guid: b6b074c28ffda244aa41ace463d4e3a9, type: 3}
   <stage02>k__BackingField:
