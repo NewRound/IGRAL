@@ -29,7 +29,7 @@ public class PatrolNode : Node
         _rigid.velocity = velocity;
 
         float horizontalDistance = isWaypointLeft ? horizontalSub : -horizontalSub;
-        if (horizontalDistance < 0.01f)
+        if (horizontalDistance < 0.1f)
         {
             _currentWayPointIndex = -1;
             state = NodeState.Success;

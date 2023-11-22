@@ -5,24 +5,24 @@ using UnityEngine;
 
 public class CheckHpNode : Node
 {
-    private EnemyStatHandler _statHandler;
+    private BossBehaviourTree _bossBehaviourTree;
     private int _totalPhase;
     private int _currentPhase = 1;
 
     // PhaseSO로 바꿔야할 듯 Phase마다 
-    public CheckHpNode(EnemyStatHandler enemyStatHandler, int totalPhase)
+    public CheckHpNode(BossBehaviourTree bossBehaviourTree, int totalPhase)
     {
-        _statHandler = enemyStatHandler;
+        _bossBehaviourTree = bossBehaviourTree;
         _totalPhase = totalPhase;
     }
 
     public override NodeState Evaluate()
     {
-        float nextPhaseHealth = (_totalPhase - _currentPhase) / _totalPhase * _statHandler.Data.MaxHealth;
+        float nextPhaseHealth = _bossBehaviourTree.StatHandler.Data.MaxHealth * (_totalPhase - _currentPhase) / _totalPhase ;
 
-        if (nextPhaseHealth > _statHandler.Data.Health)
+        if (nextPhaseHealth > _bossBehaviourTree.StatHandler.Data.Health)
         {
-            if (_statHandler.Data.Health <= 0) 
+            if (_bossBehaviourTree.StatHandler.Data.Health <= 0) 
             {
                 state = NodeState.Failure;
                 return state;
@@ -30,6 +30,7 @@ public class CheckHpNode : Node
 
             _currentPhase++;
             _currentPhase = _currentPhase > _totalPhase ? _totalPhase : _currentPhase;
+            _bossBehaviourTree.SetCurrenPhase(_currentPhase);
         }
 
         state = NodeState.Success;

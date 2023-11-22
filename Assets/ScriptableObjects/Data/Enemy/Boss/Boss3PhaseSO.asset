@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a120b642bc609d64585979c499f6a7f9, type: 3}
-  m_Name: Boss3
+  m_Name: Boss3PhaseSO
   m_EditorClassIdentifier: 
-  phaseInfo:
+  <PhaseInfo>k__BackingField:
   - <PhaseNum>k__BackingField: 1
     <weaponPrefab>k__BackingField: {fileID: 0}
     <SkillCoolTime>k__BackingField: 10
