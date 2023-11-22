@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : CustomSingleton<GameManager>
 {
 
+    private MainCam _mainCamPrefab;
+
     [field: SerializeField] public Camera Camera { get; private set; }
     [field: SerializeField] public Transform PlayerTransform { get; private set; }
     [field: SerializeField] public InputController PlayerInputController { get; private set; }
