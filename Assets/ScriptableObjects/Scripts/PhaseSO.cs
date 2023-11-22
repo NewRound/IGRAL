@@ -3,5 +3,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PhaseSO", menuName = "Boss/PhaseSO")]
 public class PhaseSO : ScriptableObject
 {
-    [SerializeField] private PhaseInfo[] phaseInfo;
+    [field: SerializeField] public PhaseInfo[] PhaseInfo { get; private set; }
 }

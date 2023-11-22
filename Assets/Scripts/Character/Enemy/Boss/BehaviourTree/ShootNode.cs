@@ -9,11 +9,11 @@ public class ShootNode : Node
     private int _bulletAmount;
 
 
-    public ShootNode(Bullet bullet, Transform target, Transform spawnPoint, int amount)
+    public ShootNode(Bullet bullet, Transform spawnPoint, Transform target, int amount)
     {
         _bullet = bullet;
-        _target = target;
         _spawnPoint = spawnPoint;
+        _target = target;
         _bulletAmount = amount;
     }
 
