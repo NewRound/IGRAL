@@ -17,11 +17,19 @@ public abstract class PlayerController : EntityController
     protected override void Awake()
     {
         base.Awake();
-        StatHandler = new PlayerStatHandler(stat);
         EffectController = GetComponent<PlayerEffectController>();
         AnimationController = GetComponentInChildren<PlayerAnimationController>();
         AnimationController.Init();
         EffectController.EffectDataHandler.SetAuraMaterial(meshRenderer.sharedMaterials[1]);
+
+        if (GameManager.Instance._isSetting)
+        {
+            StatHandler = new PlayerStatHandler(GameManager.Instance.playerSO);
+        }
+        else
+        {
+            StatHandler = new PlayerStatHandler(stat);
+        }
     }
 
     protected void Start()

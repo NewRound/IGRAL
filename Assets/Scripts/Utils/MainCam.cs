@@ -9,4 +9,9 @@ public class MainCam : MonoBehaviour
     {
         _camera.Follow = GameManager.Instance.PlayerTransform;
     }
+
+    public void SetMainCam(Transform transform)
+    {
+        _camera.Follow = transform;
+    }
 }

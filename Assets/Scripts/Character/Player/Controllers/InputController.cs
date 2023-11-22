@@ -30,7 +30,6 @@ public class InputController : PlayerController
         InputActions = new PlayerInputAction();
         StateMachine = new PlayerStateMachine(this);
         PlayerActions = InputActions.Player;
-        DontDestroyOnLoad(gameObject);
     }
 
     private void OnEnable()
