@@ -35,6 +35,11 @@ public class TurretBullet : MonoBehaviour
         _curDuration += Time.deltaTime;
     }
 
+    public void SetDirection(Vector3 direction)
+    {
+        _direction = direction;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         InputController inputController = other.GetComponent<InputController>();
@@ -50,6 +55,10 @@ public class TurretBullet : MonoBehaviour
                 {
                     player.Damaged(_attackDamage);
                 }
+                gameObject.SetActive(false);
+            }
+            else
+            {
                 gameObject.SetActive(false);
             }
         }
