@@ -8,11 +8,14 @@ public class BossBehaviourTree : BehaviourTree
 {
     [SerializeField] private Transform[] waypoints;
     [SerializeField] private EnemySO enemySO;
+    [field: SerializeField] public Transform ModelTrans { get; private set; }
+
+    [field: SerializeField] public Transform BulletSpawnTrans { get; private set; }
+    [field: SerializeField] public Bullet BulletPrefab { get; private set; }
 
     public EnemyStatHandler StatHandler { get; private set; }
 
-    [SerializeField] private Transform bulletSpawnTrans;
-    [SerializeField] private Bullet bulletPrefab;
+    public BossAnimationController AnimationController { get; private set; }
 
     [field: SerializeField] public PhaseSO PhaseSO { get; private set; }
 
@@ -27,6 +30,8 @@ public class BossBehaviourTree : BehaviourTree
     {
         _rigid = GetComponent<Rigidbody>();
         StatHandler = new EnemyStatHandler(enemySO, null, null);
+        AnimationController = GetComponentInChildren<BossAnimationController>();
+        AnimationController.Init();
     }
 
     protected override Node SetTree()
@@ -40,7 +45,7 @@ public class BossBehaviourTree : BehaviourTree
                 new RunningCoolTimeNode(this),
                 new CheckHpNode(this, PhaseSO.PhaseInfo.Length),
                 new UpdatePhaseNode(this),
-                new PatrolNode(_rigid, waypoints, StatHandler.Data.SpeedMax),
+                new PatrolNode(this, _rigid, waypoints),
                 new Selector(new List<Node>
                 {
                     new Sequence(new List<Node>
@@ -48,13 +53,18 @@ public class BossBehaviourTree : BehaviourTree
                         new CheckSkillCoolTimeNode(this),
                         new UseSkillNode(this)
                     }),
-                    new ShootNode(bulletPrefab, bulletSpawnTrans, GameManager.Instance.PlayerTransform ,5)
+                    new ShootNode(this, GameManager.Instance.PlayerTransform ,5)
                 }),
             }),
             new DieNode()
         });
 
         return root;
+    }
+
+    public void SetCurrenPhase(int currentPhase)
+    {
+        CurrentPhase = currentPhase;
     }
 
     private void InitBTDict()
@@ -67,10 +77,9 @@ public class BossBehaviourTree : BehaviourTree
 
         if (!BTDict.ContainsKey(BTValues.CurrentSkillElapsedTime))
             BTDict.Add(BTValues.CurrentSkillElapsedTime, 0f);
+
+        if (!BTDict.ContainsKey(BTValues.IsAnyActionPlaying))
+            BTDict.Add(BTValues.IsAnyActionPlaying, false);
     }
 
-    public void SetCurrenPhase(int currentPhase)
-    {
-        CurrentPhase = currentPhase;
-    }
 }

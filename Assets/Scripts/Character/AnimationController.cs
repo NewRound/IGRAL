@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class AnimationController : MonoBehaviour
 {
-    protected Animator animator;
+    public Animator Animator { get; private set; }
 
     [field: SerializeField] public float animationNormalizeEndedTime = 0.9f;
 
@@ -17,27 +17,27 @@ public abstract class AnimationController : MonoBehaviour
 
     public virtual void Init()
     {
-        animator = GetComponent<Animator>();
+        Animator = GetComponent<Animator>();
     }
 
     public void PlayAnimation(int animationParameterHash, bool isPlaying)
     {
-        animator.SetBool(animationParameterHash, isPlaying);
+        Animator.SetBool(animationParameterHash, isPlaying);
     }
 
     public void PlayAnimation(int animationParameterHash)
     {
-        animator.SetTrigger(animationParameterHash);
+        Animator.SetTrigger(animationParameterHash);
     }
 
     public void PlayAnimation(int animationParameterHash, int integerValue)
     {
-        animator.SetInteger(animationParameterHash, integerValue);
+        Animator.SetInteger(animationParameterHash, integerValue);
     }
 
     public void PlayAnimation(int animationParameterHash, float floatValue)
     {
-        animator.SetFloat(animationParameterHash, floatValue);
+        Animator.SetFloat(animationParameterHash, floatValue);
     }
 
 }

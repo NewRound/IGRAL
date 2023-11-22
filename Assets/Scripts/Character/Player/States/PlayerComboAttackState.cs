@@ -23,7 +23,7 @@ public class PlayerComboAttackState : PlayerAttackState
     {
         base.UpdateState();
 
-        float normalizeTime = animationController.GetNormalizeTime(AnimTag.Attack, (int)GlobalEnums.AnimatorLayer.UpperLayer);
+        float normalizeTime = AnimationUtil.GetNormalizeTime(animationController.Animator, AnimTag.Attack, (int)GlobalEnums.AnimatorLayer.UpperLayer);
 
         if (normalizeTime >= 1f)
         {
@@ -42,7 +42,7 @@ public class PlayerComboAttackState : PlayerAttackState
 
     private void OnAttackInputted()
     {
-        float normalizeTime = animationController.GetNormalizeTime(AnimTag.Attack, (int)GlobalEnums.AnimatorLayer.UpperLayer);
+        float normalizeTime = AnimationUtil.GetNormalizeTime(animationController.Animator, AnimTag.Attack, (int)GlobalEnums.AnimatorLayer.UpperLayer);
 
         if (normalizeTime >= HALF)
             _wasNextComboInputted = true;

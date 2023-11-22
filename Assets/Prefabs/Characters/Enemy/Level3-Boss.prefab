@@ -52,11 +52,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  enemySO: {fileID: 11400000, guid: 11b4ca19eb984324ea2bc283e81378a4, type: 2}
-  bulletSpawnTrans: {fileID: 7544288561488976803}
-  bulletPrefab: {fileID: 4268869961335013936, guid: fc56f2eb7a00be14497139269877f2c3,
-    type: 3}
-  <PhaseSO>k__BackingField: {fileID: 11400000, guid: 28b804820a79b1543ab75b1290f51481,
+  enemySO: {fileID: 11400000, guid: 974c641b61e731c4a97358e010a33691, type: 2}
+  <ModelTrans>k__BackingField: {fileID: 6406190111366039798}
+  <BulletSpawnTrans>k__BackingField: {fileID: 0}
+  <BulletPrefab>k__BackingField: {fileID: 0}
+  <PhaseSO>k__BackingField: {fileID: 11400000, guid: 9fe8d0918bd9d904ebfcbe42a2c7d909,
     type: 2}
 --- !u!54 &4524733073284446991
 Rigidbody:
@@ -704,7 +704,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3301794895128102740}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1014623955112378, guid: 97f7e6b749ccd1b4fbd20203ba928e47,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2482356502769345491}
   m_SourcePrefab: {fileID: 100100000, guid: 97f7e6b749ccd1b4fbd20203ba928e47, type: 3}
 --- !u!4 &6405847183503827664 stripped
 Transform:
@@ -724,6 +728,32 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6410436931257670636}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6410285449709111894 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1014623955112378, guid: 97f7e6b749ccd1b4fbd20203ba928e47,
+    type: 3}
+  m_PrefabInstance: {fileID: 6410436931257670636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2482356502769345491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6410285449709111894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c2aa24487f0b0448b5576e09af8226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationNormalizeEndedTime: 0.9
+  <AnimationData>k__BackingField:
+    moveParameter: '@Move'
+    attackParameter: '@Attack'
+    speedRatioParameter: SpeedRatio
+    dieParameter: Die
+    skillParameter: Skill
+    PhaseParameter: Phase
 --- !u!4 &6411311575507289178 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4503067133140918, guid: 97f7e6b749ccd1b4fbd20203ba928e47,

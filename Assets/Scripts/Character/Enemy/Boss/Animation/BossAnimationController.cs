@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossAnimationController : AnimationController
 {
-    public BossAnimationData AnimationData { get; private set; }
+    [field: SerializeField] public BossAnimationData AnimationData { get; private set; }
 
     public override void Init()
     {

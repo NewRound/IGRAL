@@ -22,7 +22,7 @@ public class PlayerRollState : PlayerStateBase
 
     private void CheckRollingEnded()
     {
-        if (animationController.CheckCurrentAnimationEnded(animationsData.RollParameterHash))
+        if (AnimationUtil.CheckCurrentAnimationEnded(animationController.Animator, animationsData.RollParameterHash, animationController.animationNormalizeEndedTime))
         {
             stateMachine.RollDataHandler.SetIsRolling(false);
 
