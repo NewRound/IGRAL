@@ -49,9 +49,10 @@ public class PlayerWeapon : Weapon
         foreach (RaycastHit hit in hits)
         {
             EnemyController enemyController = hit.collider.GetComponentInParent<EnemyController>();
-            damageable = enemyController.StatHandler;
-            if (damageable != null)
+
+            if (enemyController != null)
             {
+                damageable = enemyController.StatHandler;
                 EnemyStatHandler statHandler = enemyController.StatHandler;
 
                 targetSO = statHandler.Data;

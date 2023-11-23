@@ -15,7 +15,7 @@ public enum SFXType
     , Shooting
     , Drop
     , Pickup
-
+    , Boom
     , Max
 }
 
