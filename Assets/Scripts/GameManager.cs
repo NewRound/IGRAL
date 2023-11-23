@@ -22,6 +22,13 @@ public class GameManager : CustomSingleton<GameManager>
     public bool _isSetting { get; private set; } = false;
     public PlayerSO playerSO { get; private set; }
 
+    public bool isTutorial = false;
+
+    private void Awake()
+    {
+        //isTutorial = PlayerPrefs.GetInt("Tutorial") == 1 ? true : false;
+    }
+
     private void Start()
     {
         SetPlayerAndCam();
@@ -31,6 +38,7 @@ public class GameManager : CustomSingleton<GameManager>
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         DontDestroyOnLoad(gameObject);
+
     }
 
     private void StartBGM()
@@ -63,11 +71,16 @@ public class GameManager : CustomSingleton<GameManager>
 
         //임시 배경음 시작
         Invoke("StartBGM", 1f);
+        //_isSetting = true;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         SetPlayerAndCam();
+
+        if (SceneLoad == null)
+            return;
+
         SceneLoad();
     }
 

@@ -8,17 +8,13 @@ public class DestroyObject : MonoBehaviour, IInteract
     private float _spreadPower;
 
     private PlayerAppearanceController _player;
+    private AudioManager _audioManager;
 
     private Collider _myCollider;
-    private AudioSource _audioSource;
-    private AudioClip _audioClip;
 
     private void Awake()
     {
         _myCollider = GetComponent<Collider>();
-
-        _audioSource = GetComponent<AudioSource>();
-        _audioClip = _audioSource.clip;
     }
 
     private void Start()
@@ -26,6 +22,7 @@ public class DestroyObject : MonoBehaviour, IInteract
         _myCollider.enabled = true;
 
         _player = GameManager.Instance.PlayerAppearanceController;
+        _audioManager = AudioManager.Instance;
 
         _destroyableObj.SetActive(true);
         if (_destroyedObj != null) _destroyedObj.SetActive(false);
@@ -40,7 +37,7 @@ public class DestroyObject : MonoBehaviour, IInteract
     {
         if (_player.mutantType != MutantType.Stone) return;
 
-        _audioSource.PlayOneShot(_audioClip); // 효과음
+        _audioManager.PlaySFX(SFXType.Boom);
         SpreadParticle(); // 파편
 
         _myCollider.enabled = false;

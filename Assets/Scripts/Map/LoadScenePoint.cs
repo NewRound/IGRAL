@@ -2,9 +2,9 @@ using UnityEngine;
 
 enum Scenes
 {
-    LobbyScene,
-    SampleScene,
-    LoadScene,
+    LobbyScene
+    , SampleScene
+    , TutorialMap
 }
 
 public class LoadScenePoint : InteractiveObject
@@ -23,10 +23,8 @@ public class LoadScenePoint : InteractiveObject
             case Scenes.SampleScene:
                 LoadSceneManager.Instance.LoadScene("SampleScene");
                 break;
-            case Scenes.LoadScene:
-                LoadSceneManager.Instance.LoadScene("LoadScene");
-                break;
-            default:
+            case Scenes.TutorialMap:
+                LoadSceneManager.Instance.LoadScene("TutorialMap");
                 break;
         }
     }

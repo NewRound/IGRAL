@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5474355188766898003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7963358809239355430}
+  - component: {fileID: 111450381143038268}
+  - component: {fileID: 113568447283196203}
+  m_Layer: 6
+  m_Name: TutorialArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7963358809239355430
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5474355188766898003}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 36, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &111450381143038268
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5474355188766898003}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 24, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &113568447283196203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5474355188766898003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541cfafec81955c47a53b0f07df075fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCount: 0
+  size: 0
+  position: {x: 0, y: 0, z: 0}
+  enemys: []
+  _player:
+    serializedVersion: 2
+    m_Bits: 128
+  _enemy:
+    serializedVersion: 2
+    m_Bits: 256
+  explain: 0
+  uITutorialPrefab: {fileID: 4906032353796816337, guid: 6a3c48d981f381e469f5cbc960223243,
+    type: 3}
+  sprites:
+  - {fileID: 21300000, guid: d3c7f8cfbfc68ec4ab9c694f02ad3dae, type: 3}
+  - {fileID: 21300000, guid: d3c7f8cfbfc68ec4ab9c694f02ad3dae, type: 3}
+  - {fileID: 21300000, guid: 7197282f719419f49b2db074231b5c3c, type: 3}
+  - {fileID: 21300000, guid: c3bfdae1fbc34634f85d0d5847938b79, type: 3}
+  - {fileID: 21300000, guid: a1dc992fe70e5fd4a9e60457e744e724, type: 3}

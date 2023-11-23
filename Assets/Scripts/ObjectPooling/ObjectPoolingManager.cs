@@ -17,6 +17,8 @@ public class ObjectPoolingManager : CustomSingleton<ObjectPoolingManager>
 
     [field: SerializeField] public GameObject[] prefabs { get; private set; }
 
+    [field: SerializeField] public GameObject[] tutorial { get; private set; }
+
     [field: SerializeField] public GameObject[] stage01 { get; private set; }
     [field: SerializeField] public GameObject[] stage02 { get; private set; }
     [field: SerializeField] public GameObject[] stage03 { get; private set; }
@@ -27,7 +29,6 @@ public class ObjectPoolingManager : CustomSingleton<ObjectPoolingManager>
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -120,6 +121,36 @@ public class ObjectPoolingManager : CustomSingleton<ObjectPoolingManager>
         if (!select)
         {
             select = Instantiate(temp[index], transform);
+            enemyPools[index].Add(select);
+        }
+
+        return select;
+    }
+
+    public GameObject GetEnemyTutorial(int index)
+    {
+        enemyPools = new List<GameObject>[tutorial.Length];
+
+        for (int i = 0; i < tutorial.Length; i++)
+        {
+            enemyPools[i] = new List<GameObject>();
+        }
+
+        GameObject select = null;
+
+        foreach (GameObject item in enemyPools[index])
+        {
+            if (!item.activeSelf)
+            {
+                select = item;
+                select.SetActive(true);
+                break;
+            }
+        }
+
+        if (!select)
+        {
+            select = Instantiate(tutorial[index], transform);
             enemyPools[index].Add(select);
         }
 
