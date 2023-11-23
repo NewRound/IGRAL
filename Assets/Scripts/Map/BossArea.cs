@@ -6,57 +6,33 @@ public class BossArea : MonoBehaviour
     [Header("AreaData")]
     [SerializeField] public float size;
     [SerializeField] public Vector3 position;
+    [SerializeField] private Transform SpawnPoint;
+    [SerializeField] private Transform[] Waypoints;
+    [SerializeField] private GameObject[] Platform;
 
-    [SerializeField] public List<EnemyController> enemys = new List<EnemyController>();
+    [SerializeField] private GameObject BossPrefab;
+
+    [SerializeField] private IObject escapeObject;
+
     private bool PlayerInArea = false;
+    private bool BossSpawned = false;
+    private bool BossDied = false;
+
 
     private void Start()
     {
         position = transform.position;
         size = (MapGenerator.Instance.tileSize * size) - 1;
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
-        {
-
-            enemys.Add(other.GetComponent<EnemyController>());
-            other.GetComponent<EnemyController>().StatHandler.DieAction += UpdateEnemyDied;
-            // enemy ==> float, float <발판의 중앙 x 값,  길이의 -1 값.>
-            SendAreaInfo(other.gameObject);
-
-            if (PlayerInArea)
-            {
-                enemys[enemys.Count - 1].StateMachine.SetIsTracing(true);
-            }
-        }
-
-        if (other.gameObject.tag == "Player")
+        InputController player = other.GetComponent<InputController>();
+        if(player != null)
         {
             PlayerInArea = true;
-            foreach (EnemyController enemy in enemys)
-            {
-                enemy.StateMachine.SetIsTracing(true);
-            }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            enemys.Remove(other.GetComponent<EnemyController>());
-        }
-
-        if (other.gameObject.tag == "Player")
-        {
-            PlayerInArea = false;
-            foreach (EnemyController enemy in enemys)
-            {
-                enemy.StateMachine.SetIsTracing(false);
-            }
+            if(!BossSpawned)
+                SpawnBoss();
         }
     }
 
@@ -67,15 +43,20 @@ public class BossArea : MonoBehaviour
         enemyStateMachine.Init();
     }
 
-    void UpdateEnemyDied()
+    public void BossIsDead()
     {
-        foreach (EnemyController enemy in enemys)
+        if (!BossDied)
         {
-            if (enemy.StateMachine.IsDead)
-            {
-                enemys.Remove(enemy);
-                return;
-            }
+            escapeObject.Use();
+            BossDied = true;
         }
+    }
+
+    public void SpawnBoss()
+    {
+        GameObject Boss = Instantiate(BossPrefab);
+        Boss.transform.position = SpawnPoint.position;
+        
+        BossSpawned = true;
     }
 }
