@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EnemyDrone : MonoBehaviour
@@ -8,23 +9,24 @@ public class EnemyDrone : MonoBehaviour
 
     [Header("# Move Info")]
     [SerializeField] private float _movementSpeed;
-
-    private Rigidbody _rigid;
-
+    
     private float _durationTime;
     private float _curDurationTime;
     private bool _isActive = false;
 
+    private Vector3 _direction;
+
     // 이동 - 정해진 소환위치 정해진 방향으로 이동
     // 총알 발사 - 일정 주기마다 총알을 발사
 
-    public void ActiveDrone(float durationTime)
+    public void ActiveDrone(float durationTime, Vector3 direction)
     {
         // 활성화
         _isActive = true;
         _durationTime = durationTime;
         _curDurationTime = 0.0f;
-        gameObject.SetActive(true);    
+        gameObject.SetActive(true);
+        _direction = direction;
     }
 
     private void InActiveDrone()
@@ -34,11 +36,7 @@ public class EnemyDrone : MonoBehaviour
         _durationTime = 0.0f;
         _curDurationTime = 0.0f;
         gameObject.SetActive(false);
-    }
-
-    private void Awake()
-    {
-        _rigid = GetComponent<Rigidbody>();
+        _direction = Vector3.zero;
     }
 
     private void FixedUpdate()
@@ -64,11 +62,9 @@ public class EnemyDrone : MonoBehaviour
     }
 
     private void Move()
-    {
-        Vector3 _direction = transform.position + Vector3.left;
-        Vector3 lerpPos = Vector3.Lerp(transform.position, _direction, _movementSpeed * Time.deltaTime);
-
-        _rigid.MovePosition(lerpPos);
+    {        
+        transform.forward = _direction;
+        transform.Translate(Vector3.forward * _movementSpeed * Time.deltaTime);
     }
 
     // 총알을 발사하는 메서드

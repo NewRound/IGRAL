@@ -47,7 +47,6 @@ public class Drone : MonoBehaviour
     {
         _rigid = GetComponent<Rigidbody>();
         _player = GameManager.Instance.PlayerInputController;
-
     }
 
     private void FixedUpdate()
