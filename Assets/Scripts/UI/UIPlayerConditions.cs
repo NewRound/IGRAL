@@ -29,6 +29,12 @@ public class UIPlayerConditions : MonoBehaviour
 
     private void Start()
     {
+        PlayerSOSet();
+        GameManager.Instance.SceneLoad += PlayerSOSet;
+    }
+
+    private void PlayerSOSet()
+    {
         playerSO = GameManager.Instance.StatHandler.Data;
     }
 

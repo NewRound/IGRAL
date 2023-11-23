@@ -1,23 +1,60 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : CustomSingleton<GameManager>
 {
 
-    [field: SerializeField] public Camera Camera { get; private set; }
-    [field: SerializeField] public Transform PlayerTransform { get; private set; }
-    [field: SerializeField] public InputController PlayerInputController { get; private set; }
-    [field: SerializeField] public PlayerAppearanceController PlayerAppearanceController { get; private set; }
+    [SerializeField] private MainCam _mainCamPrefab;
+    [SerializeField] private GameObject _playerObjectPrefab;
+
+    public Camera Camera { get; private set; }
+    public Transform PlayerTransform { get; private set; }
+    public InputController PlayerInputController { get; private set; }
+    public PlayerAppearanceController PlayerAppearanceController { get; private set; }
 
     public PlayerStatHandler StatHandler { get; private set; }
 
     public int currentStage = 1;
 
+    public Action SceneLoad;
+
+    public bool _isSetting { get; private set; } = false;
+    public PlayerSO playerSO { get; private set; }
+
     private void Start()
     {
-        StatHandler = PlayerInputController.StatHandler;
+        SetPlayerAndCam();
 
         Time.timeScale = 1f;
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void StartBGM()
+    {
+        AudioManager.Instance.SetStage(2);
+    }
+
+    private void SetPlayerAndCam()
+    {
+        GameObject playerObject = Instantiate(_playerObjectPrefab);
+        MainCam mainCam = Instantiate(_mainCamPrefab);
+        Camera = mainCam.GetComponentInChildren<Camera>();
+
+        PlayerTransform = playerObject.transform;
+        PlayerInputController = playerObject.GetComponent<InputController>();
+        PlayerAppearanceController = playerObject.GetComponent<PlayerAppearanceController>();
+
+        mainCam.SetMainCam();
+        StatHandler = PlayerInputController.StatHandler;
+
+        PlayerPosition(Vector3.zero);
+
+        if (_isSetting)
+            return;
 
         Debug.Log(UIManager.Instance);
 
@@ -26,21 +63,18 @@ public class GameManager : CustomSingleton<GameManager>
 
         //임시 배경음 시작
         Invoke("StartBGM", 1f);
-        SceneManager.sceneLoaded += OnSceneLoaded;
-
-        DontDestroyOnLoad(gameObject);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        PlayerTransform.position = Vector3.zero;
+        SetPlayerAndCam();
+        SceneLoad();
     }
 
-    private void StartBGM()
+    public void PlayerPosition(Vector3 pos)
     {
-        AudioManager.Instance.SetStage(2);
+        PlayerTransform.position = pos;
     }
-
 
     public void StopGameTime()
     {
@@ -50,5 +84,16 @@ public class GameManager : CustomSingleton<GameManager>
     public void PlayGameTime()
     {
         Time.timeScale = 1f;
+    }
+
+    public void BackUpPlayerSO()
+    {
+        playerSO = Instantiate(StatHandler.Data);
+    }
+
+    public void PlayerAllRecovered()
+    {
+        StatHandler.Recovery(playerSO.MaxHealth);
+        StatHandler.RecoveryKcal(playerSO.MaxKcal);
     }
 }

@@ -23,6 +23,12 @@ public class SkillUse : MonoBehaviour
 
     private void Start()
     {
+        SceneLoad();
+        GameManager.Instance.SceneLoad += SceneLoad;
+    }
+
+    private void SceneLoad()
+    {
         mutantController = GameManager.Instance.PlayerTransform.GetComponent<PlayerAppearanceController>();
         curData = GameManager.Instance.StatHandler.Data;
         _playerStatHandler = GameManager.Instance.StatHandler;
