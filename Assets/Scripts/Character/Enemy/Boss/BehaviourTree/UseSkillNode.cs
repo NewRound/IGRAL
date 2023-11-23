@@ -6,36 +6,38 @@ public class UseSkillNode : Node
 {
     private BossBehaviourTree _bossBehaviourTree;
     private BossAnimationController _animationController;
-    private PhaseSO _phaseSO;
     private Dictionary<BTValues, object> _btDict = new Dictionary<BTValues, object>();
+
+    private Boss3Phase1 _phase1;
 
     public UseSkillNode(BossBehaviourTree bossBehaviourTree)
     {
         _bossBehaviourTree = bossBehaviourTree;
         _animationController = _bossBehaviourTree.AnimationController;
-        _phaseSO = _bossBehaviourTree.PhaseSO;
         _btDict = _bossBehaviourTree.BTDict;
+        _phase1 = new Boss3Phase1(_bossBehaviourTree.DefaultWeapon, _bossBehaviourTree.BulletSpawnTrans, _animationController);
     }
 
     public override NodeState Evaluate()
     {
-        float normalizedTime = AnimationUtil.GetNormalizeTime(_animationController.Animator, AnimTag.Action, (int)AnimatorLayer.UpperLayer);
-        if (normalizedTime > 1f)
-        {
-            _animationController.PlayAnimation(_animationController.AnimationData.AttackSubStateParameterHash, false);
-            _animationController.PlayAnimation(_animationController.AnimationData.SkillParameterHash, false);
-            _btDict[BTValues.IsAnyActionPlaying] = false;
-            _btDict[BTValues.WasSkillUsed] = false;
-        }
+        SetAttackEvent();
+
+        _bossBehaviourTree.LookRightAway();
 
         _animationController.PlayAnimation(_animationController.AnimationData.AttackSubStateParameterHash, true);
-        _animationController.PlayAnimation(_animationController.AnimationData.SkillParameterHash, true);
+        _animationController.PlayAnimation(_animationController.AnimationData.SkillSubParameterHash, true);
         _animationController.PlayAnimation(_animationController.AnimationData.PhaseParameterHash, _bossBehaviourTree.CurrentPhase);
         _btDict[BTValues.IsAnyActionPlaying] = true;
         _btDict[BTValues.WasSkillUsed] = true;
 
-        //_phaseSO.PhaseInfo[_bossBehaviourTree.CurrentPhase - 1].weaponPrefab;
-        state = NodeState.Success; 
+        state = NodeState.Success;
         return state;
+    }
+
+    private void SetAttackEvent()
+    {
+        _animationController.AttackAction += _phase1.UseSkill;
+        _animationController.PreSkillAction += _phase1.ChangeToNewWeapon;
+        _animationController.PostSkillAction += _phase1.ChangeToDefaultWeapon;
     }
 }

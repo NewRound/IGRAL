@@ -18,7 +18,7 @@ public class Selector : Node
     public override NodeState Evaluate()
     {
         foreach (Node node in children)
-        {
+        {            
             switch (node.Evaluate())
             {
                 case NodeState.Running:

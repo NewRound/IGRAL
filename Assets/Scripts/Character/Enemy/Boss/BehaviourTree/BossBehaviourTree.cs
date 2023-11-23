@@ -11,13 +11,14 @@ public class BossBehaviourTree : BehaviourTree
     [field: SerializeField] public Transform ModelTrans { get; private set; }
 
     [field: SerializeField] public Transform BulletSpawnTrans { get; private set; }
+    [field: SerializeField] public GameObject DefaultWeapon { get; private set; }
     [field: SerializeField] public Bullet BulletPrefab { get; private set; }
 
     public EnemyStatHandler StatHandler { get; private set; }
 
     public BossAnimationController AnimationController { get; private set; }
 
-    [field: SerializeField] public PhaseSO PhaseSO { get; private set; }
+    [field: SerializeField] public PhaseInfo[] PhaseInfoArr { get; private set; }
 
     private Rigidbody _rigid;
 
@@ -25,6 +26,9 @@ public class BossBehaviourTree : BehaviourTree
 
     public Dictionary<BTValues, object> BTDict { get; private set; } = new Dictionary<BTValues, object>();
 
+    public event Action releaseAttackAction;
+
+    public Transform PlayerTransform { get; private set; }
 
     private void Awake()
     {
@@ -43,18 +47,22 @@ public class BossBehaviourTree : BehaviourTree
             new Sequence(new List<Node>
             {
                 new RunningCoolTimeNode(this),
-                new CheckHpNode(this, PhaseSO.PhaseInfo.Length),
+                new CheckHpNode(this, PhaseInfoArr.Length),
                 new UpdatePhaseNode(this),
                 new PatrolNode(this, _rigid, waypoints),
-                new Selector(new List<Node>
+                new Sequence(new List<Node>
                 {
-                    new Sequence(new List<Node>
+                    new CheckAttackPossibleNode(this),
+                    new Selector(new List<Node>
                     {
-                        new CheckSkillCoolTimeNode(this),
-                        new UseSkillNode(this)
-                    }),
-                    new ShootNode(this, GameManager.Instance.PlayerTransform ,5)
-                }),
+                        new Sequence(new List<Node>
+                        {
+                            new CheckSkillCoolTimeNode(this),
+                            new UseSkillNode(this),
+                        }),
+                        new ShootNode(this, 5)
+                    })
+                })
             }),
             new DieNode()
         });
@@ -65,6 +73,16 @@ public class BossBehaviourTree : BehaviourTree
     public void SetCurrenPhase(int currentPhase)
     {
         CurrentPhase = currentPhase;
+    }
+
+    public void LookRightAway()
+    {
+        if (!PlayerTransform)
+            PlayerTransform = GameManager.Instance.PlayerTransform;
+
+        Vector3 direction = PlayerTransform.position - transform.position;
+        direction = direction.x > 0 ? Vector3.right : Vector3.left;
+        ModelTrans.rotation = Quaternion.LookRotation(direction);
     }
 
     private void InitBTDict()

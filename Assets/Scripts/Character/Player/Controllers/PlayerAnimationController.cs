@@ -6,7 +6,7 @@ using UnityEngine;
 public enum AnimTag
 {
     Attack,
-    Action
+    Skill,
 }
 
 public class PlayerAnimationController : AnimationController

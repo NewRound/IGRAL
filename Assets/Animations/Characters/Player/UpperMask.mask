@@ -40,7 +40,7 @@ AvatarMask:
   - m_Path: Character_SportyMale_02
     m_Weight: 0
   - m_Path: Character_ToplessMale_01
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Root
     m_Weight: 1
   - m_Path: Root/Hips

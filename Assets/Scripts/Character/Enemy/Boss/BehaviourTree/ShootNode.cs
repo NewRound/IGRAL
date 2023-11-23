@@ -7,16 +7,17 @@ public class ShootNode : Node
     private Bullet _bullet;
     private Transform _target;
     private Transform _spawnPoint;
+    private Transform _myTrans;
+    private Transform _modelTrans;
     private int _bulletAmount;
 
     private BossBehaviourTree _bossBehaviourTree;
     private BossAnimationController _animationController;
     private Dictionary<BTValues, object> _btDict = new Dictionary<BTValues, object>();
 
-    public ShootNode(BossBehaviourTree bossBehaviourTree, Transform target, int amount)
+    public ShootNode(BossBehaviourTree bossBehaviourTree, int amount)
     {
         _bossBehaviourTree = bossBehaviourTree;
-        _target = target;
         _bulletAmount = amount;
 
         _animationController = _bossBehaviourTree.AnimationController;
@@ -24,15 +25,12 @@ public class ShootNode : Node
         _bullet = _bossBehaviourTree.BulletPrefab;
         _spawnPoint = _bossBehaviourTree.BulletSpawnTrans;
 
+        _myTrans = _bossBehaviourTree.transform;
+        _modelTrans = _bossBehaviourTree.ModelTrans;
     }
 
     public override NodeState Evaluate()
     {
-        if ((bool)_btDict[BTValues.IsAnyActionPlaying] && !(bool)_btDict[BTValues.WasSkillUsed])
-        {
-            return GetStateWhileAttacking();
-        }
-
         _btDict[BTValues.IsAnyActionPlaying] = true;
         _animationController.PlayAnimation(_animationController.AnimationData.AttackSubStateParameterHash, true);
 
@@ -42,30 +40,20 @@ public class ShootNode : Node
         return state;
     }
 
-    private NodeState GetStateWhileAttacking()
-    {
-        float normalizedTime = AnimationUtil.GetNormalizeTime(_animationController.Animator, AnimTag.Action, (int)AnimatorLayer.UpperLayer);
-        if (normalizedTime > 1f)
-        {
-            _btDict[BTValues.IsAnyActionPlaying] = false;
-            _animationController.PlayAnimation(_animationController.AnimationData.AttackSubStateParameterHash, false);
-            state = NodeState.Success;
-            return state;
-        }
-        else
-        {
-            state = NodeState.Running;
-            return state;
-        }
-    }
+    
 
     private void Shoot()
     {
+        if (!_target)
+            _target = GameManager.Instance.PlayerTransform;
+
         float angle = 15;
         float modAngle = 0;
         Vector3 direction = _target.position - _spawnPoint.position;
 
         bool isRight = direction.x > 0;
+
+        _bossBehaviourTree.LookRightAway();
 
         for (int i = 0; i < _bulletAmount; i++)
         {
