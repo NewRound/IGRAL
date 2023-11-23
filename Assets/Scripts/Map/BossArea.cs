@@ -10,9 +10,9 @@ public class BossArea : MonoBehaviour
     [SerializeField] private Transform[] Waypoints;
     [SerializeField] private GameObject[] Platform;
 
-    [SerializeField] private GameObject BossPrefab;
+    [SerializeField] public IObject escapeObject;
 
-    [SerializeField] private IObject escapeObject;
+    [SerializeField] private GameObject BossPrefab;
 
     private bool PlayerInArea = false;
     private bool BossSpawned = false;
