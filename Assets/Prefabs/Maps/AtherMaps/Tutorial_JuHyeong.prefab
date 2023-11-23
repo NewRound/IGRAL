@@ -16543,7 +16543,7 @@ Transform:
   - {fileID: 2050557846842233138}
   - {fileID: 1623976357050780051}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7674465464433590295
 MonoBehaviour:
@@ -18831,8 +18831,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 7874840122975814523}
-  bullet: {fileID: 0}
-  Direction: {x: -1, y: 0}
+  delayTime: 0
+  Direction: {x: -1, y: 0, z: 0}
 --- !u!1 &8135349754446785758
 GameObject:
   m_ObjectHideFlags: 0

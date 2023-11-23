@@ -10,10 +10,9 @@ public class CuttableObject : MonoBehaviour, IInteract
     private ElevatorObject _elevator;
 
     private PlayerAppearanceController _player;
+    private AudioManager _audioManager;
 
     private Collider _myCollider;
-    private AudioSource _audioSource;
-    private AudioClip _audioClip;
 
     public event Action cutAction;
 
@@ -21,8 +20,6 @@ public class CuttableObject : MonoBehaviour, IInteract
     {
         _myCollider = GetComponent<Collider>();
 
-        _audioSource = GetComponent<AudioSource>();
-        _audioClip = _audioSource.clip;
     }
 
     private void Start()
@@ -30,6 +27,7 @@ public class CuttableObject : MonoBehaviour, IInteract
         _myCollider.enabled = true;
 
         _player = GameManager.Instance.PlayerAppearanceController;
+        _audioManager = AudioManager.Instance;
 
         _cuttableObj.SetActive(true);
         if (_cuttedObj != null) _cuttedObj.SetActive(false);
@@ -41,8 +39,8 @@ public class CuttableObject : MonoBehaviour, IInteract
     {
         if (_player.mutantType != MutantType.Blade) return;
 
-        _audioSource.PlayOneShot(_audioClip); // È¿°úÀ½
-                
+        _audioManager.PlaySFX(SFXType.Swing);
+
         _myCollider.enabled = false;
 
         _cuttableObj.SetActive(false);

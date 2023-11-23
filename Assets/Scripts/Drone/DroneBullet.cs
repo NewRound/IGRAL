@@ -1,16 +1,23 @@
 using UnityEngine;
 
+public enum BulletType
+{
+   playerDrone,
+   EnmeyDrone
+}
+
 public class DroneBullet : MonoBehaviour
 {
     [SerializeField] private float _attackDamage;
     [SerializeField] private float _movementSpeed;
     [SerializeField] private float _maxDuration;
+    [SerializeField] private BulletType _bulletType;
     private float _curDuration;
 
     private Transform _target;
 
     private void OnEnable()
-    {
+    { 
         _curDuration = 0f;
     }
 
@@ -21,13 +28,26 @@ public class DroneBullet : MonoBehaviour
 
     private void Update()
     {
-        if(_target != null)
+        Vector3 direction;
+
+        switch (_bulletType)
         {
-            Vector3 targetPos = _target.position + new Vector3(0f, 1f, 0f);
-            Vector3 direction = targetPos - transform.position;
-            transform.forward = direction.normalized;
-            transform.Translate(Vector3.forward * _movementSpeed * Time.deltaTime);
-        }
+            case BulletType.playerDrone:
+                if (_target != null)
+                {
+                    Vector3 targetPos = _target.position + new Vector3(0f, 1f, 0f);
+                    direction = targetPos - transform.position;
+                    transform.forward = direction.normalized;
+                    transform.Translate(Vector3.forward * _movementSpeed * Time.deltaTime);
+                }                
+                break;
+
+            case BulletType.EnmeyDrone:
+                direction = Vector3.down;
+                transform.forward = direction.normalized;
+                transform.Translate(Vector3.forward * _movementSpeed * Time.deltaTime);
+                break;
+        }        
 
         _curDuration += Time.deltaTime;
 
@@ -35,6 +55,7 @@ public class DroneBullet : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+
     }
 
     public void SetTarget(Transform target)
@@ -44,17 +65,35 @@ public class DroneBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        EnemyController enemyController = other.GetComponent<EnemyController>();
-        // 적에게 부딪히면 데미지 주고 비활성화
-
-        if (enemyController != null) 
+        switch(_bulletType)
         {
-            EnemyStatHandler enemy = enemyController.StatHandler;
-            if(enemy != null)
-            {
-                enemy.Damaged(_attackDamage);
-            }            
-            gameObject.SetActive(false);
-        }
+            case BulletType.playerDrone:
+                EnemyController enemyController = other.GetComponent<EnemyController>();
+
+                if (enemyController != null)
+                {
+                    EnemyStatHandler enemy = enemyController.StatHandler;
+                    if (enemy != null)
+                    {
+                        enemy.Damaged(_attackDamage);
+                    }
+                    gameObject.SetActive(false);
+                }
+                break;
+
+            case BulletType.EnmeyDrone:
+                PlayerController playerController = other.GetComponent<PlayerController>();
+
+                if(playerController != null)
+                {
+                    PlayerStatHandler player = playerController.StatHandler;
+                    if( player != null)
+                    {
+                        player.Damaged(_attackDamage);
+                    }
+                    gameObject.SetActive(false) ;
+                }
+                break;
+        }       
     }
 }
