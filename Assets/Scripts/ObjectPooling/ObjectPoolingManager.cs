@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 public enum ObjectPoolType
 {
     Drone
-    , DroneBullet
+    , EnemyDrone
+    , PlayerDroneBullet
+    , EnemyDroneBullet
     , EnemyBullet
     , TurretBullet
 }

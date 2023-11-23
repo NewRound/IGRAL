@@ -47,7 +47,6 @@ public class Drone : MonoBehaviour
     {
         _rigid = GetComponent<Rigidbody>();
         _player = GameManager.Instance.PlayerInputController;
-
     }
 
     private void FixedUpdate()
@@ -105,7 +104,7 @@ public class Drone : MonoBehaviour
     // 총알을 발사하는 메서드
     private void OnFire(RaycastHit hitInfo)
     {
-        GameObject projectile = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.DroneBullet);
+        GameObject projectile = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.PlayerDroneBullet);
         DroneBullet droneBullet = projectile.GetComponent<DroneBullet>();
         droneBullet.SetTarget(hitInfo.transform);
         droneBullet.transform.position = transform.position;        
