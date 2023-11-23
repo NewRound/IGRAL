@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2894725488433605855}
   - component: {fileID: 4020095911026595820}
   - component: {fileID: 2973656606014007825}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ Transform:
   - {fileID: 4201900037031768554}
   - {fileID: 97811190310608239}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4020095911026595820
 MonoBehaviour:
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 8377997075042321501}
   - component: {fileID: 5177600096472090823}
   - component: {fileID: 6617183496292784223}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: CuttedWire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -636,7 +636,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 876
+  m_VersionIndex: 879
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -731,7 +731,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 608117755264067274}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -782,7 +782,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2707994014044099860}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -813,7 +813,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4819505652341755942}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -857,7 +857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2651197361261542043}
   - component: {fileID: 4312136038136433661}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EndCutSceneTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -909,7 +909,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4201900037031768554}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CutSceneTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -944,7 +944,7 @@ GameObject:
   - component: {fileID: 9011598294075705291}
   - component: {fileID: 3112539443492799173}
   - component: {fileID: 1269832171292581004}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Area1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -981,7 +981,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1012,7 +1012,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4582635947964521757}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InteractableObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1050,7 +1050,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5675170349529232837}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lasers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1085,7 +1085,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4420153504119965059}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UnderGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1126,7 +1126,7 @@ GameObject:
   - component: {fileID: 8229677456414344951}
   - component: {fileID: 2107063581730299885}
   - component: {fileID: 3123277715885264554}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Area2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1163,7 +1163,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1195,7 +1195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8440060233164883135}
   - component: {fileID: 4207965233635696742}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StartCutSceneTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1251,7 +1251,7 @@ GameObject:
   - component: {fileID: 1624502628431629670}
   - component: {fileID: 195843901549725418}
   - component: {fileID: 7687320962477246881}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Wire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1803,7 +1803,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 882
+  m_VersionIndex: 1023
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1898,7 +1898,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 97811190310608239}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Areas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1933,7 +1933,7 @@ GameObject:
   - component: {fileID: 3978909183237777603}
   - component: {fileID: 8631802791309562318}
   - component: {fileID: 4891583226093385416}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DoorElevatorRight (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2016,7 +2016,7 @@ GameObject:
   - component: {fileID: 7376094869708694499}
   - component: {fileID: 8311845279860815090}
   - component: {fileID: 8752633188072317748}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DoorElevatorLeft (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2098,7 +2098,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2727305693886708696}
   - component: {fileID: 2171486286869314369}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Block2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2150,7 +2150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3842413745696564521}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2212,7 +2212,7 @@ GameObject:
   - component: {fileID: 115540942268368162}
   - component: {fileID: 526992232128381860}
   - component: {fileID: 5292248069421373709}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: CuttableObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2377,7 +2377,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 568714649223774104}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ElevatorDestination
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2409,7 +2409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7337287980207177021}
   - component: {fileID: 8923911408192780160}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Block1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2515,6 +2515,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3430049445580886215, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790069065904582930, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4291408492792258258, guid: 7b0d863f53841cc4cbdf6bafaf199315,
         type: 3}
       propertyPath: Damage
@@ -2525,10 +2535,45 @@ PrefabInstance:
       propertyPath: SpawnPoint
       value: 
       objectReference: {fileID: 2707994014044099860}
+    - target: {fileID: 4902303372065675807, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5077351844510345064, guid: 7b0d863f53841cc4cbdf6bafaf199315,
         type: 3}
       propertyPath: m_Name
       value: Laser (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5077351844510345064, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298185967708539379, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661585237129201516, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946453969706788902, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165711249968539321, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847871125104573386, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2549,6 +2594,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4582635947964521757}
     m_Modifications:
+    - target: {fileID: 781289134393373345, guid: f671337a37b727147a45a0de34c236b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1071499254454222788, guid: f671337a37b727147a45a0de34c236b4,
         type: 3}
       propertyPath: m_RootOrder
@@ -2604,10 +2654,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1437419335050712788, guid: f671337a37b727147a45a0de34c236b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573180659791288043, guid: f671337a37b727147a45a0de34c236b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2538952129180618275, guid: f671337a37b727147a45a0de34c236b4,
         type: 3}
       propertyPath: m_Name
       value: DestroyObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538952129180618275, guid: f671337a37b727147a45a0de34c236b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2947918855428930373, guid: f671337a37b727147a45a0de34c236b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5717676752561604911, guid: f671337a37b727147a45a0de34c236b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869060240851434126, guid: f671337a37b727147a45a0de34c236b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342286337987400204, guid: f671337a37b727147a45a0de34c236b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135173327384147413, guid: f671337a37b727147a45a0de34c236b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9210716032943277405, guid: f671337a37b727147a45a0de34c236b4,
         type: 3}
@@ -2633,6 +2723,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 4003456524353120414, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4677296154317652372, guid: 12f88cec2773c094eb26cc06b54a24b2,
         type: 3}
       propertyPath: m_CastShadows
@@ -2702,6 +2797,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallSciFiLarge (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842317662439091719, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2824,6 +2924,10 @@ PrefabInstance:
     - target: {fileID: 1594352956486684, guid: a900a769f8a4af141813881cb1eb838c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Beach_Staight_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1594352956486684, guid: a900a769f8a4af141813881cb1eb838c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4333473186687566, guid: a900a769f8a4af141813881cb1eb838c, type: 3}
       propertyPath: m_RootOrder
@@ -2960,6 +3064,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2724938153811397475, guid: 9eb0751f346dc894cbd57197357494e9,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3020611264977413168, guid: 9eb0751f346dc894cbd57197357494e9,
         type: 3}
       propertyPath: m_Size.x
@@ -2970,15 +3079,30 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -9.2
       objectReference: {fileID: 0}
+    - target: {fileID: 5124526862032233843, guid: 9eb0751f346dc894cbd57197357494e9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6164330164373177156, guid: 9eb0751f346dc894cbd57197357494e9,
         type: 3}
       propertyPath: delayTime
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 7286934923749631488, guid: 9eb0751f346dc894cbd57197357494e9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 9216786850769688729, guid: 9eb0751f346dc894cbd57197357494e9,
         type: 3}
       propertyPath: m_Name
       value: Turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 9216786850769688729, guid: 9eb0751f346dc894cbd57197357494e9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3207,6 +3331,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chair4
       objectReference: {fileID: 0}
+    - target: {fileID: 5797245854862327912, guid: 0b633a0dc7538c34ea7dee98a45bbb8a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6573044129035229906, guid: 0b633a0dc7538c34ea7dee98a45bbb8a,
         type: 3}
       propertyPath: m_RootOrder
@@ -3336,6 +3465,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3430049445580886215, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790069065904582930, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4291408492792258258, guid: 7b0d863f53841cc4cbdf6bafaf199315,
         type: 3}
       propertyPath: Damage
@@ -3346,10 +3485,45 @@ PrefabInstance:
       propertyPath: SpawnPoint
       value: 
       objectReference: {fileID: 2707994014044099860}
+    - target: {fileID: 4902303372065675807, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5077351844510345064, guid: 7b0d863f53841cc4cbdf6bafaf199315,
         type: 3}
       propertyPath: m_Name
       value: Laser
+      objectReference: {fileID: 0}
+    - target: {fileID: 5077351844510345064, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298185967708539379, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661585237129201516, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946453969706788902, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165711249968539321, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847871125104573386, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3374,6 +3548,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallSciFiShortMedium
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429927421535137749, guid: 5047968ca03e3f643b41fc73a13d23af,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3094824726416422255, guid: 5047968ca03e3f643b41fc73a13d23af,
         type: 3}
@@ -3434,6 +3613,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5674243151198736095, guid: 5047968ca03e3f643b41fc73a13d23af,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7476264799459331007, guid: 5047968ca03e3f643b41fc73a13d23af,
         type: 3}
@@ -3594,6 +3778,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TableSmall
       objectReference: {fileID: 0}
+    - target: {fileID: 1408673429453101506, guid: be3efe2457cfa2047aa109fb0cd60cd2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1785481169239081848, guid: be3efe2457cfa2047aa109fb0cd60cd2,
         type: 3}
       propertyPath: m_RootOrder
@@ -3649,6 +3838,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4705279181216347083, guid: be3efe2457cfa2047aa109fb0cd60cd2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8439402043024298909, guid: be3efe2457cfa2047aa109fb0cd60cd2,
         type: 3}
       propertyPath: m_CastShadows
@@ -3676,6 +3870,10 @@ PrefabInstance:
     - target: {fileID: 1702446890745766, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
       propertyPath: m_Name
       value: SM_Env_Port_Concrete_Slab_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702446890745766, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4409304740365994, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
       propertyPath: m_RootOrder
@@ -3769,6 +3967,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoffeeCup
       objectReference: {fileID: 0}
+    - target: {fileID: 1450125080095989076, guid: b259f1ffcd5d9ea4695ec7e48768edd3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2257484011199907822, guid: b259f1ffcd5d9ea4695ec7e48768edd3,
         type: 3}
       propertyPath: m_RootOrder
@@ -3846,6 +4049,10 @@ PrefabInstance:
     - target: {fileID: 1702446890745766, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
       propertyPath: m_Name
       value: SM_Env_Port_Concrete_Slab_01 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702446890745766, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4409304740365994, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
       propertyPath: m_RootOrder
@@ -3988,10 +4195,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dustbin
       objectReference: {fileID: 0}
+    - target: {fileID: 4569182424508690971, guid: ee6f417f7b3ffba4a99163866ef2c3f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5965456993677766690, guid: ee6f417f7b3ffba4a99163866ef2c3f0,
         type: 3}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8568815686287241592, guid: ee6f417f7b3ffba4a99163866ef2c3f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4012,6 +4229,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 1717458398786346877, guid: 68f7b47bfca706547a58db4d63545319,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4790517819157785049, guid: 68f7b47bfca706547a58db4d63545319,
         type: 3}
       propertyPath: m_CastShadows
@@ -4077,6 +4299,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallSciFiSmall (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6447935185386965004, guid: 68f7b47bfca706547a58db4d63545319,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7274044815429588867, guid: 68f7b47bfca706547a58db4d63545319,
         type: 3}
       propertyPath: m_CastShadows
@@ -4101,6 +4328,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4819505652341755942}
     m_Modifications:
+    - target: {fileID: 923912529851998197, guid: 27ea075e78d226147bba046adfdcd6c3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2979638692839932308, guid: 27ea075e78d226147bba046adfdcd6c3,
         type: 3}
       propertyPath: m_CastShadows
@@ -4110,6 +4342,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Desk
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627985858114904129, guid: 27ea075e78d226147bba046adfdcd6c3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4112597100936837883, guid: 27ea075e78d226147bba046adfdcd6c3,
         type: 3}
@@ -4380,6 +4617,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chair1
       objectReference: {fileID: 0}
+    - target: {fileID: 3361768397776997073, guid: 078c538ef847328408127bdd9ca57bd0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3866229211841587972, guid: 078c538ef847328408127bdd9ca57bd0,
         type: 3}
       propertyPath: m_CastShadows
@@ -4507,6 +4749,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_02
       objectReference: {fileID: 0}
+    - target: {fileID: 1264127105196670, guid: 1e3861f9ad1beae4eadd9ad081712f57, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4232250064891754, guid: 1e3861f9ad1beae4eadd9ad081712f57, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -4579,6 +4825,10 @@ PrefabInstance:
     - target: {fileID: 1702446890745766, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
       propertyPath: m_Name
       value: SM_Env_Port_Concrete_Slab_01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702446890745766, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4409304740365994, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
       propertyPath: m_RootOrder
@@ -4676,6 +4926,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallSciFiDoor (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6310303196527933532, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7679949013267981730, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
       propertyPath: m_RootOrder
@@ -4736,6 +4991,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9009795238277101268, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 731049921880096673, guid: 30f67898d193ad64f9aae16d561950d2, type: 3}
@@ -4761,6 +5021,10 @@ PrefabInstance:
     - target: {fileID: 1490646748009286, guid: b3cdda3cca11aab4b831821407447d27, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rubble_Pebbles_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490646748009286, guid: b3cdda3cca11aab4b831821407447d27, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4854328431926918, guid: b3cdda3cca11aab4b831821407447d27, type: 3}
       propertyPath: m_RootOrder
@@ -4851,6 +5115,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Port_Concrete_Slab_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1702446890745766, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4409304740365994, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -4928,6 +5196,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 1717458398786346877, guid: 68f7b47bfca706547a58db4d63545319,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4790517819157785049, guid: 68f7b47bfca706547a58db4d63545319,
         type: 3}
       propertyPath: m_CastShadows
@@ -4993,6 +5266,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallSciFiSmall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6447935185386965004, guid: 68f7b47bfca706547a58db4d63545319,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7274044815429588867, guid: 68f7b47bfca706547a58db4d63545319,
         type: 3}
       propertyPath: m_CastShadows
@@ -5017,6 +5295,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 4003456524353120414, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4677296154317652372, guid: 12f88cec2773c094eb26cc06b54a24b2,
         type: 3}
       propertyPath: m_CastShadows
@@ -5087,6 +5370,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallSciFiLarge (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6842317662439091719, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5106,6 +5394,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 731049921880096673, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1192519437320531320, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
       propertyPath: m_CastShadows
@@ -5121,6 +5414,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5230321838616344250, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5838018525353031866, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
       propertyPath: m_CastShadows
@@ -5130,6 +5428,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallSciFiDoor (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6310303196527933532, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570222921133360056, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7679949013267981730, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
@@ -5191,6 +5499,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9009795238277101268, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5210,6 +5523,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 4003456524353120414, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4677296154317652372, guid: 12f88cec2773c094eb26cc06b54a24b2,
         type: 3}
       propertyPath: m_CastShadows
@@ -5280,6 +5598,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallSciFiLarge
       objectReference: {fileID: 0}
+    - target: {fileID: 6842317662439091719, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5299,6 +5622,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 4003456524353120414, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4677296154317652372, guid: 12f88cec2773c094eb26cc06b54a24b2,
         type: 3}
       propertyPath: m_CastShadows
@@ -5368,6 +5696,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallSciFiLarge (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842317662439091719, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5443,6 +5776,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3430049445580886215, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790069065904582930, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4291408492792258258, guid: 7b0d863f53841cc4cbdf6bafaf199315,
         type: 3}
       propertyPath: Damage
@@ -5453,10 +5796,45 @@ PrefabInstance:
       propertyPath: SpawnPoint
       value: 
       objectReference: {fileID: 2707994014044099860}
+    - target: {fileID: 4902303372065675807, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5077351844510345064, guid: 7b0d863f53841cc4cbdf6bafaf199315,
         type: 3}
       propertyPath: m_Name
       value: Laser (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5077351844510345064, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298185967708539379, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661585237129201516, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946453969706788902, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165711249968539321, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847871125104573386, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5481,6 +5859,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.077
+      objectReference: {fileID: 0}
+    - target: {fileID: 731049921880096673, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1192519437320531320, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
@@ -5507,6 +5890,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5230321838616344250, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5838018525353031866, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
       propertyPath: m_CastShadows
@@ -5516,6 +5904,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallSciFiDoor (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6310303196527933532, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570222921133360056, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7679949013267981730, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
@@ -5577,6 +5975,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9009795238277101268, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -5619,6 +6022,10 @@ PrefabInstance:
     - target: {fileID: 1702446890745766, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
       propertyPath: m_Name
       value: SM_Env_Port_Concrete_Slab_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702446890745766, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4409304740365994, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
       propertyPath: m_RootOrder
@@ -5752,6 +6159,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3430049445580886215, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790069065904582930, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4291408492792258258, guid: 7b0d863f53841cc4cbdf6bafaf199315,
         type: 3}
       propertyPath: Damage
@@ -5762,10 +6179,45 @@ PrefabInstance:
       propertyPath: SpawnPoint
       value: 
       objectReference: {fileID: 2707994014044099860}
+    - target: {fileID: 4902303372065675807, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5077351844510345064, guid: 7b0d863f53841cc4cbdf6bafaf199315,
         type: 3}
       propertyPath: m_Name
       value: Laser (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5077351844510345064, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298185967708539379, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661585237129201516, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946453969706788902, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165711249968539321, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847871125104573386, guid: 7b0d863f53841cc4cbdf6bafaf199315,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5945,10 +6397,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: MachineSlerpDouble
       objectReference: {fileID: 0}
+    - target: {fileID: 931038182763941127, guid: c27a6a63ca82a734e932952848724ab3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2382799767277543595, guid: c27a6a63ca82a734e932952848724ab3,
         type: 3}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428280085346208527, guid: c27a6a63ca82a734e932952848724ab3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5997579888508275464, guid: c27a6a63ca82a734e932952848724ab3,
         type: 3}
@@ -5959,6 +6421,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784195262531383815, guid: c27a6a63ca82a734e932952848724ab3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200446190107507246, guid: c27a6a63ca82a734e932952848724ab3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6093,6 +6565,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallSciFiExtraSmall
       objectReference: {fileID: 0}
+    - target: {fileID: 3704724683858987415, guid: bed1a83824c029040b95402566ceade8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4044799625183957805, guid: bed1a83824c029040b95402566ceade8,
         type: 3}
       propertyPath: m_RootOrder
@@ -6153,6 +6630,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5967311137405060310, guid: bed1a83824c029040b95402566ceade8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6172,6 +6654,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 4003456524353120414, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4677296154317652372, guid: 12f88cec2773c094eb26cc06b54a24b2,
         type: 3}
       propertyPath: m_CastShadows
@@ -6242,6 +6729,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallSciFiLarge (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 6842317662439091719, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6261,6 +6753,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 1717458398786346877, guid: 68f7b47bfca706547a58db4d63545319,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4790517819157785049, guid: 68f7b47bfca706547a58db4d63545319,
         type: 3}
       propertyPath: m_CastShadows
@@ -6326,6 +6823,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallSciFiSmall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6447935185386965004, guid: 68f7b47bfca706547a58db4d63545319,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7274044815429588867, guid: 68f7b47bfca706547a58db4d63545319,
         type: 3}
       propertyPath: m_CastShadows
@@ -6350,6 +6852,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2894725488433605855}
     m_Modifications:
+    - target: {fileID: 3566275175523547487, guid: 512b6a03a3535e143a66fedf8103ef40,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6287740075589091277, guid: 512b6a03a3535e143a66fedf8103ef40,
         type: 3}
       propertyPath: m_Name
@@ -6434,6 +6941,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 4003456524353120414, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4677296154317652372, guid: 12f88cec2773c094eb26cc06b54a24b2,
         type: 3}
       propertyPath: m_CastShadows
@@ -6503,6 +7015,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallSciFiLarge (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842317662439091719, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6726,6 +7243,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: FloorHologramLightTripple
       objectReference: {fileID: 0}
+    - target: {fileID: 504105189585574869, guid: 1b7a2ee9948c3c04bba73b929b39c5be,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 969808782902496935, guid: 1b7a2ee9948c3c04bba73b929b39c5be,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381683911150506786, guid: 1b7a2ee9948c3c04bba73b929b39c5be,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2319224773582911076, guid: 1b7a2ee9948c3c04bba73b929b39c5be,
         type: 3}
       propertyPath: m_RootOrder
@@ -6781,6 +7313,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2459654146975270460, guid: 1b7a2ee9948c3c04bba73b929b39c5be,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2687113339629042027, guid: 1b7a2ee9948c3c04bba73b929b39c5be,
         type: 3}
       propertyPath: m_CastShadows
@@ -6791,15 +7328,45 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3329046262087736610, guid: 1b7a2ee9948c3c04bba73b929b39c5be,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3488860546006925479, guid: 1b7a2ee9948c3c04bba73b929b39c5be,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4256819297974215918, guid: 1b7a2ee9948c3c04bba73b929b39c5be,
         type: 3}
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4358283408796654521, guid: 1b7a2ee9948c3c04bba73b929b39c5be,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4733592703827386884, guid: 1b7a2ee9948c3c04bba73b929b39c5be,
         type: 3}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835394506741330024, guid: 1b7a2ee9948c3c04bba73b929b39c5be,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6535256374827058129, guid: 1b7a2ee9948c3c04bba73b929b39c5be,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058746154685408630, guid: 1b7a2ee9948c3c04bba73b929b39c5be,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7355172807524527585, guid: 1b7a2ee9948c3c04bba73b929b39c5be,
         type: 3}
@@ -6810,6 +7377,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339868806334964717, guid: 1b7a2ee9948c3c04bba73b929b39c5be,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8668052090839773284, guid: 1b7a2ee9948c3c04bba73b929b39c5be,
         type: 3}
@@ -6934,6 +7506,61 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4582635947964521757}
     m_Modifications:
+    - target: {fileID: 16465422699500843, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 713329952426552827, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117780043173484676, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950617617434692046, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962024927594493182, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074997517305921343, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272582654383311511, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349103172622280859, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228905809123444519, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3445620772528701822, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3654155244872800710, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3759568660912081305, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
         type: 3}
       propertyPath: m_RootOrder
@@ -6989,12 +7616,82 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3806018488639185067, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960393391310131191, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021605383181182706, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823628665500077864, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884506401542399533, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938788442285084607, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5478082204240150932, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
         type: 3}
       propertyPath: m_Name
       value: Elevator
       objectReference: {fileID: 0}
     - target: {fileID: 5478082204240150932, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5737463789319948689, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6097711834343319620, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480685115879567101, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6720305650727506068, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7689528702218888013, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938462056116220222, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8367751336060849925, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375748964339340788, guid: ddbaa7da960c2df4c932f1b7202ccb8e,
         type: 3}
       propertyPath: m_Layer
       value: 6
@@ -7045,6 +7742,10 @@ PrefabInstance:
     - target: {fileID: 1702446890745766, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
       propertyPath: m_Name
       value: SM_Env_Port_Concrete_Slab_01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702446890745766, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4409304740365994, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
       propertyPath: m_RootOrder
@@ -7127,6 +7828,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 4003456524353120414, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4677296154317652372, guid: 12f88cec2773c094eb26cc06b54a24b2,
         type: 3}
       propertyPath: m_CastShadows
@@ -7197,6 +7903,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallSciFiLarge (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6842317662439091719, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7219,6 +7930,10 @@ PrefabInstance:
     - target: {fileID: 1129552176155994, guid: dcc4f2b0304bbd04bb61515da38c14d7, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rubble_Pebbles_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129552176155994, guid: dcc4f2b0304bbd04bb61515da38c14d7, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4559878315142902, guid: dcc4f2b0304bbd04bb61515da38c14d7, type: 3}
       propertyPath: m_RootOrder
@@ -7404,6 +8119,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 731049921880096673, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1192519437320531320, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
       propertyPath: m_CastShadows
@@ -7419,6 +8139,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5230321838616344250, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5838018525353031866, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
       propertyPath: m_CastShadows
@@ -7428,6 +8153,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallSciFiDoor (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6310303196527933532, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570222921133360056, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7679949013267981730, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
@@ -7488,6 +8223,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9009795238277101268, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7607,6 +8347,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 4003456524353120414, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4677296154317652372, guid: 12f88cec2773c094eb26cc06b54a24b2,
         type: 3}
       propertyPath: m_CastShadows
@@ -7677,6 +8422,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallSciFiLarge (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 6842317662439091719, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7696,6 +8446,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 4003456524353120414, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4677296154317652372, guid: 12f88cec2773c094eb26cc06b54a24b2,
         type: 3}
       propertyPath: m_CastShadows
@@ -7765,6 +8520,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallSciFiLarge (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842317662439091719, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7884,6 +8644,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 4003456524353120414, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4677296154317652372, guid: 12f88cec2773c094eb26cc06b54a24b2,
         type: 3}
       propertyPath: m_CastShadows
@@ -7954,6 +8719,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallSciFiLarge (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6842317662439091719, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7973,6 +8743,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 4003456524353120414, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4677296154317652372, guid: 12f88cec2773c094eb26cc06b54a24b2,
         type: 3}
       propertyPath: m_CastShadows
@@ -8042,6 +8817,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallSciFiLarge (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842317662439091719, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8269,6 +9049,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2894725488433605855}
     m_Modifications:
+    - target: {fileID: 3566275175523547487, guid: 512b6a03a3535e143a66fedf8103ef40,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6287740075589091277, guid: 512b6a03a3535e143a66fedf8103ef40,
         type: 3}
       propertyPath: m_Name
@@ -8356,6 +9141,10 @@ PrefabInstance:
     - target: {fileID: 1702446890745766, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
       propertyPath: m_Name
       value: SM_Env_Port_Concrete_Slab_01 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702446890745766, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4409304740365994, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
       propertyPath: m_RootOrder
@@ -8537,6 +9326,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 4003456524353120414, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4677296154317652372, guid: 12f88cec2773c094eb26cc06b54a24b2,
         type: 3}
       propertyPath: m_CastShadows
@@ -8606,6 +9400,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallSciFiLarge (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842317662439091719, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8725,6 +9524,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2894725488433605855}
     m_Modifications:
+    - target: {fileID: 3566275175523547487, guid: 512b6a03a3535e143a66fedf8103ef40,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6287740075589091277, guid: 512b6a03a3535e143a66fedf8103ef40,
         type: 3}
       propertyPath: m_Name
@@ -8813,6 +9617,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.083
+      objectReference: {fileID: 0}
+    - target: {fileID: 731049921880096673, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1192519437320531320, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
@@ -8924,6 +9733,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5230321838616344250, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5838018525353031866, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
       propertyPath: m_CastShadows
@@ -8933,6 +9747,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallSciFiDoor (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6310303196527933532, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570222921133360056, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7679949013267981730, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
@@ -8993,6 +9817,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9009795238277101268, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9120,6 +9949,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 731049921880096673, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1192519437320531320, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
       propertyPath: m_CastShadows
@@ -9135,6 +9969,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5230321838616344250, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5838018525353031866, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
       propertyPath: m_CastShadows
@@ -9144,6 +9983,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallSciFiDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 6310303196527933532, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570222921133360056, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7679949013267981730, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
@@ -9205,6 +10054,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9009795238277101268, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9224,6 +10078,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 4003456524353120414, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4677296154317652372, guid: 12f88cec2773c094eb26cc06b54a24b2,
         type: 3}
       propertyPath: m_CastShadows
@@ -9293,6 +10152,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallSciFiLarge (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842317662439091719, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9416,6 +10280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Port_Concrete_Slab_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1702446890745766, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4409304740365994, guid: 367c6fe1a26480944a9793eb305d824f, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -9497,6 +10365,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 1717458398786346877, guid: 68f7b47bfca706547a58db4d63545319,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4790517819157785049, guid: 68f7b47bfca706547a58db4d63545319,
         type: 3}
       propertyPath: m_CastShadows
@@ -9562,6 +10435,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallSciFiSmall
       objectReference: {fileID: 0}
+    - target: {fileID: 6447935185386965004, guid: 68f7b47bfca706547a58db4d63545319,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7274044815429588867, guid: 68f7b47bfca706547a58db4d63545319,
         type: 3}
       propertyPath: m_CastShadows
@@ -9586,6 +10464,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 4003456524353120414, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4677296154317652372, guid: 12f88cec2773c094eb26cc06b54a24b2,
         type: 3}
       propertyPath: m_CastShadows
@@ -9656,6 +10539,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallSciFiLarge (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6842317662439091719, guid: 12f88cec2773c094eb26cc06b54a24b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9675,6 +10563,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3842413745696564521}
     m_Modifications:
+    - target: {fileID: 731049921880096673, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1192519437320531320, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
       propertyPath: m_CastShadows
@@ -9690,6 +10583,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5230321838616344250, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5838018525353031866, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
       propertyPath: m_CastShadows
@@ -9699,6 +10597,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallSciFiDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 6310303196527933532, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570222921133360056, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7679949013267981730, guid: 30f67898d193ad64f9aae16d561950d2,
         type: 3}
@@ -9759,6 +10667,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9009795238277101268, guid: 30f67898d193ad64f9aae16d561950d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
