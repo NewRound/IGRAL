@@ -26,8 +26,6 @@ public class BossBehaviourTree : BehaviourTree
 
     public Dictionary<BTValues, object> BTDict { get; private set; } = new Dictionary<BTValues, object>();
 
-    public event Action releaseAttackAction;
-
     public Transform PlayerTransform { get; private set; }
 
     private void Awake()
@@ -44,27 +42,42 @@ public class BossBehaviourTree : BehaviourTree
 
         Node root = new Selector(new List<Node>
         {
-            new Sequence(new List<Node>
+            new Sequence(new List<Node>()
             {
-                new RunningCoolTimeNode(this),
-                new CheckHpNode(this, PhaseInfoArr.Length),
-                new UpdatePhaseNode(this),
-                new PatrolNode(this, _rigid, waypoints),
-                new Sequence(new List<Node>
+                new CheckNextPhaseHP(this),
+                new UpdatePhase(this),
+            }),
+
+            new Sequence(new List<Node>()
+            {
+                new CheckDie(this),
+                new Die(this),
+            }),
+
+            new Sequence(new List<Node>()
+            {
+                new CheckCurrentState(this),
+                new Selector(new List<Node>()
                 {
-                    new CheckAttackPossibleNode(this),
-                    new Selector(new List<Node>
+                    new Sequence(new List<Node>()
                     {
-                        new Sequence(new List<Node>
-                        {
-                            new CheckSkillCoolTimeNode(this),
-                            new UseSkillNode(this),
-                        }),
-                        new ShootNode(this, 5)
+                        new Patrol(this, _rigid, waypoints),
+                        new RunningCoolTime(this),
+                        new UpdateState(this),
+                    }),
+
+                    new Sequence(new List<Node>
+                    {
+                        new Boss3Phase2(this),
+                    }),
+
+                    new Sequence(new List<Node>()
+                    {
+                        new DefaultAttack(this, 5),
+                        new RunningCoolTime(this)
                     })
                 })
             }),
-            new DieNode()
         });
 
         return root;
@@ -90,14 +103,10 @@ public class BossBehaviourTree : BehaviourTree
         if (!BTDict.ContainsKey(BTValues.CurrentPhaseSkillCoolTime))
             BTDict.Add(BTValues.CurrentPhaseSkillCoolTime, 0f);
 
-        if (!BTDict.ContainsKey(BTValues.WasSkillUsed))
-            BTDict.Add(BTValues.WasSkillUsed, false);
-
         if (!BTDict.ContainsKey(BTValues.CurrentSkillElapsedTime))
             BTDict.Add(BTValues.CurrentSkillElapsedTime, 0f);
 
-        if (!BTDict.ContainsKey(BTValues.IsAnyActionPlaying))
-            BTDict.Add(BTValues.IsAnyActionPlaying, false);
+        if (!BTDict.ContainsKey(BTValues.CurrentAction))
+            BTDict.Add(BTValues.CurrentAction, CurrentAction.Patrol);
     }
-
 }

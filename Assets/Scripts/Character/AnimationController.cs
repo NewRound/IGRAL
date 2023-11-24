@@ -15,11 +15,6 @@ public abstract class AnimationController : MonoBehaviour
         AttackAction?.Invoke();
     }
 
-    public void ResetAttackEvent()
-    {
-        AttackAction = null;
-    }
-
     public virtual void Init()
     {
         Animator = GetComponent<Animator>();
