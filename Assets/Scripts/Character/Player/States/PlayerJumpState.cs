@@ -49,7 +49,7 @@ public class PlayerJumpState : PlayerAirState
     {
         if (stateMachine.JumpCountHandler.JumpCount > 0)
         {
-            animationController.ReStartIfAnimationIsPlaying(animationsData.JumpParameterHash);
+            AnimationUtil.ReStartIfAnimationIsPlaying(animationController.Animator, animationsData.JumpParameterHash);
             stateMachine.JumpCountHandler.DecreaseJumpCount();
             Vector3 velocity = stateMachine.Rigid.velocity;
             velocity.y = InputController.StatHandler.Data.JumpingForce;

@@ -2,25 +2,25 @@
 
 public class SpeedCalculator
 {
-    protected float acceleratingTime;
-    protected float movingElapsedTime;
+    private float _acceleratingTime;
+    private float _movingElapsedTime;
 
-    public SpeedCalculator(float acceleratingTime)
+    public SpeedCalculator(float acceleratingTime = 1f)
     {
-        this.acceleratingTime = acceleratingTime;
+        _acceleratingTime = acceleratingTime;
     }
 
     public float CalculateSpeed(float speedMin, float speedMax, out float speedRatio, bool isStopped)
     {
         if (isStopped)
         {
-            movingElapsedTime = 0f;
+            _movingElapsedTime = 0f;
             speedRatio = 0f;
             return 1f;
         }
 
-        movingElapsedTime += Time.deltaTime;
-        speedRatio = movingElapsedTime / acceleratingTime;
+        _movingElapsedTime += Time.deltaTime;
+        speedRatio = _movingElapsedTime / _acceleratingTime;
         speedRatio = speedRatio > 1f ? 1f : speedRatio;
         return Mathf.Lerp(speedMin, speedMax, speedRatio);
     }
@@ -29,15 +29,13 @@ public class SpeedCalculator
     {
         if (isStopped)
         {
-            movingElapsedTime = 0f;
+            _movingElapsedTime = 0f;
             speedRatio = 0f;
             return 1f;
         }
 
-        
-
-        movingElapsedTime += Time.deltaTime;
-        speedRatio = movingElapsedTime / acceleratingTime;
+        _movingElapsedTime += Time.deltaTime;
+        speedRatio = _movingElapsedTime / _acceleratingTime;
         
         if (isPatrolState)
             speedRatio = speedRatio > 0.5f ? 0.5f : speedRatio;
