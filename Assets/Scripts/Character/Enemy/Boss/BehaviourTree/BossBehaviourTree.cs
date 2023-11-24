@@ -26,7 +26,7 @@ public class BossBehaviourTree : BehaviourTree
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody>();
-        StatHandler = new EnemyStatHandler(enemySO, null, null);
+        StatHandler = new EnemyStatHandler(enemySO, null, null,transform);
     }
 
     protected override Node SetTree()
