@@ -10,6 +10,7 @@ public enum ObjectPoolType
     , EnemyDroneBullet
     , EnemyBullet
     , TurretBullet
+    , DamagedTxt
 }
 
 public class ObjectPoolingManager : CustomSingleton<ObjectPoolingManager>

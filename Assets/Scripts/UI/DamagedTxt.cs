@@ -8,7 +8,7 @@ public class DamagedTxt : MonoBehaviour
     [SerializeField] private float _duration;
 
     private float _timer;
-    private float _damage;
+    public float _damage;
 
     private TextMeshPro _txt;
     private Color _alpha;
@@ -25,6 +25,7 @@ public class DamagedTxt : MonoBehaviour
         _timer = 0f;
         _alpha.a = 1f;
         _txt.color = _alpha;
+        _damage = 0f;
     }
 
     void Update()
@@ -36,6 +37,7 @@ public class DamagedTxt : MonoBehaviour
         if (_timer > _duration )
         {
             Init();
+            gameObject.SetActive( false );
         }
     }    
 

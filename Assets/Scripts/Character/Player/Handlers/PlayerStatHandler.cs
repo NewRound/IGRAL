@@ -102,6 +102,9 @@ public class PlayerStatHandler : IDamageable, IBurnable
         {
             DieAction?.Invoke();
         }
+        GameObject damagedTxt = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.DamagedTxt);
+        damagedTxt.transform.position = GameManager.Instance.PlayerTransform.position + new Vector3 (0f, 1.8f, 0f);
+        damagedTxt.GetComponent<DamagedTxt>()._damage = damage;
     }
 
     public void Recovery(float damage)
