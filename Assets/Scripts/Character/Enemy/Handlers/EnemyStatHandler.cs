@@ -10,11 +10,14 @@ public class EnemyStatHandler : IDamageable
     public event Action DamagedAction;
     public event Action DieAction;
 
-    public EnemyStatHandler(EnemySO data, UIEnemyHealth uIEnemyHealth, GameObject enemyArmor)
+    private Transform curTransform;
+
+    public EnemyStatHandler(EnemySO data, UIEnemyHealth uIEnemyHealth, GameObject enemyArmor, Transform baseTransform)
     {
         Data = data;
         UIEnemyHealth = uIEnemyHealth;
         EnemyArmor = enemyArmor;
+        curTransform = baseTransform;
     }
 
     public void Damaged(float damage)
@@ -30,6 +33,10 @@ public class EnemyStatHandler : IDamageable
             }
 
             UIEnemyHealth.DisplayEnemyHealth(Data.Health, Data.MaxHealth);
+
+            GameObject damagedTxt = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.EnemyDamagedTxt);
+            damagedTxt.transform.position = curTransform.position + new Vector3(0f, 1.8f, 0f);
+            damagedTxt.GetComponent<DamagedTxt>()._damage = damage;
         }
         else
         {

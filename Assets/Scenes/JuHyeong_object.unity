@@ -232,7 +232,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5172
+  m_Name: pb_Mesh-3284
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -1552,79 +1552,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
---- !u!1001 &2057314297
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2975578649796290729, guid: 1108c4ccf99a07241b3b948c2b95869d,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 1108c4ccf99a07241b3b948c2b95869d,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.975
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 1108c4ccf99a07241b3b948c2b95869d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 1108c4ccf99a07241b3b948c2b95869d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 1108c4ccf99a07241b3b948c2b95869d,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 1108c4ccf99a07241b3b948c2b95869d,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 1108c4ccf99a07241b3b948c2b95869d,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 1108c4ccf99a07241b3b948c2b95869d,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 1108c4ccf99a07241b3b948c2b95869d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 1108c4ccf99a07241b3b948c2b95869d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975578649796290729, guid: 1108c4ccf99a07241b3b948c2b95869d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3395318498827927278, guid: 1108c4ccf99a07241b3b948c2b95869d,
-        type: 3}
-      propertyPath: m_Name
-      value: 0_Enemy
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1108c4ccf99a07241b3b948c2b95869d, type: 3}
 --- !u!1001 &2093777814
 PrefabInstance:
   m_ObjectHideFlags: 0
