@@ -30,7 +30,7 @@ public class EnemyController : EntityController
         else
             EnemyArmor.SetActive(false);
 
-        StatHandler = new EnemyStatHandler(Instantiate(stat), uIEnemyHealth, EnemyArmor);
+        StatHandler = new EnemyStatHandler(Instantiate(stat), uIEnemyHealth, EnemyArmor,transform);
         StateMachine = new EnemyStateMachine(this);
 
     }
@@ -50,7 +50,7 @@ public class EnemyController : EntityController
         else
             EnemyArmor.SetActive(false);
 
-        StatHandler = new EnemyStatHandler(Instantiate(stat), uIEnemyHealth, EnemyArmor);
+        StatHandler = new EnemyStatHandler(Instantiate(stat), uIEnemyHealth, EnemyArmor,transform);
     }
 
     private void Update()
