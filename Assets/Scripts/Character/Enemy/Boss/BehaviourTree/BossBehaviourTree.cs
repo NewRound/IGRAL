@@ -8,13 +8,17 @@ public class BossBehaviourTree : BehaviourTree
 {
     [SerializeField] private Transform[] waypoints;
     [SerializeField] private EnemySO enemySO;
+    [field: SerializeField] public Transform ModelTrans { get; private set; }
+
+    [field: SerializeField] public Transform BulletSpawnTrans { get; private set; }
+    [field: SerializeField] public GameObject DefaultWeapon { get; private set; }
+    [field: SerializeField] public Bullet BulletPrefab { get; private set; }
 
     public EnemyStatHandler StatHandler { get; private set; }
 
-    [SerializeField] private Transform bulletSpawnTrans;
-    [SerializeField] private Bullet bulletPrefab;
+    public BossAnimationController AnimationController { get; private set; }
 
-    [field: SerializeField] public PhaseSO PhaseSO { get; private set; }
+    [field: SerializeField] public PhaseInfo[] PhaseInfoArr { get; private set; }
 
     private Rigidbody _rigid;
 
@@ -22,11 +26,16 @@ public class BossBehaviourTree : BehaviourTree
 
     public Dictionary<BTValues, object> BTDict { get; private set; } = new Dictionary<BTValues, object>();
 
+    public event Action releaseAttackAction;
+
+    public Transform PlayerTransform { get; private set; }
 
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody>();
         StatHandler = new EnemyStatHandler(enemySO, null, null);
+        AnimationController = GetComponentInChildren<BossAnimationController>();
+        AnimationController.Init();
     }
 
     protected override Node SetTree()
@@ -38,23 +47,42 @@ public class BossBehaviourTree : BehaviourTree
             new Sequence(new List<Node>
             {
                 new RunningCoolTimeNode(this),
-                new CheckHpNode(this, PhaseSO.PhaseInfo.Length),
+                new CheckHpNode(this, PhaseInfoArr.Length),
                 new UpdatePhaseNode(this),
-                new PatrolNode(_rigid, waypoints, StatHandler.Data.SpeedMax),
-                new Selector(new List<Node>
+                new PatrolNode(this, _rigid, waypoints),
+                new Sequence(new List<Node>
                 {
-                    new Sequence(new List<Node>
+                    new CheckAttackPossibleNode(this),
+                    new Selector(new List<Node>
                     {
-                        new CheckSkillCoolTimeNode(this),
-                        new UseSkillNode(this)
-                    }),
-                    new ShootNode(bulletPrefab, bulletSpawnTrans, GameManager.Instance.PlayerTransform ,5)
-                }),
+                        new Sequence(new List<Node>
+                        {
+                            new CheckSkillCoolTimeNode(this),
+                            new UseSkillNode(this),
+                        }),
+                        new ShootNode(this, 5)
+                    })
+                })
             }),
             new DieNode()
         });
 
         return root;
+    }
+
+    public void SetCurrenPhase(int currentPhase)
+    {
+        CurrentPhase = currentPhase;
+    }
+
+    public void LookRightAway()
+    {
+        if (!PlayerTransform)
+            PlayerTransform = GameManager.Instance.PlayerTransform;
+
+        Vector3 direction = PlayerTransform.position - transform.position;
+        direction = direction.x > 0 ? Vector3.right : Vector3.left;
+        ModelTrans.rotation = Quaternion.LookRotation(direction);
     }
 
     private void InitBTDict()
@@ -67,10 +95,9 @@ public class BossBehaviourTree : BehaviourTree
 
         if (!BTDict.ContainsKey(BTValues.CurrentSkillElapsedTime))
             BTDict.Add(BTValues.CurrentSkillElapsedTime, 0f);
+
+        if (!BTDict.ContainsKey(BTValues.IsAnyActionPlaying))
+            BTDict.Add(BTValues.IsAnyActionPlaying, false);
     }
 
-    public void SetCurrenPhase(int currentPhase)
-    {
-        CurrentPhase = currentPhase;
-    }
 }

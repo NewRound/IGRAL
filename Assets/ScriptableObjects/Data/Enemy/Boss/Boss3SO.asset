@@ -12,25 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96f489ea0b238e740a7f1f0abc1fabe1, type: 3}
   m_Name: Boss3SO
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: 20
-  <MaxHealth>k__BackingField: 20
-  <HealthRegen>k__BackingField: 0.1
-  <Defense>k__BackingField: 0
-  <EvasionProbability>k__BackingField: 0
+  <Health>k__BackingField: 100
+  <MaxHealth>k__BackingField: 100
+  <HealthRegen>k__BackingField: 0
+  <Defense>k__BackingField: 5
+  <EvasionProbability>k__BackingField: 1
   <IsInvincible>k__BackingField: 0
   <InvincibleTime>k__BackingField: 0
-  <Attack>k__BackingField: 2
+  <Attack>k__BackingField: 5
   <AttackDelay>k__BackingField: 0
-  <AttackRange>k__BackingField: 1
+  <AttackRange>k__BackingField: 0
   <CriticalProbability>k__BackingField: 0
   <CriticalMod>k__BackingField: 0
-  <SpeedMin>k__BackingField: 3
-  <SpeedMax>k__BackingField: 3
-  <KnockbackPower>k__BackingField: 1
-  <IsRanged>k__BackingField: 0
-  <EnemyID>k__BackingField: 1002
+  <SpeedMin>k__BackingField: 60
+  <SpeedMax>k__BackingField: 100
+  <KnockbackPower>k__BackingField: 0
+  <IsRanged>k__BackingField: 1
+  <EnemyID>k__BackingField: 10003
   <PreAttackDelay>k__BackingField: 0
   <IsFlying>k__BackingField: 0
-  <AttackDistance>k__BackingField: 1
-  <Armor>k__BackingField: 12
-  <MaxArmor>k__BackingField: 12
+  <AttackDistance>k__BackingField: 0
+  <Armor>k__BackingField: 0
+  <MaxArmor>k__BackingField: 0
+  <ProjectileSpeed>k__BackingField: 0
+  <ProjectileDuration>k__BackingField: 0
