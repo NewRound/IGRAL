@@ -19,6 +19,8 @@ public class TutorialArea : MonoBehaviour
     [SerializeField] private int explain;
     [SerializeField] private Sprite[] sprites;
 
+    private bool _isFirst = false;
+
     private void Start()
     {
         position = transform.position;
@@ -53,6 +55,13 @@ public class TutorialArea : MonoBehaviour
                 enemy.StateMachine.SetIsTracing(true);
             }
             OpenExplain();
+
+            if (_isFirst)
+                return;
+
+            GameManager.Instance.PlayerAllRecovered();
+            _isFirst = false;
+
         }
     }
 
