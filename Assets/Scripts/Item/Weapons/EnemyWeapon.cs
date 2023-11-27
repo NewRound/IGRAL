@@ -2,7 +2,6 @@
 
 public class EnemyWeapon : Weapon
 {
-    //[field: SerializeField] private AttackData attackData;
     private EnemySO _enemySO;
     private EnemyAnimationController _enemyAnimationController;
     private Transform _modelTrans;

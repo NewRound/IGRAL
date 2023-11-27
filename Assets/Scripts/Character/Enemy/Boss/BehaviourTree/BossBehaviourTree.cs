@@ -56,25 +56,27 @@ public class BossBehaviourTree : BehaviourTree
 
             new Sequence(new List<Node>()
             {
-                new CheckCurrentState(this),
                 new Selector(new List<Node>()
                 {
                     new Sequence(new List<Node>()
                     {
                         new Patrol(this, _rigid, waypoints),
                         new RunningCoolTime(this),
-                        new UpdateState(this),
                     }),
 
-                    new Sequence(new List<Node>
+                    new Selector(new List<Node>()
                     {
+                        new Boss3Phase1(this),
+
                         new Boss3Phase2(this),
+
+                        new Boss3Phase3(this)
                     }),
 
                     new Sequence(new List<Node>()
                     {
                         new DefaultAttack(this, 5),
-                        new RunningCoolTime(this)
+                        new RunningCoolTime(this),
                     })
                 })
             }),
@@ -108,5 +110,8 @@ public class BossBehaviourTree : BehaviourTree
 
         if (!BTDict.ContainsKey(BTValues.CurrentAction))
             BTDict.Add(BTValues.CurrentAction, CurrentAction.Patrol);
+
+        if (!BTDict.ContainsKey(BTValues.IsAttacking))
+            BTDict.Add(BTValues.IsAttacking, false);
     }
 }

@@ -205,11 +205,11 @@ AnimatorStateMachine:
     m_Position: {x: 890, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6453333010081784431}
-    m_Position: {x: 660, y: 300, z: 0}
+    m_Position: {x: 440, y: 300, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 994008268152795614}
-    m_Position: {x: 440, y: 300, z: 0}
+    m_Position: {x: 660, y: 300, z: 0}
   m_AnyStateTransitions: []
   m_EntryTransitions:
   - {fileID: 9183404146207729763}
@@ -283,7 +283,7 @@ AnimatorTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 6
     m_ConditionEvent: Phase
-    m_EventTreshold: 1
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 994008268152795614}
   m_DstState: {fileID: 0}
   m_Solo: 0
@@ -559,7 +559,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Phase1
+  m_Name: Phase2
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 6912246135146785932}
@@ -819,7 +819,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Phase2
+  m_Name: Phase1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -987,7 +987,7 @@ AnimatorTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 6
     m_ConditionEvent: Phase
-    m_EventTreshold: 2
+    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6453333010081784431}
   m_Solo: 0

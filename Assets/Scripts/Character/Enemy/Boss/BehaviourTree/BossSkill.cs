@@ -5,9 +5,12 @@ using UnityEngine;
 public abstract class BossSkill : ActionNode
 {
     protected BossAnimationController animationController;
+    protected GameObject defaultWeapon;
+
     public BossSkill(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
     {
         animationController = bossBehaviourTree.AnimationController;
+        defaultWeapon = bossBehaviourTree.DefaultWeapon;
         btDict = bossBehaviourTree.BTDict;
     }
 
@@ -20,6 +23,19 @@ public abstract class BossSkill : ActionNode
         animationController.PlayAnimation(animationController.AnimationData.PhaseParameterHash, bossBehaviourTree.CurrentPhase);
         btDict[BTValues.CurrentAction] = CurrentAction.UsingSkill;
     }
+    protected void OnSkillEnded()
+    {
+        animationController.PlayAnimation(animationController.AnimationData.AttackSubStateParameterHash, false);
+        animationController.PlayAnimation(animationController.AnimationData.SkillSubParameterHash, false);
+        btDict[BTValues.CurrentAction] = CurrentAction.Patrol;
+        btDict[BTValues.IsAttacking] = false;
+    }
 
-   
+    protected virtual void OnChargedCoolTime()
+    {
+        btDict[BTValues.CurrentSkillElapsedTime] = 0f;
+        btDict[BTValues.IsAttacking] = true;
+    }
+
+    protected abstract void Init();
 }

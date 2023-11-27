@@ -67,12 +67,14 @@ public class Patrol : ActionNode
 
             UpdateMoveAnimation(true);
 
-            state = NodeState.Failure;
+            btDict[BTValues.CurrentAction] = CurrentAction.UsingSkill;
+
+            state = NodeState.Success;
             return state;
         }
 
         UpdateMoveAnimation(false);
-        state = NodeState.Running;
+        state = NodeState.Success;
         return state;
     }
 

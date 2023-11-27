@@ -11,4 +11,5 @@ public class ActionNode : BossNode
             return true;
 
         return false;
+    }
 }

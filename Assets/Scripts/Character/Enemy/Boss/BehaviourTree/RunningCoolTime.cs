@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class RunningCoolTime : BossNode
 {
-    private float _currentElapsedTime;
     public RunningCoolTime(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
     {
+
     }
 
     public override NodeState Evaluate()
@@ -15,16 +15,14 @@ public class RunningCoolTime : BossNode
 
         btDict[BTValues.CurrentPhaseSkillCoolTime] = skillCoolTime;
 
-        if ((CurrentAction)btDict[BTValues.CurrentAction] == CurrentAction.Attack || 
-            (CurrentAction)btDict[BTValues.CurrentAction] == CurrentAction.UsingSkill)
-            _currentElapsedTime = 0f;
+        float currentElapsedTime = (float)btDict[BTValues.CurrentSkillElapsedTime];
 
-        if (_currentElapsedTime < skillCoolTime)
+        if (currentElapsedTime <= skillCoolTime)
         {
-            _currentElapsedTime += Time.deltaTime;
-            _currentElapsedTime = _currentElapsedTime > skillCoolTime ? skillCoolTime : _currentElapsedTime;
+            currentElapsedTime += Time.deltaTime;
+            currentElapsedTime = currentElapsedTime > skillCoolTime ? skillCoolTime : currentElapsedTime;
 
-            btDict[BTValues.CurrentSkillElapsedTime] = _currentElapsedTime;
+            btDict[BTValues.CurrentSkillElapsedTime] = currentElapsedTime;
             // TODO : BossUI랑 연결
         }
 

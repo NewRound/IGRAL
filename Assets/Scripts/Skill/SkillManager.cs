@@ -412,7 +412,7 @@ public class SkillManager : CustomSingleton<SkillManager>
     {
         foreach(SkillUse skillUse in _skillUse)
         {
-            skillUse.StopSkill();
+            skillUse.StopSkillRightAway();
         }
     }
 }

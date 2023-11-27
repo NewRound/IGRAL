@@ -79,6 +79,14 @@ public class SkillUse : MonoBehaviour
         SkillAction?.Invoke(false);
     }
 
+    public void StopSkillRightAway()
+    {
+        mutantController.OffCurrentMutantRightAway();
+        _currentTime = 0;
+        _isActive = false;
+        SkillAction?.Invoke(false);
+    }
+
     public virtual void UsingKcal(float kcal)
     {
         _playerStatHandler.BurnKcal(kcal);

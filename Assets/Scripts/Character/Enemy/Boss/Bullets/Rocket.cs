@@ -1,23 +1,36 @@
-﻿using System.Collections;
+﻿using GlobalEnums;
+using System.Collections;
 using UnityEngine;
 
-public class Rocket : BulletBase
+public class Rocket : Weapon
 {
     [SerializeField] private float arrvingDuration = 1f;
+    [SerializeField] private float damage = 10f;
+
     private Transform _targetTrans;
     private Vector3 _initPos;
     private Vector3 _randomPos;
     private float _elapsedTime;
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         Init();
     }
 
     private void Update()
     {
         Move();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        PlayerStatHandler statHandler = other.GetComponent<PlayerController>().StatHandler;
+
+        if (statHandler != null)
+        {
+            Attack(damage, statHandler.Data, statHandler);
+            Destroy(gameObject);
+        }
     }
 
     private void Init()
