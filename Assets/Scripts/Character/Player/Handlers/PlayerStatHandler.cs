@@ -122,7 +122,7 @@ public class PlayerStatHandler : IDamageable, IBurnable
 
     public void RecoveryKcal(float kcal)
     {
-        float curValue = Mathf.Min(Data.Kcal + kcal, Data.Kcal);
+        float curValue = Mathf.Min(Data.Kcal + kcal, Data.MaxKcal);
         Data.Kcal = curValue;
     }
 
