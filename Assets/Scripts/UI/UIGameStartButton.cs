@@ -10,6 +10,7 @@ public class UIGameStartButton : MonoBehaviour
         //Debug.Log(UIManager.Instance);
         Debug.Log(AudioManager.Instance);
         Debug.Log(ItemManager.Instance);
+        Debug.Log(DataManager.Instance);
 
         Debug.Log(LoadSceneManager.Instance);
         _startButton.onClick.AddListener(OnStartButton);

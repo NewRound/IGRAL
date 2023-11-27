@@ -42,6 +42,7 @@ public class UIController : CustomSingleton<UIController>
     private void InputControllerSet()
     {
         _inputController = GameManager.Instance.PlayerInputController;
+        SwitchingAttack();
     }
 
     private void Awake()
