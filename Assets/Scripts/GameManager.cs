@@ -23,10 +23,13 @@ public class GameManager : CustomSingleton<GameManager>
     public PlayerSO playerSO { get; private set; }
 
     public bool isTutorial = false;
+    public bool isDie = false;
 
     private void Awake()
     {
         //isTutorial = PlayerPrefs.GetInt("Tutorial") == 1 ? true : false;
+        if (DataManager.Instance == null)
+            Debug.Log(DataManager.Instance);
     }
 
     private void Start()
@@ -61,6 +64,13 @@ public class GameManager : CustomSingleton<GameManager>
 
         PlayerPosition(Vector3.zero);
 
+        if(isDie)
+        {
+            PlayerAllRecovered();
+            PlayerAppearanceController.ChangeMutant(MutantType.None);
+            isDie = false;
+        }
+
         if (_isSetting)
             return;
 
@@ -71,7 +81,8 @@ public class GameManager : CustomSingleton<GameManager>
 
         //임시 배경음 시작
         Invoke("StartBGM", 1f);
-        //_isSetting = true;
+        DataManager.Instance.BackUpPlayerSO();
+        _isSetting = true;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -99,14 +110,9 @@ public class GameManager : CustomSingleton<GameManager>
         Time.timeScale = 1f;
     }
 
-    public void BackUpPlayerSO()
-    {
-        playerSO = Instantiate(StatHandler.Data);
-    }
-
     public void PlayerAllRecovered()
     {
-        StatHandler.Recovery(playerSO.MaxHealth);
-        StatHandler.RecoveryKcal(playerSO.MaxKcal);
+        StatHandler.Recovery(StatHandler.Data.MaxHealth);
+        StatHandler.RecoveryKcal(StatHandler.Data.MaxKcal);
     }
 }
