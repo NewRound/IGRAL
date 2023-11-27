@@ -98,7 +98,7 @@ public class TutorialArea : MonoBehaviour
                 UIManager.Instance.OpenUI<UITutorial>().OpenTutorial(sprites[explain], "사이코 메트릭 변이 상태이면 적의 공격을 방어 합니다.");
                 break;
             case 4:
-                UIManager.Instance.OpenUI<UITutorial>().OpenTutorial(sprites[explain], "피부 변이 상태이면 캐릭터가 은신 상태 입니다..");
+                UIManager.Instance.OpenUI<UITutorial>().OpenTutorial(sprites[explain], "피부 변이 상태이면 캐릭터가 은신 상태 입니다.");
                 break;
         }
     }
