@@ -1,12 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class PlayerComboAttackState : PlayerAttackState
 {
     private bool _wasNextComboInputted;
-    private const float HALF = 0.5f;
 
     public PlayerComboAttackState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -23,7 +17,7 @@ public class PlayerComboAttackState : PlayerAttackState
     {
         base.UpdateState();
 
-        float normalizeTime = animationController.GetNormalizeTime(AnimTag.Attack, (int)GlobalEnums.AnimatorLayer.UpperLayer);
+        float normalizeTime = AnimationUtil.GetNormalizeTime(animationController.Animator, AnimTag.Attack, (int)GlobalEnums.AnimatorLayer.UpperLayer);
 
         if (normalizeTime >= 1f)
         {
@@ -42,9 +36,9 @@ public class PlayerComboAttackState : PlayerAttackState
 
     private void OnAttackInputted()
     {
-        float normalizeTime = animationController.GetNormalizeTime(AnimTag.Attack, (int)GlobalEnums.AnimatorLayer.UpperLayer);
+        float normalizeTime = AnimationUtil.GetNormalizeTime(animationController.Animator, AnimTag.Attack, (int)GlobalEnums.AnimatorLayer.UpperLayer);
 
-        if (normalizeTime >= HALF)
+        if (normalizeTime >= GlobalValues.HALF)
             _wasNextComboInputted = true;
     }
 

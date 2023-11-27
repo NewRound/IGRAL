@@ -6,22 +6,24 @@ public class CheckSkillCoolTimeNode : Node
 {
     private BossBehaviourTree _bossBehaviourTree;
     private Dictionary<BTValues, object> _btDict = new Dictionary<BTValues, object>();
+    private BossAnimationController _animationController;
 
     public CheckSkillCoolTimeNode(BossBehaviourTree bossBehaviourTree)
     {
         _bossBehaviourTree = bossBehaviourTree;
+        _animationController = _bossBehaviourTree.AnimationController;
         _btDict = _bossBehaviourTree.BTDict;
     }
 
     public override NodeState Evaluate()
     {
-        if (!_btDict.ContainsKey(BTValues.CurrentPhaseSkillCoolTime) || !_btDict.ContainsKey(BTValues.CurrentSkillElapsedTime))
-        {
-            state = NodeState.Failure;
-            return state;
-        }
+        return GetCoolTimeState();
+    }
 
-        if ((float)_btDict[BTValues.CurrentSkillElapsedTime] >= (float)_btDict[BTValues.CurrentPhaseSkillCoolTime])
+    private NodeState GetCoolTimeState()
+    {
+        if ((float)_btDict[BTValues.CurrentSkillElapsedTime] >= (float)_btDict[BTValues.CurrentPhaseSkillCoolTime] &&
+            !(bool)_btDict[BTValues.WasSkillUsed])
         {
             _btDict[BTValues.CurrentSkillElapsedTime] = 0f;
 

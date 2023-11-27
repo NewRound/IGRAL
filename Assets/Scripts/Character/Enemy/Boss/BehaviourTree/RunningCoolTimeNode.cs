@@ -5,28 +5,23 @@ using UnityEngine;
 public class RunningCoolTimeNode : Node
 {
     private BossBehaviourTree _bossBehaviourTree;
-    private PhaseSO _phaseSO;
     private float _currentElapsedTime;
     private Dictionary<BTValues, object> _btDict;
 
     public RunningCoolTimeNode(BossBehaviourTree bossBehaviourTree)
     {
         _bossBehaviourTree = bossBehaviourTree;
-        _phaseSO = _bossBehaviourTree.PhaseSO;
         _btDict = _bossBehaviourTree.BTDict;
     }
 
     public override NodeState Evaluate()
     {
-        float skillCoolTime = _phaseSO.PhaseInfo[_bossBehaviourTree.CurrentPhase - 1].SkillCoolTime;
+        float skillCoolTime = _bossBehaviourTree.PhaseInfoArr[_bossBehaviourTree.CurrentPhase - 1].SkillCoolTime;
 
         _btDict[BTValues.CurrentPhaseSkillCoolTime] = skillCoolTime;
 
         if ((bool)_btDict[BTValues.WasSkillUsed])
-        {
-            _btDict[BTValues.WasSkillUsed] = false;
-            _currentElapsedTime = 0;
-        }
+            _currentElapsedTime = 0f;
 
         if (_currentElapsedTime < skillCoolTime)
         {

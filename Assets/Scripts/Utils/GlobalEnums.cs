@@ -29,5 +29,6 @@ namespace GlobalEnums
         CurrentPhaseSkillCoolTime,
         CurrentSkillElapsedTime,
         WasSkillUsed,
+        IsAnyActionPlaying,
     }
 }
