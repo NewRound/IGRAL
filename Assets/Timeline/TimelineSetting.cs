@@ -1,11 +1,10 @@
-using UnityEditor.Timeline;
 using UnityEngine;
-using UnityEngine.Timeline;
+using UnityEngine.Playables;
 
 public class TimelineSetting : MonoBehaviour
 {
-    [SerializeField] private TimelineAsset TimelineObject;
+    [SerializeField] private PlayableDirector TimelineObject;
     
-
+    
 
 }
