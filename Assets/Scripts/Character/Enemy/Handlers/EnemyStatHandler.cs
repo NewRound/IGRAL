@@ -31,6 +31,7 @@ public class EnemyStatHandler : IDamageable
 
             if (Data.Health <= 0)
             {
+                UIEnemyHealth.gameObject.SetActive(false);
                 DieAction?.Invoke();
             }
 
