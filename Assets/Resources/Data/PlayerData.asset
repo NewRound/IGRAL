@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f865ee03feb1f6e439ec5f8633defb2e, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  <Health>k__BackingField: 100
+  <MaxHealth>k__BackingField: 100
+  <HealthRegen>k__BackingField: 1
+  <Defense>k__BackingField: 0
+  <EvasionProbability>k__BackingField: 0
+  <IsInvincible>k__BackingField: 0
+  <InvincibleTime>k__BackingField: 1
+  <Attack>k__BackingField: 5
+  <AttackDelay>k__BackingField: 0
+  <AttackRange>k__BackingField: 1
+  <CriticalProbability>k__BackingField: 0
+  <CriticalMod>k__BackingField: 0
+  <SpeedMin>k__BackingField: 3
+  <SpeedMax>k__BackingField: 8
+  <KnockbackPower>k__BackingField: 10
+  <IsRanged>k__BackingField: 0
+  <JumpingForce>k__BackingField: 5
+  <JumpingCountMax>k__BackingField: 2
+  <RollingForce>k__BackingField: 5
+  <RollingCoolTime>k__BackingField: 2
+  <KcalPerAttack>k__BackingField: 0
+  <Kcal>k__BackingField: 300
+  <MaxKcal>k__BackingField: 300
+  <WallSlidingTime>k__BackingField: 0
+  <KnockbackTime>k__BackingField: 0.5
+  <WallSlidingSpeed>k__BackingField: 0

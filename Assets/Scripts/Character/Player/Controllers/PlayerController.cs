@@ -1,8 +1,8 @@
 using UnityEngine;
 
 public abstract class PlayerController : EntityController
-{
-    [SerializeField] private PlayerSO stat;
+{   
+    private PlayerSO stat;
 
     public PlayerStatHandler StatHandler { get; private set; }
 
@@ -26,14 +26,9 @@ public abstract class PlayerController : EntityController
 
         isDie = GameManager.Instance.isDie;
 
-        if (GameManager.Instance._isSetting)
-        {
-            StatHandler = new PlayerStatHandler(DataManager.Instance.playerSO);
-        }
-        else
-        {
-            StatHandler = new PlayerStatHandler(stat);
-        }
+        stat = DataManager.Instance.playerSO;
+        StatHandler = new PlayerStatHandler(stat);
+
     }
 
     protected void Start()

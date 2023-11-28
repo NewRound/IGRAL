@@ -10,5 +10,7 @@ public class LoadSceneManager : CustomSingleton<LoadSceneManager>
 
         PlayerPrefs.SetString("Scene", sceneName);
         SceneManager.LoadScene("LoadScene");
+
+        DataManager.Instance.SavePlayerSO();
     }
 }
