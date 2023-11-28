@@ -232,7 +232,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3284
+  m_Name: pb_Mesh-2890
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -1723,3 +1723,76 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2abd954af3884c41afff4842aa7c4c9, type: 3}
+--- !u!1001 &6615971933668751487
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4234271418146033965, guid: 898221cb5cb81f745bd5395fb039cef3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234271418146033965, guid: 898221cb5cb81f745bd5395fb039cef3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234271418146033965, guid: 898221cb5cb81f745bd5395fb039cef3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.835
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234271418146033965, guid: 898221cb5cb81f745bd5395fb039cef3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234271418146033965, guid: 898221cb5cb81f745bd5395fb039cef3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234271418146033965, guid: 898221cb5cb81f745bd5395fb039cef3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234271418146033965, guid: 898221cb5cb81f745bd5395fb039cef3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234271418146033965, guid: 898221cb5cb81f745bd5395fb039cef3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234271418146033965, guid: 898221cb5cb81f745bd5395fb039cef3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234271418146033965, guid: 898221cb5cb81f745bd5395fb039cef3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234271418146033965, guid: 898221cb5cb81f745bd5395fb039cef3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964227287026993574, guid: 898221cb5cb81f745bd5395fb039cef3,
+        type: 3}
+      propertyPath: m_Name
+      value: ShotGunBullet
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 898221cb5cb81f745bd5395fb039cef3, type: 3}
