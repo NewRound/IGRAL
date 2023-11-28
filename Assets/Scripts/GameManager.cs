@@ -8,6 +8,7 @@ public class GameManager : CustomSingleton<GameManager>
     [SerializeField] private MainCam _mainCamPrefab;
     [SerializeField] private GameObject _playerObjectPrefab;
 
+    public MainCam MainCam { get; private set; }
     public Camera Camera { get; private set; }
     public Transform PlayerTransform { get; private set; }
     public InputController PlayerInputController { get; private set; }
@@ -52,14 +53,14 @@ public class GameManager : CustomSingleton<GameManager>
     private void SetPlayerAndCam()
     {
         GameObject playerObject = Instantiate(_playerObjectPrefab);
-        MainCam mainCam = Instantiate(_mainCamPrefab);
-        Camera = mainCam.GetComponentInChildren<Camera>();
+        MainCam = Instantiate(_mainCamPrefab);
+        Camera = MainCam.GetComponentInChildren<Camera>();
 
         PlayerTransform = playerObject.transform;
         PlayerInputController = playerObject.GetComponent<InputController>();
         PlayerAppearanceController = playerObject.GetComponent<PlayerAppearanceController>();
 
-        mainCam.SetMainCam();
+        MainCam.SetMainCam();
         StatHandler = PlayerInputController.StatHandler;
 
         PlayerPosition(Vector3.zero);

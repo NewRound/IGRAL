@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillManager : CustomSingleton<SkillManager>
 {
-    public int skillPoint = 5;
+    public int skillPoint = 8;
     public Dictionary<string, int> baseSkills = new Dictionary<string, int>();
     public Dictionary<string, int> learnedSkills = new Dictionary<string, int>();
     private SkillUse[] _skillUse;
