@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Granade : Weapon
+public class BossGranade : Weapon
 {
     [SerializeField] private ParticleSystem[] explosionParticles;
     [SerializeField] private MeshRenderer meshRenderer;
@@ -24,16 +24,16 @@ public class Granade : Weapon
 
     private Vector3 _initPos;
     private Vector3 _randomPos;
+    private Vector3 _lastPos;
     private Transform _target;
+    private GameObject _modelObject;
+
+    private bool _isMovable;
 
     private void Awake()
     {
         _material = meshRenderer.material;
-    }
-
-    private void OnDisable()
-    {
-        InitPos();
+        _modelObject = meshRenderer.gameObject;
     }
 
     private void Start()
@@ -43,29 +43,12 @@ public class Granade : Weapon
 
     private void Update()
     {
-        if (_currentElapsedTime <= explosionDelayTime)
-        {
-            _currentElapsedTime += Time.deltaTime;
-            _currentElapsedTime = _currentElapsedTime > explosionDelayTime ? explosionDelayTime : _currentElapsedTime;
-        }
+        if (!_isMovable)
+            return;
 
+        CalculateExplosionTime();
         Move();
         Rotate();
-    }
-
-    private void Move()
-    {
-        float ratio = _currentElapsedTime / explosionDelayTime;
-        Vector3 firstLerp = Vector3.Lerp(_initPos, _randomPos, ratio);
-        Vector3 secondLerp = Vector3.Lerp(_randomPos, _target.position, ratio);
-        Vector3 finalLerp = Vector3.Lerp(firstLerp, secondLerp, ratio);
-
-        transform.position = finalLerp;
-    }
-
-    private void Rotate()
-    {
-        transform.Rotate(new Vector3(0, 0, rotationSpeed));
     }
 
     public void ThrowGranade()
@@ -75,7 +58,58 @@ public class Granade : Weapon
             Init();
         }
 
+        _isMovable = true;
+
         StartCoroutine(Explode());
+    }
+
+    public void InitPos()
+    {
+        if (_target != null)
+        {
+            _initPos = transform.position;
+            _lastPos = _target.position;
+            Vector3 sphereRandomPos = Random.insideUnitSphere * Vector3.Distance(_initPos, _target.position) * GlobalValues.HALF;
+            Vector3 canonicalPos = (_initPos + _target.position) * GlobalValues.HALF;
+            _randomPos = canonicalPos + sphereRandomPos;
+            _randomPos.y = _randomPos.y < 0 ? 0 : _randomPos.y;
+            _randomPos.z = 0f;
+        }
+    }
+
+    public void ActivateModel()
+    {
+        _modelObject.SetActive(true);
+
+    }
+
+    public void DeActivateModel()
+    {
+        _modelObject.SetActive(false);
+    }
+
+    private void CalculateExplosionTime()
+    {
+        if (_currentElapsedTime <= explosionDelayTime)
+        {
+            _currentElapsedTime += Time.deltaTime;
+            _currentElapsedTime = _currentElapsedTime > explosionDelayTime ? explosionDelayTime : _currentElapsedTime;
+        }
+    }
+
+    private void Move()
+    {
+        float ratio = _currentElapsedTime / explosionDelayTime;
+        Vector3 firstLerp = Vector3.Lerp(_initPos, _randomPos, ratio);
+        Vector3 secondLerp = Vector3.Lerp(_randomPos, _lastPos, ratio);
+        Vector3 finalLerp = Vector3.Lerp(firstLerp, secondLerp, ratio);
+
+        transform.position = finalLerp;
+    }
+
+    private void Rotate()
+    {
+        _modelObject.transform.Rotate(new Vector3(0, 0, rotationSpeed * Time.deltaTime));
     }
 
     private IEnumerator Explode()
@@ -93,15 +127,16 @@ public class Granade : Weapon
             Attack(damage, statHandler.Data, statHandler);
         }
 
-        meshRenderer.gameObject.SetActive(false);
+        DeActivateModel();
 
         foreach (ParticleSystem particleSystem in explosionParticles) 
             particleSystem.Play();
 
         yield return _explosionDict[explosionTime];
 
+        ResetValues();
+
         _material.color = Color.white;
-        gameObject.SetActive(false);
     }
 
     private void Init()
@@ -115,14 +150,11 @@ public class Granade : Weapon
         InitPos();
     }
 
-    private void InitPos()
+    
+
+    private void ResetValues()
     {
-        if (_target != null)
-        {
-            Vector3 sphereRandomPos = Random.insideUnitSphere * Vector3.Distance(_initPos, _target.position) * GlobalValues.HALF;
-            Vector3 canonicalPos = _initPos.x > _target.position.x ? _initPos - _target.position : _target.position - _initPos;
-            _randomPos = canonicalPos + sphereRandomPos;
-            _randomPos.z = 0f;
-        }
+        _isMovable = false;
+        _currentElapsedTime = 0f;
     }
 }

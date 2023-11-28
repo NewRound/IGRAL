@@ -6,6 +6,7 @@ public class UpdatePhase : BossNode
 
     public UpdatePhase(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
     {
+        _totalPhaseCount = bossBehaviourTree.PhaseInfoArr.Length;
     }
 
     public override NodeState Evaluate()

@@ -4,6 +4,9 @@ public class Bullet : BulletBase
 {
     [SerializeField] private float _damage;
     [SerializeField] private float _maxDuration;
+    [SerializeField] private Transform modelTrans;
+    [SerializeField] private float movePower = 10f;
+    private Vector3 _direction;
     private float _curDuration;
 
     private void OnEnable()
@@ -11,11 +14,7 @@ public class Bullet : BulletBase
         _curDuration = 0f;
     }
 
-    public void Move(bool isRight)
-    {
-        Vector3 direction = isRight ? transform.right : -transform.right;
-        rigid.AddForce(direction * 10f, ForceMode.Impulse);
-    }
+    
 
     private void Update()
     {
@@ -25,6 +24,22 @@ public class Bullet : BulletBase
         {
             gameObject.SetActive(false);
         }
+    }
+    public void SetDirection(bool isRight)
+    {
+        _direction = isRight ? transform.right : -transform.right;
+    }
+
+    public void Move()
+    {
+        rigid.AddForce(_direction * movePower, ForceMode.Impulse);
+    }
+
+    public void Look(Vector3 direction)
+    {
+        transform.rotation = Quaternion.Euler(direction);
+        Quaternion rotation = Quaternion.FromToRotation(Vector3.forward, _direction);
+        modelTrans.rotation = rotation;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,10 +51,10 @@ public class Bullet : BulletBase
             PlayerStatHandler statHandler = playerController.StatHandler;
 
             if (statHandler != null)
-            {
                 statHandler.Damaged(_damage);
-            }
+            
             gameObject.SetActive(false);
         }
+
     }
 }

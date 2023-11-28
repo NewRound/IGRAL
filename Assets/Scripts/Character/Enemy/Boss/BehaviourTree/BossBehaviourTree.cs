@@ -13,6 +13,8 @@ public class BossBehaviourTree : BehaviourTree
     [field: SerializeField] public Transform BulletSpawnTrans { get; private set; }
     [field: SerializeField] public GameObject DefaultWeapon { get; private set; }
     [field: SerializeField] public Bullet BulletPrefab { get; private set; }
+    [field: SerializeField] public int BulletCount { get; private set; } = 5;
+    [field: SerializeField] public float BulletAngle { get; private set; } = 5f;
 
     public EnemyStatHandler StatHandler { get; private set; }
 
@@ -75,7 +77,7 @@ public class BossBehaviourTree : BehaviourTree
 
                     new Sequence(new List<Node>()
                     {
-                        new DefaultAttack(this, 5),
+                        new DefaultAttack(this),
                         new RunningCoolTime(this),
                     })
                 })
@@ -114,4 +116,6 @@ public class BossBehaviourTree : BehaviourTree
         if (!BTDict.ContainsKey(BTValues.IsAttacking))
             BTDict.Add(BTValues.IsAttacking, false);
     }
+
+
 }

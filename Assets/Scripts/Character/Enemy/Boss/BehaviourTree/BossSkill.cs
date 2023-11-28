@@ -29,6 +29,7 @@ public abstract class BossSkill : ActionNode
         animationController.PlayAnimation(animationController.AnimationData.SkillSubParameterHash, false);
         btDict[BTValues.CurrentAction] = CurrentAction.Patrol;
         btDict[BTValues.IsAttacking] = false;
+        defaultWeapon.SetActive(true);
     }
 
     protected virtual void OnChargedCoolTime()

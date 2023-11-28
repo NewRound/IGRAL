@@ -1,21 +1,22 @@
 using GlobalEnums;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class DefaultAttack : ActionNode
 {
-    private Bullet _bullet;
     private Transform _target;
     private Transform _spawnPoint;
     private int _bulletAmount;
+    private float _bulletPerAngle;
 
     private BossAnimationController animationController;
-    public DefaultAttack(BossBehaviourTree bossBehaviourTree, int amount) : base(bossBehaviourTree)
+    public DefaultAttack(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
     {
-        _bulletAmount = amount;
+        _bulletAmount = bossBehaviourTree.BulletCount;
+        _bulletPerAngle = bossBehaviourTree.BulletAngle;
         animationController = bossBehaviourTree.AnimationController;
         btDict = bossBehaviourTree.BTDict;
-        _bullet = bossBehaviourTree.BulletPrefab;
         _spawnPoint = bossBehaviourTree.BulletSpawnTrans;
     }
 
@@ -30,14 +31,16 @@ public class DefaultAttack : ActionNode
         if (!(bool)btDict[BTValues.IsAttacking])
         {
             btDict[BTValues.IsAttacking] = true;
+            animationController.AttackAction += Shoot;
+            bossBehaviourTree.LookRightAway();
             animationController.PlayAnimation(animationController.AnimationData.AttackSubStateParameterHash, true);
-            Shoot();
         }
 
         float normalizedTime = AnimationUtil.GetNormalizeTime(animationController.Animator, AnimTag.Attack, (int)AnimatorLayer.UpperLayer);
         if (normalizedTime > 1f)
         {
             animationController.PlayAnimation(animationController.AnimationData.AttackSubStateParameterHash, false);
+            animationController.AttackAction -= Shoot;
             btDict[BTValues.CurrentAction] = CurrentAction.Patrol;
             btDict[BTValues.IsAttacking] = false;
         }
@@ -46,12 +49,44 @@ public class DefaultAttack : ActionNode
         return state;
     }
 
-    private void Shoot()
+    public void Shoot()
     {
         if (!_target)
             _target = GameManager.Instance.PlayerTransform;
 
-        float angle = 15;
+        Vector3 direction = _target.position - _spawnPoint.position;
+        Vector3 afterDirection = direction.normalized;
+
+        float modAngle = 0;
+        bool isRight = direction.x > 0;
+
+        for (int i = 0; i < _bulletAmount; i++)
+        {
+            int halfIndex = i / 2;
+            if (_bulletAmount % 2 != 0 && i == 0)
+                modAngle = 0;
+            else
+                modAngle = i % 2 == 0 ? -_bulletPerAngle * (halfIndex + 1) : _bulletPerAngle * (halfIndex + 1);
+
+            if (modAngle != 0)
+                afterDirection = Quaternion.Euler(direction.normalized) * new Vector3(0, 0, modAngle);
+
+
+            Bullet bullet = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.BossShotgunBullet).GetComponent<Bullet>();
+            bullet.transform.position = _spawnPoint.position;
+
+            bullet.Look(afterDirection);
+            bullet.SetDirection(isRight);
+            bullet.Move();
+        }
+    }
+
+    /*public void Shoot()
+    {
+        if (!_target)
+            _target = GameManager.Instance.PlayerTransform;
+
+        float angle = 5;
         float modAngle = 0;
         Vector3 direction = _target.position - _spawnPoint.position;
 
@@ -69,8 +104,9 @@ public class DefaultAttack : ActionNode
 
             Vector3 afterDirection = Quaternion.Euler(direction.normalized) * new Vector3(0, 0, modAngle);
 
-            Bullet bullet = Object.Instantiate(_bullet, _spawnPoint.position, Quaternion.Euler(afterDirection));
+            Bullet bullet = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.BossShotgunBullet).GetComponent<Bullet>();
+            bullet.transform.position = _spawnPoint.position;
             bullet.Move(isRight);
         }
-    }
+    }*/
 }

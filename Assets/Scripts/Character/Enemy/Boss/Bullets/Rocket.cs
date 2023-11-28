@@ -10,6 +10,7 @@ public class Rocket : Weapon
     private Transform _targetTrans;
     private Vector3 _initPos;
     private Vector3 _randomPos;
+    private Vector3 _lastPos;
     private float _elapsedTime;
 
     private void Awake()
@@ -19,26 +20,29 @@ public class Rocket : Weapon
 
     private void Update()
     {
+        CalculateTime();
         Move();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerStatHandler statHandler = other.GetComponent<PlayerController>().StatHandler;
+        PlayerController playerController = other.GetComponent<PlayerController>();
 
-        if (statHandler != null)
+        if (playerController != null)
         {
-            Attack(damage, statHandler.Data, statHandler);
+            Attack(damage, playerController.StatHandler.Data, playerController.StatHandler);
             Destroy(gameObject);
         }
     }
 
     private void Init()
     {
-        _targetTrans = GameManager.Instance.PlayerTransform;
         _initPos = transform.position;
+        _targetTrans = GameManager.Instance.PlayerTransform;
+        _lastPos = _targetTrans.position;
         float radius = GlobalValues.HALF * Vector3.Distance(_initPos, _targetTrans.position);
         _randomPos = (_initPos + _targetTrans.position) * GlobalValues.HALF + Random.insideUnitSphere * radius;
+        _randomPos.y = _randomPos.y < 0 ? 0 : _randomPos.y;
 
         Vector3 direction = _targetTrans.position - _initPos;
         Look(direction);
@@ -46,17 +50,20 @@ public class Rocket : Weapon
 
     private void Move()
     {
-        _elapsedTime += Time.deltaTime;
-        _elapsedTime = _elapsedTime > arrvingDuration ? arrvingDuration : _elapsedTime;
-
         Vector3 firstLerp = Vector3.Lerp(_initPos, _randomPos, _elapsedTime);
-        Vector3 secondLerp = Vector3.Lerp(_randomPos, _targetTrans.position, _elapsedTime);
+        Vector3 secondLerp = Vector3.Lerp(_randomPos, _lastPos, _elapsedTime);
         Vector3 finalLerp = Vector3.Lerp(firstLerp, secondLerp, _elapsedTime);
 
         transform.position = finalLerp;
 
         Vector3 direction = _targetTrans.position - finalLerp;
         Look(direction);
+    }
+
+    private void CalculateTime()
+    {
+        _elapsedTime += Time.deltaTime;
+        _elapsedTime = _elapsedTime > arrvingDuration ? arrvingDuration : _elapsedTime;
     }
 
     private void Look(Vector3 direction)

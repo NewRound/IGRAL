@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Boss3Phase1 : BossSkill
 {
-    private Granade _granade;
+    private BossGranade _granade;
 
     public Boss3Phase1(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
     {
@@ -12,7 +12,8 @@ public class Boss3Phase1 : BossSkill
 
     public override NodeState Evaluate()
     {
-        if (!IsActionPossible((CurrentAction)btDict[BTValues.CurrentAction], CurrentAction.UsingSkill))
+        if (!IsActionPossible((CurrentAction)btDict[BTValues.CurrentAction], CurrentAction.UsingSkill) 
+            || bossBehaviourTree.CurrentPhase != 1)
         {
             state = NodeState.Failure;
             return state;
@@ -41,15 +42,17 @@ public class Boss3Phase1 : BossSkill
             return state;
         }
 
+        btDict[BTValues.CurrentAction] = CurrentAction.Attack;
+        state = NodeState.Failure;
         return state;
     }
 
     protected override void Init()
     {
         _granade = Object.Instantiate(
-            Resources.Load<Granade>("Boss/SkillWeapons/Granade"), 
-            defaultWeapon.transform.parent);
-        _granade.gameObject.SetActive(false);
+            Resources.Load<BossGranade>("Boss/SkillWeapons/Granade"), 
+            defaultWeapon.transform.position, Quaternion.identity);
+        _granade.DeActivateModel();
     }
 
     protected override void OnChargedCoolTime()
@@ -57,6 +60,8 @@ public class Boss3Phase1 : BossSkill
         base.OnChargedCoolTime();
         defaultWeapon.SetActive(false);
         _granade.transform.position = defaultWeapon.transform.position;
-        _granade.gameObject.SetActive(true);
+        _granade.ActivateModel();
+        _granade.InitPos();
+        UseSkill();
     }
 }

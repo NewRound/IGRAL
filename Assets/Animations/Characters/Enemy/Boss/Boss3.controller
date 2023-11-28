@@ -155,7 +155,7 @@ BlendTree:
   m_Name: Move
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 4c37a0e3c73d9474ba4c5836678e73f6,
+    m_Motion: {fileID: -203655887218126122, guid: 5acff6635566bce4ea826899f512bde7,
       type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
@@ -205,7 +205,7 @@ AnimatorStateMachine:
     m_Position: {x: 890, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6453333010081784431}
-    m_Position: {x: 440, y: 300, z: 0}
+    m_Position: {x: 440, y: 310, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 994008268152795614}
@@ -833,7 +833,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 649915011c186a34990651e4a8bb4071,
+  m_Motion: {fileID: -203655887218126122, guid: 76f1332df350b6d4b9b651bb276bb064,
     type: 3}
   m_Tag: Skill
   m_SpeedParameter: 

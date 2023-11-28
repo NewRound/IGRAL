@@ -15,7 +15,8 @@ public class Boss3Phase2 : BossSkill
 
     public override NodeState Evaluate()
     {
-        if (!IsActionPossible((CurrentAction)btDict[BTValues.CurrentAction], CurrentAction.UsingSkill))
+        if (!IsActionPossible((CurrentAction)btDict[BTValues.CurrentAction], CurrentAction.UsingSkill)
+            || bossBehaviourTree.CurrentPhase != 2)
         {
             state = NodeState.Failure;
             return state;
@@ -85,4 +86,6 @@ public class Boss3Phase2 : BossSkill
         animationController.PreSkillAction += ChangeToNewWeapon;
         animationController.PostSkillAction += ChangeToDefaultWeapon;
     }
+
+
 }

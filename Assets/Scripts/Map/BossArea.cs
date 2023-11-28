@@ -14,7 +14,6 @@ public class BossArea : MonoBehaviour
 
     [SerializeField] private GameObject BossPrefab;
 
-    private bool PlayerInArea = false;
     private bool BossSpawned = false;
     private bool BossDied = false;
 
@@ -30,7 +29,6 @@ public class BossArea : MonoBehaviour
         InputController player = other.GetComponent<InputController>();
         if(player != null)
         {
-            PlayerInArea = true;
             if(!BossSpawned)
                 SpawnBoss();
         }

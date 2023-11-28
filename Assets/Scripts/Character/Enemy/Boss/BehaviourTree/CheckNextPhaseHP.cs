@@ -6,7 +6,6 @@ using UnityEngine;
 public class CheckNextPhaseHP : BossNode
 {
     private int _totalPhaseCount;
-    private int _currentPhase = 1;
 
     public CheckNextPhaseHP(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
     {
@@ -15,7 +14,7 @@ public class CheckNextPhaseHP : BossNode
 
     public override NodeState Evaluate()
     {
-        float nextPhaseHealth = bossBehaviourTree.StatHandler.Data.MaxHealth * (_totalPhaseCount - _currentPhase) / _totalPhaseCount ;
+        float nextPhaseHealth = bossBehaviourTree.StatHandler.Data.MaxHealth * (_totalPhaseCount - bossBehaviourTree.CurrentPhase) / _totalPhaseCount ;
 
         if (nextPhaseHealth > bossBehaviourTree.StatHandler.Data.Health)
         {
