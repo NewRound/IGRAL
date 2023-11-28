@@ -82,7 +82,6 @@ public class GameManager : CustomSingleton<GameManager>
 
         //임시 배경음 시작
         Invoke("StartBGM", 1f);
-        DataManager.Instance.BackUpPlayerSO();
         _isSetting = true;
     }
 
