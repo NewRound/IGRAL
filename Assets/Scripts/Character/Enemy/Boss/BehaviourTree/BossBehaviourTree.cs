@@ -13,6 +13,8 @@ public class BossBehaviourTree : BehaviourTree
     [field: SerializeField] public Transform BulletSpawnTrans { get; private set; }
     [field: SerializeField] public GameObject DefaultWeapon { get; private set; }
     [field: SerializeField] public Bullet BulletPrefab { get; private set; }
+    [field: SerializeField] public int BulletCount { get; private set; } = 5;
+    [field: SerializeField] public float BulletAngle { get; private set; } = 5f;
 
     public EnemyStatHandler StatHandler { get; private set; }
 
@@ -25,8 +27,6 @@ public class BossBehaviourTree : BehaviourTree
     public int CurrentPhase { get; private set; } = 1;
 
     public Dictionary<BTValues, object> BTDict { get; private set; } = new Dictionary<BTValues, object>();
-
-    public event Action releaseAttackAction;
 
     public Transform PlayerTransform { get; private set; }
 
@@ -44,27 +44,44 @@ public class BossBehaviourTree : BehaviourTree
 
         Node root = new Selector(new List<Node>
         {
-            new Sequence(new List<Node>
+            new Sequence(new List<Node>()
             {
-                new RunningCoolTimeNode(this),
-                new CheckHpNode(this, PhaseInfoArr.Length),
-                new UpdatePhaseNode(this),
-                new PatrolNode(this, _rigid, waypoints),
-                new Sequence(new List<Node>
+                new CheckNextPhaseHP(this),
+                new UpdatePhase(this),
+            }),
+
+            new Sequence(new List<Node>()
+            {
+                new CheckDie(this),
+                new Die(this),
+            }),
+
+            new Sequence(new List<Node>()
+            {
+                new Selector(new List<Node>()
                 {
-                    new CheckAttackPossibleNode(this),
-                    new Selector(new List<Node>
+                    new Sequence(new List<Node>()
                     {
-                        new Sequence(new List<Node>
-                        {
-                            new CheckSkillCoolTimeNode(this),
-                            new UseSkillNode(this),
-                        }),
-                        new ShootNode(this, 5)
+                        new Patrol(this, _rigid, waypoints),
+                        new RunningCoolTime(this),
+                    }),
+
+                    new Selector(new List<Node>()
+                    {
+                        new Boss3Phase1(this),
+
+                        new Boss3Phase2(this),
+
+                        new Boss3Phase3(this)
+                    }),
+
+                    new Sequence(new List<Node>()
+                    {
+                        new DefaultAttack(this),
+                        new RunningCoolTime(this),
                     })
                 })
             }),
-            new DieNode()
         });
 
         return root;
@@ -90,14 +107,15 @@ public class BossBehaviourTree : BehaviourTree
         if (!BTDict.ContainsKey(BTValues.CurrentPhaseSkillCoolTime))
             BTDict.Add(BTValues.CurrentPhaseSkillCoolTime, 0f);
 
-        if (!BTDict.ContainsKey(BTValues.WasSkillUsed))
-            BTDict.Add(BTValues.WasSkillUsed, false);
-
         if (!BTDict.ContainsKey(BTValues.CurrentSkillElapsedTime))
             BTDict.Add(BTValues.CurrentSkillElapsedTime, 0f);
 
-        if (!BTDict.ContainsKey(BTValues.IsAnyActionPlaying))
-            BTDict.Add(BTValues.IsAnyActionPlaying, false);
+        if (!BTDict.ContainsKey(BTValues.CurrentAction))
+            BTDict.Add(BTValues.CurrentAction, CurrentAction.Patrol);
+
+        if (!BTDict.ContainsKey(BTValues.IsAttacking))
+            BTDict.Add(BTValues.IsAttacking, false);
     }
+
 
 }

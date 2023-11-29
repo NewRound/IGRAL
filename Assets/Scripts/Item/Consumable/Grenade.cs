@@ -7,7 +7,6 @@ public class Grenade : ItemConsumable
     private Transform _player;
     private Vector3 _direction;
     private float _damage;
-    private float _speed;
     private float _duration;
     private float _bombTimer;
 
@@ -22,7 +21,6 @@ public class Grenade : ItemConsumable
     private void Start()
     {
         _damage = 10f;
-        _speed = 2f;
         _duration = 5f;
         _collider = GetComponent<Collider>();
         _collider.enabled = false;

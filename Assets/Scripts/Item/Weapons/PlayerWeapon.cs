@@ -63,6 +63,17 @@ public class PlayerWeapon : Weapon
                 Attack(_playerSO, targetSO, damageable);
             }
 
+            BossBehaviourTree bossBehaviourTree = hit.collider.GetComponent<BossBehaviourTree>();
+            
+            if (bossBehaviourTree != null)
+            {
+                EnemyStatHandler statHandler = bossBehaviourTree.StatHandler;
+                targetSO = statHandler.Data;
+                damageable = statHandler;
+
+                Attack(_playerSO, targetSO, damageable);
+            }
+
             IInteract interactable = hit.collider.GetComponent<IInteract>();
             if (interactable != null)
             {

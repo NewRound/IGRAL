@@ -105,4 +105,38 @@ public class PlayerAppearanceController : MonoBehaviour
                 _playerEffectController.DisappearWeaponWithoutDissolve(Mutant);
         }
     }
+
+    public void OffCurrentMutantRightAway()
+    {
+        List<GameObject> Mutant;
+
+        switch (mutantType)
+        {
+            case MutantType.None:
+                Mutant = Mutant_None;
+                break;
+            case MutantType.Stone:
+                Mutant = Mutant_Stone;
+
+                break;
+            case MutantType.Blade:
+                Mutant = Mutant_Blade;
+
+                break;
+            case MutantType.Sheld:
+                Mutant = Mutant_Sheld;
+
+                break;
+            case MutantType.Skin:
+                Mutant = Mutant_SkinBaby;
+                break;
+            default:
+                return;
+        }
+
+        foreach (var obj in Mutant)
+        {
+            obj.SetActive(false);
+        }
+    }
 }

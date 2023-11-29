@@ -27,13 +27,16 @@ public class EnemyStatHandler : IDamageable
             Data.Health -= damage;
             DamagedAction?.Invoke();
 
+            Debug.Log(Data.Health);
+
             if (Data.Health <= 0)
             {
                 UIEnemyHealth.gameObject.SetActive(false);
                 DieAction?.Invoke();
             }
 
-            UIEnemyHealth.DisplayEnemyHealth(Data.Health, Data.MaxHealth);
+            if (UIEnemyHealth != null)
+                UIEnemyHealth.DisplayEnemyHealth(Data.Health, Data.MaxHealth);
 
             GameObject damagedTxt = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.EnemyDamagedTxt);
             damagedTxt.transform.position = curTransform.position + new Vector3(0f, 1.8f, 0f);

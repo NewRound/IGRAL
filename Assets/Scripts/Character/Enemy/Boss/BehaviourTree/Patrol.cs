@@ -2,7 +2,7 @@ using GlobalEnums;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PatrolNode : Node
+public class Patrol : ActionNode
 {
     private Transform[] _waypoints;
     private Rigidbody _rigid;
@@ -17,9 +17,7 @@ public class PatrolNode : Node
     private BossAnimationController _animationController;
     private SpeedCalculator _speedCalculator;
 
-    private Dictionary<BTValues, object> _btDict = new Dictionary<BTValues, object>();
-
-    public PatrolNode(BossBehaviourTree bossBehaviourTree, Rigidbody rigid, Transform[] waypoints)
+    public Patrol(BossBehaviourTree bossBehaviourTree, Rigidbody rigid, Transform[] waypoints) : base(bossBehaviourTree)
     {
         _animationController = bossBehaviourTree.AnimationController;
         _rigid = rigid;
@@ -29,7 +27,7 @@ public class PatrolNode : Node
         _speedMin = bossBehaviourTree.StatHandler.Data.SpeedMin;
         _speedMax = bossBehaviourTree.StatHandler.Data.SpeedMax;
         _modelTrans = bossBehaviourTree.ModelTrans;
-        _btDict = bossBehaviourTree.BTDict;
+        btDict = bossBehaviourTree.BTDict;
     }
 
     public override NodeState Evaluate()
@@ -39,14 +37,14 @@ public class PatrolNode : Node
 
     private NodeState GetMoveState()
     {
-        if (_currentWayPointIndex == -1)
-            _currentWayPointIndex = UnityEngine.Random.Range(0, _waypoints.Length);
-
-        if ((bool)_btDict[BTValues.IsAnyActionPlaying])
+        if (!IsActionPossible((CurrentAction)btDict[BTValues.CurrentAction], CurrentAction.Patrol))
         {
-            state = NodeState.Success;
+            state = NodeState.Failure;
             return state;
         }
+
+        if (_currentWayPointIndex == -1)
+            _currentWayPointIndex = UnityEngine.Random.Range(0, _waypoints.Length);
 
         Vector3 velocity = Vector3.zero;
 
@@ -69,12 +67,14 @@ public class PatrolNode : Node
 
             UpdateMoveAnimation(true);
 
+            btDict[BTValues.CurrentAction] = CurrentAction.UsingSkill;
+
             state = NodeState.Success;
             return state;
         }
 
         UpdateMoveAnimation(false);
-        state = NodeState.Running;
+        state = NodeState.Success;
         return state;
     }
 
@@ -86,14 +86,7 @@ public class PatrolNode : Node
 
     private void UpdateMoveAnimation(bool isStopped)
     {
-        if (isStopped)
-        {
-            _currentSpeed = 0f;
-            _animationController.PlayAnimation(_animationController.AnimationData.SpeedRatioParameterHash, 0f);
-            return;
-        }
-
-        _currentSpeed = _speedCalculator.CalculateSpeed(_speedMin, _speedMax, out float speedRatio, false);
+        _currentSpeed = _speedCalculator.CalculateSpeed(_speedMin, _speedMax, out float speedRatio, isStopped);
         _animationController.PlayAnimation(_animationController.AnimationData.SpeedRatioParameterHash, speedRatio);
     }
 }

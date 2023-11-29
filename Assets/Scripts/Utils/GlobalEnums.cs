@@ -28,7 +28,15 @@ namespace GlobalEnums
     {
         CurrentPhaseSkillCoolTime,
         CurrentSkillElapsedTime,
-        WasSkillUsed,
-        IsAnyActionPlaying,
+        CurrentAction,
+        IsAttacking,
+    }
+
+    public enum CurrentAction
+    {
+        None,
+        Patrol,
+        Attack,
+        UsingSkill
     }
 }
