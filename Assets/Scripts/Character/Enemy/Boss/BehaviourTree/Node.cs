@@ -9,7 +9,7 @@ public class Node
 
     public Node Parent { get; private set; }
     protected List<Node> children = new List<Node>();
-    
+
     public Node()
     {
         Parent = null;
