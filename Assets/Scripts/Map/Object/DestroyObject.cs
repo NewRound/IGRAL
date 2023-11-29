@@ -20,9 +20,7 @@ public class DestroyObject : MonoBehaviour, IInteract
 
     private void Start()
     {
-        _myCollider.enabled = true;
-
-        _player = GameManager.Instance.PlayerAppearanceController;
+        _myCollider.enabled = true;        
         _audioManager = AudioManager.Instance;
         _effectManager = EffectManager.Instance;
 
@@ -37,12 +35,17 @@ public class DestroyObject : MonoBehaviour, IInteract
 
     public void Interact()
     {
+        if (_player == null)
+        {
+            _player = GameManager.Instance.PlayerAppearanceController;
+        }
+
         if (_player.mutantType != MutantType.Stone) return;
 
         _audioManager.PlaySFX(SFXType.Boom);
 
         GameObject effect = _effectManager.GetEffects(EffectType.Explosion);
-        effect.transform.position = transform.position;
+        effect.transform.position = _destroyedObj.transform.position;
 
         SpreadParticle(); // ÆÄÆí
 
