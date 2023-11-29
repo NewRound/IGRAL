@@ -45,7 +45,7 @@ public class DestroyObject : MonoBehaviour, IInteract
         _audioManager.PlaySFX(SFXType.Boom);
 
         GameObject effect = _effectManager.GetEffects(EffectType.Explosion);
-        effect.transform.position = _destroyedObj.transform.position;
+        effect.transform.position = _particles[0].transform.position;
 
         SpreadParticle(); // ÆÄÆí
 
