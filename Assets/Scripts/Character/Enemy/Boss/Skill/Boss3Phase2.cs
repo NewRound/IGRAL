@@ -28,7 +28,7 @@ public class Boss3Phase2 : BossSkill
             if (normalizedTime > 1f)
             {
                 animationController.AttackAction -= _newWeapon.Shoot;
-                OnSkillEnded();
+                OnAnimationEnded();
 
                 state = NodeState.Success;
                 return state;

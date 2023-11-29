@@ -21,7 +21,7 @@ public class Boss3Phase3 : BossSkill
             float normalizedTime = AnimationUtil.GetNormalizeTime(animationController.Animator, AnimTag.Skill, (int)AnimatorLayer.UpperLayer);
             if (normalizedTime > 1f)
             {
-                OnSkillEnded();
+                OnAnimationEnded();
 
                 state = NodeState.Success;
                 return state;
