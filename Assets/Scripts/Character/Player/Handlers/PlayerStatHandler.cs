@@ -70,8 +70,6 @@ public class StatChange
         statType = _statType;
         value = _value;        
     }
-
-    
 }
 
 public class PlayerStatHandler : IDamageable, IBurnable
@@ -612,5 +610,15 @@ public class PlayerStatHandler : IDamageable, IBurnable
             default:
                 return a;
         }
+    }
+
+    public void UpdateInvincible(bool isInvincible)
+    {
+        Data.IsInvincible = isInvincible;
+    }
+
+    public void UpdateIsRanged(bool isRanged)
+    {
+        Data.IsRanged = isRanged;
     }
 }

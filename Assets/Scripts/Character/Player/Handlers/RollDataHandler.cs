@@ -9,11 +9,14 @@ public class RollDataHandler
     private float _currentRollingElapsedTime;
     private float _invincibleTime;
 
-    public RollDataHandler(float rollingCoolTime, float invincibleTime)
+    private PlayerStatHandler _playerStatHandler;
+
+    public RollDataHandler(PlayerStatHandler playerStatHandler)
     {
-        SetRollingCoolTime(rollingCoolTime);
-        _currentRollingElapsedTime = rollingCoolTime;
-        _invincibleTime = invincibleTime;
+        _playerStatHandler = playerStatHandler;
+        SetRollingCoolTime(_playerStatHandler.Data.RollingCoolTime);
+        _currentRollingElapsedTime = _playerStatHandler.Data.RollingCoolTime;
+        _invincibleTime = _playerStatHandler.Data.InvincibleTime;
         CanRoll = true;
     }
 
@@ -27,6 +30,7 @@ public class RollDataHandler
         CanRoll = false;
         _currentRollingElapsedTime = 0f;
         IsInvincible = true;
+        _playerStatHandler.UpdateInvincible(IsInvincible);
     }
 
     public void CalculateCoolTime()
@@ -56,5 +60,6 @@ public class RollDataHandler
             return;
 
         IsInvincible = false;
+        _playerStatHandler.UpdateInvincible(IsInvincible);
     }
 }

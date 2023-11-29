@@ -1,45 +1,54 @@
 using UnityEngine;
 
-public class Bullet : BulletBase
+public class Bullet : Weapon
 {
-    [SerializeField] private float _damage;
-    [SerializeField] private float _maxDuration;
+    [SerializeField] private float damage;
+    [SerializeField] private float maxDuration;
     [SerializeField] private Transform modelTrans;
     [SerializeField] private float movePower = 10f;
-    private Vector3 _direction;
     private float _curDuration;
+
+    private Rigidbody _rigid;
+
+    private void Awake()
+    {
+        _rigid = GetComponent<Rigidbody>();
+    }
 
     private void OnEnable()
     {
         _curDuration = 0f;
     }
 
-    
+    private void OnDisable()
+    {
+        _rigid.velocity = Vector3.zero;
+    }
+
 
     private void Update()
     {
         _curDuration += Time.deltaTime;
 
-        if(_curDuration >= _maxDuration)
+        if(_curDuration >= maxDuration)
         {
             gameObject.SetActive(false);
         }
     }
-    public void SetDirection(bool isRight)
-    {
-        _direction = isRight ? transform.right : -transform.right;
-    }
 
     public void Move()
     {
-        rigid.AddForce(_direction * movePower, ForceMode.Impulse);
+        _rigid.AddForce(transform.forward * movePower, ForceMode.Impulse);
     }
 
     public void Look(Vector3 direction)
     {
-        transform.rotation = Quaternion.Euler(direction);
-        Quaternion rotation = Quaternion.FromToRotation(Vector3.forward, _direction);
-        modelTrans.rotation = rotation;
+        SetDirection(direction);
+    }
+
+    private void SetDirection(Vector3 direction)
+    {
+        transform.rotation = Quaternion.LookRotation(direction);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -51,7 +60,7 @@ public class Bullet : BulletBase
             PlayerStatHandler statHandler = playerController.StatHandler;
 
             if (statHandler != null)
-                statHandler.Damaged(_damage);
+                Attack(damage, statHandler.Data, statHandler);
             
             gameObject.SetActive(false);
         }

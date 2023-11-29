@@ -33,7 +33,7 @@ public class BossBehaviourTree : BehaviourTree
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody>();
-        StatHandler = new EnemyStatHandler(enemySO, null, null, transform);
+        StatHandler = new EnemyStatHandler(Instantiate(enemySO), null, null, transform);
         AnimationController = GetComponentInChildren<BossAnimationController>();
         AnimationController.Init();
     }
