@@ -30,10 +30,14 @@ public class BossBehaviourTree : BehaviourTree
 
     public Transform PlayerTransform { get; private set; }
 
+    public Transform DroneSpawnTrans { get; private set; }
+    [field: SerializeField] public float DroneSpawnDuration { get; private set; } = 3f;
+
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody>();
         StatHandler = new EnemyStatHandler(Instantiate(enemySO), null, null, transform);
+        DroneSpawnTrans = waypoints[0];
         AnimationController = GetComponentInChildren<BossAnimationController>();
         AnimationController.Init();
     }

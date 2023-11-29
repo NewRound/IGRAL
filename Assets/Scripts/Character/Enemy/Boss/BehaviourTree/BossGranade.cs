@@ -51,13 +51,19 @@ public class BossGranade : Weapon
         Rotate();
     }
 
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(transform.position, explosionRange);
+    }
+#endif
+
     public void ThrowGranade()
     {
         if (_target == null)
-        {
             Init();
-        }
 
+        InitPos();
         _isMovable = true;
 
         StartCoroutine(Explode());
@@ -146,8 +152,6 @@ public class BossGranade : Weapon
         _halfExplosiondelayTime = GlobalValues.HALF * explosionDelayTime;
         _explosionDict.Add(_halfExplosiondelayTime, CoroutineRef.GetWaitForSeconds(_halfExplosiondelayTime));
         _explosionDict.Add(explosionTime, CoroutineRef.GetWaitForSeconds(explosionTime));
-
-        InitPos();
     }
 
     
