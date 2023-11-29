@@ -54,59 +54,28 @@ public class DefaultAttack : ActionNode
         if (!_target)
             _target = GameManager.Instance.PlayerTransform;
 
-        Vector3 direction = _target.position - _spawnPoint.position;
-        Vector3 afterDirection = direction.normalized;
-
-        float modAngle = 0;
-        bool isRight = direction.x > 0;
 
         for (int i = 0; i < _bulletAmount; i++)
         {
-            int halfIndex = i / 2;
-            if (_bulletAmount % 2 != 0 && i == 0)
-                modAngle = 0;
-            else
-                modAngle = i % 2 == 0 ? -_bulletPerAngle * (halfIndex + 1) : _bulletPerAngle * (halfIndex + 1);
+            Vector3 direction = _target.position - _spawnPoint.position;
+            Vector3 afterDirection = direction.normalized;
 
-            if (modAngle != 0)
-                afterDirection = Quaternion.Euler(direction.normalized) * new Vector3(0, 0, modAngle);
-
+            float modAngle = 0;
 
             Bullet bullet = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.BossShotgunBullet).GetComponent<Bullet>();
             bullet.transform.position = _spawnPoint.position;
 
+            int halfIndex = i / 2;
+            if (_bulletAmount % 2 != 0 && i == 0)
+                modAngle = 0;
+            else
+                modAngle = i % 2 == 0 ? -_bulletPerAngle * halfIndex : _bulletPerAngle * (halfIndex + 1);
+
+            if (modAngle != 0)
+                afterDirection = Quaternion.Euler(new Vector3(0f, 0f, modAngle)) * direction.normalized;
+
             bullet.Look(afterDirection);
-            bullet.SetDirection(isRight);
             bullet.Move();
         }
     }
-
-    /*public void Shoot()
-    {
-        if (!_target)
-            _target = GameManager.Instance.PlayerTransform;
-
-        float angle = 5;
-        float modAngle = 0;
-        Vector3 direction = _target.position - _spawnPoint.position;
-
-        bool isRight = direction.x > 0;
-
-        bossBehaviourTree.LookRightAway();
-
-        for (int i = 0; i < _bulletAmount; i++)
-        {
-            int halfIndex = i / 2;
-            if (_bulletAmount % 2 != 0 && i == 0)
-                modAngle = 0;
-            else
-                modAngle = i % 2 == 0 ? -angle * (halfIndex + 1) : angle * (halfIndex + 1);
-
-            Vector3 afterDirection = Quaternion.Euler(direction.normalized) * new Vector3(0, 0, modAngle);
-
-            Bullet bullet = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.BossShotgunBullet).GetComponent<Bullet>();
-            bullet.transform.position = _spawnPoint.position;
-            bullet.Move(isRight);
-        }
-    }*/
 }
