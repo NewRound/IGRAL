@@ -20,6 +20,19 @@ public class Condition
         uiBar.fillAmount =  (curValue / maxValue);
     }
 }
+
+[System.Serializable]
+public class BossCondition
+{
+    public Image uiBar;
+
+    public void FillAmount(float curValue, float maxValue)
+    {
+        if (maxValue == 0.0f)
+            return;
+        uiBar.fillAmount = (curValue / maxValue);
+    }
+}
 public class UIPlayerConditions : MonoBehaviour
 {
     private PlayerSO playerSO;
