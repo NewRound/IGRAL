@@ -48,7 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1abf10d3d3beab649909dcaf143252d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crosshair: {fileID: 2304161689885127156, guid: ea2daf69da8957346ad035c9c35776fa,
+    type: 3}
   arrvingDuration: 1
+  damage: 10
 --- !u!54 &2673481848397324331
 Rigidbody:
   m_ObjectHideFlags: 0

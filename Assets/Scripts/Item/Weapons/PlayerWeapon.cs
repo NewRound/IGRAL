@@ -2,6 +2,7 @@
 
 public class PlayerWeapon : Weapon
 {
+    [SerializeField] private float rayOffsetY = 0.5f;
     private PlayerSO _playerSO;
     private PlayerAnimationController _playerAnimationController;
     private Transform _modelTrans;
@@ -33,7 +34,7 @@ public class PlayerWeapon : Weapon
             return;
 
         Vector3 offsetVec = _myTrans.position;
-        offsetVec.y += 0.5f;
+        offsetVec.y += rayOffsetY;
         Gizmos.DrawRay(offsetVec, _modelTrans.forward * _playerSO.AttackRange);
     }
 
@@ -42,7 +43,8 @@ public class PlayerWeapon : Weapon
         HealthSO targetSO = null;
         IDamageable damageable = null;
         Vector3 offsetVec = _myTrans.position;
-        offsetVec.y += 0.5f;
+        offsetVec.y += rayOffsetY;
+        Debug.Log(_playerSO.AttackRange);
 
         RaycastHit[] hits = Physics.RaycastAll(offsetVec, _modelTrans.forward, _playerSO.AttackRange, 1 << LayerMask.NameToLayer(targetTag) | 1 << LayerMask.NameToLayer(GlobalEnums.Tag.Interactable.ToString()));
         Debug.Log("Attack");

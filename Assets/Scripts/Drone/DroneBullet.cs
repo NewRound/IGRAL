@@ -6,7 +6,7 @@ public enum BulletType
    EnmeyDrone
 }
 
-public class DroneBullet : MonoBehaviour
+public class DroneBullet : Weapon
 {
     [SerializeField] private float _attackDamage;
     [SerializeField] private float _movementSpeed;
@@ -92,7 +92,7 @@ public class DroneBullet : MonoBehaviour
                     PlayerStatHandler player = playerController.StatHandler;
                     if( player != null)
                     {
-                        player.Damaged(_attackDamage);
+                        Attack(_attackDamage, player.Data, player);
                     }
                     gameObject.SetActive(false) ;
                 }

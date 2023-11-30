@@ -18,6 +18,7 @@ public class Boss3Phase2 : BossSkill
         if (!IsActionPossible((CurrentAction)btDict[BTValues.CurrentAction], CurrentAction.UsingSkill)
             || bossBehaviourTree.CurrentPhase != 2)
         {
+            animationController.AttackAction -= _newWeapon.Shoot;
             state = NodeState.Failure;
             return state;
         }
@@ -28,6 +29,7 @@ public class Boss3Phase2 : BossSkill
             if (normalizedTime > 1f)
             {
                 animationController.AttackAction -= _newWeapon.Shoot;
+               
                 OnAnimationEnded();
 
                 state = NodeState.Success;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Rocket : Weapon
 {
+    [SerializeField] private GameObject crosshair;
     [SerializeField] private float arrvingDuration = 1f;
     [SerializeField] private float damage = 10f;
 
@@ -31,6 +32,8 @@ public class Rocket : Weapon
         if (playerController != null)
         {
             Attack(damage, playerController.StatHandler.Data, playerController.StatHandler);
+            GameObject explosion = EffectManager.Instance.GetEffect(EffectType.ExplosionParticle);
+            explosion.transform.position = transform.position;
             Destroy(gameObject);
         }
     }
@@ -42,6 +45,8 @@ public class Rocket : Weapon
         float radius = GlobalValues.HALF * Vector3.Distance(_initPos, _targetTrans.position);
         _randomPos = (_initPos + _targetTrans.position) * GlobalValues.HALF + Random.insideUnitSphere * radius;
         _randomPos.y = _randomPos.y < 0 ? 0 : _randomPos.y;
+
+        
 
         Vector3 direction = _targetTrans.position - _initPos;
         Look(direction);
