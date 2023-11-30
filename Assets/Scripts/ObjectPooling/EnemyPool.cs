@@ -28,6 +28,5 @@ public class EnemyPool : MonoBehaviour
     public void PushObject(EnemyController enemyController)
     {
         enemyPoolStack.Push(enemyController);
-        enemyController.gameObject.SetActive(false);
     }
 }

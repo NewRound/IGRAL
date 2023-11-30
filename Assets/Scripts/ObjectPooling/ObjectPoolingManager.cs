@@ -98,6 +98,9 @@ public class ObjectPoolingManager : CustomSingleton<ObjectPoolingManager>
 
     public EnemyController GetEnemy(int index)
     {
+        if(currentStage == 0)
+            return null;
+
         EnemyController select = null;
         if (index > tempPools.Length)
             index = 0;
