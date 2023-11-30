@@ -43,9 +43,7 @@ public class DestroyObject : MonoBehaviour, IInteract
         if (_player.mutantType != MutantType.Stone) return;
 
         _audioManager.PlaySFX(SFXType.Boom);
-
-        GameObject effect = _effectManager.GetEffects(EffectType.Explosion);
-        effect.transform.position = _particles[0].transform.position;
+        _effectManager.ShowEffect(_particles[0].transform.position, EffectType.Explosion);
 
         SpreadParticle(); // ÆÄÆí
 
