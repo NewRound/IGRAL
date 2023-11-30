@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class EnemyController : EntityController
 {
+    private Action<EnemyController> returnPool;
+
     [SerializeField] private EnemySO stat;
     [SerializeField] private UIEnemyHealth uIEnemyHealth;
     [SerializeField] private GameObject EnemyArmor;
@@ -40,6 +43,7 @@ public class EnemyController : EntityController
         StateMachine.Init();
         StatHandler.DamagedAction += OnDamaged;
         StatHandler.DieAction += StateMachine.Ondead;
+        StatHandler.DieAction += ReturnToPool;
     }
 
     private void OnEnable()
@@ -70,6 +74,16 @@ public class EnemyController : EntityController
     private void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
+    }
+
+    public void SetReturnPoolAction(Action<EnemyController> action)
+    {
+        returnPool = action;
+    }
+
+    private void ReturnToPool()
+    {
+        returnPool?.Invoke(this);
     }
 
     public override void OnDamaged()

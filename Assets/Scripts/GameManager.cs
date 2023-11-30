@@ -16,7 +16,7 @@ public class GameManager : CustomSingleton<GameManager>
 
     public PlayerStatHandler StatHandler { get; private set; }
 
-    public int currentStage = 1;
+    public int currentStage = 0;
 
     public Action SceneLoad;
 
@@ -28,7 +28,7 @@ public class GameManager : CustomSingleton<GameManager>
 
     private void Awake()
     {
-        //isTutorial = PlayerPrefs.GetInt("Tutorial") == 1 ? true : false;
+        isTutorial = PlayerPrefs.GetInt("Tutorial") == 1 ? true : false;
         if (DataManager.Instance == null)
             Debug.Log(DataManager.Instance);
     }
