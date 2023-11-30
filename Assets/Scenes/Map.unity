@@ -449,10 +449,40 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 776005348228543271, guid: ca58ec1d814f27e4d92614a586b7b37c,
+        type: 3}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 776005348228543271, guid: ca58ec1d814f27e4d92614a586b7b37c,
+        type: 3}
+      propertyPath: rotateEngle
+      value: 113
+      objectReference: {fileID: 0}
     - target: {fileID: 956369038203279772, guid: ca58ec1d814f27e4d92614a586b7b37c,
         type: 3}
       propertyPath: m_Name
       value: Map1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092877804079817596, guid: ca58ec1d814f27e4d92614a586b7b37c,
+        type: 3}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092877804079817596, guid: ca58ec1d814f27e4d92614a586b7b37c,
+        type: 3}
+      propertyPath: rotateEngle
+      value: 113
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572215871214351737, guid: ca58ec1d814f27e4d92614a586b7b37c,
+        type: 3}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572215871214351737, guid: ca58ec1d814f27e4d92614a586b7b37c,
+        type: 3}
+      propertyPath: rotateEngle
+      value: 113
       objectReference: {fileID: 0}
     - target: {fileID: 2894725488433605855, guid: ca58ec1d814f27e4d92614a586b7b37c,
         type: 3}
@@ -508,6 +538,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999971316911343204, guid: ca58ec1d814f27e4d92614a586b7b37c,
+        type: 3}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999971316911343204, guid: ca58ec1d814f27e4d92614a586b7b37c,
+        type: 3}
+      propertyPath: rotateEngle
+      value: 113
+      objectReference: {fileID: 0}
+    - target: {fileID: 7852363963736673240, guid: ca58ec1d814f27e4d92614a586b7b37c,
+        type: 3}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7852363963736673240, guid: ca58ec1d814f27e4d92614a586b7b37c,
+        type: 3}
+      propertyPath: rotateEngle
+      value: 113
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
