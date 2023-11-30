@@ -32,6 +32,7 @@ public class BossBehaviourTree : BehaviourTree
 
     public Transform DroneSpawnTrans { get; private set; }
     [field: SerializeField] public float DroneSpawnDuration { get; private set; } = 3f;
+    [field: SerializeField] public float DroneHeight { get; private set; } = 7f;
 
     private void Awake()
     {

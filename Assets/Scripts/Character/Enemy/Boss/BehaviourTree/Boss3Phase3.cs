@@ -6,7 +6,7 @@ public class Boss3Phase3 : BossSkill
 
     public Boss3Phase3(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
     {
-        _enemyDroneSpawner = new EnemyDroneSpawner(bossBehaviourTree.DroneSpawnTrans, bossBehaviourTree.DroneSpawnDuration);
+        _enemyDroneSpawner = new EnemyDroneSpawner(bossBehaviourTree.DroneSpawnTrans, bossBehaviourTree.DroneSpawnDuration, bossBehaviourTree.DroneHeight);
     }
 
     public override NodeState Evaluate()
