@@ -11,6 +11,12 @@ public class UpdatePhase : BossNode
 
     public override NodeState Evaluate()
     {
+        if ((bool)btDict[BTValues.IsAttacking])
+        {
+            state = NodeState.Failure;
+            return state;
+        }    
+
         int currentPhase = bossBehaviourTree.CurrentPhase;
         currentPhase++;
         currentPhase = currentPhase > _totalPhaseCount ? _totalPhaseCount : currentPhase;

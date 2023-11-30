@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effects:
   - {fileID: 8296686829717963800, guid: 8952e497ee97698438f16ad3c7604817, type: 3}
+  - {fileID: 3064666134012057367, guid: a1cfcf7bfb157f144b6307058a24177e, type: 3}

@@ -79,7 +79,7 @@ public class BossGranade : Weapon
             Vector3 sphereRandomPos = Random.insideUnitSphere * radius;
             Vector3 canonicalPos = (_initPos + _target.position) * GlobalValues.HALF;
             _randomPos = canonicalPos + sphereRandomPos;
-            _randomPos.y = _randomPos.y < 0 ? radius : _randomPos.y;
+            _randomPos.y = _randomPos.y < _target.position.y ? radius : _randomPos.y;
             _randomPos.z = 0f;
         }
     }
