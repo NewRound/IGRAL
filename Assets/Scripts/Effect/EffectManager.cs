@@ -3,7 +3,8 @@ using UnityEngine;
 
 public enum EffectType
 {
-    Explosion    
+    Explosion,
+    damaged   
 }
 
 public class EffectManager : CustomSingleton<EffectManager>
