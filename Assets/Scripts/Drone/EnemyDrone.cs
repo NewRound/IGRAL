@@ -26,7 +26,7 @@ public class EnemyDrone : MonoBehaviour
         _curDurationTime = 0.0f;
         gameObject.SetActive(true);
         _direction = direction;
-        _attackDelay = Random.Range(0.5f, 1.5f);
+        _attackDelay = Random.Range(0.5f, 1f);
     }
 
     private void InActiveDrone()
@@ -71,8 +71,8 @@ public class EnemyDrone : MonoBehaviour
     // 총알을 발사하는 메서드
     private void OnFire()
     {
-        GameObject projectile = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.EnemyDroneBullet);
-        DroneBullet droneBullet = projectile.GetComponent<DroneBullet>();
+        GameObject projectile = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.BossDroneBullet);
+        EnemyDroneBullet droneBullet = projectile.GetComponent<EnemyDroneBullet>();
         droneBullet.SetDirection(_direction);
         droneBullet.transform.position = transform.position;
     }

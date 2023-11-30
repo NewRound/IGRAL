@@ -7,7 +7,6 @@ public class Rocket : ExplosionWeapon
 {
     [SerializeField] private GameObject crosshairPrefab;
     [SerializeField] private GameObject trail;
-    
 
     private Transform _targetTrans;
     private Transform _bulletSpawnTrans;
@@ -18,6 +17,7 @@ public class Rocket : ExplosionWeapon
     private GameObject _crosshairInstant;
 
     private bool _isTimeOver;
+    private bool _wasCollided;
 
     private void Awake()
     {
@@ -31,14 +31,12 @@ public class Rocket : ExplosionWeapon
         StartCoroutine(Explode());
     }
 
-    protected override void ResetValues()
-    {
-        _elapsedTime = 0f;
-        _crosshairInstant.SetActive(false);
-    }
 
     private void Update()
     {
+        if (_wasCollided || _isTimeOver)
+            return;
+
         CalculateTime();
         Move();
     }
@@ -51,6 +49,8 @@ public class Rocket : ExplosionWeapon
         {
             if (_isTimeOver)
                 return;
+
+            _wasCollided = true;
             Attack(damage, playerController.StatHandler.Data, playerController.StatHandler);
             StartCoroutine(DestroySelf());
         }
@@ -76,11 +76,27 @@ public class Rocket : ExplosionWeapon
         InitPos();
     }
 
+    protected override void ResetValues()
+    {
+        _elapsedTime = 0f;
+        _crosshairInstant.SetActive(false);
+        _wasCollided = false;
+    }
+
     protected override IEnumerator DestroySelf()
     {
         _isTimeOver = true;
 
         yield return StartCoroutine(base.DestroySelf());
+    }
+
+    protected override IEnumerator Explode()
+    {
+        yield return StartCoroutine(ChangeColor());
+        ApplyExplosionDamage();
+
+        if (!_wasCollided)
+            StartCoroutine(DestroySelf());
     }
 
     protected override void Init()

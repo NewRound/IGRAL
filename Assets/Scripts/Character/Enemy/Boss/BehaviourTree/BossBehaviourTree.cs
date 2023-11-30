@@ -16,7 +16,7 @@ public class BossBehaviourTree : BehaviourTree
     [field: SerializeField] public int BulletCount { get; private set; } = 5;
     [field: SerializeField] public float BulletAngle { get; private set; } = 5f;
 
-    public EnemyStatHandler StatHandler { get; private set; }
+    public BossStatHandler StatHandler { get; private set; }
 
     public BossAnimationController AnimationController { get; private set; }
 
@@ -34,13 +34,34 @@ public class BossBehaviourTree : BehaviourTree
     [field: SerializeField] public float DroneSpawnDuration { get; private set; } = 3f;
     [field: SerializeField] public float DroneHeight { get; private set; } = 7f;
 
+    public UIBossCondition UIBossCondition { get; private set; }
+
+    [field: Header("UI")]
+    public event Action<int> OnUpdatePhase;
+    public event Action<float> OnUpdateElapsedCooltime;
+    public event Action<float> OnUpdateCooltime;
+    public event Action OnBossDead;
+
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody>();
-        StatHandler = new EnemyStatHandler(Instantiate(enemySO), null, null, transform);
+        StatHandler = new BossStatHandler(Instantiate(enemySO), this);
         DroneSpawnTrans = waypoints[0];
         AnimationController = GetComponentInChildren<BossAnimationController>();
         AnimationController.Init();
+    }
+
+    public void Init()
+    {
+        if (UIBossCondition == null)
+            UIBossCondition = UIManager.Instance.OpenUI<UIBossCondition>();
+
+        UIBossCondition.DisplayHP(enemySO.Health);
+        UIBossCondition.SetMaxAction(enemySO.MaxHealth);
+        OnUpdateElapsedCooltime += UpdateElapsedCoolTimeUI;
+        OnUpdateCooltime += UpdateCurrentCoolTimeUI;
+        OnUpdatePhase += UpdatePhaseUI;
+        OnBossDead += CloseBossUI;
     }
 
     protected override Node SetTree()
@@ -107,6 +128,11 @@ public class BossBehaviourTree : BehaviourTree
         ModelTrans.rotation = Quaternion.LookRotation(direction);
     }
 
+    public void UpdatePhaseUI(int phase)
+    {
+        UIBossCondition.ChangePhase(phase);
+    }
+
     private void InitBTDict()
     {
         if (!BTDict.ContainsKey(BTValues.CurrentPhaseSkillCoolTime))
@@ -122,5 +148,23 @@ public class BossBehaviourTree : BehaviourTree
             BTDict.Add(BTValues.IsAttacking, false);
     }
 
+    public void UpdateElapsedCoolTimeUI(float elapsedCooltime)
+    {
+        OnUpdateElapsedCooltime.Invoke(elapsedCooltime);
+    }
 
+    public void UpdateCurrentCoolTimeUI(float elapsedCooltime)
+    {
+        UIBossCondition.SetMaxAction(elapsedCooltime);
+    }
+
+    public void UpdateCurrentPhaseUI(int phase)
+    {
+        UIBossCondition.ChangePhase(phase);
+    }
+
+    public void CloseBossUI()
+    {
+        UIBossCondition.gameObject.SetActive(false);
+    }
 }

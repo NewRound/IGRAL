@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class EnemyDroneBullet : ExplosionWeapon
 {
-    private bool _isTimeOver;
+    private EffectManager _effectManager;
 
     protected override void ResetValues()
     {
         base.ResetValues();
+    }
+
+    private void Awake()
+    {
+        Init();
+    }
+
+    protected override void Init()
+    {
+        base.Init();
+        _effectManager = EffectManager.Instance;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -17,10 +28,26 @@ public class EnemyDroneBullet : ExplosionWeapon
 
         if (playerController != null)
         {
-            if (_isTimeOver)
-                return;
             Attack(damage, playerController.StatHandler.Data, playerController.StatHandler);
-            StartCoroutine(DestroySelf());
         }
+
+        StartCoroutine(DestroySelf());
+    }
+
+    protected override IEnumerator DestroySelf()
+    {
+        DeActivate();
+
+        GameObject explosion = _effectManager.GetEffect(EffectType.Bomb);
+        explosion.transform.position = transform.position;
+        yield return explosionDict[explosionTime];
+
+        explosion.SetActive(false);
+        gameObject.SetActive(false);
+    }
+
+    public void SetDirection(Vector3 direction)
+    {
+        modelObject.transform.up = -direction;
     }
 }

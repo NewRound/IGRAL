@@ -97,12 +97,13 @@ public class BossGranade : ExplosionWeapon
             particleSystem.Play();
 
         yield return explosionDict[explosionTime];
+
+        material.color = Color.white;
     }
 
     protected override void ResetValues()
     {
         _isMovable = false;
         currentElapsedTime = 0f;
-        material.color = Color.white;
     }
 }

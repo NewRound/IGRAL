@@ -59,7 +59,7 @@ public abstract class ExplosionWeapon : Weapon
         explosionDict.Add(explosionTime, CoroutineRef.GetWaitForSeconds(explosionTime));
     }
 
-    protected IEnumerator Explode()
+    protected virtual IEnumerator Explode()
     {
         yield return StartCoroutine(ChangeColor());
         ApplyExplosionDamage();

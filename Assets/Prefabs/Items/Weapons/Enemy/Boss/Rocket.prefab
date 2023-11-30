@@ -58,6 +58,7 @@ MonoBehaviour:
   explosionTime: 2
   explosionRange: 2
   rotationSpeed: 90
+  yOffset: 0.5
   crosshairPrefab: {fileID: 2304161689885127156, guid: ea2daf69da8957346ad035c9c35776fa,
     type: 3}
   trail: {fileID: 6186620873329897073}
@@ -83,7 +84,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112

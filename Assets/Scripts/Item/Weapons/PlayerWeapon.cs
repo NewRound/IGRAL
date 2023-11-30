@@ -2,7 +2,8 @@
 
 public class PlayerWeapon : Weapon
 {
-    [SerializeField] private float rayOffsetY = 0.5f;
+    [SerializeField] private float rayOffsetY = 0.8f;
+    [SerializeField] private float rayOffsetX = 0.2f;
     private PlayerSO _playerSO;
     private PlayerAnimationController _playerAnimationController;
     private Transform _modelTrans;
@@ -11,7 +12,6 @@ public class PlayerWeapon : Weapon
     private void Start()
     {
         targetTag = GlobalEnums.Tag.Enemy.ToString();
-        // 임시
         _playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
 
         InputController inputController = GetComponent<InputController>();
@@ -28,26 +28,27 @@ public class PlayerWeapon : Weapon
         _playerAnimationController.AttackAction -= OnAttack;
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if (_myTrans == null)
             return;
 
         Vector3 offsetVec = _myTrans.position;
+        rayOffsetX = _modelTrans.forward.x > 0 ? -rayOffsetX : rayOffsetX;
+        offsetVec.x += rayOffsetX;
         offsetVec.y += rayOffsetY;
         Gizmos.DrawRay(offsetVec, _modelTrans.forward * _playerSO.AttackRange);
     }
+#endif
 
     protected override void OnAttack()
     {
         HealthSO targetSO = null;
         IDamageable damageable = null;
-        Vector3 offsetVec = _myTrans.position;
-        offsetVec.y += rayOffsetY;
-        Debug.Log(_playerSO.AttackRange);
+        Vector3 offsetVec = UpdateRayOffset();
 
         RaycastHit[] hits = Physics.RaycastAll(offsetVec, _modelTrans.forward, _playerSO.AttackRange, 1 << LayerMask.NameToLayer(targetTag) | 1 << LayerMask.NameToLayer(GlobalEnums.Tag.Interactable.ToString()));
-        Debug.Log("Attack");
         foreach (RaycastHit hit in hits)
         {
             EnemyController enemyController = hit.collider.GetComponentInParent<EnemyController>();
@@ -66,7 +67,7 @@ public class PlayerWeapon : Weapon
             }
 
             BossBehaviourTree bossBehaviourTree = hit.collider.GetComponent<BossBehaviourTree>();
-            
+
             if (bossBehaviourTree != null)
             {
                 EnemyStatHandler statHandler = bossBehaviourTree.StatHandler;
@@ -84,6 +85,15 @@ public class PlayerWeapon : Weapon
         }
     }
 
+    private Vector3 UpdateRayOffset()
+    {
+        Vector3 offsetVec = _myTrans.position;
+        rayOffsetX = _modelTrans.forward.x > 0 ? -rayOffsetX : rayOffsetX;
+        offsetVec.x += rayOffsetX;
+        offsetVec.y += rayOffsetY;
+        return offsetVec;
+    }
+
     public void Init(PlayerSO playerSO)
     {
         _playerSO = playerSO;
@@ -93,12 +103,4 @@ public class PlayerWeapon : Weapon
     {
         _playerSO = playerSO;
     }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
-    }
-
-    
 }

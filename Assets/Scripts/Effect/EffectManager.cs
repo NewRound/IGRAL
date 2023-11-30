@@ -6,6 +6,7 @@ public enum EffectType
     Explosion,
     damaged,
     ExplosionParticle,
+    Bomb,
 }
 
 public class EffectManager : CustomSingleton<EffectManager>

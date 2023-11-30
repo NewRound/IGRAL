@@ -373,7 +373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65aaa6819a28d394788dc653c209e1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayOffsetY: 0.5
+  rayOffsetY: 0.8
+  rayOffsetX: 0.2
 --- !u!1 &2541467568795205321
 GameObject:
   m_ObjectHideFlags: 0
