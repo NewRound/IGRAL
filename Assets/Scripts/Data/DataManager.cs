@@ -70,7 +70,6 @@ public class DataManager : CustomSingleton<DataManager>
         data.SetPlayerSO(GameManager.Instance.playerSO);
         data.skillPoint = SkillManager.Instance.skillPoint;
         data.learnedSkills = SkillManager.Instance.learnedSkills;
-        Debug.Log(data.skillPoint);
         string json = JsonUtility.ToJson(data);
         System.IO.File.WriteAllText(Application.persistentDataPath + @"\playerSOData.json", json);
     }

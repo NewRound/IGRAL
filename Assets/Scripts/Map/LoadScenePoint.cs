@@ -19,6 +19,7 @@ public class LoadScenePoint : InteractiveObject
                 LoadSceneManager.Instance.LoadScene("LobbyScene");
                 break;
             case Scenes.SampleScene:
+                GameManager.Instance.currentStage = 1;
                 LoadSceneManager.Instance.LoadScene("SampleScene");
                 break;
             case Scenes.TutorialMap:
