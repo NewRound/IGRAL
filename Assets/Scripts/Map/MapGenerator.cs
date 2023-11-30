@@ -46,13 +46,13 @@ public class MapGenerator : MonoBehaviour
 
         switch(currentStage)
         {
-            case 0:
+            case 1:
                 createStage = Stage1_mapBlocks;
                 break;
-            case 1:
+            case 2:
                 createStage = Stage2_mapBlocks;
                 break;
-            case 2:
+            case 3:
                 createStage = Stage3_mapBlocks;
                 break;
             default:
