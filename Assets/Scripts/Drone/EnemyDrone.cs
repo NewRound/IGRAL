@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyDrone : MonoBehaviour
 {
     [Header("# Attack Info")]
-    [SerializeField] private float _attackDelay;
+    private float _attackDelay;
     private float _attackTimer;
 
     [Header("# Move Info")]
@@ -26,6 +26,7 @@ public class EnemyDrone : MonoBehaviour
         _curDurationTime = 0.0f;
         gameObject.SetActive(true);
         _direction = direction;
+        _attackDelay = Random.Range(0.5f, 1.5f);
     }
 
     private void InActiveDrone()
@@ -36,6 +37,7 @@ public class EnemyDrone : MonoBehaviour
         _curDurationTime = 0.0f;
         gameObject.SetActive(false);
         _direction = Vector3.zero;
+        _attackTimer = 0f;
     }
 
     private void FixedUpdate()
@@ -49,7 +51,7 @@ public class EnemyDrone : MonoBehaviour
 
         if (_attackTimer > _attackDelay)
         {
-            _attackTimer = 0;    
+            _attackTimer = 0f;    
             OnFire();           
         }
 
@@ -70,7 +72,8 @@ public class EnemyDrone : MonoBehaviour
     private void OnFire()
     {
         GameObject projectile = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.EnemyDroneBullet);
-        DroneBullet droneBullet = projectile.GetComponent<DroneBullet>();      
+        DroneBullet droneBullet = projectile.GetComponent<DroneBullet>();
+        droneBullet.SetDirection(_direction);
         droneBullet.transform.position = transform.position;
     }
 }

@@ -14,6 +14,7 @@ public class DroneBullet : MonoBehaviour
     [SerializeField] private BulletType _bulletType;
     private float _curDuration;
 
+    private Vector3 _direction;
     private Transform _target;
 
     private void OnEnable()
@@ -43,9 +44,8 @@ public class DroneBullet : MonoBehaviour
                 break;
 
             case BulletType.EnmeyDrone:
-                direction = Vector3.down;
-                transform.forward = direction.normalized;
-                transform.Translate(Vector3.forward * _movementSpeed * Time.deltaTime);
+                transform.forward = _direction;
+                transform.Translate(Vector3.down * _movementSpeed * Time.deltaTime);
                 break;
         }        
 
@@ -55,7 +55,10 @@ public class DroneBullet : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-
+    }
+    public void SetDirection(Vector3 direction)
+    {
+        _direction = direction;
     }
 
     public void SetTarget(Transform target)
