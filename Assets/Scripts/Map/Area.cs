@@ -22,7 +22,7 @@ public class Area : MonoBehaviour
         {
             if (enemyCount == 1)
             {
-                GameObject enemy = ObjectPoolingManager.Instance.GetEnemy(0);
+                GameObject enemy = ObjectPoolingManager.Instance.GetEnemy(0).gameObject;
                 enemy.transform.position = position;
             }
             else
@@ -32,8 +32,8 @@ public class Area : MonoBehaviour
                 float xPos;
                 for(int i = 1; i <= enemyCount; i++)
                 {
-                    GameObject enemy = ObjectPoolingManager.Instance.GetEnemy(0);
-                    SendAreaInfo(enemy);
+                    GameObject enemy = ObjectPoolingManager.Instance.GetEnemy(0).gameObject;
+                    SendAreaInfo(enemy.gameObject);
 
                     Vector3 pos = position;
                     xPos = firstPos + (((size - 1) / num) * i);

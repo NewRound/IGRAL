@@ -22,13 +22,28 @@ public class ObjectPoolingManager : CustomSingleton<ObjectPoolingManager>
 
     [field: SerializeField] public GameObject[] tutorial { get; private set; }
 
-    [field: SerializeField] public GameObject[] stage01 { get; private set; }
-    [field: SerializeField] public GameObject[] stage02 { get; private set; }
-    [field: SerializeField] public GameObject[] stage03 { get; private set; }
+    private EnemyPool[] stageEnemyPool;
 
-    private GameObject[] temp;
+    private GameObject[] tempPools;
     private List<GameObject>[] pools;
-    private List<GameObject>[] enemyPools;
+
+    private List<GameObject>[] tutorialEnemyPools;
+
+    private int currentStage;
+
+    private void Awake()
+    {
+        currentStage = GameManager.Instance.currentStage;
+
+        pools = new List<GameObject>[prefabs.Length];
+
+        for (int index = 0; index < pools.Length; index++)
+        {
+            pools[index] = new List<GameObject>();
+        }
+
+        tutorialEnemyPools = new List<GameObject>[tutorial.Length];
+    }
 
     private void Start()
     {
@@ -37,50 +52,26 @@ public class ObjectPoolingManager : CustomSingleton<ObjectPoolingManager>
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        switch (GameManager.Instance.currentStage)
+        currentStage = GameManager.Instance.currentStage;
+
+        foreach (Transform child in transform)
         {
-            case 0:
-                temp = stage01;
-                break;
-            case 1:
-                temp = stage02;
-                break;
-            case 2:
-                temp = stage03;
-                break;
+            Destroy(child.gameObject);
         }
-        if (temp == null)
+
+        if (currentStage == 0)
             return;
 
-        if(temp.Length > 0)
+        EnemyPools enemyPool = Resources.Load<EnemyPools>($"Stage/Stage{currentStage}");
+        tempPools = new GameObject[enemyPool.EnemyPoolPrefabs.Length];
+        stageEnemyPool = enemyPool.EnemyPoolPrefabs;
+        for (int i = 0; i < tempPools.Length; i++)
         {
-            enemyPools = new List<GameObject>[temp.Length];
-
-            for (int index = 0; index < temp.Length; index++)
-            {
-                enemyPools[index] = new List<GameObject>();
-            }
+            GameObject go = Instantiate(stageEnemyPool[i].gameObject);
+            tempPools[i] = go;
         }
     }
 
-    private void Awake()
-    {
-        pools = new List<GameObject>[prefabs.Length];
-
-        temp = stage01;
-
-        enemyPools = new List<GameObject>[temp.Length];
-
-        for (int index = 0; index < temp.Length; index++)
-        {
-            enemyPools[index] = new List<GameObject>();
-        }
-
-        for (int index = 0; index < pools.Length; index++)
-        {
-            pools[index] = new List<GameObject>();
-        }
-    }
 
     public GameObject GetGameObject(ObjectPoolType objectPoolType)
     {
@@ -105,43 +96,30 @@ public class ObjectPoolingManager : CustomSingleton<ObjectPoolingManager>
         return select;
     }
 
-    public GameObject GetEnemy(int index)
+    public EnemyController GetEnemy(int index)
     {
-        GameObject select = null;
-        if (index > enemyPools.Length)
+        EnemyController select = null;
+        if (index > tempPools.Length)
             index = 0;
 
-        foreach (GameObject item in enemyPools[index])
-        {
-            if (!item.activeSelf)
-            {
-                select = item;
-                select.SetActive(true);
-                break;
-            }
-        }
+        EnemyPool enemyPool = tempPools[index].GetComponent<EnemyPool>();
 
-        if (!select)
-        {
-            select = Instantiate(temp[index], transform);
-            enemyPools[index].Add(select);
-        }
+        select = enemyPool.GetObject();
 
         return select;
     }
 
     public GameObject GetEnemyTutorial(int index)
     {
-        enemyPools = new List<GameObject>[tutorial.Length];
 
         for (int i = 0; i < tutorial.Length; i++)
         {
-            enemyPools[i] = new List<GameObject>();
+            tutorialEnemyPools[i] = new List<GameObject>();
         }
 
         GameObject select = null;
 
-        foreach (GameObject item in enemyPools[index])
+        foreach (GameObject item in tutorialEnemyPools[index])
         {
             if (!item.activeSelf)
             {
@@ -154,7 +132,7 @@ public class ObjectPoolingManager : CustomSingleton<ObjectPoolingManager>
         if (!select)
         {
             select = Instantiate(tutorial[index], transform);
-            enemyPools[index].Add(select);
+            tutorialEnemyPools[index].Add(select);
         }
 
         return select;

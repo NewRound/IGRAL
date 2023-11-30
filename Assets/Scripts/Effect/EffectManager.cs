@@ -4,6 +4,7 @@ using UnityEngine;
 public enum EffectType
 {
     Explosion,
+    damaged,
     ExplosionParticle,
 }
 
@@ -22,8 +23,14 @@ public class EffectManager : CustomSingleton<EffectManager>
             effectList[i] = new List<GameObject>();
         }
     }
+
+    public void ShowEffect(Vector3 pos, EffectType type)
+    {
+        GameObject effect = GetEffect(type);
+        effect.transform.position = pos;
+    }
     
-    public GameObject GetEffects(EffectType type)
+    public GameObject GetEffect(EffectType type)
     {
         GameObject selectEffect = null;
 

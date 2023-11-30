@@ -84,6 +84,8 @@ public class PlayerStatHandler : IDamageable, IBurnable
     public event Action DieAction;
     public event Action DamagedAction;
 
+    private Vector3 yOffset = new Vector3(0f, 1.6f, 0f);
+
     public PlayerStatHandler(PlayerSO data)
     {
         _baseData = data;
@@ -102,8 +104,10 @@ public class PlayerStatHandler : IDamageable, IBurnable
         }
 
         GameObject damagedTxt = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.PlayerDamagedTxt);
-        damagedTxt.transform.position = GameManager.Instance.PlayerTransform.position + new Vector3 (0f, 1.8f, 0f);
+        damagedTxt.transform.position = GameManager.Instance.PlayerTransform.position + yOffset;
         damagedTxt.GetComponent<DamagedTxt>()._damage = damage;
+
+        EffectManager.Instance.ShowEffect(GameManager.Instance.PlayerTransform.position + yOffset, EffectType.damaged);
     }
 
     public void Recovery(float damage)
