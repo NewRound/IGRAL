@@ -61,7 +61,6 @@ public class Boss3Phase1 : BossSkill
         defaultWeapon.SetActive(false);
         _granade.transform.position = defaultWeapon.transform.position;
         _granade.ActivateModel();
-        _granade.InitPos();
         UseSkill();
     }
 }

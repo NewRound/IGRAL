@@ -11,6 +11,7 @@ public class EnemyStatHandler : IDamageable
     public event Action DieAction;
 
     private Transform curTransform;
+    private Vector3 yOffset = new Vector3(0f, 1.6f, 0f);
 
     public EnemyStatHandler(EnemySO data, UIEnemyHealth uIEnemyHealth, GameObject enemyArmor, Transform baseTransform)
     {
@@ -39,8 +40,10 @@ public class EnemyStatHandler : IDamageable
                 UIEnemyHealth.DisplayEnemyHealth(Data.Health, Data.MaxHealth);
 
             GameObject damagedTxt = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.EnemyDamagedTxt);
-            damagedTxt.transform.position = curTransform.position + new Vector3(0f, 1.8f, 0f);
+            damagedTxt.transform.position = curTransform.position + yOffset;
             damagedTxt.GetComponent<DamagedTxt>()._damage = damage;
+
+            EffectManager.Instance.ShowEffect(curTransform.position + yOffset, EffectType.damaged);
         }
         else
         {
