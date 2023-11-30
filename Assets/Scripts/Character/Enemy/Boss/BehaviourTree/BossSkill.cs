@@ -23,7 +23,7 @@ public abstract class BossSkill : ActionNode
         animationController.PlayAnimation(animationController.AnimationData.PhaseParameterHash, bossBehaviourTree.CurrentPhase);
         btDict[BTValues.CurrentAction] = CurrentAction.UsingSkill;
     }
-    protected void OnSkillEnded()
+    protected void OnAnimationEnded()
     {
         animationController.PlayAnimation(animationController.AnimationData.AttackSubStateParameterHash, false);
         animationController.PlayAnimation(animationController.AnimationData.SkillSubParameterHash, false);

@@ -69,10 +69,11 @@ public class BossGranade : Weapon
         {
             _initPos = transform.position;
             _lastPos = _target.position;
-            Vector3 sphereRandomPos = Random.insideUnitSphere * Vector3.Distance(_initPos, _target.position) * GlobalValues.HALF;
+            float radius = Vector3.Distance(_initPos, _target.position) * GlobalValues.HALF;
+            Vector3 sphereRandomPos = Random.insideUnitSphere * radius;
             Vector3 canonicalPos = (_initPos + _target.position) * GlobalValues.HALF;
             _randomPos = canonicalPos + sphereRandomPos;
-            _randomPos.y = _randomPos.y < 0 ? 0 : _randomPos.y;
+            _randomPos.y = _randomPos.y < 0 ? radius : _randomPos.y;
             _randomPos.z = 0f;
         }
     }
@@ -141,7 +142,6 @@ public class BossGranade : Weapon
 
     private void Init()
     {
-        _initPos = transform.position;
         _target = GameManager.Instance.PlayerTransform;
         _halfExplosiondelayTime = GlobalValues.HALF * explosionDelayTime;
         _explosionDict.Add(_halfExplosiondelayTime, CoroutineRef.GetWaitForSeconds(_halfExplosiondelayTime));

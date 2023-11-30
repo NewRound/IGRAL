@@ -29,7 +29,7 @@ public class EnemyStatHandler : IDamageable
 
             Debug.Log(Data.Health);
 
-            if (Data.Health <= 0)
+            if (UIEnemyHealth != null && Data.Health <= 0)
             {
                 UIEnemyHealth.gameObject.SetActive(false);
                 DieAction?.Invoke();

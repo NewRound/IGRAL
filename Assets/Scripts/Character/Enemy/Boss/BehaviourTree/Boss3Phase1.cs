@@ -25,7 +25,7 @@ public class Boss3Phase1 : BossSkill
             if (normalizedTime > 1f)
             {
                 _granade.ThrowGranade();
-                OnSkillEnded();
+                OnAnimationEnded();
 
                 state = NodeState.Success;
                 return state;

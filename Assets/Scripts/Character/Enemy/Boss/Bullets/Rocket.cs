@@ -39,7 +39,6 @@ public class Rocket : Weapon
     {
         _initPos = transform.position;
         _targetTrans = GameManager.Instance.PlayerTransform;
-        _lastPos = _targetTrans.position;
         float radius = GlobalValues.HALF * Vector3.Distance(_initPos, _targetTrans.position);
         _randomPos = (_initPos + _targetTrans.position) * GlobalValues.HALF + Random.insideUnitSphere * radius;
         _randomPos.y = _randomPos.y < 0 ? 0 : _randomPos.y;
@@ -51,7 +50,7 @@ public class Rocket : Weapon
     private void Move()
     {
         Vector3 firstLerp = Vector3.Lerp(_initPos, _randomPos, _elapsedTime);
-        Vector3 secondLerp = Vector3.Lerp(_randomPos, _lastPos, _elapsedTime);
+        Vector3 secondLerp = Vector3.Lerp(_randomPos, _targetTrans.position, _elapsedTime);
         Vector3 finalLerp = Vector3.Lerp(firstLerp, secondLerp, _elapsedTime);
 
         transform.position = finalLerp;

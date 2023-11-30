@@ -34,9 +34,7 @@ public class PlayerStateMachine : StateMachine
         Rigid = InputController.Rigidbody;
         ModelTrans = InputController.MovementData.ModelTrans;
 
-        RollDataHandler = new RollDataHandler(
-            _playerStatHandler.Data.RollingCoolTime,
-            _playerStatHandler.Data.InvincibleTime);
+        RollDataHandler = new RollDataHandler(_playerStatHandler);
 
         SpeedCalculator = new SpeedCalculator(InputController.MovementData.AcceleratingTime);
         RotationCalculator = new RotationCalculator(InputController.MovementData.RotationSpeed);
