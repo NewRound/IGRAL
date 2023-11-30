@@ -1,16 +1,27 @@
 using UnityEngine;
 
-public class EnemyDroneSpawner : MonoBehaviour
+public class EnemyDroneSpawner
 {
-    [SerializeField] private float _durationTime;
+    private float _durationTime;
 
     private Vector3 _direction;
+
+    private Transform _spawnTrans;
+
+    public EnemyDroneSpawner(Transform spawnTrans, float durationTime)
+    {
+        _spawnTrans = spawnTrans;
+        _durationTime = durationTime;
+    }
 
     public void SpawnDrone()
     {
         _direction = GetDirection();
         GameObject _enemyDrone = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.EnemyDrone);
-        _enemyDrone.transform.position = transform.position;
+        Vector3 spawnPos = _spawnTrans.position;
+        
+        spawnPos.y += 5f;
+        _enemyDrone.transform.position = spawnPos;
 
         EnemyDrone _drone = _enemyDrone.GetComponent<EnemyDrone>();
         _drone.ActiveDrone(_durationTime, _direction);
@@ -19,7 +30,7 @@ public class EnemyDroneSpawner : MonoBehaviour
     private Vector3 GetDirection()
     {
         Transform player = GameManager.Instance.PlayerTransform;
-        if (transform.position.x - player.position.x >= 0) return Vector3.left;
+        if (_spawnTrans.position.x - player.position.x >= 0) return Vector3.left;
         else return Vector3.right;
     }
 }

@@ -59,7 +59,7 @@ MonoBehaviour:
   <BulletPrefab>k__BackingField: {fileID: 547037796155204323, guid: 898221cb5cb81f745bd5395fb039cef3,
     type: 3}
   <BulletCount>k__BackingField: 5
-  <BulletAngle>k__BackingField: 5
+  <BulletAngle>k__BackingField: 15
   <PhaseInfoArr>k__BackingField:
   - <PhaseNum>k__BackingField: 1
     <SkillCoolTime>k__BackingField: 10
@@ -67,6 +67,7 @@ MonoBehaviour:
     <SkillCoolTime>k__BackingField: 10
   - <PhaseNum>k__BackingField: 3
     <SkillCoolTime>k__BackingField: 10
+  <DroneSpawnDuration>k__BackingField: 10
 --- !u!54 &4524733073284446991
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -7004,7 +7004,6 @@ MonoBehaviour:
       m_Bits: 64
     <GroundYOffset>k__BackingField: 0.2
     <GroundRadiusMod>k__BackingField: 1.5
-  stat: {fileID: 11400000, guid: d091809a4c15d6f42a232fd9332d1a46, type: 2}
   <MovementData>k__BackingField:
     <ModelTrans>k__BackingField: {fileID: 8836890123411731511}
     <AcceleratingTime>k__BackingField: 1
@@ -7116,6 +7115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65aaa6819a28d394788dc653c209e1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rayOffsetY: 0.5
 --- !u!1 &3170416588623337857
 GameObject:
   m_ObjectHideFlags: 0
@@ -7145,7 +7145,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 227059540207321142}
-  - {fileID: 232105508970099162}
+  - {fileID: 1319033029095064825}
   m_Father: {fileID: 8396046803728748278}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10229,7 +10229,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3cdda3cca11aab4b831821407447d27, type: 3}
---- !u!4 &232105508970099162 stripped
+--- !u!4 &1319033029095064825 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4854328431926918, guid: b3cdda3cca11aab4b831821407447d27,
     type: 3}
