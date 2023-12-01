@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class BossBehaviourTree : BehaviourTree
 {
+    [SerializeField] Transform[] waypoints;
+
     private Transform[] _waypoints;
     [SerializeField] private EnemySO enemySO;
     [field: SerializeField] public Transform ModelTrans { get; private set; }
@@ -54,12 +56,26 @@ public class BossBehaviourTree : BehaviourTree
         AnimationController.Init();
     }
 
+    private void Start()
+    {
+        // Å×½ºÆ®
+        Invoke("Test", 0.5f);
+    }
+
     private void OnDestroy()
     {
         OnUpdateElapsedCooltime -= UpdateElapsedCoolTimeUI;
         OnUpdateCooltime -= UpdateCurrentCoolTimeUI;
         OnUpdatePhase -= UpdatePhaseUI;
         OnBossDead -= CloseBossUI;
+    }
+
+    private void Test()
+    {
+        _waypoints = new Transform[waypoints.Length];
+        _waypoints = waypoints;
+
+        Init();
     }
 
     public void Init(Transform[] waypoints)

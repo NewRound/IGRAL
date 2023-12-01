@@ -66,8 +66,11 @@ public class MeleeAttack : ActionNode
         RaycastHit hit;
         if (Physics.Raycast(startPos, direction, out hit, 1 << LayerMask.NameToLayer(_targetLayerName)))
         {
-            PlayerStatHandler statHandler = hit.collider.GetComponent<PlayerController>().StatHandler;
+            PlayerController player = hit.collider.GetComponent<PlayerController>();
+            if (player == null)
+                return;
 
+            PlayerStatHandler statHandler = player.StatHandler;
             if (!statHandler.Data.IsInvincible)
                 statHandler.Damaged(_data.Attack * _meleeAttackMod);
         }

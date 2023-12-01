@@ -8,7 +8,7 @@ public abstract class BehaviourTree : MonoBehaviour
 
     protected virtual void Init()
     {
-
+        _rootNode = SetTree();
     }
 
     private void Update()
