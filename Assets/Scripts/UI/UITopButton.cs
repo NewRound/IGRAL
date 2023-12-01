@@ -17,15 +17,18 @@ public class UITopButton : MonoBehaviour
     private void OpenOption()
     {
         UIManager.Instance.OpenUI<UIOption>();
+        AudioManager.Instance.PlaySFX(SFXType.Click);
     }
 
     private void OpenInventory()
     {
         UIInventory.Instance.OpenInventory();
+        AudioManager.Instance.PlaySFX(SFXType.Click);
     }
 
     private void OpenSkillTree()
     {
         UISkillTree.Instance.OpenSkillTree();
+        AudioManager.Instance.PlaySFX(SFXType.Click);
     }
 }

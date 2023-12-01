@@ -31,10 +31,4 @@ public class UITest : MonoBehaviour
     {
         AudioManager.Instance.PlaySFX(SFXType.Drop);
     }
-
-    public void OnPickup()
-    {
-        AudioManager.Instance.PlaySFX(SFXType.Pickup);
-    }
-
 }

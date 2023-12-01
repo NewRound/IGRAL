@@ -14,7 +14,7 @@ public enum SFXType
     , Jump
     , Shooting
     , Drop
-    , Pickup
+    , Click
     , Boom
     , Damaged0
     , Damaged1
