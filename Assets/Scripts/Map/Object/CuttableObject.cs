@@ -25,8 +25,7 @@ public class CuttableObject : MonoBehaviour, IInteract
     private void Start()
     {
         _myCollider.enabled = true;
-
-        _player = GameManager.Instance.PlayerAppearanceController;
+        
         _audioManager = AudioManager.Instance;
 
         _cuttableObj.SetActive(true);
@@ -37,9 +36,14 @@ public class CuttableObject : MonoBehaviour, IInteract
 
     public void Interact()
     {
+        if (_player == null)
+        {
+            _player = GameManager.Instance.PlayerAppearanceController;
+        }
+
         if (_player.mutantType != MutantType.Blade) return;
 
-        _audioManager.PlaySFX(SFXType.Swing);
+        _audioManager.PlaySFX(SFXType.WireCut);
 
         _myCollider.enabled = false;
 

@@ -43,7 +43,8 @@ public class EnemyStatHandler : IDamageable
             damagedTxt.transform.position = curTransform.position + yOffset;
             damagedTxt.GetComponent<DamagedTxt>()._damage = damage;
 
-            EffectManager.Instance.ShowEffect(curTransform.position + yOffset, EffectType.damaged);
+            EffectManager.Instance.ShowEffect(curTransform.position + yOffset, EffectType.Damaged);
+            AudioManager.Instance.PlaySFX(SFXType.Damaged1);
         }
         else
         {
