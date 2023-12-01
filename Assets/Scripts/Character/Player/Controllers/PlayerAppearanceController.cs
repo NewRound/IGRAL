@@ -59,6 +59,7 @@ public class PlayerAppearanceController : MonoBehaviour
         mutantType = type;
         GameManager.Instance.StatHandler.UpdateSkillStat(type);
         OnOffMutant(mutantType, true);
+        AudioManager.Instance.PlaySFX(SFXType.ActiveMutant);
     }
 
     private void OnOffMutant(MutantType type, bool OnOff)
