@@ -5,16 +5,18 @@ using UnityEngine;
 
 public class BossStatHandler : EnemyStatHandler
 {
+    private BossBehaviourTree _bossBehaviourTree;
     private UIBossCondition _bossCondition;
 
     public BossStatHandler(EnemySO data, BossBehaviourTree bossBehaviourTree) : base(data, null, null, bossBehaviourTree.transform)
     {
-        _bossCondition = bossBehaviourTree.UIBossCondition;
+        _bossBehaviourTree = bossBehaviourTree;
         DamagedAction += UpdateHealth;
     }
 
     public void Init()
     {
+        _bossCondition = _bossBehaviourTree.UIBossCondition;
         UpdateMaxHp();
         UpdateHealth();
     }

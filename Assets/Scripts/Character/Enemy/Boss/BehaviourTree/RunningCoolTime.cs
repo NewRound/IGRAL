@@ -23,7 +23,8 @@ public class RunningCoolTime : BossNode
             currentElapsedTime = currentElapsedTime > skillCoolTime ? skillCoolTime : currentElapsedTime;
 
             btDict[BTValues.CurrentSkillElapsedTime] = currentElapsedTime;
-            // TODO : BossUI랑 연결
+            
+            bossBehaviourTree.OnUpdateElapsedCoolTimeUI(currentElapsedTime);
         }
 
         state = NodeState.Success;

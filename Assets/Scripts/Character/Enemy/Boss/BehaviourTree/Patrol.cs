@@ -69,7 +69,7 @@ public class Patrol : ActionNode
 
             btDict[BTValues.CurrentAction] = CurrentAction.UsingSkill;
 
-            state = NodeState.Success;
+            state = NodeState.Failure;
             return state;
         }
 

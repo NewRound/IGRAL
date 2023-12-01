@@ -22,6 +22,10 @@ public class BossBehaviourTree : BehaviourTree
 
     [field: SerializeField] public PhaseInfo[] PhaseInfoArr { get; private set; }
 
+    [field: SerializeField] public Vector3 AttackOffsetVec = new Vector3(-0.2f, 0.5f, 0f);
+    [field: SerializeField] public float MeleeAttackMod = 2.5f;
+
+
     private Rigidbody _rigid;
 
     public int CurrentPhase { get; private set; } = 1;
@@ -51,23 +55,40 @@ public class BossBehaviourTree : BehaviourTree
         AnimationController.Init();
     }
 
+    protected override void Start()
+    {
+        Invoke(nameof(Init), 0.5f);
+        // Å×½ºÆ®
+    }
+
+    private void OnDestroy()
+    {
+        OnUpdateElapsedCooltime -= UpdateElapsedCoolTimeUI;
+        OnUpdateCooltime -= UpdateCurrentCoolTimeUI;
+        OnUpdatePhase -= UpdatePhaseUI;
+        OnBossDead -= CloseBossUI;
+    }
+
     public void Init()
     {
         if (UIBossCondition == null)
+        {
+            PlayerTransform = GameManager.Instance.PlayerTransform;
             UIBossCondition = UIManager.Instance.OpenUI<UIBossCondition>();
+            InitBTDict();
+            StatHandler.Init();
+            OnUpdateElapsedCooltime += UpdateElapsedCoolTimeUI;
+            OnUpdateCooltime += UpdateCurrentCoolTimeUI;
+            OnUpdatePhase += UpdatePhaseUI;
+            OnBossDead += CloseBossUI;
+            UIBossCondition.SetMaxAction(PhaseInfoArr[CurrentPhase - 1].SkillCoolTime);
+        }
 
-        UIBossCondition.DisplayHP(enemySO.Health);
-        UIBossCondition.SetMaxAction(enemySO.MaxHealth);
-        OnUpdateElapsedCooltime += UpdateElapsedCoolTimeUI;
-        OnUpdateCooltime += UpdateCurrentCoolTimeUI;
-        OnUpdatePhase += UpdatePhaseUI;
-        OnBossDead += CloseBossUI;
+        base.Start();
     }
 
     protected override Node SetTree()
     {
-        InitBTDict();
-
         Node root = new Selector(new List<Node>
         {
             new Sequence(new List<Node>()
@@ -101,11 +122,21 @@ public class BossBehaviourTree : BehaviourTree
                         new Boss3Phase3(this)
                     }),
 
-                    new Sequence(new List<Node>()
+                    new Selector(new List<Node>()
                     {
-                        new DefaultAttack(this),
-                        new RunningCoolTime(this),
-                    })
+                        new Sequence(new List<Node>()
+                        {
+                            new CheckTargetDistance(this),
+                            new MeleeAttack(this),
+                            new RunningCoolTime(this),
+                        }),
+
+                        new Sequence(new List<Node>()
+                        {
+                            new DefaultAttack(this),
+                            new RunningCoolTime(this),
+                        })
+                    }),
                 })
             }),
         });
@@ -128,10 +159,7 @@ public class BossBehaviourTree : BehaviourTree
         ModelTrans.rotation = Quaternion.LookRotation(direction);
     }
 
-    public void UpdatePhaseUI(int phase)
-    {
-        UIBossCondition.ChangePhase(phase);
-    }
+    
 
     private void InitBTDict()
     {
@@ -148,22 +176,42 @@ public class BossBehaviourTree : BehaviourTree
             BTDict.Add(BTValues.IsAttacking, false);
     }
 
-    public void UpdateElapsedCoolTimeUI(float elapsedCooltime)
+    public void OnUpdateElapsedCoolTimeUI(float elapsedCooltime)
     {
         OnUpdateElapsedCooltime.Invoke(elapsedCooltime);
     }
 
-    public void UpdateCurrentCoolTimeUI(float elapsedCooltime)
+    public void OnUpdateCurrentCoolTimeUI(float elapsedCooltime)
+    {
+        OnUpdateCooltime.Invoke(elapsedCooltime);
+    }
+
+    public void OnUpdatePhaseUI(int phase)
+    {
+        OnUpdatePhase.Invoke(phase);
+    }
+
+    public void OnCloseBossUI()
+    {
+        OnBossDead.Invoke();
+    }
+
+    private void UpdateElapsedCoolTimeUI(float elapsedCooltime)
+    {
+        UIBossCondition.DisplayAction(elapsedCooltime);
+    }
+
+    private void UpdateCurrentCoolTimeUI(float elapsedCooltime)
     {
         UIBossCondition.SetMaxAction(elapsedCooltime);
     }
 
-    public void UpdateCurrentPhaseUI(int phase)
+    private void UpdatePhaseUI(int phase)
     {
         UIBossCondition.ChangePhase(phase);
     }
 
-    public void CloseBossUI()
+    private void CloseBossUI()
     {
         UIBossCondition.gameObject.SetActive(false);
     }

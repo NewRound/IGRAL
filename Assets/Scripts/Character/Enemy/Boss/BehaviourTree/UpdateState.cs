@@ -16,7 +16,7 @@ public class UpdateState : BossNode
             case CurrentAction.Patrol:
                 btDict[BTValues.CurrentAction] = CurrentAction.UsingSkill;
                 break;
-            case CurrentAction.Attack:
+            case CurrentAction.RangedAttack:
                 btDict[BTValues.CurrentAction] = CurrentAction.Patrol;
                 break;
             case CurrentAction.UsingSkill:

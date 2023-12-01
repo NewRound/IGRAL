@@ -24,7 +24,8 @@ public class UpdatePhase : BossNode
         currentPhase = currentPhase > _totalPhaseCount ? _totalPhaseCount : currentPhase;
         bossBehaviourTree.SetCurrenPhase(currentPhase);
 
-
+        bossBehaviourTree.OnUpdatePhaseUI(currentPhase);
+        bossBehaviourTree.OnUpdateCurrentCoolTimeUI(bossBehaviourTree.PhaseInfoArr[currentPhase - 1].SkillCoolTime);
 
         state = NodeState.Success;
         return state;

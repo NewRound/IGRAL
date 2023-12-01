@@ -36,7 +36,8 @@ namespace GlobalEnums
     {
         None,
         Patrol,
-        Attack,
+        MeleeAttack,
+        RangedAttack,
         UsingSkill
     }
 }
