@@ -45,6 +45,14 @@ public class GameManager : CustomSingleton<GameManager>
 
     }
 
+    private void Update()
+    {
+        if (isDie)
+            return;
+            
+        StatHandler.Recovery(StatHandler.Data.HealthRegen * Time.deltaTime);
+    }
+
     private void StartBGM()
     {
         AudioManager.Instance.SetStage(2);
