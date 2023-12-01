@@ -47,7 +47,7 @@ public class UIPopup : MonoBehaviour
             OnConfirmY();
             OnConfirmY = null;
         }
-
+        AudioManager.Instance.PlaySFX(SFXType.Click);
         Close();
     }
 
@@ -58,7 +58,7 @@ public class UIPopup : MonoBehaviour
             OnConfirmN();
             OnConfirmN = null;
         }
-
+        AudioManager.Instance.PlaySFX(SFXType.Click);
         Close();
     }
 
