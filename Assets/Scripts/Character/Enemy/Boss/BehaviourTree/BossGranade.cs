@@ -47,6 +47,7 @@ public class BossGranade : ExplosionWeapon
     {
         if (_target != null)
         {
+            Activate();
             _initPos = transform.position;
             _lastPos = _target.position;
             _lastPos.y += yOffset;
