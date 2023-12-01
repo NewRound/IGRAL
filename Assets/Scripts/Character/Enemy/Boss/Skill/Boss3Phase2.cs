@@ -48,7 +48,7 @@ public class Boss3Phase2 : BossSkill
             return state;
         }
 
-        btDict[BTValues.CurrentAction] = CurrentAction.Attack;
+        btDict[BTValues.CurrentAction] = CurrentAction.RangedAttack;
         state = NodeState.Failure;
         return state;
     }

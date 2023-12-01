@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 591408109985306711}
-  - component: {fileID: 3436981318094069253}
+  - component: {fileID: -616086415100164150}
   - component: {fileID: 4085882971957580608}
   - component: {fileID: -3139668121014622442}
   m_Layer: 0
-  m_Name: EnemyDroneBullet
+  m_Name: BossDroneBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,9 +33,9 @@ Transform:
   m_Children:
   - {fileID: 4731921272123191562}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3436981318094069253
+--- !u!114 &-616086415100164150
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,13 +44,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1265579702484801395}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe0be28efcf0aeb4eac94d8583c3917b, type: 3}
+  m_Script: {fileID: 11500000, guid: e2d3bffb21bf5c34190ce6f92af453e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackDamage: 25
-  _movementSpeed: 10
-  _maxDuration: 1
-  _bulletType: 1
+  explosionParticles: []
+  meshRenderer: {fileID: 5899721624367368805}
+  damage: 25
+  explosionDelayTime: 2
+  explosionTime: 2
+  explosionRange: 2
+  rotationSpeed: 90
+  yOffset: 0.5
 --- !u!136 &4085882971957580608
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -70,10 +74,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
-  m_Height: 5
+  m_Radius: 0.87999994
+  m_Height: 6.517753
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: -0.79887486}
 --- !u!54 &-3139668121014622442
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -96,7 +100,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
@@ -202,6 +206,12 @@ PrefabInstance:
 --- !u!4 &4731921272123191562 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 50007dcb9d5f1c0438aac1f79b260c0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5053478788369290977}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5899721624367368805 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 50007dcb9d5f1c0438aac1f79b260c0c,
     type: 3}
   m_PrefabInstance: {fileID: 5053478788369290977}
   m_PrefabAsset: {fileID: 0}

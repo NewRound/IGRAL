@@ -10,37 +10,31 @@ public class DefaultAttack : ActionNode
     private int _bulletAmount;
     private float _bulletPerAngle;
 
-    private BossAnimationController animationController;
+    private BossAnimationController _animationController;
     public DefaultAttack(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
     {
         _bulletAmount = bossBehaviourTree.BulletCount;
         _bulletPerAngle = bossBehaviourTree.BulletAngle;
-        animationController = bossBehaviourTree.AnimationController;
+        _animationController = bossBehaviourTree.AnimationController;
         btDict = bossBehaviourTree.BTDict;
         _spawnPoint = bossBehaviourTree.BulletSpawnTrans;
     }
 
     public override NodeState Evaluate()
     {
-        if (!IsActionPossible((CurrentAction)btDict[BTValues.CurrentAction], CurrentAction.Attack))
-        {
-            state = NodeState.Success;
-            return state;
-        }
-
         if (!(bool)btDict[BTValues.IsAttacking])
         {
             btDict[BTValues.IsAttacking] = true;
-            animationController.AttackAction += Shoot;
+            _animationController.AttackAction += Shoot;
             bossBehaviourTree.LookRightAway();
-            animationController.PlayAnimation(animationController.AnimationData.AttackSubStateParameterHash, true);
+            _animationController.PlayAnimation(_animationController.AnimationData.AttackSubStateParameterHash, true);
         }
 
-        float normalizedTime = AnimationUtil.GetNormalizeTime(animationController.Animator, AnimTag.Attack, (int)AnimatorLayer.UpperLayer);
+        float normalizedTime = AnimationUtil.GetNormalizeTime(_animationController.Animator, AnimTag.Attack, (int)AnimatorLayer.UpperLayer);
         if (normalizedTime > 1f)
         {
-            animationController.PlayAnimation(animationController.AnimationData.AttackSubStateParameterHash, false);
-            animationController.AttackAction -= Shoot;
+            _animationController.PlayAnimation(_animationController.AnimationData.AttackSubStateParameterHash, false);
+            _animationController.AttackAction -= Shoot;
             btDict[BTValues.CurrentAction] = CurrentAction.Patrol;
             btDict[BTValues.IsAttacking] = false;
         }

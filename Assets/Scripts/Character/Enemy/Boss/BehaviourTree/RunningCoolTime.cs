@@ -1,4 +1,5 @@
 ﻿using GlobalEnums;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,6 @@ public class RunningCoolTime : BossNode
 {
     public RunningCoolTime(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
     {
-
     }
 
     public override NodeState Evaluate()
@@ -23,10 +23,13 @@ public class RunningCoolTime : BossNode
             currentElapsedTime = currentElapsedTime > skillCoolTime ? skillCoolTime : currentElapsedTime;
 
             btDict[BTValues.CurrentSkillElapsedTime] = currentElapsedTime;
-            // TODO : BossUI랑 연결
+            
+            bossBehaviourTree.OnUpdateElapsedCoolTimeUI(currentElapsedTime);
         }
 
         state = NodeState.Success;
         return state;
     }
+
+    
 }

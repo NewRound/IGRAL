@@ -1,8 +1,10 @@
 using GlobalEnums;
+using System;
 
 public class UpdatePhase : BossNode
 {
     private int _totalPhaseCount;
+    
 
     public UpdatePhase(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
     {
@@ -21,6 +23,9 @@ public class UpdatePhase : BossNode
         currentPhase++;
         currentPhase = currentPhase > _totalPhaseCount ? _totalPhaseCount : currentPhase;
         bossBehaviourTree.SetCurrenPhase(currentPhase);
+
+        bossBehaviourTree.OnUpdatePhaseUI(currentPhase);
+        bossBehaviourTree.OnUpdateCurrentCoolTimeUI(bossBehaviourTree.PhaseInfoArr[currentPhase - 1].SkillCoolTime);
 
         state = NodeState.Success;
         return state;
