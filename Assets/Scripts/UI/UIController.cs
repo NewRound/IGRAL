@@ -47,15 +47,18 @@ public class UIController : CustomSingleton<UIController>
 
     private void Awake()
     {
-        _healing.onClick.AddListener(OnHealingButton);
+
         _jump.onClick.AddListener(OnJumpButton);
         _slide.onClick.AddListener(OnSlideButton);
-        _skill.onClick.AddListener(OnSkillButton);
         _attack.onClick.AddListener(OnAttackButton);
         _interaction.onClick.AddListener(OnInteractionButton);
         _pickup.onClick.AddListener(OnPickupButton);
         _item.onClick.AddListener(OnItemButton);
         _talk.onClick.AddListener(OnTalkButton);
+
+
+        //_healing.onClick.AddListener(OnHealingButton);
+        //_skill.onClick.AddListener(OnSkillButton);
     }
 
     private void Start()
