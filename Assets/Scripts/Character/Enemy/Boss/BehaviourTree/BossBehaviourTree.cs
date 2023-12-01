@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class BossBehaviourTree : BehaviourTree
 {
-    [SerializeField] private Transform[] waypoints;
+    private Transform[] _waypoints;
     [SerializeField] private EnemySO enemySO;
     [field: SerializeField] public Transform ModelTrans { get; private set; }
 
@@ -50,15 +50,8 @@ public class BossBehaviourTree : BehaviourTree
     {
         _rigid = GetComponent<Rigidbody>();
         StatHandler = new BossStatHandler(Instantiate(enemySO), this);
-        DroneSpawnTrans = waypoints[0];
         AnimationController = GetComponentInChildren<BossAnimationController>();
         AnimationController.Init();
-    }
-
-    protected override void Start()
-    {
-        Invoke(nameof(Init), 0.5f);
-        // Å×½ºÆ®
     }
 
     private void OnDestroy()
@@ -69,10 +62,19 @@ public class BossBehaviourTree : BehaviourTree
         OnBossDead -= CloseBossUI;
     }
 
-    public void Init()
+    public void Init(Transform[] waypoints)
+    {
+        _waypoints = new Transform[waypoints.Length];
+        _waypoints = waypoints;
+
+        Init();
+    }
+
+    protected override void Init()
     {
         if (UIBossCondition == null)
         {
+            DroneSpawnTrans = _waypoints[0];
             PlayerTransform = GameManager.Instance.PlayerTransform;
             UIBossCondition = UIManager.Instance.OpenUI<UIBossCondition>();
             InitBTDict();
@@ -84,7 +86,7 @@ public class BossBehaviourTree : BehaviourTree
             UIBossCondition.SetMaxAction(PhaseInfoArr[CurrentPhase - 1].SkillCoolTime);
         }
 
-        base.Start();
+        base.Init();
     }
 
     protected override Node SetTree()
@@ -109,7 +111,7 @@ public class BossBehaviourTree : BehaviourTree
                 {
                     new Sequence(new List<Node>()
                     {
-                        new Patrol(this, _rigid, waypoints),
+                        new Patrol(this, _rigid, _waypoints),
                         new RunningCoolTime(this),
                     }),
 
