@@ -1,13 +1,24 @@
-using Cinemachine;
 using UnityEngine;
 
 public class CamaraMoving : MonoBehaviour
 {
-    [SerializeField] private CinemachineVirtualCamera cam;
+    [SerializeField] private MainCam cam;
+    [SerializeField] private Transform veiwPoint1;
+    [SerializeField] private float maxtime;
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
+        if (cam == null)
+            cam = GameManager.Instance.MainCam;
 
+        cam.SetMainCam(veiwPoint1);
+
+        Invoke("ReturnFollowTarget", maxtime);
     }
 
+    private void ReturnFollowTarget()
+    {
+        cam.SetMainCam();
+    }
 }

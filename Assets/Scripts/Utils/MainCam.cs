@@ -12,6 +12,7 @@ public class MainCam : MonoBehaviour
 
     public void SetMainCam(Transform transform)
     {
+        Debug.Log("½ÇÇà !!!!!!!!!!!!!!!!!!!!");
         _camera.Follow = transform;
     }
 }
