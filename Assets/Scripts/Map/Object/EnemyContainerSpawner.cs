@@ -9,6 +9,7 @@ public class EnemyContainerSpawner : MonoBehaviour, IObject
     [SerializeField] private GameObject RightDoor;
     [SerializeField] private float rotateEngle;
 
+    private bool isActive = false;
     public float speed;
     public int enemyCount;
 
@@ -31,8 +32,11 @@ public class EnemyContainerSpawner : MonoBehaviour, IObject
             // 대기.
         }
 
-        StartCoroutine(rotateDoor(rotateEngle));
-
+        if (!isActive)
+        {
+            isActive = true;
+            StartCoroutine(rotateDoor(rotateEngle));
+        }
         // 적들을 축으로 이동시키고 이에따라 Area에 편입.
     }
 
@@ -45,8 +49,6 @@ public class EnemyContainerSpawner : MonoBehaviour, IObject
             LeftDoor.transform.rotation *= Quaternion.Euler(0, Time.deltaTime * speed, 0);
             RightDoor.transform.rotation *= Quaternion.Euler(0, -Time.deltaTime * speed, 0);
             curEngle += Time.deltaTime * speed;
-
-            Debug.Log(curEngle);
 
             if (curEngle > engle)
                 break;
