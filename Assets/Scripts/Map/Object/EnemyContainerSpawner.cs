@@ -11,6 +11,7 @@ public class EnemyContainerSpawner : MonoBehaviour, IObject
     [SerializeField] private float rotateEngle;
 
     private bool isActive = false;
+    private bool isOpen = false;
     public float speed;
     public int enemyCount;
 
@@ -40,7 +41,12 @@ public class EnemyContainerSpawner : MonoBehaviour, IObject
             StartCoroutine(rotateDoor(rotateEngle));
         }
 
-        // 적들을 축으로 이동시키고 이에따라 Area에 편입.
+        if(isOpen)
+        {
+            // 적들을 축으로 이동시키고 이에따라 Area에 편입.
+
+
+        }
     }
 
     IEnumerator rotateDoor(float engle)
@@ -58,6 +64,7 @@ public class EnemyContainerSpawner : MonoBehaviour, IObject
 
             yield return 0;
         }
+        isOpen = true;
     }
 
 }
