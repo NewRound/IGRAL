@@ -24,6 +24,7 @@ public class Boss3Phase1 : BossSkill
             float normalizedTime = AnimationUtil.GetNormalizeTime(animationController.Animator, AnimTag.Skill, (int)AnimatorLayer.UpperLayer);
             if (normalizedTime > 1f)
             {
+                _granade.transform.position = defaultWeapon.transform.position;
                 _granade.ThrowGranade();
                 OnAnimationEnded();
 
@@ -59,8 +60,6 @@ public class Boss3Phase1 : BossSkill
     {
         base.OnChargedCoolTime();
         defaultWeapon.SetActive(false);
-        _granade.transform.position = defaultWeapon.transform.position;
-        _granade.Activate();
         UseSkill();
     }
 }

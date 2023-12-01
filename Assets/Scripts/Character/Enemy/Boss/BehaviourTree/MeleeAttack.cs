@@ -10,7 +10,6 @@ public class MeleeAttack : ActionNode
     private string _targetLayerName;
     private EnemySO _data;
     private float _meleeAttackMod;
-    private StatChange[] _attackStatChange = new StatChange[1];
 
     public MeleeAttack(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
     {
@@ -21,7 +20,6 @@ public class MeleeAttack : ActionNode
         _targetLayerName = Tag.Player.ToString();
         _data = bossBehaviourTree.StatHandler.Data;
         _meleeAttackMod = bossBehaviourTree.MeleeAttackMod;
-        _attackStatChange[0] = new StatChange(StatsChangeType.Subtract, StatType.Health, _data.Attack * _meleeAttackMod);
     }
 
     public override NodeState Evaluate()
@@ -69,7 +67,9 @@ public class MeleeAttack : ActionNode
         if (Physics.Raycast(startPos, direction, out hit, 1 << LayerMask.NameToLayer(_targetLayerName)))
         {
             PlayerStatHandler statHandler = hit.collider.GetComponent<PlayerController>().StatHandler;
-            statHandler.UpdateStats(_attackStatChange);
+
+            if (!statHandler.Data.IsInvincible)
+                statHandler.Damaged(_data.Attack * _meleeAttackMod);
         }
     }
 }
