@@ -11,11 +11,14 @@ public enum AudioType
 public enum SFXType
 {
     Footsteps
-    , Swing
+    , Jump
     , Shooting
     , Drop
     , Pickup
     , Boom
+    , Damaged0
+    , Damaged1
+    , WireCut
     , Max
 }
 
