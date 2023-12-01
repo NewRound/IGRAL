@@ -4,9 +4,10 @@ using UnityEngine;
 public enum EffectType
 {
     Explosion,
-    damaged,
+    Damaged,
     ExplosionParticle,
     Bomb,
+    PlayerJump
 }
 
 public class EffectManager : CustomSingleton<EffectManager>

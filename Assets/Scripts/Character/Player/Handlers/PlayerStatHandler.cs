@@ -107,7 +107,8 @@ public class PlayerStatHandler : IDamageable, IBurnable
         damagedTxt.transform.position = GameManager.Instance.PlayerTransform.position + yOffset;
         damagedTxt.GetComponent<DamagedTxt>()._damage = damage;
 
-        EffectManager.Instance.ShowEffect(GameManager.Instance.PlayerTransform.position + yOffset, EffectType.damaged);
+        EffectManager.Instance.ShowEffect(GameManager.Instance.PlayerTransform.position + yOffset, EffectType.Damaged);
+        AudioManager.Instance.PlaySFX(SFXType.Damaged0);
     }
 
     public void Recovery(float damage)

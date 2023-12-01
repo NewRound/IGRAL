@@ -187,5 +187,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 2
   _alphaSpeed: 2
-  _duration: 2
-  _damage: 0
+  _duration: 1

@@ -46,3 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <EnemyPoolPrefabs>k__BackingField:
   - {fileID: 3835471453958506676, guid: 09f38db80fc808b4b87b0850c30e3e1c, type: 3}
+  - {fileID: 1158888267296513587, guid: 3b059347f43b31346bc46fbcfc33d436, type: 3}
+  - {fileID: 2332883868702569553, guid: d56baaa8e4e1a5a44b77765b28417243, type: 3}
