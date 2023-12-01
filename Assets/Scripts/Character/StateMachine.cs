@@ -65,6 +65,11 @@ public abstract class StateMachine
         ModelTrans.rotation = Quaternion.LookRotation(PreDirection);
     }
 
+    public void SetDirection(Vector3 direction)
+    {
+        Direction = direction;
+    }
+
     public void SetDirection(Vector2 direction)
     {
         Vector2 horizontalDir = new Vector2(direction.x, 0f);

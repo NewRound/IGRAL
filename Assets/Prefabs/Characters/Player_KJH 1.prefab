@@ -262,7 +262,6 @@ MonoBehaviour:
       m_Bits: 64
     <GroundYOffset>k__BackingField: 0.2
     <GroundRadiusMod>k__BackingField: 1.5
-  stat: {fileID: 11400000, guid: d091809a4c15d6f42a232fd9332d1a46, type: 2}
   <MovementData>k__BackingField:
     <ModelTrans>k__BackingField: {fileID: 5224004157000911447}
     <AcceleratingTime>k__BackingField: 1
@@ -374,6 +373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65aaa6819a28d394788dc653c209e1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rayOffsetY: 0.8
+  rayOffsetX: 0.2
 --- !u!1 &2541467568795205321
 GameObject:
   m_ObjectHideFlags: 0
@@ -10052,7 +10053,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8a18134525f8c5b45a26c4b0c396e6bb,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

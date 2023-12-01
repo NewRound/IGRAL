@@ -7,11 +7,17 @@ public class BossAnimationController : AnimationController
 
     public event Action PreSkillAction;
     public event Action PostSkillAction;
+    public event Action MeleeAttackAction;
 
     public override void Init()
     {
         base.Init();
         AnimationData.Init();
+    }
+
+    private void MeleeAttackEvent()
+    {
+        MeleeAttackAction?.Invoke();
     }
 
     private void PreSkillEvent()

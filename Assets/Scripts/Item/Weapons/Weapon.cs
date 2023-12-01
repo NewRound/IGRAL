@@ -8,6 +8,9 @@ public abstract class Weapon : MonoBehaviour, IBattle
 
     public void Attack(EntitySO attacker, HealthSO target, IDamageable targetDamageable, float attackMod = 1f)
     {
+        if (target.Health <= 0)
+            return;
+
         if (target.IsInvincible)
             return;
 
@@ -28,6 +31,9 @@ public abstract class Weapon : MonoBehaviour, IBattle
 
     public void Attack(float damage, HealthSO target, IDamageable targetDamageable, float attackMod = 1f)
     {
+        if (target.Health <= 0)
+            return;
+
         if (target.IsInvincible)
             return;
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Sockets;
 using UnityEngine;
 
 public class RPG : MonoBehaviour
@@ -7,6 +8,8 @@ public class RPG : MonoBehaviour
     [SerializeField] private Rocket rocketPrefab;
     [SerializeField] private ParticleSystem shootParticle;
     private Transform _bulletSpawnTrans;
+
+    private Rocket _rocket;
 
     public void Init(Transform bulletSpawnTrans)
     {
@@ -31,6 +34,12 @@ public class RPG : MonoBehaviour
     public void Shoot()
     {
         shootParticle.Play();
-        Instantiate(rocketPrefab, _bulletSpawnTrans.position, Quaternion.identity);
+        if (_rocket == null)
+        {
+            _rocket = Instantiate(rocketPrefab, _bulletSpawnTrans.position, Quaternion.identity);
+            _rocket.SetSpawnTrans(_bulletSpawnTrans);
+        }
+        else
+            _rocket.gameObject.SetActive(true);
     }
 }

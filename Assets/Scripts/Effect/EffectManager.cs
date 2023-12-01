@@ -6,6 +6,7 @@ public enum EffectType
     Explosion,
     Damaged,
     ExplosionParticle,
+    Bomb,
     PlayerJump
 }
 

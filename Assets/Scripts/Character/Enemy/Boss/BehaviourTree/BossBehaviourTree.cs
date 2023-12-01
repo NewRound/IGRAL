@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class BossBehaviourTree : BehaviourTree
 {
-    [SerializeField] private Transform[] waypoints;
+    private Transform[] _waypoints;
     [SerializeField] private EnemySO enemySO;
     [field: SerializeField] public Transform ModelTrans { get; private set; }
 
@@ -16,11 +16,15 @@ public class BossBehaviourTree : BehaviourTree
     [field: SerializeField] public int BulletCount { get; private set; } = 5;
     [field: SerializeField] public float BulletAngle { get; private set; } = 5f;
 
-    public EnemyStatHandler StatHandler { get; private set; }
+    public BossStatHandler StatHandler { get; private set; }
 
     public BossAnimationController AnimationController { get; private set; }
 
     [field: SerializeField] public PhaseInfo[] PhaseInfoArr { get; private set; }
+
+    [field: SerializeField] public Vector3 AttackOffsetVec = new Vector3(-0.2f, 0.5f, 0f);
+    [field: SerializeField] public float MeleeAttackMod = 2.5f;
+
 
     private Rigidbody _rigid;
 
@@ -32,20 +36,61 @@ public class BossBehaviourTree : BehaviourTree
 
     public Transform DroneSpawnTrans { get; private set; }
     [field: SerializeField] public float DroneSpawnDuration { get; private set; } = 3f;
+    [field: SerializeField] public float DroneHeight { get; private set; } = 7f;
+
+    public UIBossCondition UIBossCondition { get; private set; }
+
+    [field: Header("UI")]
+    public event Action<int> OnUpdatePhase;
+    public event Action<float> OnUpdateElapsedCooltime;
+    public event Action<float> OnUpdateCooltime;
+    public event Action OnBossDead;
 
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody>();
-        StatHandler = new EnemyStatHandler(Instantiate(enemySO), null, null, transform);
-        DroneSpawnTrans = waypoints[0];
+        StatHandler = new BossStatHandler(Instantiate(enemySO), this);
         AnimationController = GetComponentInChildren<BossAnimationController>();
         AnimationController.Init();
     }
 
+    private void OnDestroy()
+    {
+        OnUpdateElapsedCooltime -= UpdateElapsedCoolTimeUI;
+        OnUpdateCooltime -= UpdateCurrentCoolTimeUI;
+        OnUpdatePhase -= UpdatePhaseUI;
+        OnBossDead -= CloseBossUI;
+    }
+
+    public void Init(Transform[] waypoints)
+    {
+        _waypoints = new Transform[waypoints.Length];
+        _waypoints = waypoints;
+
+        Init();
+    }
+
+    protected override void Init()
+    {
+        if (UIBossCondition == null)
+        {
+            DroneSpawnTrans = _waypoints[0];
+            PlayerTransform = GameManager.Instance.PlayerTransform;
+            UIBossCondition = UIManager.Instance.OpenUI<UIBossCondition>();
+            InitBTDict();
+            StatHandler.Init();
+            OnUpdateElapsedCooltime += UpdateElapsedCoolTimeUI;
+            OnUpdateCooltime += UpdateCurrentCoolTimeUI;
+            OnUpdatePhase += UpdatePhaseUI;
+            OnBossDead += CloseBossUI;
+            UIBossCondition.SetMaxAction(PhaseInfoArr[CurrentPhase - 1].SkillCoolTime);
+        }
+
+        base.Init();
+    }
+
     protected override Node SetTree()
     {
-        InitBTDict();
-
         Node root = new Selector(new List<Node>
         {
             new Sequence(new List<Node>()
@@ -66,7 +111,7 @@ public class BossBehaviourTree : BehaviourTree
                 {
                     new Sequence(new List<Node>()
                     {
-                        new Patrol(this, _rigid, waypoints),
+                        new Patrol(this, _rigid, _waypoints),
                         new RunningCoolTime(this),
                     }),
 
@@ -79,11 +124,21 @@ public class BossBehaviourTree : BehaviourTree
                         new Boss3Phase3(this)
                     }),
 
-                    new Sequence(new List<Node>()
+                    new Selector(new List<Node>()
                     {
-                        new DefaultAttack(this),
-                        new RunningCoolTime(this),
-                    })
+                        new Sequence(new List<Node>()
+                        {
+                            new CheckTargetDistance(this),
+                            new MeleeAttack(this),
+                            new RunningCoolTime(this),
+                        }),
+
+                        new Sequence(new List<Node>()
+                        {
+                            new DefaultAttack(this),
+                            new RunningCoolTime(this),
+                        })
+                    }),
                 })
             }),
         });
@@ -106,6 +161,8 @@ public class BossBehaviourTree : BehaviourTree
         ModelTrans.rotation = Quaternion.LookRotation(direction);
     }
 
+    
+
     private void InitBTDict()
     {
         if (!BTDict.ContainsKey(BTValues.CurrentPhaseSkillCoolTime))
@@ -121,5 +178,43 @@ public class BossBehaviourTree : BehaviourTree
             BTDict.Add(BTValues.IsAttacking, false);
     }
 
+    public void OnUpdateElapsedCoolTimeUI(float elapsedCooltime)
+    {
+        OnUpdateElapsedCooltime.Invoke(elapsedCooltime);
+    }
 
+    public void OnUpdateCurrentCoolTimeUI(float elapsedCooltime)
+    {
+        OnUpdateCooltime.Invoke(elapsedCooltime);
+    }
+
+    public void OnUpdatePhaseUI(int phase)
+    {
+        OnUpdatePhase.Invoke(phase);
+    }
+
+    public void OnCloseBossUI()
+    {
+        OnBossDead.Invoke();
+    }
+
+    private void UpdateElapsedCoolTimeUI(float elapsedCooltime)
+    {
+        UIBossCondition.DisplayAction(elapsedCooltime);
+    }
+
+    private void UpdateCurrentCoolTimeUI(float elapsedCooltime)
+    {
+        UIBossCondition.SetMaxAction(elapsedCooltime);
+    }
+
+    private void UpdatePhaseUI(int phase)
+    {
+        UIBossCondition.ChangePhase(phase);
+    }
+
+    private void CloseBossUI()
+    {
+        UIBossCondition.gameObject.SetActive(false);
+    }
 }

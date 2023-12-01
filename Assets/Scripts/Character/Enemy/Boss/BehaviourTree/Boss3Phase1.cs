@@ -24,6 +24,7 @@ public class Boss3Phase1 : BossSkill
             float normalizedTime = AnimationUtil.GetNormalizeTime(animationController.Animator, AnimTag.Skill, (int)AnimatorLayer.UpperLayer);
             if (normalizedTime > 1f)
             {
+                _granade.transform.position = defaultWeapon.transform.position;
                 _granade.ThrowGranade();
                 OnAnimationEnded();
 
@@ -42,7 +43,7 @@ public class Boss3Phase1 : BossSkill
             return state;
         }
 
-        btDict[BTValues.CurrentAction] = CurrentAction.Attack;
+        btDict[BTValues.CurrentAction] = CurrentAction.RangedAttack;
         state = NodeState.Failure;
         return state;
     }
@@ -52,15 +53,13 @@ public class Boss3Phase1 : BossSkill
         _granade = Object.Instantiate(
             Resources.Load<BossGranade>("Boss/SkillWeapons/Granade"), 
             defaultWeapon.transform.position, Quaternion.identity);
-        _granade.DeActivateModel();
+        _granade.DeActivate();
     }
 
     protected override void OnChargedCoolTime()
     {
         base.OnChargedCoolTime();
         defaultWeapon.SetActive(false);
-        _granade.transform.position = defaultWeapon.transform.position;
-        _granade.ActivateModel();
         UseSkill();
     }
 }

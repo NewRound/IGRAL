@@ -7,7 +7,7 @@ public enum ObjectPoolType
     Drone
     , EnemyDrone
     , PlayerDroneBullet
-    , EnemyDroneBullet
+    , BossDroneBullet
     , EnemyBullet
     , TurretBullet
     , PlayerDamagedTxt
