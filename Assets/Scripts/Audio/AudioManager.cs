@@ -16,6 +16,8 @@ public enum SFXType
     , Drop
     , Pickup
     , Boom
+    , Damaged0
+    , Damaged1
     , Max
 }
 
