@@ -44,8 +44,10 @@ public class EnemyContainerSpawner : MonoBehaviour, IObject
         if(isOpen)
         {
             // 적들을 축으로 이동시키고 이에따라 Area에 편입.
-
-
+            foreach(GameObject enemy in enemys)
+            {
+                enemy.GetComponent<EnemyController>().StateMachine.SetDirection(Vector3.zero);
+            }
         }
     }
 
