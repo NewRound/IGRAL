@@ -19,7 +19,7 @@ public class UITest : MonoBehaviour
 
     public void OnSwing()
     {
-        AudioManager.Instance.PlaySFX(SFXType.Swing);
+        AudioManager.Instance.PlaySFX(SFXType.Jump);
     }
 
     public void OnShooting()
