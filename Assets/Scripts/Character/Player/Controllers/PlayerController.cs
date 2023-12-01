@@ -14,8 +14,6 @@ public abstract class PlayerController : EntityController
 
     public PlayerEffectController EffectController { get; private set; }
 
-    private bool isDie;
-
     protected override void Awake()
     {
         base.Awake();
@@ -23,8 +21,6 @@ public abstract class PlayerController : EntityController
         AnimationController = GetComponentInChildren<PlayerAnimationController>();
         AnimationController.Init();
         EffectController.EffectDataHandler.SetAuraMaterial(meshRenderer.sharedMaterials[1]);
-
-        isDie = GameManager.Instance.isDie;
 
         stat = DataManager.Instance.playerSO;
         StatHandler = new PlayerStatHandler(stat);
@@ -40,11 +36,7 @@ public abstract class PlayerController : EntityController
 
     protected virtual void Update()
     {
-        if (isDie)
-            return;
-
         StateMachine.Update();
-        StatHandler.Recovery(StatHandler.Data.HealthRegen * Time.deltaTime);
     }
 
     protected void FixedUpdate()
