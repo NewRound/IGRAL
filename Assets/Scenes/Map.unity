@@ -451,13 +451,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 776005348228543271, guid: ca58ec1d814f27e4d92614a586b7b37c,
         type: 3}
-      propertyPath: speed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 776005348228543271, guid: ca58ec1d814f27e4d92614a586b7b37c,
-        type: 3}
-      propertyPath: rotateEngle
-      value: 113
+      propertyPath: enemyCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 956369038203279772, guid: ca58ec1d814f27e4d92614a586b7b37c,
         type: 3}
@@ -466,28 +461,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1092877804079817596, guid: ca58ec1d814f27e4d92614a586b7b37c,
         type: 3}
-      propertyPath: speed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1092877804079817596, guid: ca58ec1d814f27e4d92614a586b7b37c,
-        type: 3}
-      propertyPath: rotateEngle
-      value: 113
-      objectReference: {fileID: 0}
-    - target: {fileID: 1572215871214351737, guid: ca58ec1d814f27e4d92614a586b7b37c,
-        type: 3}
-      propertyPath: debug
+      propertyPath: enemyCount
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1572215871214351737, guid: ca58ec1d814f27e4d92614a586b7b37c,
         type: 3}
-      propertyPath: speed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1572215871214351737, guid: ca58ec1d814f27e4d92614a586b7b37c,
-        type: 3}
-      propertyPath: rotateEngle
-      value: 113
+      propertyPath: enemyCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2894725488433605855, guid: ca58ec1d814f27e4d92614a586b7b37c,
         type: 3}
@@ -546,23 +526,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3999971316911343204, guid: ca58ec1d814f27e4d92614a586b7b37c,
         type: 3}
-      propertyPath: speed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3999971316911343204, guid: ca58ec1d814f27e4d92614a586b7b37c,
-        type: 3}
-      propertyPath: rotateEngle
-      value: 113
+      propertyPath: enemyCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7852363963736673240, guid: ca58ec1d814f27e4d92614a586b7b37c,
         type: 3}
-      propertyPath: speed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7852363963736673240, guid: ca58ec1d814f27e4d92614a586b7b37c,
-        type: 3}
-      propertyPath: rotateEngle
-      value: 113
+      propertyPath: enemyCount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1117,6 +1087,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6972390640826292499, guid: 2173bdac8f9eefa46b8083dfd9980e87,
         type: 3}
+      propertyPath: tempPools.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6972390640826292499, guid: 2173bdac8f9eefa46b8083dfd9980e87,
+        type: 3}
+      propertyPath: tempPools.Array.data[0]
+      value: 
+      objectReference: {fileID: 4105671131169015990, guid: 7c87336ff59bb344aadc8ea3426cebc7,
+        type: 3}
+    - target: {fileID: 6972390640826292499, guid: 2173bdac8f9eefa46b8083dfd9980e87,
+        type: 3}
+      propertyPath: tempPools.Array.data[1]
+      value: 
+      objectReference: {fileID: 3395318498827927278, guid: eab15e65cee65e24c9dc77ea145223ba,
+        type: 3}
+    - target: {fileID: 6972390640826292499, guid: 2173bdac8f9eefa46b8083dfd9980e87,
+        type: 3}
+      propertyPath: tempPools.Array.data[2]
+      value: 
+      objectReference: {fileID: 6808942935880626619, guid: b6b074c28ffda244aa41ace463d4e3a9,
+        type: 3}
+    - target: {fileID: 6972390640826292499, guid: 2173bdac8f9eefa46b8083dfd9980e87,
+        type: 3}
+      propertyPath: tempPools.Array.data[3]
+      value: 
+      objectReference: {fileID: 4105671131169015990, guid: 7c87336ff59bb344aadc8ea3426cebc7,
+        type: 3}
+    - target: {fileID: 6972390640826292499, guid: 2173bdac8f9eefa46b8083dfd9980e87,
+        type: 3}
       propertyPath: <prefabs>k__BackingField.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -1167,6 +1166,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player_KJH 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895562986543425228, guid: cfa2abadcf4667f43907c66385218c84,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3580481853838212378, guid: cfa2abadcf4667f43907c66385218c84,
         type: 3}
