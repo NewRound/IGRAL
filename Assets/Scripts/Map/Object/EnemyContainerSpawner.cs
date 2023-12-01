@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyContainerSpawner : MonoBehaviour, IObject
 {
@@ -27,9 +28,10 @@ public class EnemyContainerSpawner : MonoBehaviour, IObject
     {
         for(int i = 0; i < enemyCount; i++)
         {
-            // 에너미 풀에서 몬스터 가져오기.
-            // 에너미 위치 조정.
-            // 대기.
+            GameObject enemy = ObjectPoolingManager.Instance.GetEnemy(0).gameObject;
+            enemy.transform.position = transform.position;
+            enemy.GetComponent<EnemyController>().StateMachine.SetDirection(Vector3.zero);
+            enemys.Add(enemy);
         }
 
         if (!isActive)
@@ -37,6 +39,7 @@ public class EnemyContainerSpawner : MonoBehaviour, IObject
             isActive = true;
             StartCoroutine(rotateDoor(rotateEngle));
         }
+
         // 적들을 축으로 이동시키고 이에따라 Area에 편입.
     }
 
