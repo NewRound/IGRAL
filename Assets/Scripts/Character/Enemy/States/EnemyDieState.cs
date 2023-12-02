@@ -33,5 +33,6 @@ public class EnemyDieState : EnemyStateBase
         stateMachine.SetDead(true);
         stateMachine.SetDirection(Vector2.zero);
         animationController.PlayAnimation(animationsData.DieParameterHash, true);
+        AudioManager.Instance.PlaySFX(SFXType.EnemyDead);
     }
 }

@@ -98,6 +98,6 @@ public class UIManager : CustomSingleton<UIManager>
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        
+        InitOpenUI();
     }
 }

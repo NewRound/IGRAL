@@ -43,6 +43,7 @@ public abstract class PlayerStateBase : StateBase
     {
         InputController.MoveAction -= OnMoveInput;
         inputActions.Disable();
+        GameManager.Instance.isDie = true;
         UIManager.Instance.OpenUI<UIGameOver>().Open();
     }
 
