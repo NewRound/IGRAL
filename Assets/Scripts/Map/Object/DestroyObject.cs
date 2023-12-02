@@ -42,7 +42,7 @@ public class DestroyObject : MonoBehaviour, IInteract
 
         if (_player.mutantType != MutantType.Stone) return;
 
-        _audioManager.PlaySFX(SFXType.Boom);
+        _audioManager.PlaySFX(SFXType.ObjDestroy);
         _effectManager.ShowEffect(_particles[0].transform.position, EffectType.Explosion);
 
         SpreadParticle(); // ÆÄÆí

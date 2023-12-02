@@ -14,11 +14,13 @@ public enum SFXType
     , Jump
     , Shooting
     , Drop
-    , Pickup
-    , Boom
+    , Click
+    , ObjDestroy
     , Damaged0
     , Damaged1
     , WireCut
+    , ActiveMutant
+    , EnemyDead
     , Max
 }
 
