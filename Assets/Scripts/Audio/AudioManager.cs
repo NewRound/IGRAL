@@ -20,6 +20,7 @@ public enum SFXType
     , Damaged1
     , WireCut
     , ActiveMutant
+    , EnemyDead
     , Max
 }
 
