@@ -60,7 +60,7 @@ public class EnemyStateMachine : StateMachine
 
     public override void UpdateSpeed()
     {
-        Speed = SpeedCalculator.CalculateSpeed(speedMin, speedMax, out speedRatio, Direction == Vector2.zero, CurrentState == PatrolState);
+        Speed = SpeedCalculator.CalculateSpeed(speedMin, speedMax, out speedRatio, Direction == Vector3.zero, CurrentState == PatrolState);
     }
 
     public override void Look()
