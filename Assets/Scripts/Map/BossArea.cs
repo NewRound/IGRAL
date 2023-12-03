@@ -4,13 +4,11 @@ using UnityEngine;
 public class BossArea : MonoBehaviour
 {
     [Header("AreaData")]
-    [SerializeField] public float size;
-    [SerializeField] public Vector3 position;
     [SerializeField] private Transform SpawnPoint;
     [SerializeField] private Transform[] Waypoints;
-    [SerializeField] private GameObject[] Platform;
+    // [SerializeField] private GameObject[] Platform;
 
-    [SerializeField] public IObject escapeObject;
+    [SerializeField] public GameObject escapeButtonObject;
 
     [SerializeField] private GameObject BossPrefab;
 
@@ -20,8 +18,7 @@ public class BossArea : MonoBehaviour
 
     private void Start()
     {
-        position = transform.position;
-        size = (MapGenerator.Instance.tileSize * size) - 1;
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,18 +31,12 @@ public class BossArea : MonoBehaviour
         }
     }
 
-    private void SendAreaInfo(GameObject enemy)
-    {
-        EnemyStateMachine enemyStateMachine = enemy.GetComponent<EnemyController>().StateMachine;
-        enemyStateMachine.SetAreaData(transform.position.x, size);
-        enemyStateMachine.Init();
-    }
 
     public void BossIsDead()
     {
         if (!BossDied)
         {
-            escapeObject.Use();
+            escapeButtonObject.SetActive(true);
             BossDied = true;
         }
     }
@@ -54,7 +45,8 @@ public class BossArea : MonoBehaviour
     {
         GameObject Boss = Instantiate(BossPrefab);
         Boss.transform.position = SpawnPoint.position;
-        
+        Boss.GetComponent<BossBehaviourTree>().Init(Waypoints);
+
         BossSpawned = true;
     }
 }

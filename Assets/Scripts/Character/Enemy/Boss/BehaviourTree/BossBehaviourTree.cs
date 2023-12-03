@@ -56,12 +56,6 @@ public class BossBehaviourTree : BehaviourTree
         AnimationController.Init();
     }
 
-    private void Start()
-    {
-        // Å×½ºÆ®
-        Invoke("Test", 0.5f);
-    }
-
     private void OnDestroy()
     {
         OnUpdateElapsedCooltime -= UpdateElapsedCoolTimeUI;
@@ -80,7 +74,6 @@ public class BossBehaviourTree : BehaviourTree
 
     public void Init(Transform[] waypoints)
     {
-        _waypoints = new Transform[waypoints.Length];
         _waypoints = waypoints;
 
         Init();
