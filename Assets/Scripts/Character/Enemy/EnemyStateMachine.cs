@@ -18,7 +18,8 @@ public class EnemyStateMachine : StateMachine
     private float _tileHalfLength;
     private float _tilehalfPowLength;
     private float _targetXPos;
-
+    private bool _isTargetSet;
+    
     private IEnumerator _currentEnumerator;
 
     public PlayerStateMachine PlayerStateMachine { get; private set; }
@@ -105,8 +106,16 @@ public class EnemyStateMachine : StateMachine
 
     public void CheckArrived()
     {
-        _currentEnumerator = CheckArrivedTargetPos();
-        EnemyController.ExcuteCoroutine(_currentEnumerator);
+        if (_isTargetSet)
+        {
+            _currentEnumerator = CheckArrivedTargetPos();
+            EnemyController.ExcuteCoroutine(_currentEnumerator);
+        }
+    }
+
+    public void SetIsTarget(bool isTargetSet)
+    {
+        _isTargetSet = isTargetSet;
     }
 
     public void StopCheckingArrived()
