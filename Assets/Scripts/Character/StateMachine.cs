@@ -5,7 +5,7 @@ public abstract class StateMachine
     public IState CurrentState { get; protected set; }
 
     public Vector3 PreDirection { get; private set; }
-    public Vector2 Direction { get; private set; }
+    public Vector3 Direction { get; private set; }
 
     public Rigidbody Rigid;
 
@@ -52,7 +52,7 @@ public abstract class StateMachine
 
     public virtual void UpdateSpeed()
     {
-        Speed = SpeedCalculator.CalculateSpeed(speedMin, speedMax, out speedRatio, Direction == Vector2.zero);
+        Speed = SpeedCalculator.CalculateSpeed(speedMin, speedMax, out speedRatio, Direction == Vector3.zero);
     }
 
     public void SetPreDirection(Vector3 direction)
@@ -83,7 +83,7 @@ public abstract class StateMachine
 
     public virtual void Move()
     {
-        Vector3 velocity = new Vector3(Direction.x, 0f, 0f) * Speed;
+        Vector3 velocity = Direction * Speed;
         velocity.y = Rigid.velocity.y;
         Rigid.velocity = velocity;
     }
