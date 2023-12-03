@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class EnemyContainerSpawner : MonoBehaviour, IObject
 {
-    [SerializeField] private Transform SpawnPoint;
+    [SerializeField] private Transform MovingPoint;
     [SerializeField] private GameObject LeftDoor;
     [SerializeField] private GameObject RightDoor;
     [SerializeField] private float rotateEngle;
@@ -27,11 +27,15 @@ public class EnemyContainerSpawner : MonoBehaviour, IObject
 
     public void Use()
     {
+        EnemyStateMachine enemyStateMachine;
         for(int i = 0; i < enemyCount; i++)
         {
             GameObject enemy = ObjectPoolingManager.Instance.GetEnemy(0).gameObject;
             enemy.transform.position = transform.position;
-            enemy.GetComponent<EnemyController>().StateMachine.SetDirection(transform.position);
+            enemyStateMachine = enemy.GetComponent<EnemyController>().StateMachine;
+            enemyStateMachine.SetAreaData(transform.position.x, 1.0f);
+            enemyStateMachine.Init();
+            enemyStateMachine.SetDirection(MovingPoint.position);
             enemys.Add(enemy);
         }
 
@@ -46,7 +50,7 @@ public class EnemyContainerSpawner : MonoBehaviour, IObject
             // 적들을 축으로 이동시키고 이에따라 Area에 편입.
             foreach(GameObject enemy in enemys)
             {
-                enemy.GetComponent<EnemyController>().StateMachine.SetDirection(transform.position);
+                enemy.GetComponent<EnemyController>().StateMachine.SetDirection(MovingPoint.position);
             }
         }
     }
