@@ -5,10 +5,15 @@ using UnityEngine;
 public class EnemyDroneBullet : ExplosionWeapon
 {
     private EffectManager _effectManager;
-
+    private Color _color;
+    private Rigidbody _rigid;
+    
     protected override void ResetValues()
     {
-        base.ResetValues();
+        if (material != null)
+            material.color = _color;
+
+        _rigid.velocity = Vector3.zero;
     }
 
     private void Awake()
@@ -19,7 +24,10 @@ public class EnemyDroneBullet : ExplosionWeapon
     protected override void Init()
     {
         base.Init();
+
+        _color = material.color;
         _effectManager = EffectManager.Instance;
+        _rigid = GetComponent<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -48,6 +56,6 @@ public class EnemyDroneBullet : ExplosionWeapon
 
     public void SetDirection(Vector3 direction)
     {
-        modelObject.transform.up = -direction;
+        modelObject.transform.up = direction;
     }
 }

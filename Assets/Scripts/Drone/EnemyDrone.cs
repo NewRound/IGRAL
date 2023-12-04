@@ -74,6 +74,7 @@ public class EnemyDrone : MonoBehaviour
         GameObject projectile = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.BossDroneBullet);
         EnemyDroneBullet droneBullet = projectile.GetComponent<EnemyDroneBullet>();
         droneBullet.SetDirection(_direction);
+        droneBullet.Activate();
         droneBullet.transform.position = transform.position;
     }
 }

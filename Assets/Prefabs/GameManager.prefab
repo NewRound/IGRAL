@@ -32,7 +32,7 @@ Transform:
   - {fileID: 8133010868506009089}
   - {fileID: 8552694075212594027}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &90722186622358674
 MonoBehaviour:
@@ -121,6 +121,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObjectPoolingManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6972390640826292499, guid: 2173bdac8f9eefa46b8083dfd9980e87,
+        type: 3}
+      propertyPath: <prefabs>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 1265579702484801395, guid: c2ef4f629ff6a6941a7d3042002b241f,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

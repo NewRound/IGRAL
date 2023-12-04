@@ -76,7 +76,6 @@ public class GameManager : CustomSingleton<GameManager>
         if(isDie)
         {
             PlayerAllRecovered();
-            PlayerAppearanceController.ChangeMutant(MutantType.None);
             isDie = false;
         }
 
