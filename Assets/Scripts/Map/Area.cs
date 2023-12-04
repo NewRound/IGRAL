@@ -16,7 +16,7 @@ public class Area : MonoBehaviour
     private void Start()
     {
         position = transform.position;
-        size = (MapGenerator.Instance.tileSize * size) - 1;
+        size -= 1;
 
         if(enemyCount > 0)
         {
@@ -34,7 +34,7 @@ public class Area : MonoBehaviour
                 {
                     GameObject enemy = ObjectPoolingManager.Instance.GetEnemy(0).gameObject;
                     SendAreaInfo(enemy.gameObject);
-
+                    enemy.GetComponent<EnemyController>().StateMachine.SetIsTarget(true);
                     Vector3 pos = position;
                     xPos = firstPos + (((size - 1) / num) * i);
                     pos.x = xPos;
