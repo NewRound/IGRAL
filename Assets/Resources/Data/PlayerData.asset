@@ -28,7 +28,7 @@ MonoBehaviour:
   <SpeedMax>k__BackingField: 8
   <KnockbackPower>k__BackingField: 10
   <IsRanged>k__BackingField: 0
-  <JumpingForce>k__BackingField: 5
+  <JumpingForce>k__BackingField: 6
   <JumpingCountMax>k__BackingField: 2
   <RollingForce>k__BackingField: 5
   <RollingCoolTime>k__BackingField: 2
