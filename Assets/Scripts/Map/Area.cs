@@ -47,11 +47,10 @@ public class Area : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Enemy")
+        if(other.TryGetComponent<EnemyController>(out EnemyController _enemy))
         {
-
-            enemys.Add(other.GetComponent<EnemyController>());
-            other.GetComponent<EnemyController>().StatHandler.DieAction += UpdateEnemyDied;
+            enemys.Add(_enemy);
+            _enemy.StatHandler.DieAction += UpdateEnemyDied;
             // enemy ==> float, float <발판의 중앙 x 값,  길이의 -1 값.>
             SendAreaInfo(other.gameObject);
 
@@ -61,7 +60,7 @@ public class Area : MonoBehaviour
             }
         }
 
-        if (other.gameObject.tag == "Player")
+        if (other.TryGetComponent<InputController>(out InputController player))
         {
             PlayerInArea = true;
             foreach(EnemyController enemy in enemys)
