@@ -100,7 +100,8 @@ public class EnemyController : EntityController
 
     public void TerminateCoroutine(IEnumerator enumerator)
     {
-        StopCoroutine(enumerator);
+        if(enumerator != null)
+            StopCoroutine(enumerator);
     }
 
     private void OnDestroy()

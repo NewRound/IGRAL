@@ -12,9 +12,11 @@ public class CamaraMoving : MonoBehaviour
         if (cam == null)
             cam = GameManager.Instance.MainCam;
 
-        cam.SetMainCam(veiwPoint1);
-
-        Invoke("ReturnFollowTarget", maxtime);
+        if (other.TryGetComponent<InputController>(out InputController player))
+        {
+            cam.SetMainCam(veiwPoint1);
+            Invoke("ReturnFollowTarget", maxtime);
+        }
     }
 
     private void ReturnFollowTarget()
