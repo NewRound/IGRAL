@@ -49,7 +49,7 @@ public class GameManager : CustomSingleton<GameManager>
     {
         if (isDie)
             return;
-            
+
         StatHandler.Recovery(StatHandler.Data.HealthRegen * Time.deltaTime);
     }
 
@@ -73,10 +73,12 @@ public class GameManager : CustomSingleton<GameManager>
 
         PlayerPosition(Vector3.zero);
 
-        if(isDie)
+        if (isDie)
         {
             PlayerAllRecovered();
+
             isDie = false;
+
         }
 
         if (_isSetting)
