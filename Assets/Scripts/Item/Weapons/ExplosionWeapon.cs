@@ -88,7 +88,8 @@ public abstract class ExplosionWeapon : Weapon
 
     protected virtual void ResetValues()
     {
-        material.color = Color.white;
+        if (material != null)
+            material.color = Color.white;
     }
 
     protected virtual IEnumerator DestroySelf()

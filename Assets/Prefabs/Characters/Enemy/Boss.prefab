@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4524733073284446991}
   - component: {fileID: 289385383457154934}
   m_Layer: 8
-  m_Name: Level3-Boss
+  m_Name: Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 6406190111366039798}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6889106631001909444
 MonoBehaviour:

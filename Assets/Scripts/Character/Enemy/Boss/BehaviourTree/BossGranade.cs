@@ -43,7 +43,7 @@ public class BossGranade : ExplosionWeapon
         StartCoroutine(Explode());
     }
 
-    public void InitPos()
+    private void InitPos()
     {
         if (_target != null)
         {
@@ -55,7 +55,7 @@ public class BossGranade : ExplosionWeapon
             Vector3 sphereRandomPos = Random.insideUnitSphere * radius;
             Vector3 canonicalPos = (_initPos + _target.position) * GlobalValues.HALF;
             _randomPos = canonicalPos + sphereRandomPos;
-            _randomPos.y = _randomPos.y < _target.position.y ? radius + yOffset : _randomPos.y;
+            _randomPos.y = _randomPos.y < _target.position.y ? _target.position.y + radius : _randomPos.y;
             _randomPos.z = 0f;
         }
     }
@@ -90,20 +90,9 @@ public class BossGranade : ExplosionWeapon
         _target = GameManager.Instance.PlayerTransform;
     }
 
-    protected override IEnumerator DestroySelf()
-    {
-        DeActivateModel();
-
-        foreach (ParticleSystem particleSystem in explosionParticles)
-            particleSystem.Play();
-
-        yield return explosionDict[explosionTime];
-
-        material.color = Color.white;
-    }
-
     protected override void ResetValues()
     {
+        base.ResetValues();
         _isMovable = false;
         currentElapsedTime = 0f;
     }

@@ -6,23 +6,31 @@ public class EnemyDroneSpawner
 
     private Vector3 _direction;
 
-    private Transform _spawnTrans;
+    private Transform[] _spawnTrans;
+
+    private float _centerXPos;
 
     private float _droneHeight;
 
-    public EnemyDroneSpawner(Transform spawnTrans, float durationTime, float droneHeight)
+    private Transform _playerTrans;
+
+    public EnemyDroneSpawner(Transform[] spawnTrans, float durationTime, float droneHeight)
     {
-        _spawnTrans = spawnTrans;
+        _spawnTrans = new Transform[2];
+        _spawnTrans[0] = spawnTrans[0];
+        _spawnTrans[1] = spawnTrans[spawnTrans.Length - 1];
+        _centerXPos = (spawnTrans[0].position.x + _spawnTrans[1].position.x) * GlobalValues.HALF;
         _durationTime = durationTime;
         _droneHeight = droneHeight;
     }
 
     public void SpawnDrone()
     {
-        _direction = GetDirection();
         GameObject _enemyDrone = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.EnemyDrone);
         
-        Vector3 spawnPos = _spawnTrans.position;
+        _direction = GetDirection();
+         
+        Vector3 spawnPos = _direction == Vector3.left ? _spawnTrans[0].position : _spawnTrans[1].position;
         spawnPos.y += _droneHeight;
         _enemyDrone.transform.position = spawnPos;
 
@@ -32,8 +40,10 @@ public class EnemyDroneSpawner
 
     private Vector3 GetDirection()
     {
-        Transform player = GameManager.Instance.PlayerTransform;
-        if (_spawnTrans.position.x - player.position.x >= 0) return Vector3.left;
+        if (_playerTrans == null)
+            _playerTrans = GameManager.Instance.PlayerTransform;
+
+        if (_centerXPos <= _playerTrans.position.x) return Vector3.left;
         else return Vector3.right;
     }
 }
