@@ -20,7 +20,7 @@ public class DoorLock : MonoBehaviour, IObject
     public void Use()
     {
         if (!isMoving)
-            Move();
+            StartCoroutine(Move());
     }
 
     IEnumerator Move()
