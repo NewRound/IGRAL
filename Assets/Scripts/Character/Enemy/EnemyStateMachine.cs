@@ -54,6 +54,11 @@ public class EnemyStateMachine : StateMachine
 
     }
 
+    public override void Update()
+    {
+        base.Update();
+    }
+
     public override void Init()
     {
         ChangeState(PatrolState);
@@ -188,5 +193,10 @@ public class EnemyStateMachine : StateMachine
         int directionX = isLeft ? -1 : 1;
 
         SetDirection(directionX);
+    }
+
+    private void CheckArrivedInitPos()
+    {
+
     }
 }

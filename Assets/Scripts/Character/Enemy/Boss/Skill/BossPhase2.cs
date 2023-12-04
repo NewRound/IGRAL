@@ -1,11 +1,11 @@
 using GlobalEnums;
 using UnityEngine;
 
-public class Boss3Phase2 : BossSkill
+public class BossPhase2 : BossSkill
 {
     private RPG _newWeapon;
     private Transform _bulletSpawnTrans;
-    public Boss3Phase2(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public BossPhase2(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
     {
         _bulletSpawnTrans = bossBehaviourTree.BulletSpawnTrans;
         btDict = bossBehaviourTree.BTDict;

@@ -1,5 +1,7 @@
 using GlobalEnums;
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Patrol : ActionNode
@@ -12,18 +14,20 @@ public class Patrol : ActionNode
 
     private Transform _modelTrans;
 
-    private int _currentWayPointIndex = -1;
+    private int _currentWayPointIndex;
 
     private BossAnimationController _animationController;
     private SpeedCalculator _speedCalculator;
 
-    public Patrol(BossBehaviourTree bossBehaviourTree, Rigidbody rigid, Transform[] waypoints) : base(bossBehaviourTree)
+    public Patrol(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
     {
         _animationController = bossBehaviourTree.AnimationController;
-        _rigid = rigid;
-        _waypoints = new Transform[waypoints.Length];
+        _rigid = bossBehaviourTree.Rigid;
         _speedCalculator = new SpeedCalculator();
-        _waypoints = waypoints;
+        _waypoints = bossBehaviourTree.Waypoints;
+
+        _currentWayPointIndex = _waypoints.Length / 2;
+
         _speedMin = bossBehaviourTree.StatHandler.Data.SpeedMin;
         _speedMax = bossBehaviourTree.StatHandler.Data.SpeedMax;
         _modelTrans = bossBehaviourTree.ModelTrans;
@@ -43,9 +47,6 @@ public class Patrol : ActionNode
             return state;
         }
 
-        if (_currentWayPointIndex == -1)
-            _currentWayPointIndex = UnityEngine.Random.Range(0, _waypoints.Length);
-
         Vector3 velocity = Vector3.zero;
 
         float horizontalSub = _rigid.position.x - _waypoints[_currentWayPointIndex].position.x;
@@ -59,8 +60,8 @@ public class Patrol : ActionNode
         float horizontalDistance = isWaypointLeft ? horizontalSub : -horizontalSub;
         if (horizontalDistance < 0.1f)
         {
-            _currentWayPointIndex = -1;
-            
+            UpdateWayPoint();
+
             velocity.x = 0f;
             velocity.y = _rigid.velocity.y;
             _rigid.velocity = velocity;
@@ -76,6 +77,25 @@ public class Patrol : ActionNode
         UpdateMoveAnimation(false);
         state = NodeState.Success;
         return state;
+    }
+
+    private void UpdateWayPoint()
+    {
+        int random = UnityEngine.Random.Range(0, 2);
+        if (random == 0)
+        {
+            _currentWayPointIndex = 
+                _currentWayPointIndex < (_waypoints.Length - 1) ? 
+                _currentWayPointIndex + 1: 
+                _currentWayPointIndex - 1;
+        }
+        else
+        {
+            _currentWayPointIndex =
+                _currentWayPointIndex == 0 ?
+                _currentWayPointIndex + 1 :
+                _currentWayPointIndex - 1;
+        }
     }
 
     private void LookRightAway(bool isWaypointLeft)

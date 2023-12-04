@@ -117,7 +117,7 @@ public class Rocket : ExplosionWeapon
         _lastPos.y += yOffset;
         float radius = GlobalValues.HALF * Vector3.Distance(_initPos, _targetTrans.position);
         _randomPos = (_initPos + _lastPos) * GlobalValues.HALF + Random.insideUnitSphere * radius;
-        _randomPos.y = _randomPos.y < 0 ? 0 : _randomPos.y;
+        _randomPos.y = _randomPos.y < _lastPos.y ? _lastPos.y + radius : _randomPos.y;
         _crosshairInstant.transform.position = _lastPos;
     }
 

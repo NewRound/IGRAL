@@ -1,18 +1,19 @@
 ﻿using GlobalEnums;
+using UnityEngine;
 
-public class Boss3Phase3 : BossSkill
+public class BossPhase1 : BossSkill
 {
-    private EnemyDroneSpawner _enemyDroneSpawner;
+    private BossGranade _granade;
 
-    public Boss3Phase3(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public BossPhase1(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
     {
-        _enemyDroneSpawner = new EnemyDroneSpawner(bossBehaviourTree.DroneSpawnTrans, bossBehaviourTree.DroneSpawnDuration, bossBehaviourTree.DroneHeight);
+        Init();
     }
 
     public override NodeState Evaluate()
     {
-        if (!IsActionPossible((CurrentAction)btDict[BTValues.CurrentAction], CurrentAction.UsingSkill)
-            || bossBehaviourTree.CurrentPhase != 3)
+        if (!IsActionPossible((CurrentAction)btDict[BTValues.CurrentAction], CurrentAction.UsingSkill) 
+            || bossBehaviourTree.CurrentPhase != 1)
         {
             state = NodeState.Failure;
             return state;
@@ -21,11 +22,12 @@ public class Boss3Phase3 : BossSkill
         if ((bool)btDict[BTValues.IsAttacking])
         {
             float normalizedTime = AnimationUtil.GetNormalizeTime(animationController.Animator, AnimTag.Skill, (int)AnimatorLayer.UpperLayer);
-
             if (normalizedTime > 1f)
             {
+                _granade.transform.position = defaultWeapon.transform.position;
+                _granade.ThrowGranade();
                 OnAnimationEnded();
-                _enemyDroneSpawner.SpawnDrone();
+
                 state = NodeState.Success;
                 return state;
             }
@@ -33,7 +35,6 @@ public class Boss3Phase3 : BossSkill
             state = NodeState.Running;
             return state;
         }
-
 
         if ((float)btDict[BTValues.CurrentSkillElapsedTime] >= (float)btDict[BTValues.CurrentPhaseSkillCoolTime])
         {
@@ -47,14 +48,19 @@ public class Boss3Phase3 : BossSkill
         return state;
     }
 
+    protected override void Init()
+    {
+        _granade = Object.Instantiate(
+            Resources.Load<BossGranade>("Boss/SkillWeapons/Granade"), 
+            defaultWeapon.transform.position, Quaternion.identity);
+        _granade.DeActivate();
+    }
+
     protected override void OnChargedCoolTime()
     {
         base.OnChargedCoolTime();
+        _granade.gameObject.SetActive(true);
+        defaultWeapon.SetActive(false);
         UseSkill();
-    }
-
-    protected override void Init()
-    {
-        
     }
 }

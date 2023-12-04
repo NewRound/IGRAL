@@ -6,10 +6,8 @@ using UnityEngine;
 
 public class BossBehaviourTree : BehaviourTree
 {
-    [SerializeField] Transform[] waypoints;
-
-    private Transform[] _waypoints;
     [SerializeField] private EnemySO enemySO;
+    public Transform[] Waypoints { get; private set; }
     [field: SerializeField] public Transform ModelTrans { get; private set; }
 
     [field: SerializeField] public Transform BulletSpawnTrans { get; private set; }
@@ -28,7 +26,7 @@ public class BossBehaviourTree : BehaviourTree
     [field: SerializeField] public float MeleeAttackMod = 2.5f;
 
 
-    private Rigidbody _rigid;
+    public Rigidbody Rigid { get; private set; }
 
     public int CurrentPhase { get; private set; } = 1;
 
@@ -36,7 +34,6 @@ public class BossBehaviourTree : BehaviourTree
 
     public Transform PlayerTransform { get; private set; }
 
-    public Transform DroneSpawnTrans { get; private set; }
     [field: SerializeField] public float DroneSpawnDuration { get; private set; } = 3f;
     [field: SerializeField] public float DroneHeight { get; private set; } = 7f;
 
@@ -50,7 +47,7 @@ public class BossBehaviourTree : BehaviourTree
 
     private void Awake()
     {
-        _rigid = GetComponent<Rigidbody>();
+        Rigid = GetComponent<Rigidbody>();
         StatHandler = new BossStatHandler(Instantiate(enemySO), this);
         AnimationController = GetComponentInChildren<BossAnimationController>();
         AnimationController.Init();
@@ -64,17 +61,9 @@ public class BossBehaviourTree : BehaviourTree
         OnBossDead -= CloseBossUI;
     }
 
-    private void Test()
-    {
-        _waypoints = new Transform[waypoints.Length];
-        _waypoints = waypoints;
-
-        Init();
-    }
-
     public void Init(Transform[] waypoints)
     {
-        _waypoints = waypoints;
+        Waypoints = waypoints;
 
         Init();
     }
@@ -83,7 +72,6 @@ public class BossBehaviourTree : BehaviourTree
     {
         if (UIBossCondition == null)
         {
-            DroneSpawnTrans = _waypoints[0];
             PlayerTransform = GameManager.Instance.PlayerTransform;
             UIBossCondition = UIManager.Instance.OpenUI<UIBossCondition>();
             InitBTDict();
@@ -120,17 +108,17 @@ public class BossBehaviourTree : BehaviourTree
                 {
                     new Sequence(new List<Node>()
                     {
-                        new Patrol(this, _rigid, _waypoints),
+                        new Patrol(this),
                         new RunningCoolTime(this),
                     }),
 
                     new Selector(new List<Node>()
                     {
-                        new Boss3Phase1(this),
+                        new BossPhase1(this),
 
-                        new Boss3Phase2(this),
+                        new BossPhase2(this),
 
-                        new Boss3Phase3(this)
+                        new BossPhase3(this)
                     }),
 
                     new Selector(new List<Node>()
