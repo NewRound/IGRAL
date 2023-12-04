@@ -14,7 +14,6 @@ public class ElevatorObject : MonoBehaviour, IMovingObject
     private void Awake()
     {
         StartPosition = transform.position;
-        Debug.Log($"{StartPosition}");
     }
 
     public void Use()
