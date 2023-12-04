@@ -16,6 +16,7 @@ public class UIGameOver : MonoBehaviour
     {
         bg.alpha = 0;
         bg.DOFade(1f, 5f);
+        SkillManager.Instance.StopAllSKill();
     }
 
     private void OnButton()

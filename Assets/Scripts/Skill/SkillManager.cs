@@ -25,6 +25,14 @@ public class SkillManager : CustomSingleton<SkillManager>
         }
     }
 
+    public void StopAllSKill()
+    {
+        foreach (SkillUse su in _skillUse)
+        {
+            su.StopSkill();
+        }
+    }
+
     public void SetSkillUes(SkillUse[] skillUse)
     {
         _skillUse = skillUse;

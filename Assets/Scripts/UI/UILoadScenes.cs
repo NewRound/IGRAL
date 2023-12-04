@@ -10,6 +10,7 @@ public class LoadScene : MonoBehaviour
 
     private void Start()
     {
+        SkillManager.Instance.StopAllSKill();
         nextScene = PlayerPrefs.GetString("Scene");
         if(nextScene == null)
         {
