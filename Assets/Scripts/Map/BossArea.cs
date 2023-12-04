@@ -11,14 +11,18 @@ public class BossArea : MonoBehaviour
     [SerializeField] public GameObject escapeButtonObject;
 
     [SerializeField] private GameObject BossPrefab;
+    private GameObject _boss;
 
     private bool BossSpawned = false;
     private bool BossDied = false;
 
 
-    private void Start()
+    private void Update()
     {
-
+        if(_boss == null && !BossDied)
+        {
+            BossIsDead();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -46,6 +50,7 @@ public class BossArea : MonoBehaviour
         GameObject Boss = Instantiate(BossPrefab);
         Boss.transform.position = SpawnPoint.position;
         Boss.GetComponent<BossBehaviourTree>().Init(Waypoints);
+        _boss = Boss;
 
         BossSpawned = true;
     }
