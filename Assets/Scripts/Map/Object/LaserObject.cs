@@ -19,17 +19,15 @@ public class LaserObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        GameObject otherObject = other.gameObject;
-
         PlayerAppearanceController PAC;
         if (other.TryGetComponent<PlayerAppearanceController>(out PAC))
         {
             if (PAC.mutantType != MutantType.Skin)
             {
-                // 데미지 주기.
                 // todo
-
-                otherObject.transform.position = SpawnPoint.position;
+                GameManager.Instance.StatHandler.Damaged(Damage);
+                if (SpawnPoint != null)
+                    other.transform.position = SpawnPoint.position;
             }
         }
     }
