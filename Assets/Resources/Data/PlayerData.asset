@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 100
   <MaxHealth>k__BackingField: 100
-  <HealthRegen>k__BackingField: 1
+  <HealthRegen>k__BackingField: 0.2
   <Defense>k__BackingField: 0
   <EvasionProbability>k__BackingField: 0
   <IsInvincible>k__BackingField: 0

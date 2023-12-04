@@ -298,7 +298,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-247570
+  m_Name: pb_Mesh-2377626
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -846,6 +846,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map1
       objectReference: {fileID: 0}
+    - target: {fileID: 1843189816162214862, guid: ca58ec1d814f27e4d92614a586b7b37c,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 482765576}
     - target: {fileID: 2894725488433605855, guid: ca58ec1d814f27e4d92614a586b7b37c,
         type: 3}
       propertyPath: m_RootOrder
@@ -921,6 +926,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 482765576}
+    - target: {fileID: 5785006635152881002, guid: ca58ec1d814f27e4d92614a586b7b37c,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 1131
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
