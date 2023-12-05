@@ -1,17 +1,23 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using GlobalEnums;
+using System.Linq;
 
 public class PlayerWeapon : Weapon
 {
     [SerializeField] private float rayOffsetY = 0.8f;
+    [SerializeField] private float rayOffsetYMod = 0.5f;
     [SerializeField] private float rayOffsetX = 0.2f;
     private PlayerSO _playerSO;
     private PlayerAnimationController _playerAnimationController;
     private Transform _modelTrans;
     private Transform _myTrans;
+    private LayerMask _layer;
 
     private void Start()
     {
-        targetTag = GlobalEnums.Tag.Enemy.ToString();
+        targetTag = Tag.Enemy.ToString();
+        _layer = 1 << LayerMask.NameToLayer(targetTag) | 1 << LayerMask.NameToLayer(Tag.Interactable.ToString());
         _playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
 
         InputController inputController = GetComponent<InputController>();
@@ -48,7 +54,19 @@ public class PlayerWeapon : Weapon
         IDamageable damageable = null;
         Vector3 offsetVec = UpdateRayOffset();
 
-        RaycastHit[] hits = Physics.RaycastAll(offsetVec, _modelTrans.forward, _playerSO.AttackRange, 1 << LayerMask.NameToLayer(targetTag) | 1 << LayerMask.NameToLayer(GlobalEnums.Tag.Interactable.ToString()));
+        RaycastHit[] middle = Physics.RaycastAll(offsetVec, _modelTrans.forward, _playerSO.AttackRange, _layer);
+        List<RaycastHit> hits = new List<RaycastHit>(middle);
+
+        Vector3 topVec = offsetVec + new Vector3(0f, rayOffsetYMod, 0f);
+        RaycastHit[] top = Physics.RaycastAll(topVec, _modelTrans.forward, _playerSO.AttackRange, _layer);
+        hits.AddRange(top);
+
+        Vector3 bottomVec = offsetVec + new Vector3(0f, -rayOffsetYMod, 0f);
+        RaycastHit[] bottom = Physics.RaycastAll(bottomVec, _modelTrans.forward, _playerSO.AttackRange, _layer);
+        hits.AddRange(bottom);
+
+        hits.Distinct();
+
         foreach (RaycastHit hit in hits)
         {
             EnemyController enemyController = hit.collider.GetComponentInParent<EnemyController>();
