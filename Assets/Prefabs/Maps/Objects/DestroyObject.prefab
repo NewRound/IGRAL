@@ -372,7 +372,7 @@ Transform:
   - {fileID: 8199700896722549711}
   - {fileID: 535060935570190889}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3205109415657430442
 MonoBehaviour:
@@ -401,7 +401,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2538952129180618275}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: bccac84d0ced870428afff466b5ca00c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
