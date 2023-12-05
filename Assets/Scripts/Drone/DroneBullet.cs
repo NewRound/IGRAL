@@ -68,35 +68,39 @@ public class DroneBullet : Weapon
 
     private void OnTriggerEnter(Collider other)
     {
-        switch(_bulletType)
+        switch (_bulletType)
         {
             case BulletType.playerDrone:
 
                 EnemyController enemyController = other.GetComponent<EnemyController>();
                 BossBehaviourTree BT = other.GetComponent<BossBehaviourTree>();
+                EnemyStatHandler enemy = null;
 
-                if (enemyController != null || BT != null)
+                if (enemyController != null)
+                    enemy = enemyController.StatHandler;
+                else if (BT != null)
+                    enemy = BT.StatHandler;
+
+                if (enemy != null)
                 {
-                    EnemyStatHandler enemy = enemyController.StatHandler;
-                    if (enemy != null)
-                    {
-                        enemy.Damaged(_attackDamage);
-                    }
+                    enemy.Damaged(_attackDamage);
                     gameObject.SetActive(false);
                 }
+
+
                 break;
 
             case BulletType.EnmeyDrone:
                 PlayerController playerController = other.GetComponent<PlayerController>();
 
-                if(playerController != null)
+                if (playerController != null)
                 {
                     PlayerStatHandler player = playerController.StatHandler;
-                    if( player != null)
+                    if (player != null)
                     {
                         Attack(_attackDamage, player.Data, player);
                     }
-                    gameObject.SetActive(false) ;
+                    gameObject.SetActive(false);
                 }
                 break;
         }       

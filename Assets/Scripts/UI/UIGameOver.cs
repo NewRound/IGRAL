@@ -22,6 +22,8 @@ public class UIGameOver : MonoBehaviour
     private void OnButton()
     {
         gameObject.SetActive(false);
+        ItemManager.Instance.DelConsumable();
+        UIController.Instance.DelConsumableItem();
         LoadSceneManager.Instance.LoadScene("LobbyScene");
     }
 }
