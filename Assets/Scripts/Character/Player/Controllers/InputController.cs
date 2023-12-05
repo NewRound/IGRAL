@@ -59,11 +59,19 @@ public class InputController : PlayerController
         if (IsDebug)
             ReadMoveInput();
 #endif
+
+#if UNITY_WEBGL
+            ReadMoveInput();
+#endif
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
 #if UNITY_EDITOR
+        _isMovePressed = context.started;
+#endif
+
+#if UNITY_WEBGL
         _isMovePressed = context.started;
 #endif
     }
@@ -115,6 +123,22 @@ public class InputController : PlayerController
     }
 
 #if UNITY_EDITOR
+    private void ReadMoveInput()
+    {
+        if (StateMachine.RollDataHandler.IsRolling)
+            return;
+
+        if (!_isMovePressed)
+        {
+            CallMoveAction(Vector2.zero);
+            return;
+        }
+
+        CallMoveAction(InputActions.Player.Move.ReadValue<Vector2>());
+    }
+#endif
+
+#if UNITY_WEBGL
     private void ReadMoveInput()
     {
         if (StateMachine.RollDataHandler.IsRolling)
