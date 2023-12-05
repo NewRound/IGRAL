@@ -12,8 +12,8 @@ public class PlayerWeapon : Weapon
     private PlayerAnimationController _playerAnimationController;
     private Transform _modelTrans;
     private Transform _myTrans;
-    private string _interactibleTag;
     private LayerMask _layer;
+
     private void Start()
     {
         targetTag = Tag.Enemy.ToString();
