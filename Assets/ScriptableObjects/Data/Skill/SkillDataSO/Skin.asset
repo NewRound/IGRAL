@@ -24,8 +24,8 @@ MonoBehaviour:
   <AttackRange>k__BackingField: 0
   <CriticalProbability>k__BackingField: 0
   <CriticalMod>k__BackingField: 0
-  <SpeedMin>k__BackingField: 0
-  <SpeedMax>k__BackingField: 0
+  <SpeedMin>k__BackingField: 50
+  <SpeedMax>k__BackingField: 50
   <KnockbackPower>k__BackingField: 0
   <IsRanged>k__BackingField: 0
   <JumpingForce>k__BackingField: 0
@@ -38,6 +38,6 @@ MonoBehaviour:
   <WallSlidingTime>k__BackingField: 0
   <KnockbackTime>k__BackingField: 0
   <WallSlidingSpeed>k__BackingField: 0
-  <UsingKcal>k__BackingField: 100
+  <UsingKcal>k__BackingField: 50
   <DurationKcal>k__BackingField: 0
   <DurationTime>k__BackingField: 5
