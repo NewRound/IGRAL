@@ -1729,7 +1729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackRange: 5
-  _attackDelay: 0.5
+  _attackDelay: 1
   _rayAngle: 60
   _rayCount: 10
   _enemyLayer:
