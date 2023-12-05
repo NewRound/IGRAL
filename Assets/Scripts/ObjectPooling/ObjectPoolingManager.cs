@@ -53,6 +53,7 @@ public class ObjectPoolingManager : CustomSingleton<ObjectPoolingManager>
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         currentStage = GameManager.Instance.currentStage;
+        pools = new List<GameObject>[prefabs.Length];
 
         foreach (Transform child in transform)
         {
