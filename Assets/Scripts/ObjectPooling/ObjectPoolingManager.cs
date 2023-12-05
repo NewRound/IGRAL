@@ -54,7 +54,10 @@ public class ObjectPoolingManager : CustomSingleton<ObjectPoolingManager>
     {
         currentStage = GameManager.Instance.currentStage;
         pools = new List<GameObject>[prefabs.Length];
-
+        for (int index = 0; index < pools.Length; index++)
+        {
+            pools[index] = new List<GameObject>();
+        }
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);

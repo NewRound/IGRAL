@@ -23,6 +23,7 @@ public class DataManager : CustomSingleton<DataManager>
 
     private void Awake()
     {
+        //PlayerPrefs.SetInt("Tutorial", 0);
         _playerSO = Resources.Load<PlayerSO>($"Data/PlayerData");
         playerSO = Instantiate(_playerSO);
         Debug.Log(playerSO.Attack);
