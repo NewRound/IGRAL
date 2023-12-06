@@ -29,10 +29,12 @@ public class Area : MonoBehaviour
             {
                 float firstPos = position.x - ((size - 1) / 2);
                 int num = enemyCount + 1;
+                int randomEnemy = 0;
                 float xPos;
                 for(int i = 1; i <= enemyCount; i++)
                 {
-                    GameObject enemy = ObjectPoolingManager.Instance.GetEnemy(0).gameObject;
+                    randomEnemy = Random.Range(0, 3);
+                    GameObject enemy = ObjectPoolingManager.Instance.GetEnemy(randomEnemy).gameObject;
                     SendAreaInfo(enemy.gameObject);
                     enemy.GetComponent<EnemyController>().StateMachine.SetIsTarget(true);
                     Vector3 pos = position;
