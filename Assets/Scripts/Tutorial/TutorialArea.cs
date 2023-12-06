@@ -98,7 +98,7 @@ public class TutorialArea : MonoBehaviour
                 UIManager.Instance.OpenUI<UITutorial>().OpenTutorial(sprites[explain], "길을 막고 있는 바위는 해머 변이 상태이면 파괴할 수 있습니다.");
                 break;
             case 1:
-                UIManager.Instance.OpenUI<UITutorial>().OpenTutorial(sprites[explain], "갑옷을 입고 있는 적은 해머 변이 상태이면 대미 지을 줄 수 있습니다.");
+                UIManager.Instance.OpenUI<UITutorial>().OpenTutorial(sprites[explain], "갑옷을 입고 있는 적은 해머 변이 상태에서만 공격 가능합니다.");
                 break;
             case 2:
                 UIManager.Instance.OpenUI<UITutorial>().OpenTutorial(sprites[explain], "칼날 변이 상태이면 때는 날카로운 공격이 가능 합니다.");
@@ -109,6 +109,11 @@ public class TutorialArea : MonoBehaviour
             case 4:
                 UIManager.Instance.OpenUI<UITutorial>().OpenTutorial(sprites[explain], "피부 변이 상태이면 캐릭터가 은신 상태 입니다.");
                 break;
+#if UNITY_WEBGL
+            case 5:
+                UIManager.Instance.OpenUI<UITutorial>().OpenTutorial(sprites[explain], "상호작용 키를 눌러 맵 이동이 가능합니다.");
+                break;
+#endif
         }
     }
 
