@@ -19,9 +19,9 @@ MonoBehaviour:
   <EvasionProbability>k__BackingField: 0
   <IsInvincible>k__BackingField: 0
   <InvincibleTime>k__BackingField: 0
-  <Attack>k__BackingField: 0
+  <Attack>k__BackingField: 10
   <AttackDelay>k__BackingField: 0
-  <AttackRange>k__BackingField: 0
+  <AttackRange>k__BackingField: 0.5
   <CriticalProbability>k__BackingField: 0
   <CriticalMod>k__BackingField: 0
   <SpeedMin>k__BackingField: 0
@@ -38,6 +38,6 @@ MonoBehaviour:
   <WallSlidingTime>k__BackingField: 0
   <KnockbackTime>k__BackingField: 0
   <WallSlidingSpeed>k__BackingField: 0
-  <UsingKcal>k__BackingField: 0
+  <UsingKcal>k__BackingField: 20
   <DurationKcal>k__BackingField: 1
   <DurationTime>k__BackingField: 0
