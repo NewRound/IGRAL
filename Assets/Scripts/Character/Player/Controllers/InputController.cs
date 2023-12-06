@@ -141,8 +141,11 @@ public class InputController : PlayerController
         if (StateMachine.RollDataHandler.IsRolling || StateMachine.CurrentState == StateMachine.ComboAttackState)
             return;
 
-        StateMachine.ChangeState(StateMachine.JumpState);
-        JumpAction?.Invoke();
+        if (StateMachine.JumpCountHandler.JumpCount > 0)
+        {
+            StateMachine.ChangeState(StateMachine.JumpState);
+            JumpAction?.Invoke();
+        }
     }
 
     public void CallRollAction()
