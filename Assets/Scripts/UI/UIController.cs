@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -65,7 +66,6 @@ public class UIController : CustomSingleton<UIController>
 
     private void Start()
     {
-
         SkillManager.Instance.SetSkillUes(_skillUse);
 #if UNITY_ANDROID
         SwitchingAttack();
@@ -77,9 +77,10 @@ public class UIController : CustomSingleton<UIController>
         {
             go.SetActive(false);
         }
+        _skillJoystickObj.transform.position = new Vector3(-100,0,0);
 #endif
     }
-
+#if UNITY_ANDROID
     private void FixedUpdate()
     {
         if (isSkill)
@@ -176,7 +177,7 @@ public class UIController : CustomSingleton<UIController>
             }
         }
     }
-
+#endif
     public void SetConsumableItem(ItemConsumable itemConsumable)
     {
         _emptied.gameObject.SetActive(false);
@@ -190,6 +191,7 @@ public class UIController : CustomSingleton<UIController>
         _consumableItem.sprite = null;
         _consumableItem.gameObject.SetActive(false);
         _emptied.gameObject.SetActive(true);
+        ItemManager.Instance.DelConsumable();
     }
 
     #region 상호작용 게임오브젝트 관리
