@@ -2,6 +2,7 @@
 using UnityEngine;
 using GlobalEnums;
 using System.Linq;
+using System.Collections;
 
 public class PlayerWeapon : CharacterWeapon
 {
@@ -48,22 +49,22 @@ public class PlayerWeapon : CharacterWeapon
         IDamageable damageable = null;
         Vector3 offsetVec = UpdateRayOffset();
 
+        HashSet<Collider> hits = new HashSet<Collider>();
+
         RaycastHit[] middle = Physics.RaycastAll(offsetVec, modelTrans.forward, _playerSO.AttackRange, layer);
-        List<RaycastHit> hits = new List<RaycastHit>(middle);
+        AddNewRaycastHit(hits, middle);
 
         Vector3 topVec = offsetVec + new Vector3(0f, rayOffsetYMod, 0f);
         RaycastHit[] top = Physics.RaycastAll(topVec, modelTrans.forward, _playerSO.AttackRange, layer);
-        hits.AddRange(top);
+        AddNewRaycastHit(hits, top);
 
         Vector3 bottomVec = offsetVec + new Vector3(0f, -rayOffsetYMod, 0f);
         RaycastHit[] bottom = Physics.RaycastAll(bottomVec, modelTrans.forward, _playerSO.AttackRange, layer);
-        hits.AddRange(bottom);
+        AddNewRaycastHit(hits, bottom);
 
-        hits.Distinct();
-
-        foreach (RaycastHit hit in hits)
+        foreach (Collider hit in hits)
         {
-            EnemyController enemyController = hit.collider.GetComponentInParent<EnemyController>();
+            EnemyController enemyController = hit.GetComponentInParent<EnemyController>();
 
             if (enemyController != null)
             {
@@ -78,7 +79,7 @@ public class PlayerWeapon : CharacterWeapon
                 Attack(_playerSO, targetSO, damageable);
             }
 
-            BossBehaviourTree bossBehaviourTree = hit.collider.GetComponent<BossBehaviourTree>();
+            BossBehaviourTree bossBehaviourTree = hit.GetComponent<BossBehaviourTree>();
 
             if (bossBehaviourTree != null)
             {
@@ -89,7 +90,7 @@ public class PlayerWeapon : CharacterWeapon
                 Attack(_playerSO, targetSO, damageable);
             }
 
-            IInteract interactable = hit.collider.GetComponent<IInteract>();
+            IInteract interactable = hit.GetComponent<IInteract>();
             if (interactable != null)
             {
                 Attack(interactable);
@@ -97,7 +98,16 @@ public class PlayerWeapon : CharacterWeapon
         }
     }
 
-    
+    private void AddNewRaycastHit(HashSet<Collider> hits, RaycastHit[] middle)
+    {
+        foreach (var item in middle)
+        {
+            Collider collider = item.collider;
+            if (!hits.Contains(collider))
+                hits.Add(collider);
+        }
+    }
+
 
     public void Init(PlayerSO playerSO)
     {
