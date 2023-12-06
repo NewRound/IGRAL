@@ -13,6 +13,12 @@ public class InputController : PlayerController
     public event Action JumpAction;
     public event Action RollAction;
     public event Action AttackAction;
+    public event Action UseItemAction;
+    public event Action InteractAction;
+    public event Action QAction;
+    public event Action WAction;
+    public event Action EAction;
+    public event Action RAction;
 
     [field: Header("Inputs")]
     public PlayerInput Input { get; private set; }
@@ -39,7 +45,15 @@ public class InputController : PlayerController
         InputActions.Player.Jump.started += OnJump;
         InputActions.Player.Roll.started += OnRoll;
         InputActions.Player.Attack.started += OnAttack;
+        InputActions.Player.UseItem.started += OnUseItem;
+        InputActions.Player.Interact.started += OnInteract;
+        InputActions.Player.Q.started += OnQ;
+        InputActions.Player.W.started += OnW;
+        InputActions.Player.E.started += OnE;
+        InputActions.Player.R.started += OnR;
     }
+
+    
 
     private void OnDisable()
     {
@@ -48,6 +62,12 @@ public class InputController : PlayerController
         InputActions.Player.Jump.started -= OnJump;
         InputActions.Player.Roll.started -= OnRoll;
         InputActions.Player.Attack.started -= OnAttack;
+        InputActions.Player.UseItem.started -= OnUseItem;
+        InputActions.Player.Interact.started -= OnInteract;
+        InputActions.Player.Q.started -= OnQ;
+        InputActions.Player.W.started -= OnW;
+        InputActions.Player.E.started -= OnE;
+        InputActions.Player.R.started -= OnR;
         InputActions.Disable();
     }
 
@@ -81,6 +101,36 @@ public class InputController : PlayerController
         CallAttackAction();
     }
 
+    public void OnUseItem(InputAction.CallbackContext context)
+    {
+        CallUseItemAction();
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        CallInteractAction();
+    }
+
+    public void OnQ(InputAction.CallbackContext context)
+    {
+        CallOnQAction();
+    }
+
+    public void OnW(InputAction.CallbackContext context)
+    {
+        CallOnWAction();
+    }
+
+    public void OnE(InputAction.CallbackContext context)
+    {
+        CallOnEAction();
+    }
+
+    public void OnR(InputAction.CallbackContext context)
+    {
+        CallOnRAction();
+    }
+
     public void CallMoveAction(Vector2 inputVec)
     {
         MoveAction?.Invoke(inputVec);
@@ -110,6 +160,36 @@ public class InputController : PlayerController
             return;
 
         AttackAction?.Invoke();
+    }
+
+    private void CallInteractAction()
+    {
+        InteractAction?.Invoke();
+    }
+
+    private void CallUseItemAction()
+    {
+        UseItemAction?.Invoke();
+    }
+
+    private void CallOnQAction()
+    {
+        QAction?.Invoke();
+    }
+
+    private void CallOnWAction()
+    {
+        WAction?.Invoke();
+    }
+
+    private void CallOnEAction()
+    {
+        EAction?.Invoke();
+    }
+
+    private void CallOnRAction()
+    {
+        RAction?.Invoke();
     }
 
 #if UNITY_WEBGL
