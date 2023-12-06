@@ -31,6 +31,7 @@ public class UIController : CustomSingleton<UIController>
     [SerializeField] private GameObject _talkObj;
     [SerializeField] private SkillUse[] _skillUse;
     [SerializeField] private GameObject[] _webGL;
+    [SerializeField] private GameObject[] _KeyInfo;
 
     private Vector2 _direction = Vector2.zero;
     private Vector2 _temp = Vector2.zero;
@@ -71,6 +72,11 @@ public class UIController : CustomSingleton<UIController>
         SwitchingAttack();
         InputControllerSet();
         GameManager.Instance.SceneLoad += InputControllerSet;
+
+        foreach (GameObject go in _KeyInfo)
+        {
+            go.SetActive(false);
+        }            
 #endif
 #if UNITY_WEBGL
         foreach (GameObject go in _webGL)
@@ -78,6 +84,11 @@ public class UIController : CustomSingleton<UIController>
             go.SetActive(false);
         }
         _skillJoystickObj.transform.position = new Vector3(-100,0,0);
+
+        foreach (GameObject go in _KeyInfo)
+        {
+            go.SetActive(true);
+        }
 #endif
     }
 #if UNITY_ANDROID
