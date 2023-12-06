@@ -34,6 +34,7 @@ public class BossArea : MonoBehaviour
             if (!BossSpawned)
             {
                 SpawnBoss();
+                
                 PlayerInBossRoom = true;
             }
         }
@@ -44,6 +45,7 @@ public class BossArea : MonoBehaviour
     {
         if (!BossDied)
         {
+            AudioManager.Instance.SetStage(2);
             escapeButtonObject.SetActive(true);
             BossDied = true;
         }
@@ -54,6 +56,7 @@ public class BossArea : MonoBehaviour
         GameObject Boss = Instantiate(BossPrefab);
         Boss.transform.position = SpawnPoint.position;
         Boss.GetComponent<BossBehaviourTree>().Init(Waypoints);
+        AudioManager.Instance.EnterBossRoom();
         _boss = Boss;
 
         BossSpawned = true;
