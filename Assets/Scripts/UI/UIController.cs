@@ -17,7 +17,7 @@ public class UIController : CustomSingleton<UIController>
     [SerializeField] private Button _item;
     [SerializeField] private Button _talk;
 
-    [Header("GameObject")]
+    [Header("Image")]
     [SerializeField] private Image _emptied;
     [SerializeField] private Image _consumableItem;
 
@@ -29,6 +29,7 @@ public class UIController : CustomSingleton<UIController>
     [SerializeField] private GameObject _pickupObj;
     [SerializeField] private GameObject _talkObj;
     [SerializeField] private SkillUse[] _skillUse;
+    [SerializeField] private GameObject[] _webGL;
 
     private Vector2 _direction = Vector2.zero;
     private Vector2 _temp = Vector2.zero;
@@ -49,7 +50,6 @@ public class UIController : CustomSingleton<UIController>
     private void Awake()
     {
 #if UNITY_ANDROID
-
         _jump.onClick.AddListener(OnJumpButton);
         _slide.onClick.AddListener(OnSlideButton);
         _attack.onClick.AddListener(OnAttackButton);
@@ -59,20 +59,24 @@ public class UIController : CustomSingleton<UIController>
         _talk.onClick.AddListener(OnTalkButton);
 
 #endif
-    //_healing.onClick.AddListener(OnHealingButton);
-    //_skill.onClick.AddListener(OnSkillButton);
+        //_healing.onClick.AddListener(OnHealingButton);
+        //_skill.onClick.AddListener(OnSkillButton);
     }
 
     private void Start()
     {
-#if UNITY_ANDROID
 
-        SwitchingAttack();
         SkillManager.Instance.SetSkillUes(_skillUse);
-
+#if UNITY_ANDROID
+        SwitchingAttack();
         InputControllerSet();
         GameManager.Instance.SceneLoad += InputControllerSet;
-
+#endif
+#if UNITY_WEBGL
+        foreach (GameObject go in _webGL)
+        {
+            go.SetActive(false);
+        }
 #endif
     }
 
@@ -226,18 +230,24 @@ public class UIController : CustomSingleton<UIController>
         _inputController.CallAttackAction();
     }
 
-    private void OnInteractionButton()
+    public void OnInteractionButton()
     {
+        if (_interactiveObject == null)
+            return;
+
         _interactiveObject.GetComponent<InteractiveObject>().Use();
     }
 
-    private void OnPickupButton()
+    public void OnPickupButton()
     {
+        if (ItemManager.Instance.pickupItem == null)
+            return;
+
         ItemManager.Instance.pickupItem.Pickup();
         UIManager.Instance.CloseUI<UIItemPopup>().CloseItemPopup();
     }
 
-    private void OnItemButton()
+    public void OnItemButton()
     {
         if (ItemManager.Instance.itemConsumable == null)
             return;
@@ -274,19 +284,23 @@ public class UIController : CustomSingleton<UIController>
 
     public void SwitchingPickup()
     {
+#if UNITY_ANDROID
         _attackObj.SetActive(false);
         _interactionObj.SetActive(false);
         _pickupObj.SetActive(true);
         _talkObj.SetActive(false);
+#endif
     }
 
     public void SwitchingTalk()
     {
+#if UNITY_ANDROID
         _attackObj.SetActive(false);
         _interactionObj.SetActive(false);
         _pickupObj.SetActive(false); 
         _talkObj.SetActive(true);
+#endif
     }
-#endregion ¹öÆ° ½ºÀ§Äª
+    #endregion ¹öÆ° ½ºÀ§Äª
 
 }

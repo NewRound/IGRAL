@@ -3,23 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-#if UNITY_WEBGL
-public enum UIType
-{
-    UITopButton
-    , UIPlayerConditions
-    , UIInventory
-    , UISkillTree
-    , UIOption
-    , UIBossCondition
-    , UIPopup
-    , UIItemPopup
-    , UIGameOver
-    , UITutorial
-}
-#endif
-
-#if UNITY_ANDROID
 public enum UIType
 {
     UITopButton
@@ -34,7 +17,6 @@ public enum UIType
     , UIGameOver
     , UITutorial
 }
-#endif
 
 public class UIManager : CustomSingleton<UIManager>
 {
@@ -68,7 +50,6 @@ public class UIManager : CustomSingleton<UIManager>
         InitOpenUI();
     }
 
-#if UNITY_ANDROID
     public void InitOpenUI()
     {
         int i = 0;
@@ -82,23 +63,6 @@ public class UIManager : CustomSingleton<UIManager>
             i++;
         }
     }
-#endif
-
-#if UNITY_WEBGL
-    public void InitOpenUI()
-    {
-        int i = 0;
-        foreach (UIType enumItem in Enum.GetValues(typeof(UIType)))
-        {
-            if ((int)enumItem > 3)
-            {
-                var tr = transform.GetChild(i);
-                tr.gameObject.SetActive(false);
-            }
-            i++;
-        }
-    }
-#endif
 
     public T OpenUI<T>()
     {
