@@ -4,8 +4,7 @@ using UnityEngine.InputSystem;
 
 public class InputController : PlayerController
 {
-#if UNITY_EDITOR
-    [field: SerializeField] public bool IsDebug { get; private set; }
+#if UNITY_WEBGL
     private bool _isMovePressed;
 #endif
 
@@ -55,11 +54,6 @@ public class InputController : PlayerController
     protected override void Update()
     {
         base.Update();
-#if UNITY_EDITOR
-        if (IsDebug)
-            ReadMoveInput();
-#endif
-
 #if UNITY_WEBGL
             ReadMoveInput();
 #endif
@@ -67,10 +61,6 @@ public class InputController : PlayerController
 
     public void OnMove(InputAction.CallbackContext context)
     {
-#if UNITY_EDITOR
-        _isMovePressed = context.started;
-#endif
-
 #if UNITY_WEBGL
         _isMovePressed = context.started;
 #endif
@@ -121,22 +111,6 @@ public class InputController : PlayerController
 
         AttackAction?.Invoke();
     }
-
-#if UNITY_EDITOR
-    private void ReadMoveInput()
-    {
-        if (StateMachine.RollDataHandler.IsRolling)
-            return;
-
-        if (!_isMovePressed)
-        {
-            CallMoveAction(Vector2.zero);
-            return;
-        }
-
-        CallMoveAction(InputActions.Player.Move.ReadValue<Vector2>());
-    }
-#endif
 
 #if UNITY_WEBGL
     private void ReadMoveInput()
