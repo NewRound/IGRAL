@@ -6034,7 +6034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCount: 0
-  size: 2
+  size: 0
   position: {x: 0, y: 0, z: 0}
   enemys: []
   _player:
@@ -6043,7 +6043,7 @@ MonoBehaviour:
   _enemy:
     serializedVersion: 2
     m_Bits: 256
-  explain: 6
+  explain: 5
   sprites:
   - {fileID: 21300000, guid: d3c7f8cfbfc68ec4ab9c694f02ad3dae, type: 3}
   - {fileID: 21300000, guid: d3c7f8cfbfc68ec4ab9c694f02ad3dae, type: 3}

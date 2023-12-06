@@ -111,7 +111,7 @@ public class TutorialArea : MonoBehaviour
                 break;
 #if UNITY_WEBGL
             case 5:
-                UIManager.Instance.OpenUI<UITutorial>().OpenTutorial(sprites[explain], "피부 변이 상태이면 캐릭터가 은신 상태 입니다.");
+                UIManager.Instance.OpenUI<UITutorial>().OpenTutorial(sprites[explain], "상호작용 키를 눌러 맵 이동이 가능합니다.");
                 break;
 #endif
         }
