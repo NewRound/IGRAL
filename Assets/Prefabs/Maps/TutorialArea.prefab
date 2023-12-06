@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &111450381143038268
 BoxCollider:
@@ -77,11 +77,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   explain: 0
-  uITutorialPrefab: {fileID: 4906032353796816337, guid: 6a3c48d981f381e469f5cbc960223243,
-    type: 3}
   sprites:
   - {fileID: 21300000, guid: d3c7f8cfbfc68ec4ab9c694f02ad3dae, type: 3}
   - {fileID: 21300000, guid: d3c7f8cfbfc68ec4ab9c694f02ad3dae, type: 3}
   - {fileID: 21300000, guid: 7197282f719419f49b2db074231b5c3c, type: 3}
   - {fileID: 21300000, guid: c3bfdae1fbc34634f85d0d5847938b79, type: 3}
   - {fileID: 21300000, guid: a1dc992fe70e5fd4a9e60457e744e724, type: 3}
+  - {fileID: 21300000, guid: b67f0883cb5835445955d23dbebb4d22, type: 3}
