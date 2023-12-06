@@ -15,11 +15,12 @@ public class BossArea : MonoBehaviour
 
     private bool BossSpawned = false;
     private bool BossDied = false;
+    private bool PlayerInBossRoom = false;
 
 
     private void Update()
     {
-        if(_boss == null && !BossDied)
+        if (_boss == null && !BossDied && PlayerInBossRoom)
         {
             BossIsDead();
         }
@@ -30,8 +31,11 @@ public class BossArea : MonoBehaviour
         InputController player = other.GetComponent<InputController>();
         if(player != null)
         {
-            if(!BossSpawned)
+            if (!BossSpawned)
+            {
                 SpawnBoss();
+                PlayerInBossRoom = true;
+            }
         }
     }
 
