@@ -7,7 +7,7 @@ public class SkillManager : CustomSingleton<SkillManager>
     public int skillPoint = 8;
     public Dictionary<string, int> baseSkills = new Dictionary<string, int>();
     public Dictionary<string, int> learnedSkills = new Dictionary<string, int>();
-    private SkillUse[] _skillUse;
+    public SkillUse[] skillUse;
 
     public SkillDataSO hammerData;
     public SkillDataSO knifeData;
@@ -27,20 +27,20 @@ public class SkillManager : CustomSingleton<SkillManager>
 
     public void StopAllSKill()
     {
-        if (_skillUse == null)
+        if (skillUse == null)
             return;
 
-        foreach (SkillUse su in _skillUse)
+        foreach (SkillUse su in skillUse)
         {
             su.StopSkill();
         }
     }
 
-    public void SetSkillUes(SkillUse[] skillUse)
+    public void SetSkillUes(SkillUse[] SkillUse)
     {
-        _skillUse = skillUse;
+        skillUse = SkillUse;
 
-        foreach (SkillUse su in _skillUse)
+        foreach (SkillUse su in skillUse)
         {
             su.UpdataSkillData();
         }
@@ -48,7 +48,7 @@ public class SkillManager : CustomSingleton<SkillManager>
 
     public void UpdateLearn()
     {
-        foreach(SkillUse skillUse in _skillUse)
+        foreach(SkillUse skillUse in skillUse)
         {
             if (learnedSkills.ContainsKey($"{skillUse.skillCategoryType}"))
             {
@@ -78,7 +78,7 @@ public class SkillManager : CustomSingleton<SkillManager>
                 break;
         }
 
-        _skillUse[(int)skillCategoryType].UpdataSkillData();
+        skillUse[(int)skillCategoryType].UpdataSkillData();
 
     }
 
@@ -421,7 +421,7 @@ public class SkillManager : CustomSingleton<SkillManager>
 
     public void AllOffSkill()
     {
-        foreach(SkillUse skillUse in _skillUse)
+        foreach(SkillUse skillUse in skillUse)
         {
             skillUse.StopSkillRightAway();
         }

@@ -72,7 +72,7 @@ public class SkillUse : MonoBehaviour
 
     public void StopSkill()
     {
-        if (mutantController.mutantType != MutantType.None)
+        if (mutantController != null && mutantController.mutantType != MutantType.None)
             mutantController.ChangeMutant(MutantType.None);
         _currentTime = 0;
         _isActive = false;

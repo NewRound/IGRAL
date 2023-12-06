@@ -165,31 +165,39 @@ public class InputController : PlayerController
     private void CallInteractAction()
     {
         InteractAction?.Invoke();
+        UIController.Instance.OnInteractionButton();
+        UIController.Instance.OnPickupButton();
+        Debug.Log("Å° ÀÔ·Â");
     }
 
     private void CallUseItemAction()
     {
         UseItemAction?.Invoke();
+        UIController.Instance.OnItemButton();
     }
 
     private void CallOnQAction()
     {
         QAction?.Invoke();
+        SkillManager.Instance.skillUse[0].UseSkill();
     }
 
     private void CallOnWAction()
     {
         WAction?.Invoke();
+        SkillManager.Instance.skillUse[1].UseSkill();
     }
 
     private void CallOnEAction()
     {
         EAction?.Invoke();
+        SkillManager.Instance.skillUse[2].UseSkill();
     }
 
     private void CallOnRAction()
     {
         RAction?.Invoke();
+        SkillManager.Instance.skillUse[3].UseSkill();
     }
 
 #if UNITY_WEBGL
