@@ -4,8 +4,7 @@ using UnityEngine.InputSystem;
 
 public class InputController : PlayerController
 {
-#if UNITY_EDITOR
-    [field: SerializeField] public bool IsDebug { get; private set; }
+#if UNITY_WEBGL
     private bool _isMovePressed;
 #endif
 
@@ -14,6 +13,12 @@ public class InputController : PlayerController
     public event Action JumpAction;
     public event Action RollAction;
     public event Action AttackAction;
+    public event Action UseItemAction;
+    public event Action InteractAction;
+    public event Action QAction;
+    public event Action WAction;
+    public event Action EAction;
+    public event Action RAction;
 
     [field: Header("Inputs")]
     public PlayerInput Input { get; private set; }
@@ -40,7 +45,15 @@ public class InputController : PlayerController
         InputActions.Player.Jump.started += OnJump;
         InputActions.Player.Roll.started += OnRoll;
         InputActions.Player.Attack.started += OnAttack;
+        InputActions.Player.UseItem.started += OnUseItem;
+        InputActions.Player.Interact.started += OnInteract;
+        InputActions.Player.Q.started += OnQ;
+        InputActions.Player.W.started += OnW;
+        InputActions.Player.E.started += OnE;
+        InputActions.Player.R.started += OnR;
     }
+
+    
 
     private void OnDisable()
     {
@@ -49,21 +62,26 @@ public class InputController : PlayerController
         InputActions.Player.Jump.started -= OnJump;
         InputActions.Player.Roll.started -= OnRoll;
         InputActions.Player.Attack.started -= OnAttack;
+        InputActions.Player.UseItem.started -= OnUseItem;
+        InputActions.Player.Interact.started -= OnInteract;
+        InputActions.Player.Q.started -= OnQ;
+        InputActions.Player.W.started -= OnW;
+        InputActions.Player.E.started -= OnE;
+        InputActions.Player.R.started -= OnR;
         InputActions.Disable();
     }
 
     protected override void Update()
     {
         base.Update();
-#if UNITY_EDITOR
-        if (IsDebug)
+#if UNITY_WEBGL
             ReadMoveInput();
 #endif
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-#if UNITY_EDITOR
+#if UNITY_WEBGL
         _isMovePressed = context.started;
 #endif
     }
@@ -81,6 +99,36 @@ public class InputController : PlayerController
     public void OnAttack(InputAction.CallbackContext context)
     {
         CallAttackAction();
+    }
+
+    public void OnUseItem(InputAction.CallbackContext context)
+    {
+        CallUseItemAction();
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        CallInteractAction();
+    }
+
+    public void OnQ(InputAction.CallbackContext context)
+    {
+        CallOnQAction();
+    }
+
+    public void OnW(InputAction.CallbackContext context)
+    {
+        CallOnWAction();
+    }
+
+    public void OnE(InputAction.CallbackContext context)
+    {
+        CallOnEAction();
+    }
+
+    public void OnR(InputAction.CallbackContext context)
+    {
+        CallOnRAction();
     }
 
     public void CallMoveAction(Vector2 inputVec)
@@ -114,7 +162,37 @@ public class InputController : PlayerController
         AttackAction?.Invoke();
     }
 
-#if UNITY_EDITOR
+    private void CallInteractAction()
+    {
+        InteractAction?.Invoke();
+    }
+
+    private void CallUseItemAction()
+    {
+        UseItemAction?.Invoke();
+    }
+
+    private void CallOnQAction()
+    {
+        QAction?.Invoke();
+    }
+
+    private void CallOnWAction()
+    {
+        WAction?.Invoke();
+    }
+
+    private void CallOnEAction()
+    {
+        EAction?.Invoke();
+    }
+
+    private void CallOnRAction()
+    {
+        RAction?.Invoke();
+    }
+
+#if UNITY_WEBGL
     private void ReadMoveInput()
     {
         if (StateMachine.RollDataHandler.IsRolling)

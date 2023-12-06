@@ -42,18 +42,54 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Mutation",
-                    "type": "Value",
+                    "name": "Q",
+                    "type": "Button",
                     "id": "a62cb69c-1752-453b-ba7c-606f50e39a97",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 },
                 {
-                    "name": "ActiveSkill",
+                    "name": "W",
+                    "type": "Button",
+                    "id": "99fb88f5-0531-4743-90b8-c256e0e9903c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "E",
+                    "type": "Button",
+                    "id": "bef96b41-4a2f-493e-8d7c-e0f9b0b6d60e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "R",
+                    "type": "Button",
+                    "id": "63c09812-9986-4351-8ba5-e64ab38ff255",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UseItem",
                     "type": "Button",
                     "id": "b0a7cc40-013b-42da-b376-06e831702d84",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "062355ad-84ab-48a3-9e93-3e76b48b2b26",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -119,7 +155,7 @@
                 {
                     "name": "",
                     "id": "0bd29a65-746b-46ad-86e4-f051df6b359b",
-                    "path": "<Keyboard>/leftAlt",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -130,7 +166,7 @@
                 {
                     "name": "",
                     "id": "1ac9f5b1-efa6-49a0-bb2f-c240e55cb94a",
-                    "path": "<Keyboard>/leftCtrl",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -141,7 +177,7 @@
                 {
                     "name": "",
                     "id": "9b80536f-ae42-4878-8524-2ea81a8fb1d4",
-                    "path": "<Keyboard>/leftShift",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -150,68 +186,68 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "2D Vector",
-                    "id": "e36ffd9f-e703-4c3f-9f05-3c7eeb48fd1d",
-                    "path": "2DVector",
+                    "name": "",
+                    "id": "445e025e-3f71-4e28-8691-488b81bce2d1",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Mutation",
-                    "isComposite": true,
+                    "action": "UseItem",
+                    "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "544b82db-e87f-482c-a844-0cab3fa3b701",
+                    "name": "",
+                    "id": "91a6ae18-91a2-463d-b010-983d06bba7f2",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "224e09d9-08db-48ef-a491-1d1bcf5f6674",
                     "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Mutation",
+                    "action": "Q",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "down",
-                    "id": "bea0da6e-b720-4411-a713-8fc67afef975",
+                    "name": "",
+                    "id": "946982db-5ad9-42ee-8792-098cf06d1701",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Mutation",
+                    "action": "W",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "left",
-                    "id": "f21a4405-bd39-4161-a17d-6e3a1725a3fd",
+                    "name": "",
+                    "id": "4fec2de8-2788-48a3-a72c-a1fda0efa09e",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Mutation",
+                    "action": "E",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "right",
-                    "id": "66628c47-8d82-4587-9ca5-ef5be66b0692",
+                    "name": "",
+                    "id": "b38d3f62-167e-4e02-a1a5-a8db52e7b64e",
                     "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Mutation",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "445e025e-3f71-4e28-8691-488b81bce2d1",
-                    "path": "<Keyboard>/z",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ActiveSkill",
+                    "action": "R",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

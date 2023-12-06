@@ -1,28 +1,21 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyWeapon : Weapon
+public class EnemyWeapon : CharacterWeapon
 {
-    [SerializeField] private float rayOffsetY = 0.8f;
-    [SerializeField] private float rayOffsetYMod = 0.5f;
-    [SerializeField] private float rayOffsetX = 0.2f;
-    private LayerMask _layer;
-
     private EnemySO _enemySO;
     private EnemyAnimationController _enemyAnimationController;
-    private Transform _modelTrans;
-    private Transform _myTrans;
 
     private void Start()
     {
         _enemyAnimationController = GetComponentInParent<EnemyAnimationController>();
         targetTag = GlobalEnums.Tag.Player.ToString();
-        _layer = 1 << LayerMask.NameToLayer(targetTag);
+        layer = 1 << LayerMask.NameToLayer(targetTag);
 
         EnemyController enemyController = GetComponentInParent<EnemyController>();
         _enemySO = enemyController.StatHandler.Data;
-        _modelTrans = enemyController.StateMachine.ModelTrans;
-        _myTrans = enemyController.transform;
+        modelTrans = enemyController.StateMachine.ModelTrans;
+        myTrans = enemyController.transform;
 
         _enemyAnimationController.AttackAction += OnAttack;
     }
@@ -47,8 +40,7 @@ public class EnemyWeapon : Weapon
     {
         HealthSO targetSO = null;
         IDamageable damageable = null;
-        Vector3 offsetVec = _myTrans.position;
-        offsetVec.y += 0.5f;
+        Vector3 offsetVec = UpdateRayOffset();
 
         Vector3 topVec = offsetVec + new Vector3(0f, rayOffsetYMod, 0f);
         Vector3 bottomVec = offsetVec + new Vector3(0f, -rayOffsetYMod, 0f);
@@ -63,7 +55,7 @@ public class EnemyWeapon : Weapon
         RaycastHit hit;
         foreach (var vector in originVectors)
         {
-            bool isHit = Physics.Raycast(vector, _modelTrans.forward, out hit, _enemySO.AttackRange, _layer);
+            bool isHit = Physics.Raycast(vector, modelTrans.forward, out hit, _enemySO.AttackRange, layer);
             if (isHit)
             {
                 PlayerStatHandler statHandler = hit.collider.GetComponentInParent<PlayerController>().StatHandler;

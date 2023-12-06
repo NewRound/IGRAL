@@ -27,6 +27,9 @@ public class SkillManager : CustomSingleton<SkillManager>
 
     public void StopAllSKill()
     {
+        if (_skillUse == null)
+            return;
+
         foreach (SkillUse su in _skillUse)
         {
             su.StopSkill();

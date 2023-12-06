@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class UIController : CustomSingleton<UIController>
 {
+
     [Header("Button")]
     [SerializeField] private VariableJoystick _moveJoystick;
     [SerializeField] private VariableJoystick _skillJoystick;
@@ -47,6 +48,7 @@ public class UIController : CustomSingleton<UIController>
 
     private void Awake()
     {
+#if UNITY_ANDROID
 
         _jump.onClick.AddListener(OnJumpButton);
         _slide.onClick.AddListener(OnSlideButton);
@@ -56,19 +58,22 @@ public class UIController : CustomSingleton<UIController>
         _item.onClick.AddListener(OnItemButton);
         _talk.onClick.AddListener(OnTalkButton);
 
-
-        //_healing.onClick.AddListener(OnHealingButton);
-        //_skill.onClick.AddListener(OnSkillButton);
+#endif
+    //_healing.onClick.AddListener(OnHealingButton);
+    //_skill.onClick.AddListener(OnSkillButton);
     }
 
     private void Start()
     {
+#if UNITY_ANDROID
 
         SwitchingAttack();
         SkillManager.Instance.SetSkillUes(_skillUse);
 
         InputControllerSet();
         GameManager.Instance.SceneLoad += InputControllerSet;
+
+#endif
     }
 
     private void FixedUpdate()
@@ -249,18 +254,22 @@ public class UIController : CustomSingleton<UIController>
     #region ¹öÆ° ½ºÀ§Äª
     public void SwitchingAttack()
     {
+#if UNITY_ANDROID
         _attackObj.SetActive(true);
         _interactionObj.SetActive(false);
         _pickupObj.SetActive(false);
         _talkObj.SetActive(false);
+#endif
     }
 
     public void SwitchingInteraction()
     {
+#if UNITY_ANDROID
         _attackObj.SetActive(false); 
         _interactionObj.SetActive(true);
         _pickupObj.SetActive(false);
         _talkObj.SetActive(false);
+#endif
     }
 
     public void SwitchingPickup()
@@ -278,5 +287,6 @@ public class UIController : CustomSingleton<UIController>
         _pickupObj.SetActive(false); 
         _talkObj.SetActive(true);
     }
-    #endregion ¹öÆ° ½ºÀ§Äª
+#endregion ¹öÆ° ½ºÀ§Äª
+
 }
