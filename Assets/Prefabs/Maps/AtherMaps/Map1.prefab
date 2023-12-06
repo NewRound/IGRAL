@@ -41061,6 +41061,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Barrier_04 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1960974981817646, guid: e6826632b4992aa4d93bff220fa71a99, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4475336697227838, guid: e6826632b4992aa4d93bff220fa71a99, type: 3}
       propertyPath: m_RootOrder
       value: -1
