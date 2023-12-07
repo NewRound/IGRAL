@@ -14,7 +14,7 @@
     {
         base.UpdateState();
         animationController.PlayAnimation(animationsData.SpeedRatioParameterHash, stateMachine.SpeedRatio);
-        if (!stateMachine.GroundDataHandler.IsGrounded)
+        if (!stateMachine.GroundDataHandler.IsGrounded && !stateMachine.IsAttacking)
             stateMachine.ChangeState(stateMachine.FallState);
     }
 

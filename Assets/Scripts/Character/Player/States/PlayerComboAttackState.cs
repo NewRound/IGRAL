@@ -36,6 +36,7 @@ public class PlayerComboAttackState : PlayerAttackState
 
     private void OnAttackInputted()
     {
+        stateMachine.SetIsAttacking(true);
         float normalizeTime = AnimationUtil.GetNormalizeTime(animationController.Animator, AnimTag.Attack, (int)GlobalEnums.AnimatorLayer.UpperLayer);
 
         if (normalizeTime >= GlobalValues.HALF)
@@ -49,6 +50,7 @@ public class PlayerComboAttackState : PlayerAttackState
         InputController.AttackAction -= OnAttackInputted;
         if (!_wasNextComboInputted)
         {
+            stateMachine.SetIsAttacking(false);
             animationController.ResetCombo();
             animationController.PlayAnimation(animationsData.AttackComboHash, animationController.AttackCombo);
             animationController.PlayAnimation(animationsData.AttackSubStateParameterHash, false);

@@ -104,8 +104,9 @@ public class PlayerStatHandler : IDamageable, IBurnable
         }
 
         GameObject damagedTxt = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.PlayerDamagedTxt);
+        damagedTxt.GetComponent<DamagedTxt>().SetDamage(damage);
         damagedTxt.transform.position = GameManager.Instance.PlayerTransform.position + yOffset;
-        damagedTxt.GetComponent<DamagedTxt>()._damage = damage;
+        
 
         EffectManager.Instance.ShowEffect(GameManager.Instance.PlayerTransform.position + yOffset, EffectType.Damaged);
         AudioManager.Instance.PlaySFX(SFXType.Damaged0);

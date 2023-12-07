@@ -8,6 +8,7 @@ public abstract class PlayerAttackState : PlayerMoveState
 
     public override void Enter()
     {
+        stateMachine.SetIsAttacking(true);
         animationController.PlayAnimation(animationsData.AttackSubStateParameterHash, true);
         stateMachine.LookPreDirectionRightAway();
     }
@@ -19,6 +20,7 @@ public abstract class PlayerAttackState : PlayerMoveState
 
     public override void Exit()
     {
+        stateMachine.SetIsAttacking(false);
     }
 
     public override void OnDead()
