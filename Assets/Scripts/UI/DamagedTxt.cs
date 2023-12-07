@@ -8,22 +8,27 @@ public class DamagedTxt : MonoBehaviour
     [SerializeField] private float _duration;
 
     private float _timer;
-    public float _damage { get; set; }
+    private float _damage;
 
     private TextMeshPro _txt;
-    private Color _alpha;
+    private Color _textColor;
 
-    private void Start()
+    private void Awake()
     {
         _txt = GetComponent<TextMeshPro>();
-        _txt.text = _damage.ToString("F0");
-        _alpha = _txt.color;
+        _textColor = _txt.color;
     }
 
-    private void Init()
+    public void SetDamage(float damage)
+    {
+        _damage = damage;
+        _txt.text = _damage.ToString("F0");
+    }
+
+    private void OnDisable()
     {
         _timer = 0f;
-        _alpha.a = 1f;
+        _textColor.a = 1f;
         _damage = 0f;
     }
 
@@ -35,7 +40,6 @@ public class DamagedTxt : MonoBehaviour
         _timer += Time.deltaTime;
         if (_timer > _duration )
         {
-            Init();
             gameObject.SetActive( false );
         }
     }    
@@ -47,7 +51,7 @@ public class DamagedTxt : MonoBehaviour
 
     private void AlphaChange()
     {
-        _alpha.a = Mathf.Lerp(_alpha.a, 0, _alphaSpeed * Time.deltaTime);
-        _txt.color = _alpha;
+        _textColor.a = Mathf.Lerp(_textColor.a, 0, _alphaSpeed * Time.deltaTime);
+        _txt.color = _textColor;
     }    
 }

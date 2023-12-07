@@ -82,7 +82,7 @@ public class UIManager : CustomSingleton<UIManager>
     public void TutorialPopup()
     {
         UIPopup UIPopup = OpenUI<UIPopup>();
-        UIPopup.SetPopup("튜토리얼", "튜토리얼을 진행 하시겠습니까?", () => { LoadSceneManager.Instance.LoadScene("TutorialMap"); }, () => { PlayerPrefs.SetInt("Tutorial", 1); GameManager.Instance.isTutorial = true; });
+        UIPopup.SetPopup("튜토리얼", "튜토리얼을 진행 하시겠습니까?", () => { LoadSceneManager.Instance.LoadScene("TutorialMap"); PlayerPrefs.SetInt("Tutorial", 1); GameManager.Instance.isTutorial = true; }, () => { PlayerPrefs.SetInt("Tutorial", 1); GameManager.Instance.isTutorial = true; });
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
