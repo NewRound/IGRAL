@@ -18,7 +18,7 @@ public class TutorialArea : MonoBehaviour
 
     [SerializeField] private int explain;
     [SerializeField] private Sprite[] sprites;
-
+    
     private bool _isFirst = false;
 
     private void Start()
@@ -96,6 +96,8 @@ public class TutorialArea : MonoBehaviour
         {
             case 0:
                 UIManager.Instance.OpenUI<UITutorial>().OpenTutorial(sprites[explain], "길을 막고 있는 바위는 해머 변이 상태이면 파괴할 수 있습니다.");
+                UIManager.Instance.OpenUI<UITopButton>()._skillTreeBlink = true;
+
                 break;
             case 1:
                 UIManager.Instance.OpenUI<UITutorial>().OpenTutorial(sprites[explain], "갑옷을 입고 있는 적은 해머 변이 상태에서만 공격 가능합니다.");
@@ -120,5 +122,6 @@ public class TutorialArea : MonoBehaviour
     private void CloseExplain()
     {
        UIManager.Instance.CloseUI<UITutorial>().CloseTutorial();
+        UIManager.Instance.OpenUI<UITopButton>()._skillTreeBlink = false;
     }
 }

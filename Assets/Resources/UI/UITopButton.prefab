@@ -121,6 +121,7 @@ MonoBehaviour:
   _option: {fileID: 3952682264399855882}
   _inventory: {fileID: 8805455660218638181}
   _skillTree: {fileID: 3266693055960750187}
+  _skillTreeBlink: 0
 --- !u!1 &3439579590791912678
 GameObject:
   m_ObjectHideFlags: 0
