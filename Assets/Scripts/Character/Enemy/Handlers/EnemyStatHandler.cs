@@ -40,8 +40,9 @@ public class EnemyStatHandler : IDamageable
                 UIEnemyHealth.DisplayEnemyHealth(Data.Health, Data.MaxHealth);
 
             GameObject damagedTxt = ObjectPoolingManager.Instance.GetGameObject(ObjectPoolType.EnemyDamagedTxt);
+            damagedTxt.GetComponent<DamagedTxt>().SetDamage(damage);
             damagedTxt.transform.position = curTransform.position + yOffset;
-            damagedTxt.GetComponent<DamagedTxt>()._damage = damage;
+            
 
             EffectManager.Instance.ShowEffect(curTransform.position + yOffset, EffectType.Damaged);
             AudioManager.Instance.PlaySFX(SFXType.Damaged1);
