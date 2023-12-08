@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Q",
+                    "name": "SkinMutant",
                     "type": "Button",
                     "id": "a62cb69c-1752-453b-ba7c-606f50e39a97",
                     "expectedControlType": "Button",
@@ -51,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "W",
+                    "name": "BladeMutant",
                     "type": "Button",
                     "id": "99fb88f5-0531-4743-90b8-c256e0e9903c",
                     "expectedControlType": "Button",
@@ -60,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "E",
+                    "name": "HammerMutant",
                     "type": "Button",
                     "id": "bef96b41-4a2f-493e-8d7c-e0f9b0b6d60e",
                     "expectedControlType": "Button",
@@ -69,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "R",
+                    "name": "PsychometricMutant",
                     "type": "Button",
                     "id": "63c09812-9986-4351-8ba5-e64ab38ff255",
                     "expectedControlType": "Button",
@@ -214,7 +214,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Q",
+                    "action": "SkinMutant",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -225,7 +225,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "W",
+                    "action": "BladeMutant",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -236,7 +236,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "E",
+                    "action": "HammerMutant",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -247,7 +247,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "R",
+                    "action": "PsychometricMutant",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

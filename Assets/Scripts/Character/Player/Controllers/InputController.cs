@@ -15,10 +15,10 @@ public class InputController : PlayerController
     public event Action AttackAction;
     public event Action UseItemAction;
     public event Action InteractAction;
-    public event Action QAction;
-    public event Action WAction;
-    public event Action EAction;
-    public event Action RAction;
+    public event Action SkinAction;
+    public event Action BladeAction;
+    public event Action HammerAction;
+    public event Action PsychometricAction;
 
     [field: Header("Inputs")]
     public PlayerInput Input { get; private set; }
@@ -40,34 +40,12 @@ public class InputController : PlayerController
     private void OnEnable()
     {
         InputActions.Enable();
-        InputActions.Player.Move.started += OnMove;
-        InputActions.Player.Move.canceled += OnMove;
-        InputActions.Player.Jump.started += OnJump;
-        InputActions.Player.Roll.started += OnRoll;
-        InputActions.Player.Attack.started += OnAttack;
-        InputActions.Player.UseItem.started += OnUseItem;
-        InputActions.Player.Interact.started += OnInteract;
-        InputActions.Player.Q.started += OnQ;
-        InputActions.Player.W.started += OnW;
-        InputActions.Player.E.started += OnE;
-        InputActions.Player.R.started += OnR;
+        SubscribeInputAction();
     }
-
-    
 
     private void OnDisable()
     {
-        InputActions.Player.Move.started -= OnMove;
-        InputActions.Player.Move.canceled -= OnMove;
-        InputActions.Player.Jump.started -= OnJump;
-        InputActions.Player.Roll.started -= OnRoll;
-        InputActions.Player.Attack.started -= OnAttack;
-        InputActions.Player.UseItem.started -= OnUseItem;
-        InputActions.Player.Interact.started -= OnInteract;
-        InputActions.Player.Q.started -= OnQ;
-        InputActions.Player.W.started -= OnW;
-        InputActions.Player.E.started -= OnE;
-        InputActions.Player.R.started -= OnR;
+        UnSubscribeInputAction();
         InputActions.Disable();
     }
 
@@ -111,24 +89,24 @@ public class InputController : PlayerController
         CallInteractAction();
     }
 
-    public void OnQ(InputAction.CallbackContext context)
+    public void OnChangedSkinMutant(InputAction.CallbackContext context)
     {
-        CallOnQAction();
+        CallSkinAction();
     }
 
-    public void OnW(InputAction.CallbackContext context)
+    public void OnChangedBladeMutant(InputAction.CallbackContext context)
     {
-        CallOnWAction();
+        CallBladeAction();
     }
 
-    public void OnE(InputAction.CallbackContext context)
+    public void OnChangedHammerMutant(InputAction.CallbackContext context)
     {
-        CallOnEAction();
+        CallHammerAction();
     }
 
-    public void OnR(InputAction.CallbackContext context)
+    public void OnChangedPsychometricMutant(InputAction.CallbackContext context)
     {
-        CallOnRAction();
+        CallPsychometricAction();
     }
 
     public void CallMoveAction(Vector2 inputVec)
@@ -178,27 +156,27 @@ public class InputController : PlayerController
         UIController.Instance.OnItemButton();
     }
 
-    private void CallOnQAction()
+    private void CallSkinAction()
     {
-        QAction?.Invoke();
+        SkinAction?.Invoke();
         SkillManager.Instance.SkillUse[0].UseSkill();
     }
 
-    private void CallOnWAction()
+    private void CallBladeAction()
     {
-        WAction?.Invoke();
+        BladeAction?.Invoke();
         SkillManager.Instance.SkillUse[1].UseSkill();
     }
 
-    private void CallOnEAction()
+    private void CallHammerAction()
     {
-        EAction?.Invoke();
+        HammerAction?.Invoke();
         SkillManager.Instance.SkillUse[2].UseSkill();
     }
 
-    private void CallOnRAction()
+    private void CallPsychometricAction()
     {
-        RAction?.Invoke();
+        PsychometricAction?.Invoke();
         SkillManager.Instance.SkillUse[3].UseSkill();
     }
 
@@ -218,4 +196,33 @@ public class InputController : PlayerController
     }
 #endif
 
+    private void SubscribeInputAction()
+    {
+        InputActions.Player.Move.started += OnMove;
+        InputActions.Player.Move.canceled += OnMove;
+        InputActions.Player.Jump.started += OnJump;
+        InputActions.Player.Roll.started += OnRoll;
+        InputActions.Player.Attack.started += OnAttack;
+        InputActions.Player.UseItem.started += OnUseItem;
+        InputActions.Player.Interact.started += OnInteract;
+        InputActions.Player.SkinMutant.started += OnChangedSkinMutant;
+        InputActions.Player.BladeMutant.started += OnChangedBladeMutant;
+        InputActions.Player.HammerMutant.started += OnChangedHammerMutant;
+        InputActions.Player.PsychometricMutant.started += OnChangedPsychometricMutant;
+    }
+
+    private void UnSubscribeInputAction()
+    {
+        InputActions.Player.Move.started -= OnMove;
+        InputActions.Player.Move.canceled -= OnMove;
+        InputActions.Player.Jump.started -= OnJump;
+        InputActions.Player.Roll.started -= OnRoll;
+        InputActions.Player.Attack.started -= OnAttack;
+        InputActions.Player.UseItem.started -= OnUseItem;
+        InputActions.Player.Interact.started -= OnInteract;
+        InputActions.Player.SkinMutant.started -= OnChangedSkinMutant;
+        InputActions.Player.BladeMutant.started -= OnChangedBladeMutant;
+        InputActions.Player.HammerMutant.started -= OnChangedHammerMutant;
+        InputActions.Player.PsychometricMutant.started -= OnChangedPsychometricMutant;
+    }
 }

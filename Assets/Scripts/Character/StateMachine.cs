@@ -4,10 +4,10 @@ public abstract class StateMachine
 {
     public IState CurrentState { get; protected set; }
 
+    [field: Header("Direction")]
     public Vector3 PreDirection { get; private set; }
     public Vector3 Direction { get; private set; }
 
-    public Rigidbody Rigid;
 
     [field: Header("Speed")]
     public SpeedCalculator SpeedCalculator { get; protected set; }
@@ -23,6 +23,7 @@ public abstract class StateMachine
 
     public bool IsDead { get; private set; }
     public bool IsAttacking { get; private set; }
+    public Rigidbody Rigid;
 
     public abstract void Init();
 

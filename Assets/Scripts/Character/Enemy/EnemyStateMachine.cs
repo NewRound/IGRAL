@@ -194,9 +194,4 @@ public class EnemyStateMachine : StateMachine
 
         SetDirection(directionX);
     }
-
-    private void CheckArrivedInitPos()
-    {
-
-    }
 }
