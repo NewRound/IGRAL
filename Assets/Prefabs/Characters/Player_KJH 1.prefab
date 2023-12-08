@@ -237,6 +237,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b0a7cc40-013b-42da-b376-06e831702d84
     m_ActionName: Player/ActiveSkill[/Keyboard/z]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 99fb88f5-0531-4743-90b8-c256e0e9903c
+    m_ActionName: Player/BladeMutant[/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bef96b41-4a2f-493e-8d7c-e0f9b0b6d60e
+    m_ActionName: Player/HammerMutant[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 63c09812-9986-4351-8ba5-e64ab38ff255
+    m_ActionName: Player/PsychometricMutant[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 062355ad-84ab-48a3-9e93-3e76b48b2b26
+    m_ActionName: Player/Interact[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -266,7 +282,6 @@ MonoBehaviour:
     <ModelTrans>k__BackingField: {fileID: 5224004157000911447}
     <AcceleratingTime>k__BackingField: 1
     <RotationSpeed>k__BackingField: 10
-  <IsDebug>k__BackingField: 1
   DronePos: {fileID: 1348491182525177873}
 --- !u!114 &1831597438973618730
 MonoBehaviour:
@@ -374,6 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayOffsetY: 0.8
+  rayOffsetYMod: 0.5
   rayOffsetX: 0.2
 --- !u!1 &2541467568795205321
 GameObject:

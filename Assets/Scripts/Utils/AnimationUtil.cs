@@ -28,8 +28,6 @@ public class AnimationUtil
         return stateInfo.normalizedTime;
     }
 
-
-
     public static float GetNormalizeTime(Animator animator, AnimTag animTag, int layerIndex = 0)
     {
         string tag = animTag.ToString();

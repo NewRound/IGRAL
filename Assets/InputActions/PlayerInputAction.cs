@@ -64,7 +64,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Q"",
+                    ""name"": ""SkinMutant"",
                     ""type"": ""Button"",
                     ""id"": ""a62cb69c-1752-453b-ba7c-606f50e39a97"",
                     ""expectedControlType"": ""Button"",
@@ -73,7 +73,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""W"",
+                    ""name"": ""BladeMutant"",
                     ""type"": ""Button"",
                     ""id"": ""99fb88f5-0531-4743-90b8-c256e0e9903c"",
                     ""expectedControlType"": ""Button"",
@@ -82,7 +82,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""E"",
+                    ""name"": ""HammerMutant"",
                     ""type"": ""Button"",
                     ""id"": ""bef96b41-4a2f-493e-8d7c-e0f9b0b6d60e"",
                     ""expectedControlType"": ""Button"",
@@ -91,7 +91,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""R"",
+                    ""name"": ""PsychometricMutant"",
                     ""type"": ""Button"",
                     ""id"": ""63c09812-9986-4351-8ba5-e64ab38ff255"",
                     ""expectedControlType"": ""Button"",
@@ -236,7 +236,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Q"",
+                    ""action"": ""SkinMutant"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -247,7 +247,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""W"",
+                    ""action"": ""BladeMutant"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -258,7 +258,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""E"",
+                    ""action"": ""HammerMutant"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -269,7 +269,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""R"",
+                    ""action"": ""PsychometricMutant"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -306,10 +306,10 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Roll = m_Player.FindAction("Roll", throwIfNotFound: true);
-        m_Player_Q = m_Player.FindAction("Q", throwIfNotFound: true);
-        m_Player_W = m_Player.FindAction("W", throwIfNotFound: true);
-        m_Player_E = m_Player.FindAction("E", throwIfNotFound: true);
-        m_Player_R = m_Player.FindAction("R", throwIfNotFound: true);
+        m_Player_SkinMutant = m_Player.FindAction("SkinMutant", throwIfNotFound: true);
+        m_Player_BladeMutant = m_Player.FindAction("BladeMutant", throwIfNotFound: true);
+        m_Player_HammerMutant = m_Player.FindAction("HammerMutant", throwIfNotFound: true);
+        m_Player_PsychometricMutant = m_Player.FindAction("PsychometricMutant", throwIfNotFound: true);
         m_Player_UseItem = m_Player.FindAction("UseItem", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
     }
@@ -377,10 +377,10 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Roll;
-    private readonly InputAction m_Player_Q;
-    private readonly InputAction m_Player_W;
-    private readonly InputAction m_Player_E;
-    private readonly InputAction m_Player_R;
+    private readonly InputAction m_Player_SkinMutant;
+    private readonly InputAction m_Player_BladeMutant;
+    private readonly InputAction m_Player_HammerMutant;
+    private readonly InputAction m_Player_PsychometricMutant;
     private readonly InputAction m_Player_UseItem;
     private readonly InputAction m_Player_Interact;
     public struct PlayerActions
@@ -391,10 +391,10 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Roll => m_Wrapper.m_Player_Roll;
-        public InputAction @Q => m_Wrapper.m_Player_Q;
-        public InputAction @W => m_Wrapper.m_Player_W;
-        public InputAction @E => m_Wrapper.m_Player_E;
-        public InputAction @R => m_Wrapper.m_Player_R;
+        public InputAction @SkinMutant => m_Wrapper.m_Player_SkinMutant;
+        public InputAction @BladeMutant => m_Wrapper.m_Player_BladeMutant;
+        public InputAction @HammerMutant => m_Wrapper.m_Player_HammerMutant;
+        public InputAction @PsychometricMutant => m_Wrapper.m_Player_PsychometricMutant;
         public InputAction @UseItem => m_Wrapper.m_Player_UseItem;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -418,18 +418,18 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Roll.started += instance.OnRoll;
             @Roll.performed += instance.OnRoll;
             @Roll.canceled += instance.OnRoll;
-            @Q.started += instance.OnQ;
-            @Q.performed += instance.OnQ;
-            @Q.canceled += instance.OnQ;
-            @W.started += instance.OnW;
-            @W.performed += instance.OnW;
-            @W.canceled += instance.OnW;
-            @E.started += instance.OnE;
-            @E.performed += instance.OnE;
-            @E.canceled += instance.OnE;
-            @R.started += instance.OnR;
-            @R.performed += instance.OnR;
-            @R.canceled += instance.OnR;
+            @SkinMutant.started += instance.OnSkinMutant;
+            @SkinMutant.performed += instance.OnSkinMutant;
+            @SkinMutant.canceled += instance.OnSkinMutant;
+            @BladeMutant.started += instance.OnBladeMutant;
+            @BladeMutant.performed += instance.OnBladeMutant;
+            @BladeMutant.canceled += instance.OnBladeMutant;
+            @HammerMutant.started += instance.OnHammerMutant;
+            @HammerMutant.performed += instance.OnHammerMutant;
+            @HammerMutant.canceled += instance.OnHammerMutant;
+            @PsychometricMutant.started += instance.OnPsychometricMutant;
+            @PsychometricMutant.performed += instance.OnPsychometricMutant;
+            @PsychometricMutant.canceled += instance.OnPsychometricMutant;
             @UseItem.started += instance.OnUseItem;
             @UseItem.performed += instance.OnUseItem;
             @UseItem.canceled += instance.OnUseItem;
@@ -452,18 +452,18 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Roll.started -= instance.OnRoll;
             @Roll.performed -= instance.OnRoll;
             @Roll.canceled -= instance.OnRoll;
-            @Q.started -= instance.OnQ;
-            @Q.performed -= instance.OnQ;
-            @Q.canceled -= instance.OnQ;
-            @W.started -= instance.OnW;
-            @W.performed -= instance.OnW;
-            @W.canceled -= instance.OnW;
-            @E.started -= instance.OnE;
-            @E.performed -= instance.OnE;
-            @E.canceled -= instance.OnE;
-            @R.started -= instance.OnR;
-            @R.performed -= instance.OnR;
-            @R.canceled -= instance.OnR;
+            @SkinMutant.started -= instance.OnSkinMutant;
+            @SkinMutant.performed -= instance.OnSkinMutant;
+            @SkinMutant.canceled -= instance.OnSkinMutant;
+            @BladeMutant.started -= instance.OnBladeMutant;
+            @BladeMutant.performed -= instance.OnBladeMutant;
+            @BladeMutant.canceled -= instance.OnBladeMutant;
+            @HammerMutant.started -= instance.OnHammerMutant;
+            @HammerMutant.performed -= instance.OnHammerMutant;
+            @HammerMutant.canceled -= instance.OnHammerMutant;
+            @PsychometricMutant.started -= instance.OnPsychometricMutant;
+            @PsychometricMutant.performed -= instance.OnPsychometricMutant;
+            @PsychometricMutant.canceled -= instance.OnPsychometricMutant;
             @UseItem.started -= instance.OnUseItem;
             @UseItem.performed -= instance.OnUseItem;
             @UseItem.canceled -= instance.OnUseItem;
@@ -502,10 +502,10 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnRoll(InputAction.CallbackContext context);
-        void OnQ(InputAction.CallbackContext context);
-        void OnW(InputAction.CallbackContext context);
-        void OnE(InputAction.CallbackContext context);
-        void OnR(InputAction.CallbackContext context);
+        void OnSkinMutant(InputAction.CallbackContext context);
+        void OnBladeMutant(InputAction.CallbackContext context);
+        void OnHammerMutant(InputAction.CallbackContext context);
+        void OnPsychometricMutant(InputAction.CallbackContext context);
         void OnUseItem(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
     }
