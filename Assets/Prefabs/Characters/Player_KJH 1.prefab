@@ -390,7 +390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayOffsetY: 0.8
   rayOffsetYMod: 0.5
-  rayOffsetX: 0.2
+  rayOffsetX: 0.3
 --- !u!1 &2541467568795205321
 GameObject:
   m_ObjectHideFlags: 0
