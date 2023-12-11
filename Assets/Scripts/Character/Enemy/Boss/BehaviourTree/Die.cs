@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class Die : BossNode
 {
-    private BossBehaviourTree _bossBehaviourTree;
+    private BossBehaviorTree _bossBehaviourTree;
 
-    public Die(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public Die(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
         _bossBehaviourTree = bossBehaviourTree;
     }

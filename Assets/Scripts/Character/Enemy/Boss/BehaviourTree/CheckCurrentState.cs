@@ -1,6 +1,6 @@
 ﻿public class CheckCurrentState : BossNode
 {
-    public CheckCurrentState(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public CheckCurrentState(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
     }
 
