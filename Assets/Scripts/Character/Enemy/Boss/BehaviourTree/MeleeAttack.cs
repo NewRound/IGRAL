@@ -11,7 +11,7 @@ public class MeleeAttack : ActionNode
     private EnemySO _data;
     private float _meleeAttackMod;
 
-    public MeleeAttack(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public MeleeAttack(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
         _animationController = bossBehaviourTree.AnimationController;
         btDict = bossBehaviourTree.BTDict;

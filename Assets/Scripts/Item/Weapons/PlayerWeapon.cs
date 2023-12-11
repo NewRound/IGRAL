@@ -79,7 +79,7 @@ public class PlayerWeapon : CharacterWeapon
                 Attack(_playerSO, targetSO, damageable);
             }
 
-            BossBehaviourTree bossBehaviourTree = hit.GetComponent<BossBehaviourTree>();
+            BossBehaviorTree bossBehaviourTree = hit.GetComponent<BossBehaviorTree>();
 
             if (bossBehaviourTree != null)
             {

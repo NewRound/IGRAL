@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class UpdateState : BossNode
 {
-    public UpdateState(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public UpdateState(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
     }
 

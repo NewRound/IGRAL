@@ -19,7 +19,7 @@ public class Patrol : ActionNode
     private BossAnimationController _animationController;
     private SpeedCalculator _speedCalculator;
 
-    public Patrol(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public Patrol(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
         _animationController = bossBehaviourTree.AnimationController;
         _rigid = bossBehaviourTree.Rigid;

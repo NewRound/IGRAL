@@ -7,7 +7,7 @@ public abstract class BossSkill : ActionNode
     protected BossAnimationController animationController;
     protected GameObject defaultWeapon;
 
-    public BossSkill(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public BossSkill(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
         animationController = bossBehaviourTree.AnimationController;
         defaultWeapon = bossBehaviourTree.DefaultWeapon;

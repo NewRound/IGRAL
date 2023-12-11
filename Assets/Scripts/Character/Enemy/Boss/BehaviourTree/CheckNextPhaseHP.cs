@@ -7,7 +7,7 @@ public class CheckNextPhaseHP : BossNode
 {
     private int _totalPhaseCount;
 
-    public CheckNextPhaseHP(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public CheckNextPhaseHP(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
         _totalPhaseCount = this.bossBehaviourTree.PhaseInfoArr.Length;
     }

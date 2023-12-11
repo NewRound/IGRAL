@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class BossStatHandler : EnemyStatHandler
 {
-    private BossBehaviourTree _bossBehaviourTree;
+    private BossBehaviorTree _bossBehaviourTree;
     private UIBossCondition _bossCondition;
 
-    public BossStatHandler(EnemySO data, BossBehaviourTree bossBehaviourTree) : base(data, null, null, bossBehaviourTree.transform)
+    public BossStatHandler(EnemySO data, BossBehaviorTree bossBehaviourTree) : base(data, null, null, bossBehaviourTree.transform)
     {
         _bossBehaviourTree = bossBehaviourTree;
         DamagedAction += UpdateHealth;
