@@ -528,12 +528,12 @@ AnimatorStateMachine:
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: -5707468301596163710}
-    second:
-    - {fileID: -3912832265516905311}
   - first: {fileID: -3967685553955715386}
     second:
     - {fileID: -4325638038785212811}
+  - first: {fileID: -5707468301596163710}
+    second:
+    - {fileID: -3912832265516905311}
   - first: {fileID: 8043320978990348489}
     second:
     - {fileID: 5276470376583019503}
@@ -872,6 +872,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: MutantType
+    m_Type: 3
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: AttackCombo
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0

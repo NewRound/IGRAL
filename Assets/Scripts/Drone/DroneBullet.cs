@@ -73,7 +73,7 @@ public class DroneBullet : Weapon
             case BulletType.playerDrone:
 
                 EnemyController enemyController = other.GetComponent<EnemyController>();
-                BossBehaviourTree BT = other.GetComponent<BossBehaviourTree>();
+                BossBehaviorTree BT = other.GetComponent<BossBehaviorTree>();
                 EnemyStatHandler enemy = null;
 
                 if (enemyController != null)

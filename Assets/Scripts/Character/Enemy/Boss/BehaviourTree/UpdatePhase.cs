@@ -6,7 +6,7 @@ public class UpdatePhase : BossNode
     private int _totalPhaseCount;
     
 
-    public UpdatePhase(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public UpdatePhase(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
         _totalPhaseCount = bossBehaviourTree.PhaseInfoArr.Length;
     }

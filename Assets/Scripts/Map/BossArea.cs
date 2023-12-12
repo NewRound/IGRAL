@@ -55,7 +55,7 @@ public class BossArea : MonoBehaviour
     {
         GameObject Boss = Instantiate(BossPrefab);
         Boss.transform.position = SpawnPoint.position;
-        Boss.GetComponent<BossBehaviourTree>().Init(Waypoints);
+        Boss.GetComponent<BossBehaviorTree>().Init(Waypoints);
         AudioManager.Instance.EnterBossRoom();
         _boss = Boss;
 

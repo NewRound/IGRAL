@@ -1,7 +1,7 @@
 ﻿using GlobalEnums;
 public class ActionNode : BossNode
 {
-    public ActionNode(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public ActionNode(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
     }
 

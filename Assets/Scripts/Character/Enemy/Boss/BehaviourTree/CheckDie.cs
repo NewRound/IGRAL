@@ -2,7 +2,7 @@
 
 public class CheckDie : BossNode
 {
-    public CheckDie(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public CheckDie(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
     }
 

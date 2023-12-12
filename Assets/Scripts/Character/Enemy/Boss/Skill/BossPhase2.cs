@@ -5,7 +5,7 @@ public class BossPhase2 : BossSkill
 {
     private RPG _newWeapon;
     private Transform _bulletSpawnTrans;
-    public BossPhase2(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public BossPhase2(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
         _bulletSpawnTrans = bossBehaviourTree.BulletSpawnTrans;
         btDict = bossBehaviourTree.BTDict;

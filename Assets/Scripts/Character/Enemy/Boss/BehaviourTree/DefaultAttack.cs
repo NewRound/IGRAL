@@ -11,7 +11,7 @@ public class DefaultAttack : ActionNode
     private float _bulletPerAngle;
 
     private BossAnimationController _animationController;
-    public DefaultAttack(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public DefaultAttack(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
         _bulletAmount = bossBehaviourTree.BulletCount;
         _bulletPerAngle = bossBehaviourTree.BulletAngle;

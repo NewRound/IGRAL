@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RunningCoolTime : BossNode
 {
-    public RunningCoolTime(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public RunningCoolTime(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
     }
 

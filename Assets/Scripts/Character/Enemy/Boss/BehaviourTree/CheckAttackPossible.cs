@@ -6,7 +6,7 @@ public class CheckAttackPossible : BossNode
     private BossAnimationController _animationController;
     private Dictionary<BTValues, object> _btDict = new Dictionary<BTValues, object>();
 
-    public CheckAttackPossible(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public CheckAttackPossible(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
         _animationController = bossBehaviourTree.AnimationController;
         _btDict = bossBehaviourTree.BTDict;

@@ -7,7 +7,7 @@ public class CheckTargetDistance : ActionNode
     private Transform _myTrans;
     private float _attackRange;
 
-    public CheckTargetDistance(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public CheckTargetDistance(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
         _myTrans = bossBehaviourTree.transform;
         _attackRange = bossBehaviourTree.StatHandler.Data.AttackRange + Mathf.Abs(bossBehaviourTree.AttackOffsetVec.x);

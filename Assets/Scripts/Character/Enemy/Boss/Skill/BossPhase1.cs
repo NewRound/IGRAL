@@ -5,7 +5,7 @@ public class BossPhase1 : BossSkill
 {
     private BossGranade _granade;
 
-    public BossPhase1(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public BossPhase1(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
         Init();
     }

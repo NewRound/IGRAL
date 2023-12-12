@@ -4,7 +4,7 @@ public class BossPhase3 : BossSkill
 {
     private EnemyDroneSpawner _enemyDroneSpawner;
 
-    public BossPhase3(BossBehaviourTree bossBehaviourTree) : base(bossBehaviourTree)
+    public BossPhase3(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
         _enemyDroneSpawner = new EnemyDroneSpawner(bossBehaviourTree.Waypoints, bossBehaviourTree.DroneSpawnDuration, bossBehaviourTree.DroneHeight);
     }

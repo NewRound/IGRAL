@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossBehaviourTree : BehaviourTree
+public class BossBehaviorTree : BehaviorTree
 {
     [SerializeField] private EnemySO enemySO;
     public Transform[] Waypoints { get; private set; }
