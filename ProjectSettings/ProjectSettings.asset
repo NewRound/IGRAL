@@ -133,9 +133,9 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 1.0.2
+  bundleVersion: 1.3
   preloadedAssets:
-  - {fileID: 624592049502468441, guid: 9c83132c9e78ac14683a3d996891fdac, type: 2}
+  - {fileID: -9066416083170132373, guid: 9c83132c9e78ac14683a3d996891fdac, type: 2}
   - {fileID: 11400000, guid: cb71c71d8df68e24c9babc9012f4ea78, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -254,7 +254,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{dedicated}: Desktop/user.keystore'
+  AndroidKeystoreName: '{dedicated}: Downloads/user.keystore'
   AndroidKeyaliasName: 6bisoft
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidBuildApkPerCpuArchitecture: 0
@@ -828,7 +828,7 @@ PlayerSettings:
   suppressCommonWarnings: 1
   allowUnsafeCode: 0
   useDeterministicCompilation: 1
-  selectedPlatform: 4
+  selectedPlatform: 2
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 0
