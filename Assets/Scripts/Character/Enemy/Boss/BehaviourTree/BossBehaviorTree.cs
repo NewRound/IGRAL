@@ -39,6 +39,8 @@ public class BossBehaviorTree : BehaviorTree
 
     public UIBossCondition UIBossCondition { get; private set; }
 
+    [field: SerializeField] public float DieDuration = 3f;
+
     [field: Header("UI")]
     public event Action<int> OnUpdatePhase;
     public event Action<float> OnUpdateElapsedCooltime;
