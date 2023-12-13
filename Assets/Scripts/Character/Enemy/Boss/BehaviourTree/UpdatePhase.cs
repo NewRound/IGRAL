@@ -20,6 +20,13 @@ public class UpdatePhase : BossNode
         }    
 
         int currentPhase = bossBehaviourTree.CurrentPhase;
+
+        if (currentPhase == _totalPhaseCount)
+        {
+            state = NodeState.Failure;
+            return state;
+        }
+
         currentPhase++;
         currentPhase = currentPhase > _totalPhaseCount ? _totalPhaseCount : currentPhase;
         bossBehaviourTree.SetCurrenPhase(currentPhase);
