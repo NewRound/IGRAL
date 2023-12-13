@@ -28,8 +28,6 @@ public class EnemyStatHandler : IDamageable
             Data.Health -= damage;
             DamagedAction?.Invoke();
 
-            Debug.Log(Data.Health);
-
             if (UIEnemyHealth != null && Data.Health <= 0)
             {
                 UIEnemyHealth.gameObject.SetActive(false);
