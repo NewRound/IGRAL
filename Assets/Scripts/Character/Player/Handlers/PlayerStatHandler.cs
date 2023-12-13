@@ -550,11 +550,9 @@ public class PlayerStatHandler : IDamageable, IBurnable
 
     public void UpdateSkillStat(MutantType mutantType)
     {
-        switch(mutantType) 
+        UIInventory.Instance.UpdateEquipUI();
+        switch (mutantType) 
         {
-            case MutantType.None:
-                UIInventory.Instance.UpdateEquipUI();
-                break;
             case MutantType.Stone:
                 UpdateStats(SkillManager.Instance.hammerData);
                 break;

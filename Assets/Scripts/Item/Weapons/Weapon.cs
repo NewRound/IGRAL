@@ -20,8 +20,6 @@ public abstract class Weapon : MonoBehaviour, IBattle
 
         float attackDamage = attacker.Attack * attackMod;
 
-        Debug.Log(attackDamage);
-
         int randomCriticalProbability = UnityEngine.Random.Range(0, PERCENT_EXCLUDE_MAX_VALUE);
         if (randomCriticalProbability < attacker.CriticalProbability)
             attackDamage += attacker.Attack * attacker.CriticalMod;
