@@ -35,11 +35,14 @@ public class PlayerWeapon : CharacterWeapon
         if (myTrans == null)
             return;
 
-        Vector3 offsetVec = myTrans.position;
-        rayOffsetX = modelTrans.forward.x > 0 ? -rayOffsetX : rayOffsetX;
-        offsetVec.x += rayOffsetX;
-        offsetVec.y += rayOffsetY;
+        Vector3 offsetVec = UpdateRayOffset();
         Gizmos.DrawRay(offsetVec, modelTrans.forward * _playerSO.AttackRange);
+
+        Vector3 topVec = offsetVec + new Vector3(0f, rayOffsetYMod, 0f);
+        Gizmos.DrawRay(topVec, modelTrans.forward * _playerSO.AttackRange);
+
+        Vector3 bottomVec = offsetVec + new Vector3(0f, -rayOffsetYMod, 0f);
+        Gizmos.DrawRay(bottomVec, modelTrans.forward * _playerSO.AttackRange);
     }
 #endif
 
@@ -49,20 +52,22 @@ public class PlayerWeapon : CharacterWeapon
         IDamageable damageable = null;
         Vector3 offsetVec = UpdateRayOffset();
 
-        HashSet<Collider> hits = new HashSet<Collider>();
+        HashSet<Collider> newHits = new HashSet<Collider>();
 
         RaycastHit[] middle = Physics.RaycastAll(offsetVec, modelTrans.forward, _playerSO.AttackRange, layer);
-        AddNewRaycastHit(hits, middle);
+        List<RaycastHit> hits = new List<RaycastHit>(middle);
 
         Vector3 topVec = offsetVec + new Vector3(0f, rayOffsetYMod, 0f);
         RaycastHit[] top = Physics.RaycastAll(topVec, modelTrans.forward, _playerSO.AttackRange, layer);
-        AddNewRaycastHit(hits, top);
+        hits.AddRange(top);
 
         Vector3 bottomVec = offsetVec + new Vector3(0f, -rayOffsetYMod, 0f);
         RaycastHit[] bottom = Physics.RaycastAll(bottomVec, modelTrans.forward, _playerSO.AttackRange, layer);
-        AddNewRaycastHit(hits, bottom);
+        hits.AddRange(bottom);
 
-        foreach (Collider hit in hits)
+        AddNewRaycastHit(newHits, hits);
+
+        foreach (Collider hit in newHits)
         {
             EnemyController enemyController = hit.GetComponentInParent<EnemyController>();
 
@@ -98,13 +103,13 @@ public class PlayerWeapon : CharacterWeapon
         }
     }
 
-    private void AddNewRaycastHit(HashSet<Collider> hits, RaycastHit[] middle)
+    private void AddNewRaycastHit(HashSet<Collider> newHits, List<RaycastHit> hits)
     {
-        foreach (var item in middle)
+        foreach (RaycastHit hit in hits)
         {
-            Collider collider = item.collider;
-            if (!hits.Contains(collider))
-                hits.Add(collider);
+            Collider collider = hit.collider;
+            if (!newHits.Contains(collider))
+                newHits.Add(collider);
         }
     }
 

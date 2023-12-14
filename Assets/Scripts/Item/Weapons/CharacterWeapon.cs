@@ -8,12 +8,13 @@ public class CharacterWeapon : Weapon
     protected Transform modelTrans;
     protected Transform myTrans;
     protected LayerMask layer;
+    private float _rayOffsetX;
 
     protected Vector3 UpdateRayOffset()
     {
         Vector3 offsetVec = myTrans.position;
-        rayOffsetX = modelTrans.forward.x > 0 ? -rayOffsetX : rayOffsetX;
-        offsetVec.x += rayOffsetX;
+        _rayOffsetX = modelTrans.forward.x > 0 ? -rayOffsetX : rayOffsetX;
+        offsetVec.x += _rayOffsetX;
         offsetVec.y += rayOffsetY;
         return offsetVec;
     }
