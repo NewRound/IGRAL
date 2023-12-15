@@ -30,7 +30,7 @@ public class EnemyDroneSpawner
         
         _direction = GetDirection();
          
-        Vector3 spawnPos = _direction == Vector3.left ? _spawnTrans[0].position : _spawnTrans[1].position;
+        Vector3 spawnPos = _direction.x == 1 ? _spawnTrans[0].position : _spawnTrans[1].position;
         spawnPos.y += _droneHeight;
         _enemyDrone.transform.position = spawnPos;
 

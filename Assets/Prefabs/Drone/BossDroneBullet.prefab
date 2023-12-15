@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 591408109985306711}
-  - component: {fileID: -616086415100164150}
   - component: {fileID: 4085882971957580608}
   - component: {fileID: -3139668121014622442}
+  - component: {fileID: 235109988095934997}
   m_Layer: 11
   m_Name: BossDroneBullet
   m_TagString: Untagged
@@ -35,26 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-616086415100164150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1265579702484801395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2d3bffb21bf5c34190ce6f92af453e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionParticles: []
-  meshRenderer: {fileID: 5899721624367368805}
-  damage: 25
-  explosionDelayTime: 2
-  explosionTime: 2
-  explosionRange: 2
-  rotationSpeed: 90
-  yOffset: 0.5
 --- !u!136 &4085882971957580608
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -105,6 +85,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &235109988095934997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265579702484801395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98678768e0edbb44aa398155a6dd2849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionParticles:
+  - {fileID: 0}
+  meshRenderer: {fileID: 5899721624367368805}
+  damage: 15
+  explosionDelayTime: 2
+  explosionTime: 2
+  explosionRange: 2
+  rotationSpeed: 90
+  yOffset: 0.5
 --- !u!1001 &5053478788369290977
 PrefabInstance:
   m_ObjectHideFlags: 0
