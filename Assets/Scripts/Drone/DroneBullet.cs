@@ -3,7 +3,7 @@ using UnityEngine;
 public enum BulletType
 {
    playerDrone,
-   EnmeyDrone
+   EnemyDrone
 }
 
 public class DroneBullet : Weapon
@@ -43,7 +43,7 @@ public class DroneBullet : Weapon
                 }                
                 break;
 
-            case BulletType.EnmeyDrone:
+            case BulletType.EnemyDrone:
                 transform.forward = _direction;
                 transform.Translate(Vector3.down * _movementSpeed * Time.deltaTime);
                 break;
@@ -90,7 +90,7 @@ public class DroneBullet : Weapon
 
                 break;
 
-            case BulletType.EnmeyDrone:
+            case BulletType.EnemyDrone:
                 PlayerController playerController = other.GetComponent<PlayerController>();
 
                 if (playerController != null)
