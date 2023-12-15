@@ -12,8 +12,10 @@ public abstract class EntityController : MonoBehaviour
     [Header("Blink")]
     [SerializeField] private float blinkDuration = 0.2f;
     private IEnumerator _blinkCoroutine;
+    private WaitForSeconds _blinkSeconds;
 
     protected Material myMaterial;
+
 
     [field: SerializeField] public GroundData GroundData { get; private set; }
 
@@ -38,8 +40,12 @@ public abstract class EntityController : MonoBehaviour
     private IEnumerator Blink()
     {
         myMaterial.DOColor(Color.red, blinkDuration);
-        yield return new WaitForSeconds(blinkDuration);
+
+        if (_blinkSeconds == null)
+            _blinkSeconds = CoroutineRef.GetWaitForSeconds(blinkDuration);
+
+        yield return _blinkSeconds;
         myMaterial.DOColor(Color.white, blinkDuration);
-        yield return new WaitForSeconds(blinkDuration);
+        yield return _blinkSeconds;
     }
 }
