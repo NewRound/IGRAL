@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6285139581290215170}
   - component: {fileID: 1265967611528825929}
   - component: {fileID: 697757155214547213}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Wheel_Door_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4658943012096161345}
   - component: {fileID: 419399230837080516}
   - component: {fileID: 2167628375767850046}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Prop_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 1623994829599561099}
   - component: {fileID: 5012971605969806260}
   - component: {fileID: 8162545718672874401}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Flap_fr_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 4403505631073072372}
   - component: {fileID: 7563132547656682227}
   - component: {fileID: 665332123569463225}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Cargo_Door_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 1302129327418733390}
   - component: {fileID: 4317167104726402622}
   - component: {fileID: 3326160873964331871}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 564291307597038062}
   - component: {fileID: 1360350333134113088}
   - component: {fileID: 768477136459892031}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Wheel_Door_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 4027758360596701074}
   - component: {fileID: 4660544871998152808}
   - component: {fileID: 7444185841321360177}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Flap_fl_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,7 +613,7 @@ GameObject:
   - component: {fileID: 931784097891116111}
   - component: {fileID: 8034122713966800442}
   - component: {fileID: 5972178818920221416}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Cargo_Door_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,7 +696,7 @@ GameObject:
   - component: {fileID: 1982110139731406335}
   - component: {fileID: 6730792008741380016}
   - component: {fileID: 7250063712866569689}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Prop_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -780,7 +780,7 @@ GameObject:
   - component: {fileID: 600313845580732670}
   - component: {fileID: 7889408284380672673}
   - component: {fileID: 5344065669701512343}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyDrone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -875,7 +875,7 @@ GameObject:
   - component: {fileID: 4530617047975118078}
   - component: {fileID: 4046223366813501250}
   - component: {fileID: 399629171620531145}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Glass_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -958,7 +958,7 @@ GameObject:
   - component: {fileID: 3012250593800469548}
   - component: {fileID: 9193637326240473178}
   - component: {fileID: 9131761704782314514}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Flap_fl_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1041,7 +1041,7 @@ GameObject:
   - component: {fileID: 7926636594726186153}
   - component: {fileID: 6573935645618107387}
   - component: {fileID: 2507066621564609745}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Prop_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1124,7 +1124,7 @@ GameObject:
   - component: {fileID: 7304092553659939587}
   - component: {fileID: 6679491051939099178}
   - component: {fileID: 1722872946988242548}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Prop_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1207,7 +1207,7 @@ GameObject:
   - component: {fileID: 7339489259795693884}
   - component: {fileID: 3181185478588030593}
   - component: {fileID: 2003066227124816639}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Wheels_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1290,7 +1290,7 @@ GameObject:
   - component: {fileID: 5716438905365007322}
   - component: {fileID: 2482246957267004057}
   - component: {fileID: 6981710218695436844}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Wheel_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1373,7 +1373,7 @@ GameObject:
   - component: {fileID: 9205150735682790637}
   - component: {fileID: 4485097431770016330}
   - component: {fileID: 4981727219479402033}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Wheels_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1456,7 +1456,7 @@ GameObject:
   - component: {fileID: 7183875583336679124}
   - component: {fileID: 3525138447337801674}
   - component: {fileID: 1352087011747936676}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Flap_fr_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1539,7 +1539,7 @@ GameObject:
   - component: {fileID: 4834084151501443225}
   - component: {fileID: 8131514431172830458}
   - component: {fileID: 5241963381988856349}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Flap_rr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1622,7 +1622,7 @@ GameObject:
   - component: {fileID: 3123875935230353783}
   - component: {fileID: 1992083397650010278}
   - component: {fileID: 5450311433538228158}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Cockpit_Stick_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1705,7 +1705,7 @@ GameObject:
   - component: {fileID: 4634284761888687815}
   - component: {fileID: 2471848300894937285}
   - component: {fileID: 3938122434321209129}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Flap_rl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1788,7 +1788,7 @@ GameObject:
   - component: {fileID: 6546204598360142869}
   - component: {fileID: 2627656511597671095}
   - component: {fileID: 4592607895488613501}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Cockpit_Stick_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1871,7 +1871,7 @@ GameObject:
   - component: {fileID: 7440353722682387546}
   - component: {fileID: 8434828822054569732}
   - component: {fileID: 7503565503420642577}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Plane_Wheel_Door_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}

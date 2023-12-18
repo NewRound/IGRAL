@@ -6,9 +6,12 @@ using UnityEngine;
 public class EffectViewer
 {
     private EffectData _data;
+    private WaitForSeconds _auraWaitForSeconds;
+
     public EffectViewer(EffectData data)
     {
         _data = data;
+        _auraWaitForSeconds = CoroutineRef.GetWaitForSeconds(_data.AuraDuration);
     }
 
     public IEnumerator ShowWeaponEffectGradually(List<GameObject> goList)
@@ -21,14 +24,14 @@ public class EffectViewer
         }
 
         ActivateAura(true);
-        yield return CoroutineRef.GetWaitForSeconds(_data.AuraDuration);
+        yield return _auraWaitForSeconds;
         ActivateAura(false);
     }
 
     public IEnumerator ShowWeaponEffectWithoutDissolve(List<GameObject> goList)
     {
         ActivateAura(true);
-        yield return CoroutineRef.GetWaitForSeconds(_data.AuraDuration);
+        yield return _auraWaitForSeconds;
         ActivateAura(false);
 
         foreach (GameObject go in goList)
@@ -42,7 +45,7 @@ public class EffectViewer
         _data.DissolveMaterial.DOFloat(0, _data.SplitValue, _data.DissolveDuration);
 
         ActivateAura(true);
-        yield return CoroutineRef.GetWaitForSeconds(_data.AuraDuration);
+        yield return _auraWaitForSeconds;
         ActivateAura(false);
 
         foreach (GameObject go in goList)
@@ -59,7 +62,7 @@ public class EffectViewer
         }
 
         ActivateAura(true);
-        yield return CoroutineRef.GetWaitForSeconds(_data.AuraDuration);
+        yield return _auraWaitForSeconds;
         ActivateAura(false);
 
     }
