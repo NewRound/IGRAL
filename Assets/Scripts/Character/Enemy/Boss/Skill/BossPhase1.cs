@@ -4,6 +4,7 @@ using UnityEngine;
 public class BossPhase1 : BossSkill
 {
     private BossGranade _granade;
+    private const string _weaponPath = "Boss/SkillWeapons/Granade";
 
     public BossPhase1(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
@@ -51,7 +52,7 @@ public class BossPhase1 : BossSkill
     protected override void Init()
     {
         _granade = Object.Instantiate(
-            Resources.Load<BossGranade>("Boss/SkillWeapons/Granade"), 
+            Resources.Load<BossGranade>(_weaponPath), 
             defaultWeapon.transform.position, Quaternion.identity);
         _granade.DeActivate();
     }

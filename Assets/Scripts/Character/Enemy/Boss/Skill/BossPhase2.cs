@@ -4,7 +4,9 @@ using UnityEngine;
 public class BossPhase2 : BossSkill
 {
     private RPG _newWeapon;
-    private Transform _bulletSpawnTrans;
+    private Transform _bulletSpawnTrans; 
+    private const string _weaponPath = "Boss/EquippedWeapons/RPG";
+
     public BossPhase2(BossBehaviorTree bossBehaviourTree) : base(bossBehaviourTree)
     {
         _bulletSpawnTrans = bossBehaviourTree.BulletSpawnTrans;
@@ -76,7 +78,7 @@ public class BossPhase2 : BossSkill
     {
         if (_newWeapon == null)
             _newWeapon = UnityEngine.Object.Instantiate(
-                Resources.Load<RPG>("Boss/EquippedWeapons/RPG"), 
+                Resources.Load<RPG>(_weaponPath), 
                 defaultWeapon.transform.parent);
         
         _newWeapon.gameObject.SetActive(false);

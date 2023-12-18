@@ -25,6 +25,8 @@ public abstract class ExplosionWeapon : Weapon
     protected Material material;
     protected GameObject modelObject;
 
+    private LayerMask _playerLayer;
+
     protected void OnDisable()
     {
         ResetValues();
@@ -54,6 +56,7 @@ public abstract class ExplosionWeapon : Weapon
     {
         material = meshRenderer.material;
         modelObject = meshRenderer.gameObject;
+        _playerLayer = 1 << LayerMask.NameToLayer(Tag.Player.ToString());
         halfExplosiondelayTime = GlobalValues.HALF * explosionDelayTime;
         explosionDict.Add(halfExplosiondelayTime, CoroutineRef.GetWaitForSeconds(halfExplosiondelayTime));
         explosionDict.Add(explosionTime, CoroutineRef.GetWaitForSeconds(explosionTime));
@@ -77,7 +80,7 @@ public abstract class ExplosionWeapon : Weapon
 
     protected void ApplyExplosionDamage()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRange, 1 << LayerMask.NameToLayer(Tag.Player.ToString()));
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRange, _playerLayer);
         if (colliders.Length > 0)
         {
             PlayerStatHandler statHandler = colliders[0].GetComponent<PlayerController>().StatHandler;

@@ -92,7 +92,7 @@ public class UIController : CustomSingleton<UIController>
 #endif
     }
 #if UNITY_ANDROID
-    private void FixedUpdate()
+    private void Update()
     {
         if (isSkill)
         {
